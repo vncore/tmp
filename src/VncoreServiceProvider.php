@@ -263,7 +263,6 @@ class VncoreServiceProvider extends ServiceProvider
         //Share variable for view
         view()->share('sc_languages', sc_language_all());
         view()->share('sc_blocksContent', sc_store_block());
-        view()->share('sc_layoutsUrl', sc_link());
         view()->share('sc_templatePath', 'templates.' . sc_store('template'));
         view()->share('sc_templateFile', 'templates/' . sc_store('template'));
         //
@@ -332,17 +331,7 @@ class VncoreServiceProvider extends ServiceProvider
      */
     protected function validationExtend()
     {
-        Validator::extend('product_sku_unique', function ($attribute, $value, $parameters, $validator) {
-            $productId = $parameters[0] ?? '';
-            return (new AdminProduct)
-                ->checkProductValidationAdmin('sku', $value, $productId, session('adminStoreId'));
-        });
-
-        Validator::extend('product_alias_unique', function ($attribute, $value, $parameters, $validator) {
-            $productId = $parameters[0] ?? '';
-            return (new AdminProduct)
-                ->checkProductValidationAdmin('alias', $value, $productId, session('adminStoreId'));
-        });
+        //
     }
 
     /**
