@@ -5,12 +5,6 @@ namespace Vncore\Core;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use Vncore\Core\Front\Models\ShopProduct;
-use Vncore\Core\Front\Models\ShopCategory;
-use Vncore\Core\Front\Models\ShopBanner;
-use Vncore\Core\Front\Models\ShopBrand;
-use Vncore\Core\Front\Models\ShopNews;
-use Vncore\Core\Front\Models\ShopPage;
 use Vncore\Core\Front\Models\ShopStore;
 use Vncore\Core\Commands\Customize;
 use Vncore\Core\Commands\Backup;
@@ -22,7 +16,6 @@ use Vncore\Core\Commands\Update;
 use Vncore\Core\Admin\Models\AdminProduct;
 use Vncore\Core\Front\Middleware\Localization;
 use Vncore\Core\Front\Middleware\EmailIsVerified;
-use Vncore\Core\Front\Middleware\Currency;
 use Vncore\Core\Api\Middleware\ApiConnection;
 use Vncore\Core\Api\Middleware\ForceJsonResponse;
 use Vncore\Core\Front\Middleware\CheckDomain;
@@ -269,18 +262,10 @@ class VncoreServiceProvider extends ServiceProvider
 
         //Share variable for view
         view()->share('sc_languages', sc_language_all());
-        view()->share('sc_currencies', sc_currency_all());
         view()->share('sc_blocksContent', sc_store_block());
         view()->share('sc_layoutsUrl', sc_link());
         view()->share('sc_templatePath', 'templates.' . sc_store('template'));
         view()->share('sc_templateFile', 'templates/' . sc_store('template'));
-        //variable model
-        view()->share('modelProduct', (new ShopProduct));
-        view()->share('modelCategory', (new ShopCategory));
-        view()->share('modelBanner', (new ShopBanner));
-        view()->share('modelBrand', (new ShopBrand));
-        view()->share('modelNews', (new ShopNews));
-        view()->share('modelPage', (new ShopPage));
         //
         view()->share('templatePathAdmin', config('admin.path_view'));
     }
@@ -293,7 +278,6 @@ class VncoreServiceProvider extends ServiceProvider
     protected $routeMiddleware = [
         'localization'     => Localization::class,
         'email.verify'     => EmailIsVerified::class,
-        'currency'         => Currency::class,
         'api.connection'   => ApiConnection::class,
         'checkdomain'      => CheckDomain::class,
         'json.response'    => ForceJsonResponse::class,
