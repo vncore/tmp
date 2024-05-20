@@ -1,0 +1,10 @@
+diff a/src/Library/Helpers/other.php b/src/Library/Helpers/other.php	(rejected hunks)
+@@ -252,7 +252,7 @@
+     /**
+      * Return object carbon
+      */
+-    function sc_time_now($timezone = null)
++    function sc_time_now($timezone = "")
+     {
+         return (new \Carbon\Carbon)->now($timezone);
+     }
