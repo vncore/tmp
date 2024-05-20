@@ -34,7 +34,7 @@ use Vncore\Core\Admin\Middleware\AdminTheme;
 use Laravel\Sanctum\Sanctum;
 use Vncore\Core\Front\Models\PersonalAccessToken;
 
-class ScartServiceProvider extends ServiceProvider
+class VncoreServiceProvider extends ServiceProvider
 {
     protected $commands = [
         Customize::class,
