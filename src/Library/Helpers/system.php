@@ -2,7 +2,6 @@
 use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\Admin\Models\AdminStore;
 use Vncore\Core\Front\Models\ShopStoreBlockContent;
-use Vncore\Core\Front\Models\ShopLink;
 use Vncore\Core\Front\Models\ShopStoreCss;
 use Illuminate\Support\Arr;
 
@@ -204,21 +203,6 @@ if (!function_exists('sc_store_css')) {
 }
 
 
-
-if (!function_exists('sc_link') && !in_array('sc_link', config('helper_except', []))) {
-    function sc_link()
-    {
-        return ShopLink::getGroup();
-    }
-}
-
-
-if (!function_exists('sc_link_collection') && !in_array('sc_link_collection', config('helper_except', []))) {
-    function sc_link_collection()
-    {
-        return ShopLink::getLinksCollection();
-    }
-}
 
 
 if (!function_exists('sc_get_all_template') && !in_array('sc_get_all_template', config('helper_except', []))) {
