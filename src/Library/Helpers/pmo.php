@@ -42,7 +42,7 @@ if (!function_exists('vncore_sync_user_mapping') && !in_array('vncore_sync_user_
      *
      * @return  [type]        [return description]
      */
-    function vncore_sync_user_mapping(\App\CoreApp\Admin\Models\AdminUser $user, $action = "add")
+    function vncore_sync_user_mapping(\Vncore\Core\Admin\Models\AdminUser $user, $action = "add")
     {
         switch ($action) {
             case 'add':
@@ -77,7 +77,7 @@ if (!function_exists('vncore_set_session_member_id') && !in_array('vncore_set_se
      *
      * @return  [type]        [return description]
      */
-    function vncore_set_session_member_id(\App\CoreApp\Admin\Models\AdminUser $user)
+    function vncore_set_session_member_id(\Vncore\Core\Admin\Models\AdminUser $user)
     {
         $userMap =  (new \App\CoreApp\Pmo\Models\PmoMember)
             ->where('original_id', $user->id)
