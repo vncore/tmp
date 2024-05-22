@@ -50,9 +50,9 @@ class Update extends Command
             exit();
         }
         $this->info('---------------------');
-        $this->info('Front version: '.config('s-cart.version'));
-        $this->info('Front sub-version: '.config('s-cart.sub-version'));
-        $this->info('Core: '.config('s-cart.core'));
-        $this->info('Core sub-version: '.config('s-cart.core-sub-version'));
+        $this->info('Front version: '.config('vncore.version'));
+        $this->info('Front sub-version: '.config('vncore.sub-version'));
+        $this->info('Core: '.config('vncore.core'));
+        $this->info('Core sub-version: '.config('vncore.core-sub-version'));
     }
 }

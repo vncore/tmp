@@ -144,6 +144,6 @@ if (!function_exists('sc_get_all_plugin_actived') && !in_array('sc_get_all_plugi
     if (!function_exists('sc_plugin_compatibility_check') && !in_array('sc_plugin_compatibility_check', config('helper_except', []))) {
         function sc_plugin_compatibility_check(string $versionsConfig) {
             $arrVersionSCart = explode('|', $versionsConfig);
-            return in_array(config('s-cart.core'), $arrVersionSCart);
+            return in_array(config('vncore.core'), $arrVersionSCart);
         }
     }

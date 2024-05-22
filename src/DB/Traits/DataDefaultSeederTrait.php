@@ -54,9 +54,6 @@ trait DataDefaultSeederTrait
         $dataAdminRole = $this->dataAdminRole();
         $db->table(SC_DB_PREFIX.'admin_role')->insertOrIgnore($dataAdminRole);
         
-        $dataAdminTemplate = $this->dataAdminTemplate();
-        $db->table(SC_DB_PREFIX.'admin_template')->insertOrIgnore($dataAdminTemplate);
-
         $dataAdminRolePermission = $this->dataAdminRolePermission();
         $db->table(SC_DB_PREFIX.'admin_role_permission')->insertOrIgnore($dataAdminRolePermission);
 
@@ -77,67 +74,6 @@ trait DataDefaultSeederTrait
 
         $dataShopLang = $this->dataShopLang();
         $db->table(SC_DB_PREFIX.'shop_language')->insertOrIgnore($dataShopLang);
-
-        $dataPaymentStatus = $this->dataPaymentStatus();
-        $db->table(SC_DB_PREFIX.'shop_payment_status')->insertOrIgnore($dataPaymentStatus);
-
-        $dataShippingStatus = $this->dataShippingStatus();
-        $db->table(SC_DB_PREFIX.'shop_shipping_status')->insertOrIgnore($dataShippingStatus);
-
-        $dataShopLayoutPage = $this->dataShopLayoutPage();
-        $db->table(SC_DB_PREFIX.'shop_layout_page')->insertOrIgnore($dataShopLayoutPage);
-
-        $dataShopLayoutPosition = $this->dataShopLayoutPosition();
-        $db->table(SC_DB_PREFIX.'shop_layout_position')->insertOrIgnore($dataShopLayoutPosition);
-
-        $dataShopLink = $this->dataShopLink();
-        $db->table(SC_DB_PREFIX.'shop_link')->insertOrIgnore($dataShopLink);
-
-        $dataShopLinkStore = $this->dataShopLinkStore($dataShopLink);
-        $db->table(SC_DB_PREFIX.'shop_link_store')->insertOrIgnore($dataShopLinkStore);
-
-        $dataShippingStandard = $this->dataShippingStandard();
-        $db->table(SC_DB_PREFIX.'shop_shipping_standard')->insertOrIgnore($dataShippingStandard);
-
-        $dataAtrributeGroup = $this->dataAtrributeGroup();
-        $db->table(SC_DB_PREFIX.'shop_attribute_group')->insertOrIgnore($dataAtrributeGroup);
-
-        $dataCurrency = $this->dataCurrency();
-        $db->table(SC_DB_PREFIX.'shop_currency')->insertOrIgnore($dataCurrency);
-
-        $dataOrderStatus = $this->dataOrderStatus();
-        $db->table(SC_DB_PREFIX.'shop_order_status')->insertOrIgnore($dataOrderStatus);
-
-        $dataPage = $this->dataPage();
-        $db->table(SC_DB_PREFIX.'shop_page')->insertOrIgnore($dataPage);
-
-        $dataPageStore = $this->dataPageStore($dataPage);
-        $db->table(SC_DB_PREFIX.'shop_page_store')->insertOrIgnore($dataPageStore);
-
-        $dataPageDescription = $this->dataPageDescription($dataPage);
-        $db->table(SC_DB_PREFIX.'shop_page_description')->insertOrIgnore($dataPageDescription);
-
-        $dataApiConnection = $this->dataApiConnection();
-        $db->table(SC_DB_PREFIX.'api_connection')->insertOrIgnore($dataApiConnection);
-
-        $dataTax = $this->dataTax();
-        $db->table(SC_DB_PREFIX.'shop_tax')->insertOrIgnore($dataTax);
-
-        $dataWeight = $this->dataWeight();
-        $db->table(SC_DB_PREFIX.'shop_weight')->insertOrIgnore($dataWeight);
-
-        $dataLenght = $this->dataLenght();
-        $db->table(SC_DB_PREFIX.'shop_length')->insertOrIgnore($dataLenght);
-
-        $dataBannerType = $this->dataBannerType();
-        $db->table(SC_DB_PREFIX.'shop_banner_type')->insertOrIgnore($dataBannerType);
-
-        $dataProductProperty = $this->dataProductProperty();
-        $db->table(SC_DB_PREFIX.'shop_product_property')->insertOrIgnore($dataProductProperty);
-
-        $dataLinkGroup = $this->dataLinkGroup();
-        $db->table(SC_DB_PREFIX.'shop_link_group')->insertOrIgnore($dataLinkGroup);
-
 
     }
 
@@ -195,8 +131,8 @@ trait DataDefaultSeederTrait
             //Extension
             ['id' => 4,'parent_id' => 8,'sort' => 201,'title' => 'admin.menu_titles.template_layout','icon' => 'fab fa-windows','uri' => '','key' => 'TEMPLATE','type' => 0],
             ['id' => 35,'parent_id' => 8,'sort' => 202,'title' => 'admin.menu_titles.plugin','icon' => 'fas fa-puzzle-piece','uri' => '','key' => 'PLUGIN','type' => 0],
-            ['id' => 42,'parent_id' => 35,'sort' => 100,'title' => 's-cart::admin.menu_titles.plugin_other','icon' => 'far fa-circle','uri' => 'admin::plugin/other','key' => null,'type' => 0],
-            ['id' => 43,'parent_id' => 35,'sort' => 4,'title' => 's-cart::admin.menu_titles.plugin_cms','icon' => 'fab fa-modx','uri' => 'admin::plugin/cms','key' => null,'type' => 0],
+            ['id' => 42,'parent_id' => 35,'sort' => 100,'title' => 'vncore::admin.menu_titles.plugin_other','icon' => 'far fa-circle','uri' => 'admin::plugin/other','key' => null,'type' => 0],
+            ['id' => 43,'parent_id' => 35,'sort' => 4,'title' => 'vncore::admin.menu_titles.plugin_cms','icon' => 'fab fa-modx','uri' => 'admin::plugin/cms','key' => null,'type' => 0],
             ['id' => 24,'parent_id' => 4,'sort' => 0,'title' => 'admin.menu_titles.template','icon' => 'fas fa-columns','uri' => 'admin::template','key' => null,'type' => 0],
 
             //Customer
@@ -205,7 +141,7 @@ trait DataDefaultSeederTrait
         ];
 
         // If use ecommerce
-        if (config('s-cart.ecommerce_mode', 1)) {
+        if (config('vncore.ecommerce_mode', 1)) {
             $dataMenu = array_merge($dataMenu, $this->dataMenuShop());
         }
         return $dataMenu;
@@ -221,10 +157,10 @@ trait DataDefaultSeederTrait
             ['id' => 16,'parent_id' => 2,'sort' => 0,'title' => 'admin.menu_titles.category','icon' => 'fas fa-folder-open','uri' => 'admin::category','key' => null,'type' => 0],
             ['id' => 20,'parent_id' => 3,'sort' => 0,'title' => 'admin.menu_titles.customer','icon' => 'fas fa-user','uri' => 'admin::customer','key' => null,'type' => 0],
             ['id' => 37,'parent_id' => 25,'sort' => 5,'title' => 'admin.menu_titles.report_manager','icon' => 'fas fa-chart-pie','uri' => '','key' => 'REPORT_MANAGER','type' => 0],
-            ['id' => 39,'parent_id' => 35,'sort' => 0,'title' => 's-cart::admin.menu_titles.plugin_payment','icon' => 'far fa-money-bill-alt','uri' => 'admin::plugin/payment','key' => null,'type' => 0],
-            ['id' => 40,'parent_id' => 35,'sort' => 1,'title' => 's-cart::admin.menu_titles.plugin_shipping','icon' => 'fas fa-ambulance','uri' => 'admin::plugin/shipping','key' => null,'type' => 0],
-            ['id' => 41,'parent_id' => 35,'sort' => 2,'title' => 's-cart::admin.menu_titles.plugin_total','icon' => 'fas fa-atom','uri' => 'admin::plugin/total','key' => null,'type' => 0],
-            ['id' => 53,'parent_id' => 35,'sort' => 3,'title' => 's-cart::admin.menu_titles.plugin_fee','icon' => 'fas fa-box','uri' => 'admin::plugin/fee','key' => null,'type' => 0],
+            ['id' => 39,'parent_id' => 35,'sort' => 0,'title' => 'vncore::admin.menu_titles.plugin_payment','icon' => 'far fa-money-bill-alt','uri' => 'admin::plugin/payment','key' => null,'type' => 0],
+            ['id' => 40,'parent_id' => 35,'sort' => 1,'title' => 'vncore::admin.menu_titles.plugin_shipping','icon' => 'fas fa-ambulance','uri' => 'admin::plugin/shipping','key' => null,'type' => 0],
+            ['id' => 41,'parent_id' => 35,'sort' => 2,'title' => 'vncore::admin.menu_titles.plugin_total','icon' => 'fas fa-atom','uri' => 'admin::plugin/total','key' => null,'type' => 0],
+            ['id' => 53,'parent_id' => 35,'sort' => 3,'title' => 'vncore::admin.menu_titles.plugin_fee','icon' => 'fas fa-box','uri' => 'admin::plugin/fee','key' => null,'type' => 0],
             ['id' => 54,'parent_id' => 37,'sort' => 0,'title' => 'admin.menu_titles.report_product','icon' => 'fas fa-bars','uri' => 'admin::report/product','key' => null,'type' => 0],
             ['id' => 27,'parent_id' => 65,'sort' => 4,'title' => 'admin.menu_titles.setting_system','icon' => 'fas fa-tools','uri' => '','key' => 'SETTING_SYSTEM','type' => 0],
             ['id' => 11,'parent_id' => 27,'sort' => 2,'title' => 'admin.menu_titles.shipping_status','icon' => 'fas fa-truck','uri' => 'admin::shipping_status','key' => null,'type' => 0],
@@ -275,12 +211,6 @@ trait DataDefaultSeederTrait
         return $dataAdminRole;
     }
 
-    public function dataAdminTemplate() {
-        $dataAdminTemplate = [
-            ['id' => '1','key' => 's-cart-light','name' => 'S-Cart Light','status' => 1]
-        ];
-        return $dataAdminTemplate;
-    }
 
     public function dataAdminRolePermission() {
         $dataAdminRolePermission = [
@@ -364,7 +294,7 @@ trait DataDefaultSeederTrait
 
     public function dataAdminStore($email, $language, $domain) {
         $dataAdminStore = [
-            ['id' => 1,'logo' => 'data/logo/scart-mid.png','template' => 's-cart-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 's-cart','domain' => $domain]
+            ['id' => 1,'logo' => 'data/logo/scart-mid.png','template' => 'vncore-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 'vncore','domain' => $domain]
         ];
         return $dataAdminStore;
     }
@@ -388,209 +318,6 @@ trait DataDefaultSeederTrait
         ];
         return $dataShopLang;
     }
-
-    public function dataPaymentStatus() {
-        $dataPaymentStatus = [
-            ['id' => '1','name' => 'Unpaid'],
-            ['id' => '2','name' => 'Partial payment'],
-            ['id' => '3','name' => 'Paid'],
-            ['id' => '4','name' => 'Refurn'],
-        ];
-        return $dataPaymentStatus;
-    }
-
-    public function dataShippingStatus() {
-        $dataShippingStatus = [
-            ['id' => '1','name' => 'Not sent'],
-            ['id' => '2','name' => 'Sending'],
-            ['id' => '3','name' => 'Shipping done'],
-        ];
-        return $dataShippingStatus;
-    }
-    
-    public function dataShopLayoutPage() {
-        $dataShopLayoutPage = [
-            ['id' => 1,'key' => 'home','name' => 'admin.layout_page_position.home'],
-            ['id' => 2,'key' => 'shop_home','name' => 'admin.layout_page_position.shop_home'],
-            ['id' => 3,'key' => 'shop_search','name' => 'admin.layout_page_position.shop_search'],
-            ['id' => 4,'key' => 'shop_product_list','name' => 'admin.layout_page_position.product_list'],
-            ['id' => 5,'key' => 'product_detail','name' => 'admin.layout_page_position.product_detail'],
-            ['id' => 6,'key' => 'shop_cart','name' => 'admin.layout_page_position.shop_cart'],
-            ['id' => 7,'key' => 'shop_item_list','name' => 'admin.layout_page_position.item_list'],
-            ['id' => 8,'key' => 'shop_item_detail','name' => 'admin.layout_page_position.item_detail'],
-            ['id' => 9,'key' => 'shop_news','name' => 'admin.layout_page_position.news_list'],
-            ['id' => 10,'key' => 'shop_news_detail','name' => 'admin.layout_page_position.news_detail'],
-            ['id' => 11,'key' => 'shop_auth','name' => 'admin.layout_page_position.shop_auth'],
-            ['id' => 12,'key' => 'shop_profile','name' => 'admin.layout_page_position.shop_profile'],
-            ['id' => 13,'key' => 'shop_page','name' => 'admin.layout_page_position.shop_page'],
-            ['id' => 14,'key' => 'shop_contact','name' => 'admin.layout_page_position.shop_contact'],
-            ['id' => 15,'key' => 'content_list','name' => 'admin.layout_page_position.content_list'],
-            ['id' => 16,'key' => 'content_detail','name' => 'admin.layout_page_position.content_detail'],
-            ['id' => 17,'key' => 'vendor_home','name' => 'admin.layout_page_position.vendor_home'],
-            ['id' => 18,'key' => 'store_product_list','name' => 'admin.layout_page_position.store_product_list'],
-        ];
-        return $dataShopLayoutPage;
-    }
-
-    public function dataShopLayoutPosition() {
-        $dataShopLayoutPosition = [
-            ['id' => 1,'key' => 'header','name' => 'admin.layout_page_block.header'],
-            ['id' => 2,'key' => 'banner_top','name' => 'admin.layout_page_block.banner_top'],
-            ['id' => 3,'key' => 'top','name' => 'admin.layout_page_block.top'],
-            ['id' => 4,'key' => 'left','name' => 'admin.layout_page_block.left'],
-            ['id' => 5,'key' => 'right','name' => 'admin.layout_page_block.right'],
-            ['id' => 6,'key' => 'bottom','name' => 'admin.layout_page_block.bottom'],
-        ];
-        return $dataShopLayoutPosition;
-    }
-
-    public function dataShopLink() {
-        $dataShopLink = [
-            ['id' => 1,'name' => 'front.about','url' => 'route::page.detail::about','target' => '_self','module' => null,'group' => 'menu','type' => null, 'collection_id' => null, 'status' => '1','sort' => '50'],
-            ['id' => 2,'name' => 'S-Cart','url' => '#collection','target' => '_self','module' => null,'group' => 'menu', 'type' => 'collection', 'collection_id' => null, 'status' => '1','sort' => '60'],
-            ['id' => 3,'name' => 'About us','url' => 'https://s-cart.org/en/about.html','target' => '_self','module' => null,'group' => 'menu', 'type' => null, 'collection_id' => 2, 'status' => '1','sort' => '10'],
-            ['id' => 4,'name' => 'Github','url' => 'https://github.com/s-cart/s-cart','target' => '_self','module' => null,'group' => 'menu', 'type' => null, 'collection_id' => 2, 'status' => '1','sort' => '20'],
-
-        ];
-        return $dataShopLink;
-    }
-
-    public function dataShopLinkStore($dataShopLink) {
-        foreach ($dataShopLink as $key => $row) {
-            $dataShopLinkStore[] = ['link_id' => $row['id'],'store_id' => SC_ID_ROOT];
-        }
-        return $dataShopLinkStore;
-    }
-
-    public function dataShippingStandard() {
-        $dataShippingStandard = [
-            ['fee' => 20,'shipping_free' => '10000'],
-        ];
-        return $dataShippingStandard;
-    }
-
-    public function dataAtrributeGroup() {
-        $dataAtrributeGroup = [
-            ['id' => 1,'name' => 'Color','status' => '1','sort' => '1','type' => 'radio'],
-            ['id' => 2,'name' => 'Size','status' => '1','sort' => '2','type' => 'select'],
-        ];
-        return $dataAtrributeGroup;
-    }
-
-    public function dataCurrency() {
-        $dataCurrency = [
-            ['id' => '1','name' => 'USD Dola','code' => 'USD','symbol' => '$','exchange_rate' => '1','precision' => '2','symbol_first' => '1','thousands' => ',','status' => '1','sort' => '0'],
-            ['id' => '2','name' => 'VietNam Dong','code' => 'VND','symbol' => '₫','exchange_rate' => '20000','precision' => '0','symbol_first' => '0','thousands' => ',','status' => '1','sort' => '1'],
-        ];
-        return $dataCurrency;
-    }
-
-    public function dataOrderStatus() {
-        $dataOrderStatus = [
-            ['id' => '1','name' => 'New'],
-            ['id' => '2','name' => 'Processing'],
-            ['id' => '3','name' => 'Hold'],
-            ['id' => '4','name' => 'Canceled'],
-            ['id' => '5','name' => 'Done'],
-            ['id' => '6','name' => 'Failed'],
-        ];
-        return $dataOrderStatus;
-    }
-
-    public function dataPage() {
-        $dataPage = [
-            ['id' => 1,'image' => '','alias' => 'about','status' => '1'],
-        ];
-        return $dataPage;
-    }
-
-    public function dataPageStore($dataPage) {
-        $dataPageStore = [];
-        foreach ($dataPage as $key => $row) {
-            $dataPageStore[] = ['page_id' => $row['id'],'store_id' => SC_ID_ROOT];
-        }
-        return $dataPageStore;
-    }
-
-    public function dataPageDescription($dataPage) {
-        $dataPageDescription = [];
-        foreach ($dataPage as $key => $row) {
-            $dataPageDescription[] = ['page_id' => $row['id'],'lang' => 'en','title' => 'About','keyword' => '','description' => '','content' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<img alt="" src="/data/product/product-2.png" style="width: 150px; float: right; margin: 10px;" /></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>'];
-            $dataPageDescription[] = ['page_id' => $row['id'],'lang' => 'vi','title' => 'Giới thiệu','keyword' => '','description' => '','content' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<img alt="" src="/data/product/product-2.png" style="width: 150px; float: right; margin: 10px;" /></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>'];
-        }
-        return $dataPageDescription;
-    }
-
-    public function dataApiConnection() {
-        $dataApiConnection = [
-            ['description' => 'Demo api connection','apiconnection' => 'appmobile','apikey' => (string)Str::orderedUuid(),'status' =>  0]
-        ];
-        return $dataApiConnection;
-    }
-
-    public function dataTax() {
-        $dataTax = [
-            ['id' => '1','name' => 'Tax default (10%)','value' => 10]
-        ];
-        return $dataTax;
-    }
-
-    public function dataWeight() {
-        $dataWeight = [
-            ['id' => '1','name' => 'g','description' => 'Gram'],
-            ['id' => '2','name' => 'kg','description' => 'Kilogram'],
-            ['id' => '3','name' => 'lb','description' => 'Pound '],
-            ['id' => '4','name' => 'oz','description' => 'Ounce '],
-        ];
-        return $dataWeight;
-    }
-
-    public function dataLenght() {
-        $dataLenght = [
-            ['id' => '1','name' => 'mm','description' => 'Millimeter'],
-            ['id' => '2','name' => 'cm','description' => 'Centimeter'],
-            ['id' => '3','name' => 'm','description' => 'Meter '],
-            ['id' => '4','name' => 'in','description' => 'Inch '],
-        ];
-        return $dataLenght;
-    }
-
-    public function dataBannerType() {
-        $dataBannerType = [
-            ['id' => '1','code' => 'banner','name' => 'Banner main'],
-            ['id' => '2','code' => 'background','name' =>'Background website'],
-            ['id' => '3','code' => 'breadcrumb','name' =>'Breadcrumb'],
-            ['id' => '4','code' => 'banner-store','name' =>'Banner store'],
-            ['id' => '5','code' => 'banner-left','name' =>'Banner left'],
-            ['id' => '6','code' => 'banner-right','name' =>'Banner right'],
-            ['id' => '7','code' => 'other','name' =>'Other'],
-        ];
-        return $dataBannerType;
-    }
-
-    public function dataLinkGroup() {
-        $dataLinkGroup = [
-            ['id' => '1','code' => 'menu','name' => 'Menu main'],
-            ['id' => '2','code' => 'menu_left','name' =>'Menu left'],
-            ['id' => '3','code' => 'menu_right','name' =>'Menu right'],
-            ['id' => '4','code' => 'footer','name' =>'Footer main'],
-            ['id' => '5','code' => 'footer_left','name' =>'Footer left'],
-            ['id' => '6','code' => 'footer_right','name' =>'Footer right'],
-            ['id' => '7','code' => 'sidebar','name' =>'Sidebar'],
-        ];
-        return $dataLinkGroup;
-    }
-
-    public function dataProductProperty() {
-        $dataProductProperty = [
-            ['id' => '1','code' => 'physical','name' => 'Product physical'],
-            ['id' => '2','code' => 'download','name' => 'Product download'],
-        ];
-        return $dataProductProperty;
-    }
-
 
     public function updateDataVersion() {
 

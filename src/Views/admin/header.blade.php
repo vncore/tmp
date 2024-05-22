@@ -11,20 +11,6 @@
 
     </ul>
 
-    @if (\Admin::user()->checkUrlAllowAccess(route('admin_order.index')))
-    <!-- SEARCH FORM -->
-    <form action="{{ sc_route_admin('admin_order.index') }}" method="get" class="form-inline ml-3 d-none d-sm-block" >
-      <div class="input-group input-group-sm">
-        <input name="keyword" class="form-control form-control-navbar" type="search" placeholder="{{ sc_language_render('admin.order.search') }}" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-    @endif
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <a class="nav-link" href="{{ sc_route_admin('home') }}" target=_new>

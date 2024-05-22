@@ -173,6 +173,28 @@ class PrepareTablesAdmin extends Migration
         });
         //==End notice
 
+        $schema->create(
+            SC_DB_PREFIX.'shop_language',
+            function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name', 255);
+                $table->string('code', 50)->unique();
+                $table->string('icon', 100)->nullable();
+                $table->tinyInteger('status')->default(0);
+                $table->tinyInteger('rtl')->nullable()->default(0)->comment('Layout RTL');
+                $table->integer('sort')->default(0);
+                $table->timestamps();
+            }
+        );
+
+        $schema->create(
+            SC_DB_PREFIX.'shop_country',
+            function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('code', 10)->unique();
+                $table->string('name', 255);
+            }
+        );
     }
 
     /**
@@ -200,5 +222,7 @@ class PrepareTablesAdmin extends Migration
         //Notice
         $schema->dropIfExists(SC_DB_PREFIX . 'admin_notice');
         //==End notice
+        $schema->dropIfExists(SC_DB_PREFIX . 'shop_language');
+        $schema->dropIfExists(SC_DB_PREFIX . 'shop_country');
     }
 }

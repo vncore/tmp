@@ -56,7 +56,7 @@ class AppConfig extends ConfigDefault
             );
 
             /*Insert plugin's html elements into index of admin pages
-            Detail: https://s-cart.org/docs/master/create-new-a-plugin.html 
+            Detail: https://vncore.org/docs/master/create-new-a-plugin.html 
             */
 
             // AdminConfig::insert(

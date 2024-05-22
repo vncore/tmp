@@ -5,7 +5,7 @@
   <div class="card-body table-responsive">
    <table class="table table-hover box-body text-wrap table-bordered">
      <tbody>
-      @if (config('s-cart.ecommerce_mode'))
+      @if (config('vncore.ecommerce_mode'))
       <tr>
         <td>{{ sc_language_render('admin.env.SUFFIX_URL') }}</td>
         <td><a href="#" class="updateInfo editable editable-click" data-name="SUFFIX_URL" data-type="text" data-pk="" data-source="" data-url="{{ $urlUpdateConfig }}" data-title="{{ sc_language_render('admin.env.SUFFIX_URL') }}" data-value="{{ sc_config('SUFFIX_URL', $storeId) }}" data-original-title="" title=""></a></td>

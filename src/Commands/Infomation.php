@@ -30,16 +30,16 @@ class Infomation extends Command
      */
     public function handle()
     {
-        $this->info(config('s-cart.name').' - '.config('s-cart.title'));
-        $this->info(config('s-cart.auth').' <'.config('s-cart.email').'>');
-        $this->info('Front version: '.config('s-cart.version'));
-        $this->info('Front sub-version: '.config('s-cart.sub-version'));
-        $this->info('Core: '.config('s-cart.core'));
-        $this->info('Core sub-version: '.config('s-cart.core-sub-version'));
-        $this->info('Type: '.config('s-cart.type'));
-        $this->info('Homepage: '.config('s-cart.homepage'));
-        $this->info('Github: '.config('s-cart.github'));
-        $this->info('Facebook: '.config('s-cart.facebook'));
-        $this->info('API: '.config('s-cart.api_link'));
+        $this->info(config('vncore.name').' - '.config('vncore.title'));
+        $this->info(config('vncore.auth').' <'.config('vncore.email').'>');
+        $this->info('Front version: '.config('vncore.version'));
+        $this->info('Front sub-version: '.config('vncore.sub-version'));
+        $this->info('Core: '.config('vncore.core'));
+        $this->info('Core sub-version: '.config('vncore.core-sub-version'));
+        $this->info('Type: '.config('vncore.type'));
+        $this->info('Homepage: '.config('vncore.homepage'));
+        $this->info('Github: '.config('vncore.github'));
+        $this->info('Facebook: '.config('vncore.facebook'));
+        $this->info('API: '.config('vncore.api_link'));
     }
 }

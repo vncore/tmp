@@ -3,7 +3,7 @@
       <div class="card card-primary card-outline card-outline-tabs">
         <div class="card-header p-0 border-bottom-0">
           <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-            @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('s-cart.ecommerce_mode'))
+            @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
               <a class="nav-link active" id="tab-password_policy_customer-tab" data-toggle="pill" href="#tab-password_policy_customer" role="tab" aria-controls="tab-password_policy_customer" aria-selected="false">{{ sc_language_render('password_policy.customer.title') }}</a>
             </li>
@@ -14,7 +14,7 @@
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-four-tabContent">
             {{-- Tab policy --}}
-            @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('s-cart.ecommerce_mode'))
+            @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <div class="tab-pane fade  fade active show" id="tab-password_policy_customer" role="tabpanel" aria-labelledby="password_policy_customer">
               @include($templatePathAdmin.'screen.password_policy_customer')
             </div>

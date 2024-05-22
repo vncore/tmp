@@ -50,7 +50,7 @@ class VncoreServiceProvider extends ServiceProvider
             echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! SC cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
         }
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
-        $this->loadTranslationsFrom(__DIR__.'/Lang', 's-cart');
+        $this->loadTranslationsFrom(__DIR__.'/Lang', 'vncore');
 
         //Load helper from front
         try {
@@ -189,12 +189,12 @@ class VncoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/Config/admin.php', 'admin');
         $this->mergeConfigFrom(__DIR__.'/Config/validation.php', 'validation');
         $this->mergeConfigFrom(__DIR__.'/Config/lfm.php', 'lfm');
-        $this->mergeConfigFrom(__DIR__.'/Config/s-cart.php', 's-cart');
+        $this->mergeConfigFrom(__DIR__.'/Config/vncore.php', 'vncore');
         $this->mergeConfigFrom(__DIR__.'/Config/cart.php', 'cart');
         $this->mergeConfigFrom(__DIR__.'/Config/middleware.php', 'middleware');
         $this->mergeConfigFrom(__DIR__.'/Config/api.php', 'api');
-        $this->loadViewsFrom(__DIR__.'/Views/admin', 's-cart-admin');
-        $this->loadViewsFrom(__DIR__.'/Views/front', 's-cart-front');
+        $this->loadViewsFrom(__DIR__.'/Views/admin', 'vncore-admin');
+        $this->loadViewsFrom(__DIR__.'/Views/front', 'vncore-front');
     }
 
     public function bootScart()
@@ -342,8 +342,8 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/s-cart-admin')], 'sc:view-admin');
-            $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/s-cart-front')], 'sc:view-front');
+            $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'sc:view-admin');
+            $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'sc:view-front');
             $this->publishes([__DIR__.'/Config/admin.php' => config_path('admin.php')], 'sc:config-admin');
             $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'sc:config-validation');
             $this->publishes([__DIR__.'/Config/cart.php' => config_path('cart.php')], 'sc:config-cart');

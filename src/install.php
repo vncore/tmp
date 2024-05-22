@@ -97,8 +97,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         case 'step2-2':
             session(['infoInstall'=> request('infoInstall')]);
             try {
-                Artisan::call('migrate --path=/database/migrations/00_00_00_step2.1_create_tables_cms.php');
-                Artisan::call('migrate --path=/database/migrations/00_00_00_step2.2_create_tables_shop.php');
+                //
             } catch(\Throwable $e) {
                 echo json_encode([
                     'error' => '1',
@@ -264,7 +263,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         ]
     ];
 
-    echo view('s-cart-front::install', array(
+    echo view('vncore-front::install', array(
         'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),
         'title'     => trans('install.title'), 'requirements' => $requirements)
     );
