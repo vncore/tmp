@@ -1,5 +1,5 @@
 <?php
-#S-Cart/Core/Front/Models/ShopStoreBlockContent.php
+#Vncore/Core/Front/Models/ShopStoreBlockContent.php
 namespace Vncore\Core\Front\Models;
 
 use Illuminate\Database\Eloquent\Model;

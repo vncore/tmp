@@ -1,5 +1,5 @@
 <?php
-#S-Cart/Core/Front/Models/ShopEmailTemplate.php
+#Vncore/Core/Front/Models/ShopEmailTemplate.php
 namespace Vncore\Core\Front\Models;
 
 use Illuminate\Database\Eloquent\Model;

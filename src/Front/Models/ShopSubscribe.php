@@ -1,5 +1,5 @@
 <?php
-#S-Cart/Core/Front/Models/ShopSubscribe.php
+#Vncore/Core/Front/Models/ShopSubscribe.php
 namespace Vncore\Core\Front\Models;
 
 use Illuminate\Database\Eloquent\Model;

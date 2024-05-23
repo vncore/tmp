@@ -195,6 +195,46 @@ class PrepareTablesAdmin extends Migration
                 $table->string('name', 255);
             }
         );
+
+        
+        $schema->create(
+            SC_DB_PREFIX.'shop_custom_field',
+            function (Blueprint $table) {
+                $table->uuid('id')->primary();
+                $table->string('type', 50)->index()->comment('shop_product, shop_customer,...');
+                $table->string('code', 100)->index();
+                $table->string('name', 255);
+                $table->integer('required')->default(0);
+                $table->integer('status')->default(1);
+                $table->string('option', 50)->nullable()->comment('radio, select, input');
+                $table->string('default', 250)->nullable()->comment('{"value1":"name1", "value2":"name2"}');
+                $table->timestamps();
+            }
+        );
+
+        $schema->create(
+            SC_DB_PREFIX.'shop_custom_field_detail',
+            function (Blueprint $table) {
+                $table->uuid('id')->primary();
+                $table->uuid('custom_field_id')->index();
+                $table->uuid('rel_id')->index()->comment('ID of product, customer,...');
+                $table->text('text')->nullable();
+                $table->timestamps();
+            }
+        );
+
+        $schema->create(
+            SC_DB_PREFIX.'languages',
+            function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('code', 100)->index();
+                $table->text('text')->nullable();
+                $table->string('position', 100)->index();
+                $table->string('location', 10)->index();
+                $table->unique(['code', 'location']);
+                $table->timestamps();
+            }
+        );
     }
 
     /**
@@ -224,5 +264,9 @@ class PrepareTablesAdmin extends Migration
         //==End notice
         $schema->dropIfExists(SC_DB_PREFIX . 'shop_language');
         $schema->dropIfExists(SC_DB_PREFIX . 'shop_country');
+        $schema->dropIfExists(SC_DB_PREFIX . 'shop_custom_field');
+        $schema->dropIfExists(SC_DB_PREFIX . 'shop_custom_field_detail');
+        $schema->dropIfExists(SC_DB_PREFIX . 'languages');
+        
     }
 }

@@ -168,21 +168,21 @@ if (request()->method() == 'POST' && request()->ajax()) {
                 case 'step2-5':
                     if (!(request('infoInstall')['exclude_sample'] ?? 0)) {
                         try {
-                            Artisan::call('db:seed', 
-                                [
-                                    '--class' => 'DataSampleCmsSeeder',
-                                    '--force' => true
-                                ]
-                            );
-                            if (!(request('infoInstall')['only_cms'] ?? 0)) {
+                            // Artisan::call('db:seed', 
+                            //     [
+                            //         '--class' => 'DataSampleCmsSeeder',
+                            //         '--force' => true
+                            //     ]
+                            // );
+                            // if (!(request('infoInstall')['only_cms'] ?? 0)) {
 
-                                Artisan::call('db:seed', 
-                                [
-                                    '--class' => 'DataSampleShopSeeder',
-                                    '--force' => true
-                                    ]
-                                );
-                            }
+                            //     Artisan::call('db:seed', 
+                            //     [
+                            //         '--class' => 'DataSampleShopSeeder',
+                            //         '--force' => true
+                            //         ]
+                            //     );
+                            // }
                         } catch(\Throwable $e) {
                             echo json_encode([
                                 'error' => '1',

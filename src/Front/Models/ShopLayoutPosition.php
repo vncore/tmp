@@ -1,5 +1,5 @@
 <?php
-#S-Cart/Core/Front/Models/ShopLayoutPosition.php
+#Vncore/Core/Front/Models/ShopLayoutPosition.php
 namespace Vncore\Core\Front\Models;
 
 use Illuminate\Database\Eloquent\Model;
