@@ -7,7 +7,6 @@ use Vncore\Core\Front\Models\ShopCategory;
 use Vncore\Core\Front\Models\ShopProduct;
 use Vncore\Core\Front\Models\ShopSupplier;
 use Vncore\Core\Front\Models\ShopCountry;
-use Vncore\Core\Front\Models\ShopCurrency;
 use Vncore\Core\Front\Models\ShopLanguage;
 
 class AdminShopFront extends RootFrontController
@@ -125,21 +124,6 @@ class AdminShopFront extends RootFrontController
         }
     }
 
-    public function allCurrency()
-    {
-        $itemsList = (new ShopCurrency)->jsonPaginate();
-        return response()->json($itemsList, 200);
-    }
-
-    public function currencyDetail($id)
-    {
-        $currency = (new ShopCurrency)->find($id);
-        if ($currency) {
-            return response()->json($currency, 200);
-        } else {
-            return response()->json('Not found', 404);
-        }
-    }
 
     public function allLanguage()
     {

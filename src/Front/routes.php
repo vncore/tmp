@@ -139,16 +139,6 @@ Route::group(
             return redirect($urlBack);
         })->name('locale');
         
-        if (config('vncore.ecommerce_mode', 1)) {
-            //Currency
-            Route::get('currency/{code}', function ($code) {
-                session(['currency' => $code]);
-                if (request()->fullUrl() === redirect()->back()->getTargetUrl()) {
-                    return redirect()->route('home');
-                }
-                return back();
-            })->name('currency');
-        }
     }
 );
 

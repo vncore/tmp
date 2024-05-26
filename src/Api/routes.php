@@ -53,8 +53,6 @@ Route::group(
 
                 Route::get('countries', 'AdminShopFront@allCountry');
                 Route::get('countries/{id}', 'AdminShopFront@countryDetail');
-                Route::get('currencies', 'AdminShopFront@allCurrency');
-                Route::get('currencies/{id}', 'AdminShopFront@CurrencyDetail');
                 Route::get('languages', 'AdminShopFront@allLanguage');
                 Route::get('languages/{id}', 'AdminShopFront@LanguageDetail');
 

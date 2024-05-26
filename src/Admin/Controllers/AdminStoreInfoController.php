@@ -5,19 +5,16 @@ use Vncore\Core\Admin\Controllers\RootAdminController;
 use Vncore\Core\Admin\Models\AdminStore;
 use Vncore\Core\Admin\Models\AdminTemplate;
 use Vncore\Core\Front\Models\ShopLanguage;
-use Vncore\Core\Front\Models\ShopCurrency;
 
 class AdminStoreInfoController extends RootAdminController
 {
     public $templates;
-    public $currencies;
     public $languages;
 
     public function __construct()
     {
         parent::__construct();
         $this->templates = (new AdminTemplate)->getListTemplateActive();
-        $this->currencies = ShopCurrency::getCodeActive();
         $this->languages = ShopLanguage::getListActive();
     }
 
@@ -141,7 +138,6 @@ class AdminStoreInfoController extends RootAdminController
         $data['store'] = $store;
         $data['templates'] = $this->templates;
         $data['languages'] = $this->languages;
-        $data['currencies'] =$this->currencies;
         $data['storeId'] = $id;
 
         return view($this->templatePathAdmin.'screen.store_info')

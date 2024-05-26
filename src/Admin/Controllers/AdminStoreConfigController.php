@@ -3,7 +3,6 @@ namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
 use Vncore\Core\Front\Models\ShopLanguage;
-use Vncore\Core\Front\Models\ShopCurrency;
 use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\Admin\Models\AdminTemplate;
 use Vncore\Core\Admin\Models\AdminPage;
@@ -12,7 +11,6 @@ use Vncore\Core\Front\Models\ShopTax;
 class AdminStoreConfigController extends RootAdminController
 {
     public $templates;
-    public $currencies;
     public $languages;
     public $timezones;
 
@@ -23,7 +21,6 @@ class AdminStoreConfigController extends RootAdminController
             $timezones[$value] = $value;
         }
         $this->templates = (new AdminTemplate)->getListTemplateActive();
-        $this->currencies = ShopCurrency::getCodeActive();
         $this->languages = ShopLanguage::getListActive();
         $this->timezones = $timezones;
     }
@@ -153,7 +150,6 @@ class AdminStoreConfigController extends RootAdminController
         $data['templates']                      = $this->templates;
         $data['timezones']                      = $this->timezones;
         $data['languages']                      = $this->languages;
-        $data['currencies']                     = $this->currencies;
         $data['storeId']                        = $id;
         $data['urlUpdateConfig']                = sc_route_admin('admin_config.update');
         $data['urlUpdateConfigGlobal']          = sc_route_admin('admin_config_global.update');
