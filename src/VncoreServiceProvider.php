@@ -77,7 +77,7 @@ class VncoreServiceProvider extends ServiceProvider
             }
             //Load Plugin Provider
             try {
-                foreach (glob(app_path() . '/Plugins/*/*/Provider.php') as $filename) {
+                foreach (glob(app_path() . '/Plugins/*/Provider.php') as $filename) {
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
@@ -183,9 +183,7 @@ class VncoreServiceProvider extends ServiceProvider
         
         if (file_exists(__DIR__.'/Library/Const.php')) {
             require_once(__DIR__.'/Library/Const.php');
-        }
-        $this->app->bind('cart', '\Vncore\Core\Library\ShoppingCart\Cart');
-        
+        }       
         $this->mergeConfigFrom(__DIR__.'/Config/admin.php', 'admin');
         $this->mergeConfigFrom(__DIR__.'/Config/validation.php', 'validation');
         $this->mergeConfigFrom(__DIR__.'/Config/lfm.php', 'lfm');
@@ -203,19 +201,6 @@ class VncoreServiceProvider extends ServiceProvider
         // Default is domain root
         $storeId = SC_ID_ROOT;
 
-        //Process for multi store
-        if (sc_check_multi_shop_installed()) {
-            $domain = sc_process_domain_store(url('/'));
-            if (sc_check_multi_vendor_installed()) {
-                $arrDomain = ShopStore::getDomainPartner();
-            }
-            if (sc_check_multi_store_installed()) {
-                $arrDomain = ShopStore::getDomainStore();
-            }
-            if (in_array($domain, $arrDomain)) {
-                $storeId =  array_search($domain, $arrDomain);
-            }
-        }
         //End process multi store
         config(['app.storeId' => $storeId]);
         // end set store Id
