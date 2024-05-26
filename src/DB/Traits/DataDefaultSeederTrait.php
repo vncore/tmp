@@ -130,7 +130,7 @@ trait DataDefaultSeederTrait
 
             //Extension
             ['id' => 4,'parent_id' => 8,'sort' => 201,'title' => 'admin.menu_titles.template_layout','icon' => 'fab fa-windows','uri' => '','key' => 'TEMPLATE','type' => 0],
-            ['id' => 35,'parent_id' => 8,'sort' => 202,'title' => 'admin.menu_titles.plugin','icon' => 'fas fa-puzzle-piece','uri' => '','key' => 'PLUGIN','type' => 0],
+            ['id' => 35,'parent_id' => 8,'sort' => 202,'title' => 'admin.menu_titles.plugin','icon' => 'fas fa-puzzle-piece','uri' => 'admin::plugin','key' => 'PLUGIN','type' => 0],
             ['id' => 42,'parent_id' => 35,'sort' => 100,'title' => 'vncore::admin.menu_titles.plugin_other','icon' => 'far fa-circle','uri' => 'admin::plugin/other','key' => null,'type' => 0],
             ['id' => 43,'parent_id' => 35,'sort' => 4,'title' => 'vncore::admin.menu_titles.plugin_cms','icon' => 'fab fa-modx','uri' => 'admin::plugin/cms','key' => null,'type' => 0],
             ['id' => 24,'parent_id' => 4,'sort' => 0,'title' => 'admin.menu_titles.template','icon' => 'fas fa-columns','uri' => 'admin::template','key' => null,'type' => 0],
@@ -157,10 +157,6 @@ trait DataDefaultSeederTrait
             ['id' => 16,'parent_id' => 2,'sort' => 0,'title' => 'admin.menu_titles.category','icon' => 'fas fa-folder-open','uri' => 'admin::category','key' => null,'type' => 0],
             ['id' => 20,'parent_id' => 3,'sort' => 0,'title' => 'admin.menu_titles.customer','icon' => 'fas fa-user','uri' => 'admin::customer','key' => null,'type' => 0],
             ['id' => 37,'parent_id' => 25,'sort' => 5,'title' => 'admin.menu_titles.report_manager','icon' => 'fas fa-chart-pie','uri' => '','key' => 'REPORT_MANAGER','type' => 0],
-            ['id' => 39,'parent_id' => 35,'sort' => 0,'title' => 'vncore::admin.menu_titles.plugin_payment','icon' => 'far fa-money-bill-alt','uri' => 'admin::plugin/payment','key' => null,'type' => 0],
-            ['id' => 40,'parent_id' => 35,'sort' => 1,'title' => 'vncore::admin.menu_titles.plugin_shipping','icon' => 'fas fa-ambulance','uri' => 'admin::plugin/shipping','key' => null,'type' => 0],
-            ['id' => 41,'parent_id' => 35,'sort' => 2,'title' => 'vncore::admin.menu_titles.plugin_total','icon' => 'fas fa-atom','uri' => 'admin::plugin/total','key' => null,'type' => 0],
-            ['id' => 53,'parent_id' => 35,'sort' => 3,'title' => 'vncore::admin.menu_titles.plugin_fee','icon' => 'fas fa-box','uri' => 'admin::plugin/fee','key' => null,'type' => 0],
             ['id' => 54,'parent_id' => 37,'sort' => 0,'title' => 'admin.menu_titles.report_product','icon' => 'fas fa-bars','uri' => 'admin::report/product','key' => null,'type' => 0],
             ['id' => 27,'parent_id' => 65,'sort' => 4,'title' => 'admin.menu_titles.setting_system','icon' => 'fas fa-tools','uri' => '','key' => 'SETTING_SYSTEM','type' => 0],
             ['id' => 11,'parent_id' => 27,'sort' => 2,'title' => 'admin.menu_titles.shipping_status','icon' => 'fas fa-truck','uri' => 'admin::shipping_status','key' => null,'type' => 0],
