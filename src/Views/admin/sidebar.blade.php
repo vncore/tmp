@@ -11,21 +11,6 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" >
-
-          @if (\Admin::user()->checkUrlAllowAccess(sc_route_admin('admin_order.index')))
-          <!-- SEARCH FORM -->
-          <form action="{{ sc_route_admin('admin_order.index') }}" method="get" class="form-inline m-1 d-block d-sm-none" >
-            <div class="input-group input-group-sm">
-              <input name="keyword" class="form-control form-control-navbar" type="search" placeholder="{{ sc_language_render('admin.order.search') }}" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-          @endif
-
         @php
           $menus = Admin::getMenuVisible();
         @endphp
@@ -125,13 +110,6 @@
         @endforeach
       {{-- end level 0 --}}
       @endif
-
-
-      
-      @if (\Admin::user()->checkUrlAllowAccess(route('admin_order.index')))
-        @include($templatePathAdmin.'component.sidebar_bottom')
-      @endif
-
 
       </ul>
 

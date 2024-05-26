@@ -11,7 +11,7 @@
             </li>
             @if (config('admin.settings.api_plugin'))
             <li class="nav-item">
-              <a class="nav-link" href="{{ sc_route_admin('admin_plugin_online', ['code' => strtolower($code)]) }}" >{{ sc_language_render('admin.plugin.online') }}</a>
+              <a class="nav-link" href="{{ sc_route_admin('admin_plugin_online') }}" >{{ sc_language_render('admin.plugin.online') }}</a>
             </li>
             @endif
             <li class="nav-item">
@@ -30,7 +30,6 @@
               <thead>
                 <tr>
                   <th>{{ sc_language_render('admin.plugin.image') }}</th>
-                  <th>{{ sc_language_render('admin.plugin.code') }}</th>
                   <th>{{ sc_language_render('admin.plugin.name') }}</th>
                   <th>{{ sc_language_render('admin.plugin.version') }}</th>
                   <th>{{ sc_language_render('admin.plugin.auth') }}</th>
@@ -146,8 +145,7 @@
         url: '{{ sc_route_admin('admin_plugin.enable') }}',
         data: {
           "_token": "{{ csrf_token() }}",
-          "key":key,
-          "code":"{{ $code }}"
+          "key":key
         },
         success: function (response) {
           console.log(response);
@@ -172,8 +170,7 @@
         url: '{{ sc_route_admin('admin_plugin.disable') }}',
         data: {
           "_token": "{{ csrf_token() }}",
-          "key":key,
-          "code":"{{ $code }}"
+          "key":key
         },
         success: function (response) {
           console.log(response);
@@ -197,8 +194,7 @@
         url: '{{ sc_route_admin('admin_plugin.install') }}',
         data: {
           "_token": "{{ csrf_token() }}",
-          "key":key,
-          "code":"{{ $code }}"
+          "key":key
         },
         success: function (response) {
           console.log(response);
@@ -233,7 +229,6 @@
               data: {
                 "_token": "{{ csrf_token() }}",
                 "key":key,
-                "code":"{{ $code }}",
                 "onlyRemoveData": onlyRemoveData,
               },
               success: function (response) {

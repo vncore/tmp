@@ -5,7 +5,6 @@
     "email": "your-email",
     "link": "http://Your-link.com",
     "configGroup": "Plugins",
-    "configCode": "Plugin_Code",
     "configKey": "Plugin_Key",
     "version": "1.0",
     "scartVersion": "7.1|7.2"

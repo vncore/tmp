@@ -12,7 +12,7 @@ Route::group(['prefix' => 'plugin'], function () use ($nameSpaceAdminPlugin) {
         ->name('admin_plugin.process_import');
     //End process
     
-    Route::get('/{code}', $nameSpaceAdminPlugin.'\AdminPluginsController@index')
+    Route::get('', $nameSpaceAdminPlugin.'\AdminPluginsController@index')
         ->name('admin_plugin');
     Route::post('/install', $nameSpaceAdminPlugin.'\AdminPluginsController@install')
         ->name('admin_plugin.install');
@@ -24,7 +24,7 @@ Route::group(['prefix' => 'plugin'], function () use ($nameSpaceAdminPlugin) {
         ->name('admin_plugin.disable');
 
     if (config('admin.settings.api_plugin')) {
-        Route::get('/{code}/online', $nameSpaceAdminPlugin.'\AdminPluginsOnlineController@index')
+        Route::get('/online', $nameSpaceAdminPlugin.'\AdminPluginsOnlineController@index')
         ->name('admin_plugin_online');
         Route::post('/install/online', $nameSpaceAdminPlugin.'\AdminPluginsOnlineController@install')
             ->name('admin_plugin_online.install');

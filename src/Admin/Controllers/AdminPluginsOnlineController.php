@@ -12,21 +12,20 @@ class AdminPluginsOnlineController extends RootAdminController
         parent::__construct();
     }
 
-    public function index($code)
+    public function index()
     {
-        $code = sc_word_format_class($code);
         $action = request('action');
         $pluginKey = request('pluginKey');
         if ($action == 'config' && $pluginKey != '') {
-            $namespace = sc_get_class_plugin_config($code, $pluginKey);
+            $namespace = sc_get_class_plugin_config($pluginKey);
             $body = (new $namespace)->config();
         } else {
-            $body = $this->pluginCode($code);
+            $body = $this->pluginCode();
         }
         return $body;
     }
 
-    protected function pluginCode($code)
+    protected function pluginCode()
     {
         $arrPluginLibrary = [];
         $resultItems = '';
@@ -38,7 +37,7 @@ class AdminPluginsOnlineController extends RootAdminController
 
         $page = request('page') ?? 1;
 
-        $url = config('vncore.api_link').'/plugins/'.$code.'?page[size]=20&page[number]='.$page;
+        $url = config('vncore.api_link').'/plugins?page[size]=20&page[number]='.$page;
         $url .='&version='.$sc_version;
         $url .='&filter_free='.$filter_free;
         $url .='&filter_type='.$filter_type;
@@ -95,16 +94,14 @@ class AdminPluginsOnlineController extends RootAdminController
             }
             $htmlPaging .= '</ul>';
         }
-        $code = sc_word_format_class($code);
 
-        $arrPluginLocal = sc_get_all_plugin($code);
-        $title = sc_language_render('admin.plugin.' . $code.'_plugin');
+        $arrPluginLocal = sc_get_all_plugin();
+        $title = sc_language_render('admin.plugin.plugin');
 
         return view($this->templatePathAdmin.'screen.plugin_online')->with(
             [
                 "title" => $title,
                 "arrPluginLocal" => $arrPluginLocal,
-                "code" => $code,
                 "filter_keyword" => $filter_keyword ?? '',
                 "filter_type" => $filter_type ?? '',
                 "filter_free" => $filter_free ?? '',
@@ -162,7 +159,7 @@ class AdminPluginsOnlineController extends RootAdminController
                     File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path($pathPlugin));
                     File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), app_path($pathPlugin));
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    $namespace = sc_get_class_plugin_config($code, $key);
+                    $namespace = sc_get_class_plugin_config($key);
                     $response = (new $namespace)->install();
                 }
 

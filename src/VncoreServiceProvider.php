@@ -262,7 +262,6 @@ class VncoreServiceProvider extends ServiceProvider
 
         //Share variable for view
         view()->share('sc_languages', sc_language_all());
-        view()->share('sc_blocksContent', sc_store_block());
         view()->share('sc_templatePath', 'templates.' . sc_store('template'));
         view()->share('sc_templateFile', 'templates/' . sc_store('template'));
         //

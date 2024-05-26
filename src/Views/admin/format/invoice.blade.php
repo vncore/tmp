@@ -15,10 +15,7 @@
                   <i class="mr-1 text-danger-m1 text-120 w-2 far fa-file-pdf"></i>
                     Export
                 </a> --}}
-                <a class="btn bg-white btn-light mx-1px text-95 dont-print" href="{{ sc_route_admin('admin_order.invoice', ['order_id' => $id, 'action' => 'invoice_excel']) }}" data-title="PDF">
-                  <i class="mr-1 text-primary-m1 text-120 w-2 far fa-file-excel"></i>
-                    Export
-                </a>
+
             </div>
         </div>
     </div>

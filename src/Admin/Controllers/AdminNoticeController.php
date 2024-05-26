@@ -74,11 +74,11 @@ class AdminNoticeController extends RootAdminController
         ->where('type', $type)
         ->where('type_id', $typeId)
         ->update(['status' => 1]);
-        if ((in_array($type, ['sc_order_created', 'sc_order_success', 'sc_order_update_status']))) {
-            return redirect(sc_route_admin('admin_order.detail', ['id' => $typeId]));
-        }
-        if ((in_array($type, ['sc_customer_created']))) {
-            return redirect(sc_route_admin('admin_customer.edit', ['id' => $typeId]));
-        }
+        // if ((in_array($type, ['sc_order_created', 'sc_order_success', 'sc_order_update_status']))) {
+        //     return redirect(sc_route_admin('admin_order.detail', ['id' => $typeId]));
+        // }
+        // if ((in_array($type, ['sc_customer_created']))) {
+        //     return redirect(sc_route_admin('admin_customer.edit', ['id' => $typeId]));
+        // }
     }
 }

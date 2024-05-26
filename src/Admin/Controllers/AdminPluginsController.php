@@ -11,38 +11,35 @@ class AdminPluginsController extends RootAdminController
         parent::__construct();
     }
     
-    public function index($code)
+    public function index()
     {
-        $code = sc_word_format_class($code);
         $action = request('action');
         $pluginKey = request('pluginKey');
         if ($action == 'config' && $pluginKey != '') {
-            $namespace = sc_get_class_plugin_config($code, $pluginKey);
+            $namespace = sc_get_class_plugin_config($pluginKey);
             $body = (new $namespace)->config();
         } else {
-            $body = $this->pluginCode($code);
+            $body = $this->pluginCode();
         }
         return $body;
     }
 
-    protected function pluginCode($code)
+    protected function pluginCode()
     {
-        $code = sc_word_format_class($code);
         $arrDefault = config('admin.plugin_protected');
-        $pluginsInstalled = sc_get_plugin_installed($code, $onlyActive = false);
-        $plugins = sc_get_all_plugin($code);
-        $title = sc_language_render('admin.plugin.' . $code.'_plugin');
-        return $this->render($pluginsInstalled, $plugins, $title, $code, $arrDefault);
+        $pluginsInstalled = sc_get_plugin_installed($onlyActive = false);
+        $plugins = sc_get_all_plugin();
+        $title = sc_language_render('admin.plugin.index');
+        return $this->render($pluginsInstalled, $plugins, $title, $arrDefault);
     }
 
-    public function render($pluginsInstalled, $plugins, $title, $code, $arrDefault)
+    public function render($pluginsInstalled, $plugins, $title,$arrDefault)
     {
         return view($this->templatePathAdmin.'screen.plugin')->with(
             [
                 "title"            => $title,
                 "pluginsInstalled" => $pluginsInstalled,
                 "plugins"          => $plugins,
-                "code"             => $code,
                 "arrDefault"       => $arrDefault,
             ]
         );
@@ -54,8 +51,7 @@ class AdminPluginsController extends RootAdminController
     public function install()
     {
         $key = request('key');
-        $code = request('code');
-        $namespace = sc_get_class_plugin_config($code, $key);
+        $namespace = sc_get_class_plugin_config($key);
         $response = (new $namespace)->install();
         return response()->json($response);
     }
@@ -68,13 +64,12 @@ class AdminPluginsController extends RootAdminController
     public function uninstall()
     {
         $key = request('key');
-        $code = request('code');
         $onlyRemoveData = request('onlyRemoveData');
-        $namespace = sc_get_class_plugin_config($code, $key);
+        $namespace = sc_get_class_plugin_config($key);
         $response = (new $namespace)->uninstall();
         if (!$onlyRemoveData) {
-            File::deleteDirectory(app_path('Plugins/'.$code.'/'.$key));
-            File::deleteDirectory(public_path('Plugins/'.$code.'/'.$key));
+            File::deleteDirectory(app_path('Plugins/'.$key));
+            File::deleteDirectory(public_path('Plugins/'.$key));
         }
         return response()->json($response);
     }
@@ -87,8 +82,7 @@ class AdminPluginsController extends RootAdminController
     public function enable()
     {
         $key = request('key');
-        $code = request('code');
-        $namespace = sc_get_class_plugin_config($code, $key);
+        $namespace = sc_get_class_plugin_config($key);
         $response = (new $namespace)->enable();
         return response()->json($response);
     }
@@ -101,8 +95,7 @@ class AdminPluginsController extends RootAdminController
     public function disable()
     {
         $key = request('key');
-        $code = request('code');
-        $namespace = sc_get_class_plugin_config($code, $key);
+        $namespace = sc_get_class_plugin_config($key);
         $response = (new $namespace)->disable();
         return response()->json($response);
     }
@@ -165,41 +158,40 @@ class AdminPluginsController extends RootAdminController
                     }
 
                     $configGroup = $config['configGroup'] ?? '';
-                    $configCode = $config['configCode'] ?? '';
                     $configKey = $config['configKey'] ?? '';
 
                     //Process if plugin config incorect
-                    if (!$configGroup || !$configCode || !$configKey) {
+                    if (!$configGroup || !$configKey) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
                         return redirect()->back()->with('error', sc_language_render('admin.plugin.error_config_format'));
                     }
                     //Check plugin exist
-                    $arrPluginLocal = sc_get_all_plugin($configCode);
+                    $arrPluginLocal = sc_get_all_plugin();
                     if (array_key_exists($configKey, $arrPluginLocal)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
                         return redirect()->back()->with('error', sc_language_render('admin.plugin.error_exist'));
                     }
 
-                    $pathPlugin = $configGroup.'/'.$configCode.'/'.$configKey;
+                    $pathPlugin = $configGroup.'/'.$configKey;
 
-                    if (!is_writable(public_path($configGroup.'/'.$configCode))) {
-                        return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path($configGroup.'/'.$configCode)]);
+                    if (!is_writable(public_path($configGroup))) {
+                        return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path($configGroup)]);
                     }
             
-                    if (!is_writable(app_path($configGroup.'/'.$configCode))) {
-                        return response()->json(['error' => 1, 'msg' => 'No write permission '.app_path($configGroup.'/'.$configCode)]);
+                    if (!is_writable(app_path($configGroup))) {
+                        return response()->json(['error' => 1, 'msg' => 'No write permission '.app_path($configGroup)]);
                     }
 
                     try {
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path($pathPlugin));
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), app_path($pathPlugin));
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        $namespace = sc_get_class_plugin_config($configCode, $configKey);
+                        $namespace = sc_get_class_plugin_config($configKey);
                         $response = (new $namespace)->install();
                         if (!is_array($response) || $response['error'] == 1) {
                             return redirect()->back()->with('error', $response['msg']);
                         }
-                        $linkRedirect = route('admin_plugin', ['code' => (new $namespace)->configCode]);
+                        $linkRedirect = route('admin_plugin');
                     } catch (\Throwable $e) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
                         return redirect()->back()->with('error', $e->getMessage());

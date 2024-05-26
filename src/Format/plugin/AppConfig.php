@@ -17,11 +17,10 @@ class AppConfig extends ConfigDefault
         $config = file_get_contents(__DIR__.'/config.json');
         $config = json_decode($config, true);
     	$this->configGroup = $config['configGroup'];
-    	$this->configCode = $config['configCode'];
         $this->configKey = $config['configKey'];
         $this->scartVersion = $config['scartVersion'];
         //Path
-        $this->pathPlugin = $this->configGroup . '/' . $this->configCode . '/' . $this->configKey;
+        $this->pathPlugin = $this->configGroup . '/' . $this->configKey;
         //Language
         $this->title = trans($this->pathPlugin.'::lang.title');
         //Image logo or thumb
@@ -44,7 +43,6 @@ class AppConfig extends ConfigDefault
             $dataInsert = [
                 [
                     'group'  => $this->configGroup,
-                    'code'   => $this->configCode,
                     'key'    => $this->configKey,
                     'sort'   => 0,
                     'value'  => self::ON, //Enable extension
@@ -135,7 +133,6 @@ class AppConfig extends ConfigDefault
     {
         $arrData = [
             'title' => $this->title,
-            'code' => $this->configCode,
             'key' => $this->configKey,
             'image' => $this->image,
             'permission' => self::ALLOW,

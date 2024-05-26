@@ -15,18 +15,12 @@ class AdminConfig extends Model
 
     /**
      * get Plugin installed
-     * @param  [type]  $code      Payment, Shipping,..
      * @param  boolean $onlyActive
      * @return [type]              [description]
      */
-    public static function getPluginCode($code = null, $onlyActive = true)
+    public static function getPluginCode($onlyActive = true)
     {
-        if ($code === null) {
-            $query =  self::where('group', 'Plugins');
-        } else {
-            $code = sc_word_format_class($code);
-            $query =  self::where('group', 'Plugins')->where('code', $code);
-        }
+        $query =  self::where('group', 'Plugins');
         if ($onlyActive) {
             $query = $query->where('value', 1);
         }

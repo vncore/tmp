@@ -8,15 +8,14 @@ if (!function_exists('sc_get_all_plugin') && !in_array('sc_get_all_plugin', conf
      *
      * @return  [array]
      */
-    function sc_get_all_plugin(string $code = "")
+    function sc_get_all_plugin()
     {
-        $code = sc_word_format_class($code);
         $arrClass = [];
-        $dirs = array_filter(glob(app_path() . '/Plugins/' . $code . '/*'), 'is_dir');
+        $dirs = array_filter(glob(app_path() . '/Plugins/*'), 'is_dir');
         if ($dirs) {
             foreach ($dirs as $dir) {
                 $tmp = explode('/', $dir);
-                $nameSpace = '\App\Plugins\\' . $code . '\\' . end($tmp);
+                $nameSpace = '\App\Plugins\\' . end($tmp);
                 if (file_exists($dir . '/AppConfig.php')) {
                     $arrClass[end($tmp)] = $nameSpace;
                 }
@@ -33,9 +32,9 @@ if (!function_exists('sc_get_plugin_installed') && !in_array('sc_get_plugin_inst
      * @param   [string]  $code  Payment, Shipping
      *
      */
-    function sc_get_plugin_installed($code = null, $onlyActive = true)
+    function sc_get_plugin_installed($onlyActive = true)
     {
-        return \Vncore\Core\Admin\Models\AdminConfig::getPluginCode($code, $onlyActive);
+        return \Vncore\Core\Admin\Models\AdminConfig::getPluginCode($onlyActive);
     }
 }
 
@@ -98,18 +97,16 @@ if (!function_exists('sc_get_all_plugin_actived') && !in_array('sc_get_all_plugi
     /**
      * Get namespace plugin config
      *
-     * @param   [string]  $code  Shipping, Payment,..
      * @param   [string]  $key  Paypal,..
      *
      * @return  [array]
      */
     if (!function_exists('sc_get_class_plugin_config') && !in_array('sc_get_class_plugin_config', config('helper_except', []))) {
-        function sc_get_class_plugin_config(string $code = "", string $key = "")
+        function sc_get_class_plugin_config(string $key = "")
         {
-            $code = sc_word_format_class($code);
             $key = sc_word_format_class($key);
 
-            $nameSpace = sc_get_plugin_namespace($code, $key);
+            $nameSpace = sc_get_plugin_namespace($key);
             $nameSpace = $nameSpace . '\AppConfig';
 
             return $nameSpace;
