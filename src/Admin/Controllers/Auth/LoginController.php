@@ -47,6 +47,9 @@ class LoginController extends RootAdminController
         $remember = $request->get('remember', false);
 
         if ($this->guard()->attempt($credentials, $remember)) {
+            if (function_exists('vncore_event_admin_login')) {
+                vncore_event_admin_login(\Admin::user());
+            }
             return $this->sendLoginResponse($request);
         }
         return back()->withInput()->withErrors([
