@@ -63,19 +63,29 @@ class AdminUser extends Authenticatable
     {
         parent::boot();
 
-        static::deleting(function ($model) {
-            if (in_array($model->id, SC_GUARD_ADMIN)) {
+        static::deleting(function ($user) {
+            if (in_array($user->id, SC_GUARD_ADMIN)) {
                 return false;
             }
-            $model->roles()->detach();
-            $model->permissions()->detach();
+            $user->roles()->detach();
+            $user->permissions()->detach();
+            if (function_exists('vncore_event_admin_deleting')) {
+                vncore_event_admin_deleting($user);
+            }
         });
 
         //Uuid
-        static::creating(function ($model) {
-            if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = sc_generate_id($type = 'admin_user');
+        static::creating(function ($user) {
+            if (empty($user->{$user->getKeyName()})) {
+                $user->{$user->getKeyName()} = sc_generate_id($type = 'admin_user');
             }
+        });
+
+        static::created(function ($user) {
+            if (function_exists('vncore_event_admin_created')) {
+                vncore_event_admin_created($user);
+            }
+            // ...
         });
     }
 

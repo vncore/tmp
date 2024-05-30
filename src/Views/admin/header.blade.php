@@ -8,6 +8,9 @@
       
         @include($templatePathAdmin.'component.language')
         @include($templatePathAdmin.'component.admin_theme')
+        @isset($templatePathSpmo)
+          @includeIf($templatePathSpmo.'component.partner')
+        @endisset
 
     </ul>
 
