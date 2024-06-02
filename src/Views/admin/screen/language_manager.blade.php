@@ -16,7 +16,7 @@
                         <div class="input-group float-left ml-1">
                           <div class="btn-group">
                             <select class="form-control select2" name="position">
-                              <option value="">{{ sc_language_render('admin.language.select_position') }}</option>
+                              <option value="">{{ vncore_language_render('admin.language.select_position') }}</option>
                               @foreach ($positionLang as $itemPosition)
                                   <option value="{{ $itemPosition }}" {{ ($itemPosition === $position)? 'selected': '' }}>{{ $itemPosition }}</option>
                               @endforeach
@@ -24,7 +24,7 @@
                           </div>
                           <div class="btn-group">
                             <select class="form-control select2" name="lang">
-                              <option value="">{{ sc_language_render('admin.language.select_lang') }}</option>
+                              <option value="">{{ vncore_language_render('admin.language.select_lang') }}</option>
                               @php
                                   $lang = $lang ?? 'en';
                               @endphp
@@ -52,8 +52,8 @@
                   <table class="table table-hover box-body text-wrap table-bordered">
                       <thead>
                          <tr>
-                           <th>{{ sc_language_render('admin.language_manager.position') }}</th>
-                           <th>{{ sc_language_render('admin.language_manager.code') }}</th>
+                           <th>{{ vncore_language_render('admin.language_manager.position') }}</th>
+                           <th>{{ vncore_language_render('admin.language_manager.code') }}</th>
                            @if ($lang != 'en')
                            <th>English</th>
                            @endif
@@ -120,12 +120,12 @@ $.fn.editable.defaults.params = function (params) {
 $('.editable-required').editable({
   validate: function(value) {
       if (value == '') {
-          return '{{  sc_language_render('admin.not_empty') }}';
+          return '{{  vncore_language_render('admin.not_empty') }}';
       }
   },
   success: function(data) {
     if(data.error == 0){
-      alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+      alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
     } else {
       alertJs('error', data.msg);
     }

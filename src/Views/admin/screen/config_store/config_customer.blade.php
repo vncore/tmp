@@ -9,15 +9,15 @@
    <table class="table table-hover box-body text-wrap table-bordered">
      <thead>
        <tr>
-         <th>{{ sc_language_render('customer.admin.field') }}</th>
-         <th>{{ sc_language_render('customer.admin.value') }}</th>
-         <th>{{ sc_language_render('customer.admin.required') }}</th>
+         <th>{{ vncore_language_render('customer.admin.field') }}</th>
+         <th>{{ vncore_language_render('customer.admin.value') }}</th>
+         <th>{{ vncore_language_render('customer.admin.required') }}</th>
        </tr>
      </thead>
      <tbody>
        @foreach ($customerConfigs as $key => $customerConfig)
          <tr>
-           <td>{{ sc_language_render($customerConfig['detail']) }}</td>
+           <td>{{ vncore_language_render($customerConfig['detail']) }}</td>
            <td><input class="check-data-config" data-store="{{ $storeId }}" type="checkbox" name="{{ $customerConfig['key'] }}"  {{ $customerConfig['value']?"checked":"" }}></td>
            <td>
              @if (!empty($customerConfigsRequired[$key.'_required']))

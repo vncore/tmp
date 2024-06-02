@@ -41,7 +41,7 @@ class AdminLanguageManagerController extends RootAdminController
             'languagesPositionEL' => $languagesPositionEL,
             'arrayKeyDiff' => $arrayKeyDiff,
             'urlUpdateData' => $urlUpdateData,
-            'title' => sc_language_render('admin.language_manager.title'),
+            'title' => vncore_language_render('admin.language_manager.title'),
             'subTitle' => '',
             'icon' => 'fa fa-indent',
             'removeList' => 0, // 1 - Enable function delete list item
@@ -64,7 +64,7 @@ class AdminLanguageManagerController extends RootAdminController
     public function postUpdate()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $data = request()->all();
             $lang = sc_clean($data['lang']);
@@ -73,7 +73,7 @@ class AdminLanguageManagerController extends RootAdminController
             $position = sc_clean($data['pk']);
             $languages = ShopLanguage::getCodeAll();
             if (!in_array($lang, array_keys($languages))) {
-                return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+                return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
             }
             if ($position) {
                 Languages::updateOrCreate(
@@ -87,7 +87,7 @@ class AdminLanguageManagerController extends RootAdminController
                 );
             }
 
-            return response()->json(['error' => 0, 'msg' => sc_language_render('action.update_success')]);
+            return response()->json(['error' => 0, 'msg' => vncore_language_render('action.update_success')]);
         }
     }
 
@@ -101,7 +101,7 @@ class AdminLanguageManagerController extends RootAdminController
         $languages = ShopLanguage::getListAll();
         $positionLang = Languages::getPosition();
         $data = [
-            'title' => sc_language_render('admin.language_manager.add'),
+            'title' => vncore_language_render('admin.language_manager.add'),
             'positionLang' => $positionLang,
             'languages' => $languages,
         ];
@@ -141,6 +141,6 @@ class AdminLanguageManagerController extends RootAdminController
         $dataCreate = sc_clean($dataCreate, ['text'], true);
         Languages::insert($dataCreate);
 
-        return redirect(sc_route_admin('admin_language_manager.index'))->with('success', sc_language_render('action.create_success'));
+        return redirect(sc_route_admin('admin_language_manager.index'))->with('success', vncore_language_render('action.create_success'));
     }
 }

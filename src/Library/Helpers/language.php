@@ -3,9 +3,9 @@
 use Vncore\Core\Front\Models\ShopLanguage;
 use Illuminate\Support\Str;
 
-if (!function_exists('sc_language_all') && !in_array('sc_language_all', config('helper_except', []))) {
+if (!function_exists('vncore_language_all') && !in_array('vncore_language_all', config('helper_except', []))) {
     //Get all language
-    function sc_language_all()
+    function vncore_language_all()
     {
         return ShopLanguage::getListActive();
     }
@@ -23,11 +23,11 @@ if (!function_exists('sc_languages') && !in_array('sc_languages', config('helper
     }
 }
 
-if (!function_exists('sc_language_replace') && !in_array('sc_language_replace', config('helper_except', []))) {
+if (!function_exists('vncore_language_replace') && !in_array('vncore_language_replace', config('helper_except', []))) {
     /*
     Replace language
      */
-    function sc_language_replace(string $line, array $replace)
+    function vncore_language_replace(string $line, array $replace)
     {
         foreach ($replace as $key => $value) {
             $line = str_replace(
@@ -41,25 +41,28 @@ if (!function_exists('sc_language_replace') && !in_array('sc_language_replace', 
 }
 
 
-if (!function_exists('sc_language_render') && !in_array('sc_language_render', config('helper_except', []))) {
+if (!function_exists('vncore_language_render') && !in_array('vncore_language_render', config('helper_except', []))) {
     /*
     Render language
     WARNING: Dont call this function (or functions that call it) in __construct or midleware, it may cause the display language to be incorrect
      */
-    function sc_language_render($string, array $replace = [], $locale = null)
+    function vncore_language_render($string, array $replace = [], $locale = null)
     {
+        if (!is_string($string)) {
+            return null;
+        }
         $locale = $locale ? $locale : sc_get_locale();
         $languages = sc_languages($locale);
-        return !empty($languages[$string]) ? sc_language_replace($languages[$string], $replace): trans($string, $replace);
+        return !empty($languages[$string]) ? vncore_language_replace($languages[$string], $replace): trans($string, $replace);
     }
 }
 
 
-if (!function_exists('sc_language_quickly') && !in_array('sc_language_quickly', config('helper_except', []))) {
+if (!function_exists('vncore_language_quickly') && !in_array('vncore_language_quickly', config('helper_except', []))) {
     /*
     Language quickly
      */
-    function sc_language_quickly($string, $default = null)
+    function vncore_language_quickly($string, $default = null)
     {
         $locale = sc_get_locale();
         $languages = sc_languages($locale);
@@ -92,7 +95,7 @@ if (!function_exists('sc_lang_switch') && !in_array('sc_lang_switch', config('he
             return ;
         }
 
-        $languages = sc_language_all()->keys()->all();
+        $languages = vncore_language_all()->keys()->all();
         if (in_array($lang, $languages)) {
             app()->setLocale($lang);
             session(['locale' => $lang]);

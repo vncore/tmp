@@ -16,7 +16,7 @@ class AdminTemplateController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => sc_language_render('admin.template.list'),
+            'title' => vncore_language_render('admin.template.list'),
             'subTitle' => '',
             'icon' => 'fa fa-indent',        ];
 
@@ -110,7 +110,7 @@ class AdminTemplateController extends RootAdminController
     {
         $key = request('key');
         (new AdminTemplate)->where('key', $key)->update(['status' => 0]);
-        $response = ['error' => 0, 'msg' => sc_language_render('action.disable_success')];
+        $response = ['error' => 0, 'msg' => vncore_language_render('action.disable_success')];
         return response()->json($response);
     }
 
@@ -123,7 +123,7 @@ class AdminTemplateController extends RootAdminController
     {
         $key = request('key');
         (new AdminTemplate)->where('key', $key)->update(['status' => 1]);
-        $response = ['error' => 0, 'msg' => sc_language_render('action.enable_success')];
+        $response = ['error' => 0, 'msg' => vncore_language_render('action.enable_success')];
         return response()->json($response);
     }
 
@@ -135,7 +135,7 @@ class AdminTemplateController extends RootAdminController
     public function importTemplate()
     {
         $data =  [
-            'title' => sc_language_render('admin.template.import')
+            'title' => vncore_language_render('admin.template.import')
         ];
         return view($this->templatePathAdmin.'screen.template_upload')
         ->with($data);
@@ -184,7 +184,7 @@ class AdminTemplateController extends RootAdminController
                     $scartVersion = $config['scartVersion'] ?? '';
                     if (!sc_plugin_compatibility_check($scartVersion)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return response()->json(['error' => 1, 'msg' => sc_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')])]);
+                        return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')])]);
                     }
 
                     $configKey = $config['configKey'] ?? '';
@@ -201,13 +201,13 @@ class AdminTemplateController extends RootAdminController
                     $configKey = str_replace('.', '-', $configKey);
                     if (!$configKey) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', sc_language_render('admin.template.error_config'));
+                        return redirect()->back()->with('error', vncore_language_render('admin.template.error_config'));
                     }
 
                     $arrTemplateLocal = sc_get_all_template();
                     if (array_key_exists($configKey, $arrTemplateLocal)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', sc_language_render('admin.template.error_exist'));
+                        return redirect()->back()->with('error', vncore_language_render('admin.template.error_exist'));
                     }
                     try {
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path('templates/'.$configKey));
@@ -236,18 +236,18 @@ class AdminTemplateController extends RootAdminController
                     }
                 } else {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    return redirect()->back()->with('error', sc_language_render('admin.template.error_check_config'));
+                    return redirect()->back()->with('error', vncore_language_render('admin.template.error_check_config'));
                 }
             } else {
-                return redirect()->back()->with('error', sc_language_render('admin.template.error_unzip'));
+                return redirect()->back()->with('error', vncore_language_render('admin.template.error_unzip'));
             }
         } else {
-            return redirect()->back()->with('error', sc_language_render('admin.template.error_upload'));
+            return redirect()->back()->with('error', vncore_language_render('admin.template.error_upload'));
         }
         
         if (count($config)) {
             (new AdminTemplate)->create(['key' => $config['configKey'] ?? '', 'name' => $config['name'] ?? '', 'status' => 1]);
         }
-        return redirect()->route('admin_template.index')->with('success', sc_language_render('admin.template.import_success')); 
+        return redirect()->route('admin_template.index')->with('success', vncore_language_render('admin.template.import_success')); 
     }
 }

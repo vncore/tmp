@@ -25,7 +25,7 @@ class AdminStoreBlockController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'         => sc_language_render('admin.store_block.list'),
+            'title'         => vncore_language_render('admin.store_block.list'),
             'subTitle'      => '',
             'icon'          => 'fa fa-indent',
             'urlDeleteItem' => sc_route_admin('admin_store_block.delete'),
@@ -42,20 +42,20 @@ class AdminStoreBlockController extends RootAdminController
         $data['blockBottom'] = sc_config_group('blockBottom', \Request::route()->getName());
 
         $listTh = [
-            'name'     => sc_language_render('admin.store_block.name'),
-            'type'     => sc_language_render('admin.store_block.type'),
-            'position' => sc_language_render('admin.store_block.position'),
-            'page'     => sc_language_render('admin.store_block.page'),
-            'text'     => sc_language_render('admin.store_block.text'),
-            'sort'     => sc_language_render('admin.store_block.sort'),
-            'status'   => sc_language_render('admin.store_block.status'),
+            'name'     => vncore_language_render('admin.store_block.name'),
+            'type'     => vncore_language_render('admin.store_block.type'),
+            'position' => vncore_language_render('admin.store_block.position'),
+            'page'     => vncore_language_render('admin.store_block.page'),
+            'text'     => vncore_language_render('admin.store_block.text'),
+            'sort'     => vncore_language_render('admin.store_block.sort'),
+            'status'   => vncore_language_render('admin.store_block.status'),
             'template'   => 'Template',
         ];
         if (sc_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
             // Only show store info if store is root
-            $listTh['shop_store'] = sc_language_render('front.store_list');
+            $listTh['shop_store'] = vncore_language_render('front.store_list');
         }
-        $listTh['action'] = sc_language_render('action.title');
+        $listTh['action'] = vncore_language_render('action.title');
 
         $dataTmp = (new AdminStoreBlockContent)->getStoreBlockContentListAdmin();
 
@@ -65,7 +65,7 @@ class AdminStoreBlockController extends RootAdminController
             if (!$row['page']) {
                 $htmlPage .= '';
             } elseif (strpos($row['page'], '*') !== false) {
-                $htmlPage .= sc_language_render('admin.layout_page_position.all');
+                $htmlPage .= vncore_language_render('admin.layout_page_position.all');
             } else {
                 $arrPage = explode(',', $row['page']);
                 foreach ($arrPage as $key => $value) {
@@ -83,7 +83,7 @@ class AdminStoreBlockController extends RootAdminController
             $storeTmp = [
                 'name' => $row['name'],
                 'type' => $type_name,
-                'position' => htmlspecialchars(sc_language_render($this->layoutPosition[$row['position']]) ?? ''),
+                'position' => htmlspecialchars(vncore_language_render($this->layoutPosition[$row['position']]) ?? ''),
                 'page' => $htmlPage,
                 'text' => htmlspecialchars($row['text']),
                 'sort' => $row['sort'],
@@ -98,8 +98,8 @@ class AdminStoreBlockController extends RootAdminController
             }
 
             $storeTmp['action'] = '
-                <a href="' . sc_route_admin('admin_store_block.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-            <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                <a href="' . sc_route_admin('admin_store_block.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+            <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
             ';
             $dataTr[$row['id']] = $storeTmp;
 
@@ -108,12 +108,12 @@ class AdminStoreBlockController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
         $data['menuRight'][] = '
                            <a href="' . sc_route_admin('admin_store_block.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-                           <i class="fa fa-plus" title="'.sc_language_render('action.add').'"></i>
+                           <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
 
@@ -130,9 +130,9 @@ class AdminStoreBlockController extends RootAdminController
         $listViewBlock = $this->getListViewBlock();
         $listViewPage = $this->getListPageBlock();
         $data = [
-            'title'             => sc_language_render('admin.store_block.add_new_title'),
+            'title'             => vncore_language_render('admin.store_block.add_new_title'),
             'subTitle'          => '',
-            'title_description' => sc_language_render('admin.store_block.add_new_des'),
+            'title_description' => vncore_language_render('admin.store_block.add_new_des'),
             'icon'              => 'fa fa-plus',
             'layoutPosition'    => $this->layoutPosition,
             'layoutPage'        => $this->layoutPage,
@@ -186,7 +186,7 @@ class AdminStoreBlockController extends RootAdminController
         $dataCreate = sc_clean($dataCreate, ['text'], true);
         AdminStoreBlockContent::createStoreBlockContentAdmin($dataCreate);
         
-        return redirect()->route('admin_store_block.index')->with('success', sc_language_render('action.create_success'));
+        return redirect()->route('admin_store_block.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -203,7 +203,7 @@ class AdminStoreBlockController extends RootAdminController
         $listViewPage = $this->getListPageBlock($layout->store_id);
 
         $data = [
-            'title' => sc_language_render('action.edit'),
+            'title' => vncore_language_render('action.edit'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
@@ -237,7 +237,7 @@ class AdminStoreBlockController extends RootAdminController
         $validator = Validator::make($dataOrigin, [
             'name' => 'required',
         ], [
-            'name.required' => sc_language_render('validation.required'),
+            'name.required' => vncore_language_render('validation.required'),
         ]);
 
         if ($validator->fails()) {
@@ -261,7 +261,7 @@ class AdminStoreBlockController extends RootAdminController
         $dataUpdate = sc_clean($dataUpdate, ['text'], true);
         $layout->update($dataUpdate);
         
-        return redirect()->route('admin_store_block.index')->with('success', sc_language_render('action.edit_success'));
+        return redirect()->route('admin_store_block.index')->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -271,7 +271,7 @@ class AdminStoreBlockController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
@@ -282,7 +282,7 @@ class AdminStoreBlockController extends RootAdminController
                 }
             }
             if (count($arrDontPermission)) {
-                return response()->json(['error' => 1, 'msg' => sc_language_render('admin.remove_dont_permisison') . ': ' . json_encode($arrDontPermission)]);
+                return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': ' . json_encode($arrDontPermission)]);
             }
             AdminStoreBlockContent::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);
@@ -348,7 +348,7 @@ class AdminStoreBlockController extends RootAdminController
             }
             $html .='</select>';
             $html .='<span class="form-text"><i class="fa fa-info-circle"></i>';
-            $html .= sc_language_render('admin.store_block.helper_view', ['template' => sc_store('template', $storeId)]);
+            $html .= vncore_language_render('admin.store_block.helper_view', ['template' => sc_store('template', $storeId)]);
             $html .='</span>';
         }
         return $html;

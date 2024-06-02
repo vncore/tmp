@@ -25,8 +25,8 @@ class RootFrontController extends Controller
         return view(
              $this->templatePath . '.notfound',
             [
-            'title' => sc_language_render('front.page_not_found_title'),
-            'msg' => sc_language_render('front.page_not_found'),
+            'title' => vncore_language_render('front.page_not_found_title'),
+            'msg' => vncore_language_render('front.page_not_found'),
             'description' => '',
             'keyword' => ''
             ]
@@ -44,8 +44,8 @@ class RootFrontController extends Controller
         return view(
              $this->templatePath . '.notfound',
             [
-                'title' => sc_language_render('front.data_not_found_title'),
-                'msg' => sc_language_render('front.data_not_found'),
+                'title' => vncore_language_render('front.data_not_found_title'),
+                'msg' => vncore_language_render('front.data_not_found'),
                 'description' => '',
                 'keyword' => '',
             ]

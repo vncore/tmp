@@ -19,7 +19,7 @@ class AdminPasswordPolicyController extends RootAdminController
     {
         $id = SC_ID_GLOBAL;
         $data = [
-            'title' => sc_language_render('admin.menu_titles.password_policy'),
+            'title' => vncore_language_render('admin.menu_titles.password_policy'),
             'subTitle' => '',
             'icon' => 'fas fa-cogs',
         ];
@@ -66,7 +66,7 @@ class AdminPasswordPolicyController extends RootAdminController
                 ->where('store_id', $storeId)
                 ->update(['value' => $value]);
             $error = 0;
-            $msg = sc_language_render('action.update_success');
+            $msg = vncore_language_render('action.update_success');
         } catch (\Throwable $e) {
             $error = 1;
             $msg = $e->getMessage();

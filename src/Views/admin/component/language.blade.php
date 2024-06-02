@@ -1,5 +1,5 @@
 @php
-    $languages     = sc_language_all();
+    $languages     = vncore_language_all();
 @endphp
 
     <li class="nav-item dropdown">

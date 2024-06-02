@@ -5,44 +5,44 @@
           <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
-              <a class="nav-link active" id="tab-store-order-tab" data-toggle="pill" href="#tab-store-order" role="tab" aria-controls="tab-store-order" aria-selected="false">{{ sc_language_render('store.admin.config_order') }}</a>
+              <a class="nav-link active" id="tab-store-order-tab" data-toggle="pill" href="#tab-store-order" role="tab" aria-controls="tab-store-order" aria-selected="false">{{ vncore_language_render('store.admin.config_order') }}</a>
             </li>
             @endif
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
-              <a class="nav-link" id="tab-store-customer-tab" data-toggle="pill" href="#tab-store-customer" role="tab" aria-controls="tab-store-customer" aria-selected="false">{{ sc_language_render('store.admin.config_customer') }}</a>
+              <a class="nav-link" id="tab-store-customer-tab" data-toggle="pill" href="#tab-store-customer" role="tab" aria-controls="tab-store-customer" aria-selected="false">{{ vncore_language_render('store.admin.config_customer') }}</a>
             </li>
             @endif
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
-              <a class="nav-link" id="tab-store-product-tab" data-toggle="pill" href="#tab-store-product" role="tab" aria-controls="tab-store-product" aria-selected="false">{{ sc_language_render('store.admin.config_product') }}</a>
+              <a class="nav-link" id="tab-store-product-tab" data-toggle="pill" href="#tab-store-product" role="tab" aria-controls="tab-store-product" aria-selected="false">{{ vncore_language_render('store.admin.config_product') }}</a>
             </li>
             @endif
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
-              <a class="nav-link" id="tab-store-email-tab" data-toggle="pill" href="#tab-store-email" role="tab" aria-controls="tab-store-email" aria-selected="false">{{ sc_language_render('store.admin.config_email') }}</a>
+              <a class="nav-link" id="tab-store-email-tab" data-toggle="pill" href="#tab-store-email" role="tab" aria-controls="tab-store-email" aria-selected="false">{{ vncore_language_render('store.admin.config_email') }}</a>
             </li>
             @endif
             <li class="nav-item">
-              <a class="nav-link" id="tab-store-url-tab" data-toggle="pill" href="#tab-store-url" role="tab" aria-controls="tab-store-url" aria-selected="false">{{ sc_language_render('store.admin.config_url') }}</a>
+              <a class="nav-link" id="tab-store-url-tab" data-toggle="pill" href="#tab-store-url" role="tab" aria-controls="tab-store-url" aria-selected="false">{{ vncore_language_render('store.admin.config_url') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="tab-store-captcha-tab" data-toggle="pill" href="#tab-store-captcha" role="tab" aria-controls="tab-store-captcha" aria-selected="false">{{ sc_language_render('admin.captcha.captcha_title') }}</a>
+              <a class="nav-link" id="tab-store-captcha-tab" data-toggle="pill" href="#tab-store-captcha" role="tab" aria-controls="tab-store-captcha" aria-selected="false">{{ vncore_language_render('admin.captcha.captcha_title') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="tab-store-display-tab" data-toggle="pill" href="#tab-store-display" role="tab" aria-controls="tab-store-display" aria-selected="false">{{ sc_language_render('store.admin.config_display') }}</a>
+              <a class="nav-link" id="tab-store-display-tab" data-toggle="pill" href="#tab-store-display" role="tab" aria-controls="tab-store-display" aria-selected="false">{{ vncore_language_render('store.admin.config_display') }}</a>
             </li>
 
             @if (count($configLayout) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
-              <a class="nav-link" id="tab-store-layout-tab" data-toggle="pill" href="#tab-store-layout" role="tab" aria-controls="tab-store-layout" aria-selected="false">{{ sc_language_render('store.admin.config_layout') }}</a>
+              <a class="nav-link" id="tab-store-layout-tab" data-toggle="pill" href="#tab-store-layout" role="tab" aria-controls="tab-store-layout" aria-selected="false">{{ vncore_language_render('store.admin.config_layout') }}</a>
             </li>
             @endif
             <li class="nav-item">
-              <a class="nav-link" id="tab-admin-other-tab" data-toggle="pill" href="#tab-admin-other" role="tab" aria-controls="tab-admin-other" aria-selected="false">{{ sc_language_render('store.admin.config_admin_other') }}</a>
+              <a class="nav-link" id="tab-admin-other-tab" data-toggle="pill" href="#tab-admin-other" role="tab" aria-controls="tab-admin-other" aria-selected="false">{{ vncore_language_render('store.admin.config_admin_other') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="tab-admin-customize-tab" data-toggle="pill" href="#tab-admin-customize" role="tab" aria-controls="tab-admin-customize" aria-selected="false">{{ sc_language_render('store.admin.config_customize') }}</a>
+              <a class="nav-link" id="tab-admin-customize-tab" data-toggle="pill" href="#tab-admin-customize" role="tab" aria-controls="tab-admin-customize" aria-selected="false">{{ vncore_language_render('store.admin.config_customize') }}</a>
             </li>
           </ul>
         </div>
@@ -156,12 +156,12 @@ $(document).ready(function() {
       $('.editable-required').editable({
         validate: function(value) {
             if (value == '') {
-                return '{{  sc_language_render('admin.not_empty') }}';
+                return '{{  vncore_language_render('admin.not_empty') }}';
             }
         },
         success: function(data) {
           if(data.error == 0){
-            alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+            alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
           } else {
             alertJs('error', data.msg);
           }
@@ -174,7 +174,7 @@ $(document).ready(function() {
         success: function(data) {
           console.log(data);
           if(data.error == 0){
-            alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+            alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
           } else {
             alertMsg('error', data.msg);
           }
@@ -205,7 +205,7 @@ $('input.check-data-config').iCheck({
     })
     .done(function(data) {
       if(data.error == 0){
-        alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+        alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
       } else {
         alertJs('error', data.msg);
       }
@@ -238,7 +238,7 @@ $('input.check-data-config').iCheck({
         } else {
           $('#smtp-config').show();
         }
-        alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+        alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
       } else {
         alertJs('error', data.msg);
       }

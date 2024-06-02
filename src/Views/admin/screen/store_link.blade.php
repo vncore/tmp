@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ sc_route_admin('admin_store_link.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ sc_route_admin('admin_store_link.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
 
                     <div class="card-body">
                             <div class="form-group row {{ $errors->has('name') ? ' text-red' : '' }}">
-                                <label for="name" class="col-sm-2 col-form-label">{{ sc_language_render('admin.link.name') }}</label>
+                                <label for="name" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link.name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -38,7 +38,7 @@
 
 @if ($layout !='collection')
                             <div class="form-group row {{ $errors->has('url') ? ' text-red' : '' }}">
-                                <label for="url" class="col-sm-2 col-form-label">{{ sc_language_render('admin.link.url') }}</label>
+                                <label for="url" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link.url') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -52,7 +52,7 @@
                                             </span>
                                         @else
                                             <span class="form-text">
-                                                <i class="fa fa-info-circle"></i> {{ sc_language_render('admin.link.helper_url') }}
+                                                <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.link.helper_url') }}
                                             </span>
                                         @endif
                                 </div>
@@ -60,7 +60,7 @@
 
 
                             <div class="form-group row {{ $errors->has('target') ? ' text-red' : '' }}">
-                                <label for="target" class="col-sm-2 col-form-label">{{ sc_language_render('admin.link.select_target') }}</label>
+                                <label for="target" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link.select_target') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control target select2" style="width: 100%;" name="target" >
                                         <option value=""></option>
@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="form-group row {{ $errors->has('collection_id') ? ' text-red' : '' }}">
-                                <label for="group" class="col-sm-2 col-form-label">{{ sc_language_render('admin.link.select_collection') }}</label>
+                                <label for="group" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link.select_collection') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control collection select2" name="collection_id" >
                                         <option value="">----</option>
@@ -95,7 +95,7 @@
 @endif
 
                             <div class="form-group row {{ $errors->has('group') ? ' text-red' : '' }}">
-                                <label for="group" class="col-sm-2 col-form-label">{{ sc_language_render('admin.link.select_group') }}</label>
+                                <label for="group" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link.select_group') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                     <select class="form-control group select2" name="group" >
@@ -106,7 +106,7 @@
                                     </select>
                                     <div class="input-group-append">
                                         <a href="{{ sc_route_admin('admin_store_link_group.index') }}" class="btn  btn-flat" title="New">
-                                            <i class="fa fa-plus" title="{{ sc_language_render('action.add') }}"></i>
+                                            <i class="fa fa-plus" title="{{ vncore_language_render('action.add') }}"></i>
                                          </a>
                                     </div>
                                         @if ($errors->has('group'))
@@ -121,7 +121,7 @@
 
 
                             <div class="form-group row {{ $errors->has('sort') ? ' text-red' : '' }}">
-                                <label for="sort" class="col-sm-2 col-form-label">{{ sc_language_render('admin.link.sort') }}</label>
+                                <label for="sort" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link.sort') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -156,13 +156,13 @@
                   
                             <div class="form-group row {{ $errors->has('shop_store') ? ' text-red' : '' }}">
                                 <label for="shop_store"
-                                    class="col-sm-2 col-form-label">{{ sc_language_render('admin.select_store') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vncore_language_render('admin.select_store') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control shop_store select2" 
                                     @if (sc_check_multi_store_installed())
                                         multiple="multiple"
                                     @endif
-                                    data-placeholder="{{ sc_language_render('admin.select_store') }}" style="width: 100%;"
+                                    data-placeholder="{{ vncore_language_render('admin.select_store') }}" style="width: 100%;"
                                     name="shop_store[]">
                                         <option value=""></option>
                                         @foreach (sc_get_list_code_store() as $k => $v)
@@ -182,7 +182,7 @@
 @endif
 
                             <div class="form-group row ">
-                                <label for="status" class="col-sm-2 col-form-label">{{ sc_language_render('admin.link.status') }}</label>
+                                <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link.status') }}</label>
                                 <div class="col-sm-8">
                                 <input class="checkbox" type="checkbox" name="status"  {{ old('status',(empty($link['status'])?0:1))?'checked':''}}>
 
@@ -198,11 +198,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                             </div>
 
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>

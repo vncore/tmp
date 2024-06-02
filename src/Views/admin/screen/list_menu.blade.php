@@ -30,7 +30,7 @@
           @if ($level0->type ==1)
             <li class="dd-item " data-id="{{ $level0->id }}">
                 <div class="dd-handle header-fix  {{ ($level0->id == $id)? 'active-item' : '' }}">
-                  {!! sc_language_render($level0->title) !!}
+                  {!! vncore_language_render($level0->title) !!}
                   <span class="float-right dd-nodrag">
                       <a href="{{ sc_route_admin('admin_menu.edit',['id'=>$level0->id]) }}"><i class="fa fa-edit"></i></a>
                       &nbsp; 
@@ -41,7 +41,7 @@
           @elseif($level0->uri)
             <li class="dd-item" data-id="{{ $level0->id }}">
                 <div class="dd-handle {{ ($level0->id == $id)? 'active-item' : '' }}">
-                  <i class="{{ $level0->icon }}"></i> {!! sc_language_render($level0->title) !!}
+                  <i class="{{ $level0->icon }}"></i> {!! vncore_language_render($level0->title) !!}
                   <span class="float-right dd-nodrag">
                       <a href="{{ sc_route_admin('admin_menu.edit',['id'=>$level0->id]) }}"><i class="fa fa-edit fa-edit"></i></a>
                       &nbsp; 
@@ -52,7 +52,7 @@
           @else
             <li class="dd-item " data-id="{{ $level0->id }}">
               <div class="dd-handle {{ ($level0->id == $id)? 'active-item' : '' }}">
-                <i class="{{ $level0->icon }}"></i> {!! sc_language_render($level0->title) !!}
+                <i class="{{ $level0->icon }}"></i> {!! vncore_language_render($level0->title) !!}
                   <span class="float-right dd-nodrag">
                       <a href="{{ sc_route_admin('admin_menu.edit',['id'=>$level0->id]) }}"><i class="fa fa-edit fa-edit"></i></a>
                       &nbsp; 
@@ -66,7 +66,7 @@
                   @if($level1->uri)
                     <li class="dd-item" data-id="{{ $level1->id }}">
                         <div class="dd-handle {{ ($level1->id == $id)? 'active-item' : '' }}">
-                          <i class="{{ $level1->icon }}"></i> {!! sc_language_render($level1->title) !!}
+                          <i class="{{ $level1->icon }}"></i> {!! vncore_language_render($level1->title) !!}
                           <span class="float-right dd-nodrag">
                               <a href="{{ sc_route_admin('admin_menu.edit',['id'=>$level1->id]) }}"><i class="fa fa-edit fa-edit"></i></a>
                               &nbsp; 
@@ -77,7 +77,7 @@
                   @else
                   <li class="dd-item" data-id="{{ $level1->id }}">
                     <div class="dd-handle {{ ($level1->id == $id)? 'active-item' : '' }}">
-                      <i class="{{ $level1->icon }}"></i> {!! sc_language_render($level1->title) !!}
+                      <i class="{{ $level1->icon }}"></i> {!! vncore_language_render($level1->title) !!}
                       <span class="float-right dd-nodrag">
                           <a href="{{ sc_route_admin('admin_menu.edit',['id'=>$level1->id]) }}"><i class="fa fa-edit fa-edit"></i></a>
                           &nbsp; 
@@ -91,7 +91,7 @@
                               @if($level2->uri)
                                 <li class="dd-item" data-id="{{ $level2->id }}">
                                     <div class="dd-handle {{ ($level2->id == $id)? 'active-item' : '' }}">
-                                      <i class="{{ $level2->icon }}"></i> {!! sc_language_render($level2->title) !!}
+                                      <i class="{{ $level2->icon }}"></i> {!! vncore_language_render($level2->title) !!}
                                       <span class="float-right dd-nodrag">
                                           <a href="{{ sc_route_admin('admin_menu.edit',['id'=>$level2->id]) }}"><i class="fa fa-edit fa-edit"></i></a>
                                           &nbsp; 
@@ -102,7 +102,7 @@
                               @else
                               <li class="dd-item" data-id="{{ $level2->id }}">
                                 <div class="dd-handle {{ ($level2->id == $id)? 'active-item' : '' }}">
-                                  <i class="{{ $level2->icon }}"></i> {!! sc_language_render($level2->title) !!}
+                                  <i class="{{ $level2->icon }}"></i> {!! vncore_language_render($level2->title) !!}
                                   <span class="float-right dd-nodrag">
                                       <a href="{{ sc_route_admin('admin_menu.edit',['id'=>$level2->id]) }}"><i class="fa fa-edit fa-edit"></i></a>
                                       &nbsp; 
@@ -142,7 +142,7 @@
                 @if ($layout == 'edit')
                 <div class="card-tools">
                     <div class="btn-group float-right" style="margin-right: 5px">
-                        <a href="{{ sc_route_admin('admin_menu.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+                        <a href="{{ sc_route_admin('admin_menu.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                     </div>
                 </div>
                 @endif
@@ -153,7 +153,7 @@
                     <div class="card-body">
 
                       <div class="form-group row {{ $errors->has('parent_id') ? ' text-red' : '' }}">
-                        <label for="parent_id" class="col-sm-2 col-form-label">{{ sc_language_render('admin.menu.parent') }}</label>
+                        <label for="parent_id" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.menu.parent') }}</label>
                         <div class="col-sm-10 ">
                           <select class="form-control parent mb-3" name="parent_id" >
                             <option value=""></option>
@@ -173,7 +173,7 @@
                       </div>
 
                       <div class="form-group row {{ $errors->has('title') ? ' text-red' : '' }}">
-                        <label for="title" class="col-sm-2 col-form-label">{{ sc_language_render('admin.menu.title') }}</label>
+                        <label for="title" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.menu.title') }}</label>
                         <div class="col-sm-10 ">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -192,7 +192,7 @@
                       </div>
 
                       <div class="form-group row {{ $errors->has('icon') ? ' text-red' : '' }}">
-                        <label for="icon" class="col-sm-2 col-form-label">{{ sc_language_render('admin.menu.icon') }}</label>
+                        <label for="icon" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.menu.icon') }}</label>
                         <div class="col-sm-10 ">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -216,7 +216,7 @@
                       </div>
 
                       <div class="form-group row {{ $errors->has('uri') ? ' text-red' : '' }}">
-                        <label for="uri" class="col-sm-2 col-form-label">{{ sc_language_render('admin.menu.uri') }}</label>
+                        <label for="uri" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.menu.uri') }}</label>
                         <div class="col-sm-10 ">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -235,7 +235,7 @@
                       </div>
 
                       <div class="form-group row {{ $errors->has('sort') ? ' text-red' : '' }}">
-                        <label for="sort" class="col-sm-2 col-form-label">{{ sc_language_render('admin.menu.sort') }}</label>
+                        <label for="sort" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.menu.sort') }}</label>
                         <div class="col-sm-10 ">
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -263,11 +263,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                             </div>
 
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>
@@ -307,13 +307,13 @@ $('.remove_menu').click(function(event) {
   })
 
   swalWithBootstrapButtons.fire({
-    title: '{{ sc_language_render('action.delete_confirm') }}',
+    title: '{{ vncore_language_render('action.delete_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ sc_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ sc_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -341,7 +341,7 @@ $('.remove_menu').click(function(event) {
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ sc_language_render('action.delete_confirm_deleted_msg') }}', '{{ sc_language_render('action.delete_confirm_deleted') }}');
+      alertMsg('success', '{{ vncore_language_render('action.delete_confirm_deleted_msg') }}', '{{ vncore_language_render('action.delete_confirm_deleted') }}');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel

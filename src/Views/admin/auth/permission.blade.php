@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ sc_route_admin('admin_user.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ sc_route_admin('admin_user.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                         <div class="fields-group">
 
                             <div class="form-group row  {{ $errors->has('name') ? ' text-red' : '' }}">
-                                <label for="name" class="col-sm-2  control-label">{{ sc_language_render('admin.permission.name') }}</label>
+                                <label for="name" class="col-sm-2  control-label">{{ vncore_language_render('admin.permission.name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="form-group row  {{ $errors->has('slug') ? ' text-red' : '' }}">
-                                <label for="slug" class="col-sm-2  control-label">{{ sc_language_render('admin.permission.slug') }}</label>
+                                <label for="slug" class="col-sm-2  control-label">{{ vncore_language_render('admin.permission.slug') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -63,9 +63,9 @@
     @php
         $old_http_uri = old('http_uri',($permission)?explode(',', $permission->http_uri):[]);
     @endphp
-                                <label for="http_uri" class="col-sm-2  control-label">{{ sc_language_render('admin.permission.select_http_uri') }}</label>
+                                <label for="http_uri" class="col-sm-2  control-label">{{ vncore_language_render('admin.permission.select_http_uri') }}</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control input-sm http_uri select2"  multiple="multiple" data-placeholder="{{ sc_language_render('admin.permission.method_placeholder') }}" style="width: 100%;" name="http_uri[]" >
+                                    <select class="form-control input-sm http_uri select2"  multiple="multiple" data-placeholder="{{ vncore_language_render('admin.permission.method_placeholder') }}" style="width: 100%;" name="http_uri[]" >
                                         <option value=""></option>
                                         @foreach ($routeAdmin as  $route)
                                             <option value="{{ $route['uri'] }}"  {{ in_array($route['uri'], $old_http_uri)?'selected':'' }}  >{{ $route['name']?$route['method'].'::'.$route['name']:$route['uri'] }}</option>
@@ -96,11 +96,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                             </div>
 
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>

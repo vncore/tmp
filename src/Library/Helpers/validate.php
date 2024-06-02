@@ -12,7 +12,7 @@ if (!function_exists('sc_check_view') && !in_array('sc_check_view', config('help
     {
         if (!view()->exists($view)) {
             sc_report('View not found '.$view);
-            echo  sc_language_render('front.view_not_exist', ['view' => $view]);
+            echo  vncore_language_render('front.view_not_exist', ['view' => $view]);
             exit();
         }
     }

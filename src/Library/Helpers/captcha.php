@@ -52,11 +52,11 @@ if (!function_exists('sc_get_plugin_captcha_installed') && !in_array('sc_get_plu
         $arrPlugin = [];
         if ($listPluginInstalled) {
             foreach ($listPluginInstalled as $key => $plugin) {
-                $keyPlugin = sc_word_format_class($plugin->key);
+                $keyPlugin = vncore_word_format_class($plugin->key);
                 $pathPlugin = app_path() . '/Plugins/Other/'.$keyPlugin;
                 $nameSpaceConfig = '\App\Plugins\Other\\'.$keyPlugin.'\AppConfig';
                 if (file_exists($pathPlugin . '/AppConfig.php') && class_exists($nameSpaceConfig)) {
-                    $arrPlugin[$nameSpaceConfig] = sc_language_render($plugin->detail);
+                    $arrPlugin[$nameSpaceConfig] = vncore_language_render($plugin->detail);
                 }
             }
         }

@@ -11,7 +11,7 @@
                <tbody>
                 <tr>
                   <td>
-                    {!! sc_language_render('admin.seo.url_seo_lang') !!}
+                    {!! vncore_language_render('admin.seo.url_seo_lang') !!}
                   </td>
                   <td>
                     <input class="check-data-config-global"  type="checkbox" name="url_seo_lang" {{ sc_config_global('url_seo_lang')?"checked":"" }}>
@@ -68,7 +68,7 @@ $('input.check-data-config-global').iCheck({
         } else {
           $('#smtp-config').show();
         }
-        alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+        alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
       } else {
         alertJs('error', data.msg);
       }

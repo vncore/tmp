@@ -76,7 +76,7 @@ class AdminPluginsOnlineController extends RootAdminController
                     'link' =>  $data['link'] ?? '',
                 ];
             }
-            $resultItems = sc_language_render('admin.result_item', ['item_from' => $dataApi['from'] ?? 0, 'item_to' => $dataApi['to']??0, 'total' =>  $dataApi['total'] ?? 0]);
+            $resultItems = vncore_language_render('admin.result_item', ['item_from' => $dataApi['from'] ?? 0, 'item_to' => $dataApi['to']??0, 'total' =>  $dataApi['total'] ?? 0]);
             $htmlPaging .= '<ul class="pagination pagination-sm no-margin pull-right">';
             if ($dataApi['current_page'] > 1) {
                 $htmlPaging .= '<li class="page-item"><a class="page-link pjax-container" href="'.sc_route_admin('admin_plugin_online', ['code' => strtolower($code)]).'?page='.($dataApi['current_page'] - 1).'" rel="prev">«</a></li>';
@@ -96,7 +96,7 @@ class AdminPluginsOnlineController extends RootAdminController
         }
 
         $arrPluginLocal = sc_get_all_plugin();
-        $title = sc_language_render('admin.plugin.plugin');
+        $title = vncore_language_render('admin.plugin.plugin');
 
         return view($this->templatePathAdmin.'screen.plugin_online')->with(
             [
@@ -151,7 +151,7 @@ class AdminPluginsOnlineController extends RootAdminController
                 $scartVersion = $config['scartVersion'] ?? '';
                 if (!sc_plugin_compatibility_check($scartVersion)) {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    $response = ['error' => 1, 'msg' => sc_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')])];
+                    $response = ['error' => 1, 'msg' => vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')])];
                 } else {
                     $folderName = explode('/config.json', $checkConfig[0]);
                     $folderName = explode('/', $folderName[0]);

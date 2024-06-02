@@ -5,9 +5,9 @@
       <div class="col-md-12">
           <div class="box-body">
             <div class="error-page text-center">
-                <h2 class="text-red">403 - {{ sc_language_render('admin.deny_content') }}</h2>
+                <h2 class="text-red">403 - {{ vncore_language_render('admin.deny_content') }}</h2>
                 @if ($url)
-                <span><h4><i class="fa fa-warning text-red" aria-hidden="true"></i> {{ sc_language_render('admin.deny_msg') }}</h4></span>
+                <span><h4><i class="fa fa-warning text-red" aria-hidden="true"></i> {{ vncore_language_render('admin.deny_msg') }}</h4></span>
                 <span><strong>URL:</strong> <code>{{ $url }}</code> - <strong>Method:</strong> <code>{{ $method }}</code></span>
                 @endif
             </div>

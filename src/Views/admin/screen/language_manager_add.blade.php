@@ -14,19 +14,19 @@
                             @csrf
                             <table class="table table-hover box-body text-wrap table-bordered">
                               <tr>
-                                  <td>{{ sc_language_render('admin.language_manager.select_position') }}</td>
-                                  <td>{{ sc_language_render('admin.language_manager.code') }}</td>
-                                  <td>{{ sc_language_render('admin.language_manager.text') }}</td>
+                                  <td>{{ vncore_language_render('admin.language_manager.select_position') }}</td>
+                                  <td>{{ vncore_language_render('admin.language_manager.code') }}</td>
+                                  <td>{{ vncore_language_render('admin.language_manager.text') }}</td>
                               </tr>
                               <tr class="form-add-new">
                                 <td class="{{ ($errors->has('position') || $errors->has('position_new')) ? 'text-red':'' }}">
                                       <select class="form-control select-position select2" name="position">
-                                        <option value="">{{ sc_language_render('admin.language_manager.select_position') }}</option>
+                                        <option value="">{{ vncore_language_render('admin.language_manager.select_position') }}</option>
                                         @foreach ($positionLang as $itemPosition)
                                             <option value="{{ $itemPosition }}"  {{ (old('position') == $itemPosition) ? 'selected':'' }} >{{ $itemPosition }}</option>
                                         @endforeach
                                       </select>
-                                        {{ sc_language_render('admin.language_manager.new_position') }}:
+                                        {{ vncore_language_render('admin.language_manager.new_position') }}:
                                       @if ($errors->has('position'))
                                       <span class="form-text">
                                           <i class="fa fa-info-circle"></i>
@@ -34,7 +34,7 @@
                                       </span>
                                       @endif
 
-                                      <input name="position_new" value="{{ old('position_new') }}" class="form-control" placeholder="{{ sc_language_render('admin.language_manager.position') }}">
+                                      <input name="position_new" value="{{ old('position_new') }}" class="form-control" placeholder="{{ vncore_language_render('admin.language_manager.position') }}">
                                       @if ($errors->has('position_new'))
                                       <span class="form-text">
                                           <i class="fa fa-info-circle"></i>
@@ -61,7 +61,7 @@
                                     @endif
                                     <span class="form-text">
                                         <i class="fa fa-info-circle"></i>
-                                        {!! sc_language_render('admin.language_manager.text_help',['link' => sc_route_admin('admin_language_manager.index')]) !!}
+                                        {!! vncore_language_render('admin.language_manager.text_help',['link' => sc_route_admin('admin_language_manager.index')]) !!}
                                     </span>
                                 </td>
                               </tr>

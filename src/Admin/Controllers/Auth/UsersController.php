@@ -22,7 +22,7 @@ class UsersController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'         => sc_language_render('admin.user.list'),
+            'title'         => vncore_language_render('admin.user.list'),
             'subTitle'      => '',
             'icon'          => 'fa fa-indent',
             'urlDeleteItem' => sc_route_admin('admin_user.delete'),
@@ -40,22 +40,22 @@ class UsersController extends RootAdminController
 
         $listTh = [
             'id'         => 'ID',
-            'username'   => sc_language_render('admin.user.user_name'),
-            'name'       => sc_language_render('admin.user.name'),
-            'roles'      => sc_language_render('admin.user.roles'),
-            'permission' => sc_language_render('admin.user.permission'),
-            'created_at' => sc_language_render('admin.created_at'),
-            'action'     => sc_language_render('action.title'),
+            'username'   => vncore_language_render('admin.user.user_name'),
+            'name'       => vncore_language_render('admin.user.name'),
+            'roles'      => vncore_language_render('admin.user.roles'),
+            'permission' => vncore_language_render('admin.user.permission'),
+            'created_at' => vncore_language_render('admin.created_at'),
+            'action'     => vncore_language_render('action.title'),
         ];
         $sort_order = sc_clean(request('sort_order') ?? 'id_desc');
         $keyword    = sc_clean(request('keyword') ?? '');
         $arrSort = [
-            'id__desc'       => sc_language_render('filter_sort.id_desc'),
-            'id__asc'        => sc_language_render('filter_sort.id_asc'),
-            'username__desc' => sc_language_render('filter_sort.alpha_desc', ['alpha' => 'username']),
-            'alpha__asc'  => sc_language_render('filter_sort.alpha_asc', ['alpha' => 'username']),
-            'name__desc'     => sc_language_render('filter_sort.name_desc'),
-            'name__asc'      => sc_language_render('filter_sort.name_asc'),
+            'id__desc'       => vncore_language_render('filter_sort.id_desc'),
+            'id__asc'        => vncore_language_render('filter_sort.id_asc'),
+            'username__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' => 'username']),
+            'alpha__asc'  => vncore_language_render('filter_sort.alpha_asc', ['alpha' => 'username']),
+            'name__desc'     => vncore_language_render('filter_sort.name_desc'),
+            'name__asc'      => vncore_language_render('filter_sort.name_asc'),
         ];
         $obj = new AdminUser;
 
@@ -93,8 +93,8 @@ class UsersController extends RootAdminController
                 'permission' => $showPermission,
                 'created_at' => $row['created_at'],
                 'action' => '
-                    <a href="' . sc_route_admin('admin_user.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-                    ' . ((Admin::user()->id == $row['id'] || in_array($row['id'], SC_GUARD_ADMIN)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
+                    <a href="' . sc_route_admin('admin_user.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    ' . ((Admin::user()->id == $row['id'] || in_array($row['id'], SC_GUARD_ADMIN)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
                 ,
             ];
         }
@@ -102,11 +102,11 @@ class UsersController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
         $data['menuRight'][] = '<a href="' . sc_route_admin('admin_user.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-                           <i class="fa fa-plus" title="'.sc_language_render('action.add').'"></i>
+                           <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
 
@@ -124,7 +124,7 @@ class UsersController extends RootAdminController
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
                     </select> &nbsp;
-                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . sc_language_render('admin.user.search_place') . '" value="' . $keyword . '">
+                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . vncore_language_render('admin.user.search_place') . '" value="' . $keyword . '">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
@@ -144,9 +144,9 @@ class UsersController extends RootAdminController
     public function create()
     {
         $data = [
-            'title'             => sc_language_render('admin.user.add_new_title'),
+            'title'             => vncore_language_render('admin.user.add_new_title'),
             'subTitle'          => '',
-            'title_description' => sc_language_render('admin.user.add_new_des'),
+            'title_description' => vncore_language_render('admin.user.add_new_des'),
             'icon'              => 'fa fa-plus',
             'user'              => [],
             'roles'             => $this->roles,
@@ -173,7 +173,7 @@ class UsersController extends RootAdminController
             'password' => 'required|string|max:60|min:6|confirmed',
             'email'    => 'required|string|email|max:255|unique:"'.AdminUser::class.'",email',
         ], [
-            'username.regex' => sc_language_render('admin.user.username_validate'),
+            'username.regex' => vncore_language_render('admin.user.username_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -215,7 +215,7 @@ class UsersController extends RootAdminController
             $user->permissions()->attach($permission);
         }
 
-        return redirect()->route('admin_user.index')->with('success', sc_language_render('action.create_success'));
+        return redirect()->route('admin_user.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -228,7 +228,7 @@ class UsersController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title'             => sc_language_render('action.edit'),
+            'title'             => vncore_language_render('action.edit'),
             'subTitle'          => '',
             'title_description' => '',
             'icon'              => 'fa fa-edit',
@@ -258,7 +258,7 @@ class UsersController extends RootAdminController
             'password' => 'nullable|string|max:60|min:6|confirmed',
             'email'    => 'required|string|email|max:255|unique:"'.AdminUser::class.'",email,' . $user->id,
         ], [
-            'username.regex' => sc_language_render('admin.user.username_validate'),
+            'username.regex' => vncore_language_render('admin.user.username_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -295,7 +295,7 @@ class UsersController extends RootAdminController
         }
 
 //
-        return redirect()->route('admin_user.index')->with('success', sc_language_render('action.edit_success'));
+        return redirect()->route('admin_user.index')->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -305,7 +305,7 @@ class UsersController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

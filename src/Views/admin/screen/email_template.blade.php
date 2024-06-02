@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ sc_route_admin('admin_email_template.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ sc_route_admin('admin_email_template.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
 
                     <div class="card-body">
                             <div class="form-group row  {{ $errors->has('name') ? ' text-red' : '' }}">
-                                <label for="name" class="col-sm-2 col-form-label">{{ sc_language_render('admin.email_template.name') }}</label>
+                                <label for="name" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.email_template.name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="form-group row  {{ $errors->has('group') ? ' text-red' : '' }}">
-                                <label for="group" class="col-sm-2 col-form-label">{{ sc_language_render('admin.email_template.group') }}</label>
+                                <label for="group" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.email_template.group') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control group select2" style="width: 100%;" name="group" >
                                         <option value=""></option>
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group row {{ $errors->has('text') ? ' text-red' : '' }}">
-                                <label for="text" class="col-sm-2 col-form-label">{{ sc_language_render('admin.email_template.text') }}</label>
+                                <label for="text" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.email_template.text') }}</label>
                                 <div class="col-sm-8">
                                         <textarea class="form-control" rows="10" id="text" name="text">{!! old('text',$obj['text']??'') !!}</textarea>
                                         @if ($errors->has('text'))
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="form-group row ">
-                                <label for="status" class="col-sm-2 col-form-label">{{ sc_language_render('admin.email_template.status') }}</label>
+                                <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.email_template.status') }}</label>
                                 <div class="col-sm-8">
                                     <input class="checkbox" type="checkbox" name="status"  {{ old('status',(empty($obj['status'])?0:1))?'checked':''}}>
                                 </div>
@@ -75,7 +75,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-2"></div>
                                 <div class="col-sm-8">
-                                    <label>{{ sc_language_render('admin.email_template.variable_support') }}</label>
+                                    <label>{{ vncore_language_render('admin.email_template.variable_support') }}</label>
                                     <div id="list-variables">
                                     </div>                                   
                                 </div>
@@ -91,11 +91,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                             </div>
 
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>

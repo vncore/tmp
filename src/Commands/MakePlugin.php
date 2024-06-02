@@ -66,8 +66,8 @@ class MakePlugin extends Command
         $msg = '';
 
         $arrcodePlugin = ['Cms', 'Other', 'Payment', 'Shipping', 'Total'];
-        $pluginKey = sc_word_format_class($key);
-        $pluginCode = sc_word_format_class($code);
+        $pluginKey = vncore_word_format_class($key);
+        $pluginCode = vncore_word_format_class($code);
         if (!in_array($pluginCode, $arrcodePlugin)) {
             $pluginCode = 'Other';
         }

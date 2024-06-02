@@ -16,8 +16,8 @@ class AdminSupplierController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => sc_language_render('admin.supplier.list'),
-            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . sc_language_render('admin.supplier.add_new_title'),
+            'title' => vncore_language_render('admin.supplier.list'),
+            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.supplier.add_new_title'),
             'subTitle' => '',
             'icon' => 'fa fa-indent',
             'urlDeleteItem' => sc_route_admin('admin_supplier.delete'),
@@ -30,11 +30,11 @@ class AdminSupplierController extends RootAdminController
         ];
 
         $listTh = [
-            'name' => sc_language_render('admin.supplier.name'),
-            'image' => sc_language_render('admin.supplier.image'),
-            'email' => sc_language_render('admin.supplier.email'),
-            'sort' => sc_language_render('admin.supplier.sort'),
-            'action' => sc_language_render('action.title'),
+            'name' => vncore_language_render('admin.supplier.name'),
+            'image' => vncore_language_render('admin.supplier.image'),
+            'email' => vncore_language_render('admin.supplier.email'),
+            'sort' => vncore_language_render('admin.supplier.sort'),
+            'action' => vncore_language_render('action.title'),
         ];
         $obj = new ShopSupplier;
         $obj = $obj->orderBy('id', 'desc');
@@ -48,9 +48,9 @@ class AdminSupplierController extends RootAdminController
                 'email' => $row['email'],
                 'sort' => $row['sort'],
                 'action' => '
-                    <a href="' . sc_route_admin('admin_supplier.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . sc_route_admin('admin_supplier.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -58,7 +58,7 @@ class AdminSupplierController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'index';
         return view($this->templatePathAdmin.'screen.supplier')
@@ -94,8 +94,8 @@ class AdminSupplierController extends RootAdminController
             }
         }
         $validator = Validator::make($data, $arrValidation, [
-            'name.required' => sc_language_render('validation.required', ['attribute' => sc_language_render('admin.supplier.name')]),
-            'alias.regex' => sc_language_render('admin.supplier.alias_validate'),
+            'name.required' => vncore_language_render('validation.required', ['attribute' => vncore_language_render('admin.supplier.name')]),
+            'alias.regex' => vncore_language_render('admin.supplier.alias_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -121,7 +121,7 @@ class AdminSupplierController extends RootAdminController
         $fields = $data['fields'] ?? [];
         sc_update_custom_field($fields, $supplier->id, 'shop_supplier');
 
-        return redirect()->route('admin_supplier.index')->with('success', sc_language_render('action.create_success'));
+        return redirect()->route('admin_supplier.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -134,8 +134,8 @@ class AdminSupplierController extends RootAdminController
             return 'No data';
         }
         $data = [
-        'title' => sc_language_render('admin.supplier.list'),
-        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . sc_language_render('action.edit'),
+        'title' => vncore_language_render('admin.supplier.list'),
+        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('action.edit'),
         'subTitle' => '',
         'icon' => 'fa fa-indent',
         'urlDeleteItem' => sc_route_admin('admin_supplier.delete'),
@@ -150,11 +150,11 @@ class AdminSupplierController extends RootAdminController
     ];
 
         $listTh = [
-        'name' => sc_language_render('admin.supplier.name'),
-        'image' => sc_language_render('admin.supplier.image'),
-        'email' => sc_language_render('admin.supplier.email'),
-        'sort' => sc_language_render('admin.supplier.sort'),
-        'action' => sc_language_render('action.title'),
+        'name' => vncore_language_render('admin.supplier.name'),
+        'image' => vncore_language_render('admin.supplier.image'),
+        'email' => vncore_language_render('admin.supplier.email'),
+        'sort' => vncore_language_render('admin.supplier.sort'),
+        'action' => vncore_language_render('action.title'),
     ];
 
         $obj = new ShopSupplier;
@@ -169,9 +169,9 @@ class AdminSupplierController extends RootAdminController
             'email' => $row['email'],
             'sort' => $row['sort'],
             'action' => '
-                <a href="' . sc_route_admin('admin_supplier.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . sc_route_admin('admin_supplier.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                 ',
         ];
         }
@@ -179,7 +179,7 @@ class AdminSupplierController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'edit';
         return view($this->templatePathAdmin.'screen.supplier')
@@ -215,8 +215,8 @@ class AdminSupplierController extends RootAdminController
             }
         }
         $validator = Validator::make($data, $arrValidation, [
-            'name.required' => sc_language_render('validation.required', ['attribute' => sc_language_render('admin.supplier.name')]),
-            'alias.regex' => sc_language_render('admin.supplier.alias_validate'),
+            'name.required' => vncore_language_render('validation.required', ['attribute' => vncore_language_render('admin.supplier.name')]),
+            'alias.regex' => vncore_language_render('admin.supplier.alias_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -244,7 +244,7 @@ class AdminSupplierController extends RootAdminController
         $fields = $data['fields'] ?? [];
         sc_update_custom_field($fields, $supplier->id, 'shop_supplier');
 
-        return redirect()->back()->with('success', sc_language_render('action.edit_success'));
+        return redirect()->back()->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -254,7 +254,7 @@ class AdminSupplierController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

@@ -13,7 +13,7 @@ class AdminSeoConfigController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'    => sc_language_render('admin.seo.config'),
+            'title'    => vncore_language_render('admin.seo.config'),
             'subTitle' => '',
             'icon'     => 'fa fa-indent',
         ];

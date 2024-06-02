@@ -64,9 +64,9 @@ class Export
         $worksheet = $spreadsheet->getActiveSheet();
         // $worksheet->getDefaultColumnDimension()->setWidth(100);
         $worksheet->setTitle($sheetname);
-        $worksheet->getCell('E1')->setValue(sc_language_render('order.date_export'));
+        $worksheet->getCell('E1')->setValue(vncore_language_render('order.date_export'));
         $worksheet->getCell('E2')->setValue(date('Y-m-d'));
-        $worksheet->getCell('F1')->setValue(sc_language_render('order.id'));
+        $worksheet->getCell('F1')->setValue(vncore_language_render('order.id'));
         $worksheet->getCell('F2')->setValue($dataExport['id']);
         //logo
         $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\HeaderFooterDrawing();
@@ -83,65 +83,65 @@ class Export
         //End logo
 
         $indexRow = 2;
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.full_name') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.full_name') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['name']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.shipping_address') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.shipping_address') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['address']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.shipping_phone') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.shipping_phone') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['phone']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.email') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.email') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['email']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.payment_method') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.payment_method') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['payment_method']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.shipping_method') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.shipping_method') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['shipping_method']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.date') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.date') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['created_at']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.currency') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.currency') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['currency']);
 
         ++$indexRow;
         $worksheet->insertNewRowBefore($indexRow, 1);
-        $worksheet->getCell('A' . $indexRow)->setValue(sc_language_render('order.exchange_rate') . ':')
+        $worksheet->getCell('A' . $indexRow)->setValue(vncore_language_render('order.exchange_rate') . ':')
             ->getStyle()->getFont()->setBold(true);
         $worksheet->getCell('B' . $indexRow)->setValue($dataExport['exchange_rate']);
 
         //Title product detail
         $indexTitleRowDetail = $indexRow + 2;
-        $worksheet->getCell('B' . $indexTitleRowDetail)->setValue(sc_language_render('product.sku'));
-        $worksheet->getCell('C' . $indexTitleRowDetail)->setValue(sc_language_render('product.name'));
-        $worksheet->getCell('D' . $indexTitleRowDetail)->setValue(sc_language_render('order.qty'));
-        $worksheet->getCell('E' . $indexTitleRowDetail)->setValue(sc_language_render('order.amount'));
-        $worksheet->getCell('F' . $indexTitleRowDetail)->setValue(sc_language_render('order.totals.total'));
+        $worksheet->getCell('B' . $indexTitleRowDetail)->setValue(vncore_language_render('product.sku'));
+        $worksheet->getCell('C' . $indexTitleRowDetail)->setValue(vncore_language_render('product.name'));
+        $worksheet->getCell('D' . $indexTitleRowDetail)->setValue(vncore_language_render('order.qty'));
+        $worksheet->getCell('E' . $indexTitleRowDetail)->setValue(vncore_language_render('order.amount'));
+        $worksheet->getCell('F' . $indexTitleRowDetail)->setValue(vncore_language_render('order.totals.total'));
 
         //Item detail
         $indexRowDetail = $indexRow + 3;
@@ -156,34 +156,34 @@ class Export
         }
         //Subtotal
         $indexRowTotal = $indexRowDetail + 1;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.totals.subtotal').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.totals.subtotal').':');
         $worksheet->getCell('F' . $indexRowTotal)->setValue($dataExport['subtotal']);
         //Tax
         ++$indexRowTotal;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.totals.tax').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.totals.tax').':');
         $worksheet->getCell('F' . $indexRowTotal)->setValue($dataExport['tax']);
         //Shipping
         ++$indexRowTotal;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.totals.shipping').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.totals.shipping').':');
         $worksheet->getCell('F' . $indexRowTotal)->setValue($dataExport['shipping']);
         //Discount
         ++$indexRowTotal;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.totals.discount').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.totals.discount').':');
         $worksheet->getCell('F' . $indexRowTotal)->setValue($dataExport['discount']);
         //Total
         ++$indexRowTotal;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.totals.total').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.totals.total').':');
         //Other
         ++$indexRowTotal;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.other_fee').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.other_fee').':');
         $worksheet->getCell('F' . $indexRowTotal)->setValue($dataExport['other_fee'] ?? 0);
         //Received
         ++$indexRowTotal;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.totals.received').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.totals.received').':');
         $worksheet->getCell('F' . $indexRowTotal)->setValue($dataExport['received']);
         //Balance
         ++$indexRowTotal;
-        $worksheet->getCell('E' . $indexRowTotal)->setValue(sc_language_render('order.totals.balance').':');
+        $worksheet->getCell('E' . $indexRowTotal)->setValue(vncore_language_render('order.totals.balance').':');
 
         // $worksheet->fromArray($dataExport, $nullValue = null, $startCell = 'A' . $row);
         $writer = IOFactory::createWriter($spreadsheet, "Xlsx");

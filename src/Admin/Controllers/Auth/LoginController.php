@@ -29,7 +29,7 @@ class LoginController extends RootAdminController
             return redirect($this->redirectPath());
         }
 
-        return view($this->templatePathAdmin.'auth.login', ['title'=> sc_language_render('admin.login')]);
+        return view($this->templatePathAdmin.'auth.login', ['title'=> vncore_language_render('admin.login')]);
     }
 
     /**
@@ -93,7 +93,7 @@ class LoginController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title' => sc_language_render('admin.setting_account'),
+            'title' => vncore_language_render('admin.setting_account'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
@@ -116,7 +116,7 @@ class LoginController extends RootAdminController
             'avatar' => 'nullable|string|max:255',
             'password' => 'nullable|string|max:60|min:6|confirmed',
         ], [
-            'username.regex' => sc_language_render('admin.user.username_validate'),
+            'username.regex' => vncore_language_render('admin.user.username_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -136,7 +136,7 @@ class LoginController extends RootAdminController
         $dataUpdate = sc_clean($dataUpdate, [], true);
         $user->update($dataUpdate);
 
-        return redirect()->route('admin.home')->with('success', sc_language_render('action.edit_success'));
+        return redirect()->route('admin.home')->with('success', vncore_language_render('action.edit_success'));
     }
 
     /**
@@ -145,7 +145,7 @@ class LoginController extends RootAdminController
     protected function getFailedLoginMessage()
     {
         return lang::has('auth.failed')
-        ? sc_language_render('admin.failed')
+        ? vncore_language_render('admin.failed')
         : 'These credentials do not match our records.';
     }
 
@@ -174,7 +174,7 @@ class LoginController extends RootAdminController
     {
         $request->session()->regenerate();
 
-        return redirect()->intended($this->redirectPath())->with(['success' => sc_language_render('admin.login_successful')]);
+        return redirect()->intended($this->redirectPath())->with(['success' => vncore_language_render('admin.login_successful')]);
     }
 
     /**

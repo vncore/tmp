@@ -22,7 +22,7 @@
                                       <label class="custom-file-label" for="input-file">Choose file</label>
                                     </div>
                                     <div class="input-group-append">
-                                      <span class="btn button-upload">{{ sc_language_render('admin.template.import_submit') }}</span>
+                                      <span class="btn button-upload">{{ vncore_language_render('admin.template.import_submit') }}</span>
                                     </div>
                                 </div>
 
@@ -33,7 +33,7 @@
                                     </span>
                                     @else
                                     <span class="form-text">
-                                        <i class="fa fa-info-circle"></i> {!! sc_language_render('admin.template.import_note') !!}
+                                        <i class="fa fa-info-circle"></i> {!! vncore_language_render('admin.template.import_note') !!}
                                     </span>
                                     @endif
                                 </div>

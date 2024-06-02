@@ -15,13 +15,13 @@ if (!function_exists('sc_contact_mapping_validate') && !in_array('sc_contact_map
             'phone' => config('validation.customer.phone_required', 'required|regex:/^0[^0][0-9\-]{6,12}$/'),
         ];
         $messages = [
-            'name.required'    => sc_language_render('validation.required', ['attribute' => sc_language_render('contact.name')]),
-            'content.required' => sc_language_render('validation.required', ['attribute' => sc_language_render('contact.content')]),
-            'title.required'   => sc_language_render('validation.required', ['attribute' => sc_language_render('contact.subject')]),
-            'email.required'   => sc_language_render('validation.required', ['attribute' => sc_language_render('contact.email')]),
-            'email.email'      => sc_language_render('validation.email', ['attribute' => sc_language_render('contact.email')]),
-            'phone.required'   => sc_language_render('validation.required', ['attribute' => sc_language_render('contact.phone')]),
-            'phone.regex'      => sc_language_render('customer.phone_regex'),
+            'name.required'    => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.name')]),
+            'content.required' => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.content')]),
+            'title.required'   => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.subject')]),
+            'email.required'   => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.email')]),
+            'email.email'      => vncore_language_render('validation.email', ['attribute' => vncore_language_render('contact.email')]),
+            'phone.required'   => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.phone')]),
+            'phone.regex'      => vncore_language_render('customer.phone_regex'),
         ];
         $dataMap['validate'] = $validate;
         $dataMap['messages'] = $messages;

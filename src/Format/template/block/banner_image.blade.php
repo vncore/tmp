@@ -9,7 +9,7 @@ $banners = $modelBanner->start()->setType('banner')->getData()
       <div class="swiper-slide-caption section-md text-center">
         <div class="container">
           <a href="{{ sc_route('banner.click',['id' => $banner->id]) }}" target="{{ $banner->target }}">
-            {!! sc_html_render($banner->html) !!}
+            {!! vncore_html_render($banner->html) !!}
           </a>
         </div>
       </div>

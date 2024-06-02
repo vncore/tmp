@@ -29,7 +29,7 @@ class AdminPluginsController extends RootAdminController
         $arrDefault = config('admin.plugin_protected');
         $pluginsInstalled = sc_get_plugin_installed($onlyActive = false);
         $plugins = sc_get_all_plugin();
-        $title = sc_language_render('admin.plugin.index');
+        $title = vncore_language_render('admin.plugin.index');
         return $this->render($pluginsInstalled, $plugins, $title, $arrDefault);
     }
 
@@ -106,7 +106,7 @@ class AdminPluginsController extends RootAdminController
     public function importPlugin()
     {
         $data =  [
-            'title' => sc_language_render('admin.plugin.import')
+            'title' => vncore_language_render('admin.plugin.import')
         ];
         return view($this->templatePathAdmin.'screen.plugin_upload')
         ->with($data);
@@ -154,7 +154,7 @@ class AdminPluginsController extends RootAdminController
                     $scartVersion = $config['scartVersion'] ?? '';
                     if (!sc_plugin_compatibility_check($scartVersion)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', sc_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')]));
+                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')]));
                     }
 
                     $configGroup = $config['configGroup'] ?? '';
@@ -163,13 +163,13 @@ class AdminPluginsController extends RootAdminController
                     //Process if plugin config incorect
                     if (!$configGroup || !$configKey) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', sc_language_render('admin.plugin.error_config_format'));
+                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_config_format'));
                     }
                     //Check plugin exist
                     $arrPluginLocal = sc_get_all_plugin();
                     if (array_key_exists($configKey, $arrPluginLocal)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', sc_language_render('admin.plugin.error_exist'));
+                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_exist'));
                     }
 
                     $pathPlugin = $configGroup.'/'.$configKey;
@@ -198,18 +198,18 @@ class AdminPluginsController extends RootAdminController
                     }
                 } else {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    return redirect()->back()->with('error', sc_language_render('admin.plugin.error_check_config'));
+                    return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_check_config'));
                 }
             } else {
-                return redirect()->back()->with('error', sc_language_render('admin.plugin.error_unzip'));
+                return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_unzip'));
             }
         } else {
-            return redirect()->back()->with('error', sc_language_render('admin.plugin.error_upload'));
+            return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_upload'));
         }
         if ($linkRedirect) {
-            return redirect($linkRedirect)->with('success', sc_language_render('admin.plugin.import_success'));
+            return redirect($linkRedirect)->with('success', vncore_language_render('admin.plugin.import_success'));
         } else {
-            return redirect()->back()->with('success', sc_language_render('admin.plugin.import_success'));
+            return redirect()->back()->with('success', vncore_language_render('admin.plugin.import_success'));
         }
     }
 }

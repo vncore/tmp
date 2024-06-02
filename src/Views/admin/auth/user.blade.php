@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ sc_route_admin('admin_user.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ sc_route_admin('admin_user.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
 
                     <div class="card-body">
                             <div class="form-group  row {{ $errors->has('name') ? ' text-red' : '' }}">
-                                <label for="name" class="col-sm-2  control-label">{{ sc_language_render('admin.user.name') }}</label>
+                                <label for="name" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('username') ? ' text-red' : '' }}">
-                                <label for="username" class="col-sm-2  control-label">{{ sc_language_render('admin.user.user_name') }}</label>
+                                <label for="username" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.user_name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('email') ? ' text-red' : '' }}">
-                                <label for="email" class="col-sm-2  control-label">{{ sc_language_render('admin.user.email') }}</label>
+                                <label for="email" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.email') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -71,13 +71,13 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('avatar') ? ' text-red' : '' }}">
-                                <label for="avatar" class="col-sm-2  control-label">{{ sc_language_render('admin.user.avatar') }}</label>
+                                <label for="avatar" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.avatar') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <input type="text" id="avatar" name="avatar" value="{{ old('avatar',$user['avatar']??'') }}" class="form-control avatar" placeholder=""  />
                                        <span class="input-group-btn">
                                          <a data-input="avatar" data-preview="preview_avatar" data-type="avatar" class="btn btn-primary lfm">
-                                           <i class="fa fa-image"></i> {{sc_language_render('product.admin.choose_image')}}
+                                           <i class="fa fa-image"></i> {{vncore_language_render('product.admin.choose_image')}}
                                          </a>
                                        </span>
                                     </div>
@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('password') ? ' text-red' : '' }}">
-                                <label for="password" class="col-sm-2  control-label">{{ sc_language_render('admin.user.password') }}</label>
+                                <label for="password" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.password') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -110,7 +110,7 @@
                                         @else
                                             @if ($user)
                                                 <span class="form-text">
-                                                     {{ sc_language_render('admin.user.keep_password') }}
+                                                     {{ vncore_language_render('admin.user.keep_password') }}
                                                  </span>
                                             @endif
                                         @endif
@@ -118,7 +118,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('password_confirmation') ? ' text-red' : '' }}">
-                                <label for="password" class="col-sm-2  control-label">{{ sc_language_render('admin.user.password_confirmation') }}</label>
+                                <label for="password" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.password_confirmation') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -133,7 +133,7 @@
                                         @else
                                             @if ($user)
                                                 <span class="form-text">
-                                                     {{ sc_language_render('admin.user.keep_password') }}
+                                                     {{ vncore_language_render('admin.user.keep_password') }}
                                                  </span>
                                             @endif
                                         @endif
@@ -151,7 +151,7 @@
                                     }
                                 }
                             @endphp
-                                <label for="roles" class="col-sm-2  control-label">{{ sc_language_render('admin.user.select_roles') }}</label>
+                                <label for="roles" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.select_roles') }}</label>
                                 <div class="col-sm-8">
 
                             @if (isset($user['id']) && in_array($user['id'], SC_GUARD_ADMIN))
@@ -161,7 +161,7 @@
                                 @endforeach
                                 @endif
                             @else
-                                <select class="form-control roles select2"  multiple="multiple" data-placeholder="{{ sc_language_render('admin.user.select_roles') }}" style="width: 100%;" name="roles[]" >
+                                <select class="form-control roles select2"  multiple="multiple" data-placeholder="{{ vncore_language_render('admin.user.select_roles') }}" style="width: 100%;" name="roles[]" >
                                     <option value=""></option>
                                     @foreach ($roles as $k => $v)
                                         <option value="{{ $k }}"  {{ (count($listRoles) && in_array($k, $listRoles))?'selected':'' }}>{{ $v }}</option>
@@ -188,7 +188,7 @@
                                         }
                                     }
                                 @endphp
-                                <label for="permission" class="col-sm-2  control-label">{{ sc_language_render('admin.user.add_permission') }}</label>
+                                <label for="permission" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.add_permission') }}</label>
                                 <div class="col-sm-8">
                                     @if (isset($user['id']) && in_array($user['id'], SC_GUARD_ADMIN))
                                         @if (count($listPermission))
@@ -197,7 +197,7 @@
                                             @endforeach
                                         @endif
                                     @else
-                                        <select class="form-control permission select2"  multiple="multiple" data-placeholder="{{ sc_language_render('admin.user.add_permission') }}" style="width: 100%;" name="permission[]" >
+                                        <select class="form-control permission select2"  multiple="multiple" data-placeholder="{{ vncore_language_render('admin.user.add_permission') }}" style="width: 100%;" name="permission[]" >
                                             <option value=""></option>
                                             @foreach ($permissions as $k => $v)
                                                 <option value="{{ $k }}"  {{ (count($listPermission) && in_array($k, $listPermission))?'selected':'' }}>{{ $v }}</option>
@@ -225,11 +225,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                             </div>
 
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
           <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
-              <a class="nav-link active" id="tab-password_policy_customer-tab" data-toggle="pill" href="#tab-password_policy_customer" role="tab" aria-controls="tab-password_policy_customer" aria-selected="false">{{ sc_language_render('password_policy.customer.title') }}</a>
+              <a class="nav-link active" id="tab-password_policy_customer-tab" data-toggle="pill" href="#tab-password_policy_customer" role="tab" aria-controls="tab-password_policy_customer" aria-selected="false">{{ vncore_language_render('password_policy.customer.title') }}</a>
             </li>
             @endif
           </ul>
@@ -57,12 +57,12 @@ $(document).ready(function() {
       $('.editable-required').editable({
         validate: function(value) {
             if (value == '') {
-                return '{{  sc_language_render('admin.not_empty') }}';
+                return '{{  vncore_language_render('admin.not_empty') }}';
             }
         },
         success: function(data) {
           if(data.error == 0){
-            alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+            alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
           } else {
             alertJs('error', data.msg);
           }
@@ -75,7 +75,7 @@ $(document).ready(function() {
         success: function(data) {
           console.log(data);
           if(data.error == 0){
-            alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+            alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
           } else {
             alertMsg('error', data.msg);
           }
@@ -109,7 +109,7 @@ $(document).ready(function() {
         } else {
           $('#smtp-config').show();
         }
-        alertJs('success', '{{ sc_language_render('admin.msg_change_success') }}');
+        alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
       } else {
         alertJs('error', data.msg);
       }

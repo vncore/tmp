@@ -45,7 +45,7 @@
           var route_prefix = (options && options.prefix) ? options.prefix : '{{ sc_route_admin('admin.home').'/'.config('lfm.url_prefix') }}';
           var target_input = $('#' + $(this).data('input'));
           var target_preview = $('#' + $(this).data('preview'));
-          window.open(route_prefix + '?type=' + type, '{{ sc_language_render('admin.file_manager') }}', 'width=900,height=600');
+          window.open(route_prefix + '?type=' + type, '{{ vncore_language_render('admin.file_manager') }}', 'width=900,height=600');
           window.SetUrl = function (items) {
             var file_path = items.map(function (item) {
               return item.url;

@@ -10,16 +10,16 @@
             <img src="{{ Admin::user()->avatar?sc_file(Admin::user()->avatar):sc_file('admin/avatar/user.jpg') }}" class="img-circle" alt="{{ Admin::user()->name }}">
             <div>
               {{ Admin::user()->name }}<br>
-              <small>{{ sc_language_render('admin.user.member_since') }} {{ Admin::user()->created_at }}</small>
+              <small>{{ vncore_language_render('admin.user.member_since') }} {{ Admin::user()->created_at }}</small>
             </div>
           </div>
           <!-- Menu Footer-->
           <div class="user-footer">
             <div class="float-left">
-              <a href="{{ sc_route_admin('admin.setting') }}" class="btn btn-default btn-flat">{{ sc_language_render('admin.user.setting') }}</a>
+              <a href="{{ sc_route_admin('admin.setting') }}" class="btn btn-default btn-flat">{{ vncore_language_render('admin.user.setting') }}</a>
             </div>
             <div class="float-right">
-              <a href="{{ sc_route_admin('admin.logout') }}" class="btn btn-default btn-flat">{{ sc_language_render('admin.user.logout') }}</a>
+              <a href="{{ sc_route_admin('admin.logout') }}" class="btn btn-default btn-flat">{{ vncore_language_render('admin.user.logout') }}</a>
             </div>
           </div>
         </div>

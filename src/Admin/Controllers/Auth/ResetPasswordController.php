@@ -56,10 +56,10 @@ class ResetPasswordController extends RootAdminController
             return redirect(sc_route_admin('admin.home'));
         }
         $data = [
-                'title'       => sc_language_render('admin.password_reset'),
+                'title'       => vncore_language_render('admin.password_reset'),
                 'token'       => $token,
                 'breadcrumbs' => [
-                    ['url'    => '', 'title' => sc_language_render('admin.password_reset')],
+                    ['url'    => '', 'title' => vncore_language_render('admin.password_reset')],
                 ],
             ];
         return view($this->templatePathAdmin.'auth.reset')

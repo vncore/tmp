@@ -71,13 +71,13 @@
               <button type="button" class="btn btn-default grid-select-all"><i class="far fa-square"></i></button>
             </div>
             <div class="menu-left">
-              <span class="btn btn-flat btn-danger grid-trash" title="{{ sc_language_render('action.delete') }}"><i class="fas fa-trash-alt"></i></span>
+              <span class="btn btn-flat btn-danger grid-trash" title="{{ vncore_language_render('action.delete') }}"><i class="fas fa-trash-alt"></i></span>
             </div>
           @endif
 
           @if (!empty($buttonRefresh))
             <div class="menu-left">
-              <span class="btn btn-flat btn-primary grid-refresh" title="{{ sc_language_render('action.refresh') }}"><i class="fas fa-sync-alt"></i></span>
+              <span class="btn btn-flat btn-primary grid-refresh" title="{{ vncore_language_render('action.refresh') }}"><i class="fas fa-sync-alt"></i></span>
             </div>
           @endif
 
@@ -239,13 +239,13 @@ function deleteItem(ids){
     },
     buttonsStyling: true,
   }).fire({
-    title: '{{ sc_language_render('action.delete_confirm') }}',
+    title: '{{ vncore_language_render('action.delete_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ sc_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ sc_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -259,7 +259,7 @@ function deleteItem(ids){
                 },
                 success: function (data) {
                     if(data.error == 1){
-                      alertMsg('error', data.msg, '{{ sc_language_render('action.warning') }}');
+                      alertMsg('error', data.msg, '{{ vncore_language_render('action.warning') }}');
                       $.pjax.reload('#pjax-container');
                       return;
                     }else{
@@ -275,7 +275,7 @@ function deleteItem(ids){
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ sc_language_render('action.delete_confirm_deleted_msg') }}', '{{ sc_language_render('action.delete_confirm_deleted') }}');
+      alertMsg('success', '{{ vncore_language_render('action.delete_confirm_deleted_msg') }}', '{{ vncore_language_render('action.delete_confirm_deleted') }}');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel
@@ -298,13 +298,13 @@ function cloneProduct(id){
     },
     buttonsStyling: true,
   }).fire({
-    title: '{{ sc_language_render('product.admin.clone_confirm') }}',
+    title: '{{ vncore_language_render('product.admin.clone_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ sc_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ sc_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -318,7 +318,7 @@ function cloneProduct(id){
                 },
                 success: function (data) {
                     if(data.error == 1){
-                      alertMsg('error', data.msg, '{{ sc_language_render('action.warning') }}');
+                      alertMsg('error', data.msg, '{{ vncore_language_render('action.warning') }}');
                       $.pjax.reload('#pjax-container');
                       return;
                     }else{
@@ -334,7 +334,7 @@ function cloneProduct(id){
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ sc_language_render('product.admin.clone_success') }}', '');
+      alertMsg('success', '{{ vncore_language_render('product.admin.clone_success') }}', '');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel

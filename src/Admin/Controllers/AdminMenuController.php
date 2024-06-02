@@ -15,14 +15,14 @@ class AdminMenuController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => sc_language_render('admin.menu.list'),
+            'title' => vncore_language_render('admin.menu.list'),
             'subTitle' => '',
             'icon' => 'fa fa-indent',
             'menu' => [],
             'treeMenu' => (new AdminMenu)->getTree(),
             'url_action' => sc_route_admin('admin_menu.create'),
             'urlDeleteItem' => sc_route_admin('admin_menu.delete'),
-            'title_form' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . sc_language_render('admin.menu.create'),
+            'title_form' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.menu.create'),
         ];
         $data['layout'] = 'index';
         return view($this->templatePathAdmin.'screen.list_menu')
@@ -56,7 +56,7 @@ class AdminMenuController extends RootAdminController
         ];
         $dataCreate = sc_clean($dataCreate, [], true);
         AdminMenu::createMenu($dataCreate);
-        return redirect()->route('admin_menu.index')->with('success', sc_language_render('admin.menu.create_success'));
+        return redirect()->route('admin_menu.index')->with('success', vncore_language_render('admin.menu.create_success'));
     }
 
     /**
@@ -69,14 +69,14 @@ class AdminMenuController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title' => sc_language_render('admin.menu.list'),
+            'title' => vncore_language_render('admin.menu.list'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
             'menu' => $menu,
             'treeMenu' => (new AdminMenu)->getTree(),
             'url_action' => sc_route_admin('admin_menu.edit', ['id' => $menu['id']]),
-            'title_form' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . sc_language_render('admin.menu.edit'),
+            'title_form' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('admin.menu.edit'),
         ];
         $data['urlDeleteItem'] = sc_route_admin('admin_menu.delete');
         $data['id'] = $id;
@@ -112,7 +112,7 @@ class AdminMenuController extends RootAdminController
         ];
         $dataUpdate = sc_clean($dataUpdate, [], true);
         AdminMenu::updateInfo($dataUpdate, $id);
-        return redirect()->back()->with('success', sc_language_render('admin.menu.edit_success'));
+        return redirect()->back()->with('success', vncore_language_render('admin.menu.edit_success'));
     }
 
     /*
@@ -122,12 +122,12 @@ class AdminMenuController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $id = request('id');
             $check = AdminMenu::where('parent_id', $id)->count();
             if ($check) {
-                return response()->json(['error' => 1, 'msg' => sc_language_render('admin.menu.error_have_child')]);
+                return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.menu.error_have_child')]);
             } else {
                 AdminMenu::destroy($id);
             }

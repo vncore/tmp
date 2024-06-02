@@ -73,9 +73,9 @@ class ForgotPasswordController extends RootAdminController
             return redirect()->route('admin.home');
         }
         $data = [
-            'title'       => sc_language_render('admin.password_forgot'),
+            'title'       => vncore_language_render('admin.password_forgot'),
             'breadcrumbs' => [
-                ['url'    => '', 'title' => sc_language_render('admin.password_forgot')],
+                ['url'    => '', 'title' => vncore_language_render('admin.password_forgot')],
             ],
         ];
         return view($this->templatePathAdmin.'auth.forgot')

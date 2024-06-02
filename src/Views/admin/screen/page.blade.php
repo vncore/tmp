@@ -10,7 +10,7 @@
                 <div class="card-tools">
                     <div class="btn-group float-right mr-5">
                         <a href="{{ sc_route_admin('admin_page.index') }}" class="btn  btn-flat btn-default" title="List"><i
-                                class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+                                class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         <div
                             class="form-group row  {{ $errors->has('descriptions.'.$code.'.title') ? ' text-red' : '' }}">
                             <label for="{{ $code }}__title"
-                                class="col-sm-2 col-form-label">{{ sc_language_render('admin.page.title') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.page.title') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -58,7 +58,7 @@
                                 </span>
                                 @else
                                 <span class="form-text">
-                                    <i class="fa fa-info-circle"></i> {{ sc_language_render('admin.max_c',['max'=>200]) }}
+                                    <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.max_c',['max'=>200]) }}
                                 </span>
                                 @endif
                             </div>
@@ -67,7 +67,7 @@
                         <div
                             class="form-group row  {{ $errors->has('descriptions.'.$code.'.keyword') ? ' text-red' : '' }}">
                             <label for="{{ $code }}__keyword"
-                                class="col-sm-2 col-form-label">{{ sc_language_render('admin.page.keyword') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.page.keyword') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -84,7 +84,7 @@
                                 </span>
                                 @else
                                 <span class="form-text">
-                                    <i class="fa fa-info-circle"></i> {{ sc_language_render('admin.max_c',['max'=>200]) }}
+                                    <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.max_c',['max'=>200]) }}
                                 </span>
                                 @endif
                             </div>
@@ -93,7 +93,7 @@
                         <div
                             class="form-group row  {{ $errors->has('descriptions.'.$code.'.description') ? ' text-red' : '' }}">
                             <label for="{{ $code }}__description"
-                                class="col-sm-2 col-form-label">{{ sc_language_render('admin.page.description') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.page.description') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
                             <div class="col-sm-8">
                                     <textarea id="{{ $code }}__description"
                                         name="descriptions[{{ $code }}][description]"
@@ -104,7 +104,7 @@
                                 </span>
                                 @else
                                 <span class="form-text">
-                                    <i class="fa fa-info-circle"></i> {{ sc_language_render('admin.max_c',['max'=>300]) }}
+                                    <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.max_c',['max'=>300]) }}
                                 </span>
                                 @endif
                             </div>
@@ -114,7 +114,7 @@
                         <div
                             class="form-group row {{ $errors->has('descriptions.'.$code.'.content') ? ' text-red' : '' }}">
                             <label for="{{ $code }}__content"
-                                class="col-sm-2 col-form-label">{{ sc_language_render('admin.page.content') }}</label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.page.content') }}</label>
                             <div class="col-sm-8">
                                 <textarea id="{{ $code }}__content" class="editor"
                                     name="descriptions[{{ $code }}][content]">
@@ -135,7 +135,7 @@
                     @endforeach
 
                         <div class="form-group row  {{ $errors->has('image') ? ' text-red' : '' }}">
-                            <label for="image" class="col-sm-2 col-form-label">{{ sc_language_render('admin.page.image') }}</label>
+                            <label for="image" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.page.image') }}</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <input type="text" id="image" name="image"
@@ -144,7 +144,7 @@
                                         <div class="input-group-append">
                                             <a data-input="image" data-preview="preview_image" data-type="page"
                                                 class="btn btn-primary lfm">
-                                                <i class="fa fa-image"></i> {{sc_language_render('admin.page.choose_image')}}
+                                                <i class="fa fa-image"></i> {{vncore_language_render('admin.page.choose_image')}}
                                             </a>
                                         </div>
                                 </div>
@@ -165,7 +165,7 @@
 
                         <div class="form-group row  {{ $errors->has('alias') ? ' text-red' : '' }}">
                             <label for="alias"
-                                class="col-sm-2 col-form-label">{!! sc_language_render('admin.page.alias') !!}</label>
+                                class="col-sm-2 col-form-label">{!! vncore_language_render('admin.page.alias') !!}</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -203,13 +203,13 @@
               
                         <div class="form-group row {{ $errors->has('shop_store') ? ' text-red' : '' }}">
                             <label for="shop_store"
-                                class="col-sm-2 col-form-label">{{ sc_language_render('admin.select_store') }}</label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.select_store') }}</label>
                             <div class="col-sm-8">
                                 <select class="form-control shop_store select2" 
                                 @if (sc_check_multi_store_installed())
                                     multiple="multiple"
                                 @endif
-                                data-placeholder="{{ sc_language_render('admin.select_store') }}" style="width: 100%;"
+                                data-placeholder="{{ vncore_language_render('admin.select_store') }}" style="width: 100%;"
                                 name="shop_store[]">
                                     <option value=""></option>
                                     @foreach (sc_get_list_code_store() as $k => $v)
@@ -229,7 +229,7 @@
 @endif
 
                         <div class="form-group row ">
-                            <label for="status" class="col-sm-2 col-form-label">{{ sc_language_render('admin.page.status') }}</label>
+                            <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.page.status') }}</label>
                             <div class="col-sm-8">
                                 <input class="checkbox" type="checkbox" name="status"
                                     {{ old('status',(empty($page['status'])?0:1))?'checked':''}}>
@@ -259,11 +259,11 @@
 
                     <div class="col-md-8">
                         <div class="btn-group float-right">
-                            <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                         </div>
 
                         <div class="btn-group float-left">
-                            <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                            <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-        {{ sc_language_render('admin.theme') }}
+        {{ vncore_language_render('admin.theme') }}
     </a>
     <div class="dropdown-menu dropdown-menu-left p-0">
     @foreach (config('admin.theme') as  $theme)

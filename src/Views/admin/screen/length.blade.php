@@ -12,7 +12,7 @@
         <h3 class="card-title">{!! $title_action !!}</h3>
         @if ($layout == 'edit')
         <div class="btn-group float-right" style="margin-right: 5px">
-            <a href="{{ sc_route_admin('admin_length_unit.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+            <a href="{{ sc_route_admin('admin_length_unit.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
         </div>
       @endif
       </div>
@@ -22,7 +22,7 @@
         <div class="card-body">
 
           <div class="form-group row {{ $errors->has('name') ? ' text-red' : '' }}">
-            <label for="name" class="col-sm-2 col-form-label">{{ sc_language_render('admin.length.name') }}</label>
+            <label for="name" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.length.name') }}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -41,7 +41,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('description') ? ' text-red' : '' }}">
-            <label for="description" class="col-sm-2 col-form-label">{{ sc_language_render('admin.length.description') }}</label>
+            <label for="description" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.length.description') }}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -65,8 +65,8 @@
         <!-- /.card-body -->
         @csrf
         <div class="card-footer">
-          <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
-          <button type="submit" class="btn btn-primary float-right">{{ sc_language_render('action.submit') }}</button>
+          <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
+          <button type="submit" class="btn btn-primary float-right">{{ vncore_language_render('action.submit') }}</button>
         </div>
         <!-- /.card-footer -->
       </form>
@@ -198,13 +198,13 @@ $('.grid-trash').on('click', function() {
     },
     buttonsStyling: true,
   }).fire({
-    title: '{{ sc_language_render('action.delete_confirm') }}',
+    title: '{{ vncore_language_render('action.delete_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ sc_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ sc_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -218,7 +218,7 @@ $('.grid-trash').on('click', function() {
                 },
                 success: function (data) {
                     if(data.error == 1){
-                      alertMsg('error', data.msg, '{{ sc_language_render('action.warning') }}');
+                      alertMsg('error', data.msg, '{{ vncore_language_render('action.warning') }}');
                       $.pjax.reload('#pjax-container');
                       return;
                     }else{
@@ -233,7 +233,7 @@ $('.grid-trash').on('click', function() {
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ sc_language_render('action.delete_confirm_deleted_msg') }}', '{{ sc_language_render('action.delete_confirm_deleted') }}');
+      alertMsg('success', '{{ vncore_language_render('action.delete_confirm_deleted_msg') }}', '{{ vncore_language_render('action.delete_confirm_deleted') }}');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel

@@ -52,10 +52,10 @@
                     <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
                         <hr class="d-sm-none" />
                         <div class="text-grey-m2">
-                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ sc_language_render('order.id') }}:</span> #{{ $id }}</div>
-                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ sc_language_render('order.date') }}:</span> {{ sc_datetime_to_date($created_at, 'Y-m-d') }}</div>
-                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ sc_language_render('order.currency') }}:</span> {{ $currency }}</div>
-                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ sc_language_render('order.exchange_rate') }}:</span> {{ $exchange_rate }}</div>
+                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ vncore_language_render('order.id') }}:</span> #{{ $id }}</div>
+                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ vncore_language_render('order.date') }}:</span> {{ sc_datetime_to_date($created_at, 'Y-m-d') }}</div>
+                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ vncore_language_render('order.currency') }}:</span> {{ $currency }}</div>
+                            <div class="my-1"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-90">{{ vncore_language_render('order.exchange_rate') }}:</span> {{ $exchange_rate }}</div>
                         </div>
                     </div>
                     <!-- /.col -->
@@ -93,7 +93,7 @@
                         <div class="col-12 col-sm-5 text-grey text-90 order-first order-sm-last">
                             <div class="row my-2">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.totals.subtotal') }}
+                                    {{ vncore_language_render('order.totals.subtotal') }}
                                 </div>
                                 <div class="col-5 text-right">
                                     <span class="text-120 text-secondary-d1">{{ sc_currency_render_symbol($subtotal, $currency) }}</span>
@@ -101,7 +101,7 @@
                             </div>
                             <div class="row my-2">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.totals.tax') }}
+                                    {{ vncore_language_render('order.totals.tax') }}
                                 </div>
                                 <div class="col-5 text-right">
                                     <span class="text-120 text-secondary-d1">{{ sc_currency_render_symbol($tax, $currency) }}</span>
@@ -109,7 +109,7 @@
                             </div>
                             <div class="row my-2">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.totals.shipping') }}
+                                    {{ vncore_language_render('order.totals.shipping') }}
                                 </div>
                                 <div class="col-5 text-right">
                                     <span class="text-120 text-secondary-d1">{{ sc_currency_render_symbol($shipping, $currency) }}</span>
@@ -117,7 +117,7 @@
                             </div>
                             <div class="row my-2">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.totals.discount') }}
+                                    {{ vncore_language_render('order.totals.discount') }}
                                 </div>
                                 <div class="col-5 text-right">
                                     <span class="text-120 text-secondary-d1">{{ sc_currency_render_symbol($discount, $currency) }}</span>
@@ -125,7 +125,7 @@
                             </div>
                             <div class="row my-2 high-light">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.totals.total') }}
+                                    {{ vncore_language_render('order.totals.total') }}
                                 </div>
                                 <div class="col-5 text-right">
                                     <span class="text-120 text-secondary-d1">{{ sc_currency_render_symbol($total, $currency) }}</span>
@@ -134,7 +134,7 @@
                             <hr>
                             <div class="row my-2">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.other_fee') }}
+                                    {{ vncore_language_render('order.other_fee') }}
                                 </div>
                                 <div class="col-5 text-right">
                                     <span class="text-120 text-secondary-d1">{{ sc_currency_render_symbol($other_fee, $currency) }}</span>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="row my-2">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.totals.received') }}
+                                    {{ vncore_language_render('order.totals.received') }}
                                 </div>
                                 <div class="col-5 text-right">
                                     <span class="text-120 text-secondary-d1">{{ sc_currency_render_symbol($received, $currency) }}</span>
@@ -150,7 +150,7 @@
                             </div>
                             <div class="row my-2 align-items-center bgc-primary-l3 p-2 high-light">
                                 <div class="col-7 text-right">
-                                    {{ sc_language_render('order.totals.balance') }}
+                                    {{ vncore_language_render('order.totals.balance') }}
                                 </div>
                                 <div class="col-5 text-right">
                                   <span class="text-150 text-success-d3 opacity-2">{{ sc_currency_render_symbol($balance, $currency) }}</span>

@@ -44,7 +44,7 @@ class PermissionController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => sc_language_render('admin.permission.list'),
+            'title' => vncore_language_render('admin.permission.list'),
             'subTitle' => '',
             'icon' => 'fa fa-indent',
             'urlDeleteItem' => sc_route_admin('admin_permission.delete'),
@@ -63,18 +63,18 @@ class PermissionController extends RootAdminController
 
         $listTh = [
             'id' => 'ID',
-            'slug' => sc_language_render('admin.permission.slug'),
-            'name' => sc_language_render('admin.permission.name'),
-            'http_path' => sc_language_render('admin.permission.http_path'),
-            'updated_at' => sc_language_render('admin.updated_at'),
-            'action' => sc_language_render('action.title'),
+            'slug' => vncore_language_render('admin.permission.slug'),
+            'name' => vncore_language_render('admin.permission.name'),
+            'http_path' => vncore_language_render('admin.permission.http_path'),
+            'updated_at' => vncore_language_render('admin.updated_at'),
+            'action' => vncore_language_render('action.title'),
         ];
         $sort_order = sc_clean(request('sort_order') ?? 'id_desc');
         $arrSort = [
-            'id__desc' => sc_language_render('filter_sort.id_desc'),
-            'id__asc' => sc_language_render('filter_sort.id_asc'),
-            'name__desc' => sc_language_render('filter_sort.name_desc'),
-            'name__asc' => sc_language_render('filter_sort.name_asc'),
+            'id__desc' => vncore_language_render('filter_sort.id_desc'),
+            'id__asc' => vncore_language_render('filter_sort.id_asc'),
+            'name__desc' => vncore_language_render('filter_sort.name_desc'),
+            'name__asc' => vncore_language_render('filter_sort.name_asc'),
         ];
         $obj = new AdminPermission;
         if ($sort_order && array_key_exists($sort_order, $arrSort)) {
@@ -111,8 +111,8 @@ class PermissionController extends RootAdminController
                 'permission' => $permissions,
                 'updated_at' => $row['updated_at'],
                 'action' => '
-                    <a href="' . sc_route_admin('admin_permission.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-                    <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>'
+                    <a href="' . sc_route_admin('admin_permission.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>'
                 ,
             ];
         }
@@ -120,11 +120,11 @@ class PermissionController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
         $data['menuRight'][] = '<a href="' . sc_route_admin('admin_permission.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-                           <i class="fa fa-plus" title="'.sc_language_render('action.add').'"></i>
+                           <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
 
@@ -148,9 +148,9 @@ class PermissionController extends RootAdminController
     public function create()
     {
         $data = [
-            'title' => sc_language_render('admin.permission.add_new_title'),
+            'title' => vncore_language_render('admin.permission.add_new_title'),
             'subTitle' => '',
-            'title_description' => sc_language_render('admin.permission.add_new_des'),
+            'title_description' => vncore_language_render('admin.permission.add_new_des'),
             'icon' => 'fa fa-plus',
             'permission' => [],
             'routeAdmin' => $this->routeAdmin,
@@ -174,7 +174,7 @@ class PermissionController extends RootAdminController
             'name' => 'required|string|max:50|unique:"'.AdminPermission::class.'",name',
             'slug' => 'required|regex:/(^([0-9A-Za-z\._\-]+)$)/|unique:"'.AdminPermission::class.'",slug|string|max:50|min:3',
         ], [
-            'slug.regex' => sc_language_render('admin.permission.slug_validate'),
+            'slug.regex' => vncore_language_render('admin.permission.slug_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -191,7 +191,7 @@ class PermissionController extends RootAdminController
         $dataCreate = sc_clean($dataCreate, [], true);
         $permission = AdminPermission::createPermission($dataCreate);
 
-        return redirect()->route('admin_permission.index')->with('success', sc_language_render('action.create_success'));
+        return redirect()->route('admin_permission.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -204,7 +204,7 @@ class PermissionController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title' => sc_language_render('action.edit'),
+            'title' => vncore_language_render('action.edit'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
@@ -228,7 +228,7 @@ class PermissionController extends RootAdminController
             'name' => 'required|string|max:50|unique:"'.AdminPermission::class.'",name,' . $permission->id . '',
             'slug' => 'required|regex:/(^([0-9A-Za-z\._\-]+)$)/|unique:"'.AdminPermission::class.'",slug,' . $permission->id . '|string|max:50|min:3',
         ], [
-            'slug.regex' => sc_language_render('admin.permission.slug_validate'),
+            'slug.regex' => vncore_language_render('admin.permission.slug_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -245,7 +245,7 @@ class PermissionController extends RootAdminController
         ];
         $dataUpdate = sc_clean($dataUpdate, [], true);
         $permission->update($dataUpdate);
-        return redirect()->route('admin_permission.index')->with('success', sc_language_render('action.edit_success'));
+        return redirect()->route('admin_permission.index')->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -255,7 +255,7 @@ class PermissionController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

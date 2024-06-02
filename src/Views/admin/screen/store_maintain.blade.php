@@ -32,7 +32,7 @@
                                 <div
                                     class="form-group {{ $errors->has('descriptions.'.$code.'.maintain_content') ? ' text-red' : '' }}">
                                     <label for="{{ $code }}__maintain_content"
-                                        class="col-sm-2 col-form-label">{{ sc_language_render('admin.maintain.description') }}</label>
+                                        class="col-sm-2 col-form-label">{{ vncore_language_render('admin.maintain.description') }}</label>
                                     <div class="col-sm-8">
                                         <textarea id="{{ $code }}__maintain_content" class="editor"
                                             name="descriptions[{{ $code }}][maintain_content]">{{ old('descriptions.'.$code.'.maintain_content',($descriptions[$code]['maintain_content']??'')) }}</textarea>
@@ -47,7 +47,7 @@
                                 <div
                                 class="form-group {{ $errors->has('descriptions.'.$code.'.maintain_note') ? ' text-red' : '' }}">
                                 <label for="{{ $code }}__maintain_note"
-                                    class="col-sm-2 col-form-label">{{ sc_language_render('admin.maintain.description_note') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vncore_language_render('admin.maintain.description_note') }}</label>
                                 <div class="col-sm-8">
                                     <input id="{{ $code }}__maintain_note" type="text" class="form-control input-sm"
                                         name="descriptions[{{ $code }}][maintain_note]" value="{{ old('descriptions.'.$code.'.maintain_note',($descriptions[$code]['maintain_note']??'')) }}">
@@ -73,11 +73,11 @@
 
                     <div class="col-md-8">
                         <div class="btn-group float-right">
-                            <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                         </div>
 
                         <div class="btn-group float-left">
-                            <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                            <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                         </div>
                     </div>
                 </div>

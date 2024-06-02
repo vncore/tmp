@@ -20,7 +20,7 @@ class AdminSubscribeController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'         => sc_language_render('subscribe.admin.list'),
+            'title'         => vncore_language_render('subscribe.admin.list'),
             'subTitle'      => '',
             'icon'          => 'fa fa-indent',
             'urlDeleteItem' => sc_route_admin('admin_subscribe.delete'),
@@ -37,18 +37,18 @@ class AdminSubscribeController extends RootAdminController
         $data['blockBottom']  = sc_config_group('blockBottom', \Request::route()->getName());
 
         $listTh = [
-            'email' => sc_language_render('subscribe.admin.email'),
-            'status' => sc_language_render('subscribe.admin.status'),
-            'action' => sc_language_render('action.title'),
+            'email' => vncore_language_render('subscribe.admin.email'),
+            'status' => vncore_language_render('subscribe.admin.status'),
+            'action' => vncore_language_render('action.title'),
         ];
 
         $sort_order = sc_clean(request('sort_order') ?? 'id_desc');
         $keyword    = sc_clean(request('keyword') ?? '');
         $arrSort = [
-            'id__desc' => sc_language_render('filter_sort.id_desc'),
-            'id__asc' => sc_language_render('filter_sort.id_asc'),
-            'email__desc' => sc_language_render('filter_sort.alpha_desc', ['alpha' =>'Email']),
-            'email__asc' => sc_language_render('filter_sort.alpha_asc', ['alpha' =>'Email']),
+            'id__desc' => vncore_language_render('filter_sort.id_desc'),
+            'id__asc' => vncore_language_render('filter_sort.id_asc'),
+            'email__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' =>'Email']),
+            'email__asc' => vncore_language_render('filter_sort.alpha_asc', ['alpha' =>'Email']),
         ];
         $dataSearch = [
             'keyword'    => $keyword,
@@ -63,9 +63,9 @@ class AdminSubscribeController extends RootAdminController
                 'email' => $row['email'],
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
                 'action' => '
-                    <a href="' . sc_route_admin('admin_subscribe.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . sc_route_admin('admin_subscribe.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -73,13 +73,13 @@ class AdminSubscribeController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
 
 
         //menuRight
         $data['menuRight'][] = '<a href="' . sc_route_admin('admin_subscribe.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-        <i class="fa fa-plus" title="'.sc_language_render('action.add').'"></i>
+        <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
 
@@ -97,7 +97,7 @@ class AdminSubscribeController extends RootAdminController
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
                     </select> &nbsp;
-                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . sc_language_render('subscribe.admin.search_place') . '" value="' . $keyword . '">
+                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . vncore_language_render('subscribe.admin.search_place') . '" value="' . $keyword . '">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
@@ -116,9 +116,9 @@ class AdminSubscribeController extends RootAdminController
     public function create()
     {
         $data = [
-            'title' => sc_language_render('subscribe.admin.add_new_title'),
+            'title' => vncore_language_render('subscribe.admin.add_new_title'),
             'subTitle' => '',
-            'title_description' => sc_language_render('subscribe.admin.add_new_des'),
+            'title_description' => vncore_language_render('subscribe.admin.add_new_des'),
             'icon' => 'fa fa-plus',
             'subscribe' => [],
             'url_action' => sc_route_admin('admin_subscribe.create'),
@@ -153,7 +153,7 @@ class AdminSubscribeController extends RootAdminController
         $dataCreate = sc_clean($dataCreate, [], true);
         AdminSubscribe::createSubscribeAdmin($dataCreate);
 
-        return redirect()->route('admin_subscribe.index')->with('success', sc_language_render('action.create_success'));
+        return redirect()->route('admin_subscribe.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -167,7 +167,7 @@ class AdminSubscribeController extends RootAdminController
             return redirect()->route('admin.data_not_found')->with(['url' => url()->full()]);
         }
         $data = [
-            'title' => sc_language_render('action.edit'),
+            'title' => vncore_language_render('action.edit'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
@@ -211,7 +211,7 @@ class AdminSubscribeController extends RootAdminController
         $subscribe->update($dataUpdate);
 
         return redirect()->route('admin_subscribe.index')
-                ->with('success', sc_language_render('action.edit_success'));
+                ->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -221,7 +221,7 @@ class AdminSubscribeController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
@@ -232,7 +232,7 @@ class AdminSubscribeController extends RootAdminController
                 }
             }
             if (count($arrDontPermission)) {
-                return response()->json(['error' => 1, 'msg' => sc_language_render('admin.remove_dont_permisison') . ': ' . json_encode($arrDontPermission)]);
+                return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': ' . json_encode($arrDontPermission)]);
             }
             AdminSubscribe::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);

@@ -14,7 +14,7 @@ class AdminNoticeController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'         => sc_language_render('admin_notice.title'),
+            'title'         => vncore_language_render('admin_notice.title'),
             'subTitle'      => '',
             'icon'          => 'fa fa-indent',
             'urlDeleteItem' => '',
@@ -34,7 +34,7 @@ class AdminNoticeController extends RootAdminController
             'type'    => 'Type',
             'type_id' => 'Type ID',
             'content' => 'Content',
-            'date'    => sc_language_render('admin.created_at')
+            'date'    => vncore_language_render('admin.created_at')
         ];
         $dataTmp = (new AdminNotice)->getNoticeListAdmin();
 
@@ -43,7 +43,7 @@ class AdminNoticeController extends RootAdminController
             $dataMap = [
                 'type' => '<a class="notice-'.(($row->status) ? 'read':'unread').'" href="'.sc_route_admin('admin_notice.url',['type' => $row->type,'typeId' => $row->type_id]).'">'.$row->type.'</a>',
                 'type_id' => $row->type_id,
-                'content' => sc_language_render($row->content),
+                'content' => vncore_language_render($row->content),
                 'date' => $row->created_at,
             ];
             $dataTr[$row['id']] = $dataMap;
@@ -52,7 +52,7 @@ class AdminNoticeController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         return view($this->templatePathAdmin.'screen.list')
             ->with($data);

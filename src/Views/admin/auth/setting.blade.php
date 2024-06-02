@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ sc_route_admin('admin_user.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ sc_route_admin('admin_user.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                         <div class="fields-group">
 
                             <div class="form-group  row {{ $errors->has('name') ? ' text-red' : '' }}">
-                                <label for="name" class="col-sm-2  control-label">{{ sc_language_render('admin.user.name') }}</label>
+                                <label for="name" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-append">
@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('username') ? ' text-red' : '' }}">
-                                <label for="username" class="col-sm-2  control-label">{{ sc_language_render('admin.user.user_name') }}</label>
+                                <label for="username" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.user_name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-append">
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('email') ? ' text-red' : '' }}">
-                                <label for="email" class="col-sm-2  control-label">{{ sc_language_render('admin.user.email') }}</label>
+                                <label for="email" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.email') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-append">
@@ -73,13 +73,13 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('avatar') ? ' text-red' : '' }}">
-                                <label for="avatar" class="col-sm-2  control-label">{{ sc_language_render('admin.user.avatar') }}</label>
+                                <label for="avatar" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.avatar') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <input type="text" id="avatar" name="avatar" value="{{ old('avatar',$user['avatar']??'') }}" class="form-control input-sm avatar" placeholder=""  />
                                        <span class="input-group-btn">
                                          <a data-input="avatar" data-preview="preview_avatar" data-type="avatar" class="btn btn-primary lfm">
-                                           <i class="fa fa-image"></i> {{sc_language_render('product.admin.choose_image')}}
+                                           <i class="fa fa-image"></i> {{vncore_language_render('product.admin.choose_image')}}
                                          </a>
                                        </span>
                                     </div>
@@ -93,7 +93,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('password') ? ' text-red' : '' }}">
-                                <label for="password" class="col-sm-2  control-label">{{ sc_language_render('admin.user.password') }}</label>
+                                <label for="password" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.password') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-append">
@@ -108,7 +108,7 @@
                                         @else
                                             @if ($user)
                                                 <span class="form-text">
-                                                    <i class="fa fa-info-circle"></i> {{ sc_language_render('admin.user.keep_password') }}
+                                                    <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.user.keep_password') }}
                                                  </span>
                                             @endif
                                         @endif
@@ -116,7 +116,7 @@
                             </div>
 
                             <div class="form-group  row {{ $errors->has('password_confirmation') ? ' text-red' : '' }}">
-                                <label for="password" class="col-sm-2  control-label">{{ sc_language_render('admin.user.password_confirmation') }}</label>
+                                <label for="password" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.password_confirmation') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-append">
@@ -131,7 +131,7 @@
                                         @else
                                             @if ($user)
                                                 <span class="form-text">
-                                                    <i class="fa fa-info-circle"></i> {{ sc_language_render('admin.user.keep_password') }}
+                                                    <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.user.keep_password') }}
                                                  </span>
                                             @endif
                                         @endif
@@ -149,7 +149,7 @@
                 }
             }
         @endphp
-                                <label for="roles" class="col-sm-2  control-label">{{ sc_language_render('admin.user.select_roles') }}</label>
+                                <label for="roles" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.select_roles') }}</label>
                                 <div class="col-sm-8">
                                     @if (count($listRoles))
                                         @foreach ($listRoles as $role)
@@ -171,7 +171,7 @@
                 }
             }
         @endphp
-                                <label for="permission" class="col-sm-2  control-label">{{ sc_language_render('admin.user.select_permission') }}</label>
+                                <label for="permission" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.select_permission') }}</label>
                                 <div class="col-sm-8">
                                     @if (count($listPermission))
                                         @foreach ($listPermission as $p)
@@ -196,11 +196,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                             </div>
 
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>

@@ -95,7 +95,7 @@ class AdminMenu extends Model
         $tree = $tree ?? [];
         $lisMenu = $menus[$parent] ?? [];
         foreach ($lisMenu as $menu) {
-            $tree[$menu->id] = $st . ' ' . sc_language_render($menu->title);
+            $tree[$menu->id] = $st . ' ' . vncore_language_render($menu->title);
             if (!empty($menus[$menu->id])) {
                 $st .= '--';
                 $this->getTree($menu->id, $tree, $menus, $st);

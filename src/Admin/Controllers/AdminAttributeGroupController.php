@@ -20,8 +20,8 @@ class AdminAttributeGroupController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => sc_language_render('admin.attribute_group.list'),
-            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . sc_language_render('action.add'),
+            'title' => vncore_language_render('admin.attribute_group.list'),
+            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('action.add'),
             'subTitle' => '',
             'icon' => 'fa fa-indent',
             'urlDeleteItem' => sc_route_admin('admin_attribute_group.delete'),
@@ -33,9 +33,9 @@ class AdminAttributeGroupController extends RootAdminController
         ];
 
         $listTh = [
-            'name' => sc_language_render('admin.attribute_group.name'),
-            'type' => sc_language_render('admin.attribute_group.type'),
-            'action' => sc_language_render('action.create'),
+            'name' => vncore_language_render('admin.attribute_group.name'),
+            'type' => vncore_language_render('admin.attribute_group.type'),
+            'action' => vncore_language_render('action.create'),
         ];
         $obj = new ShopAttributeGroup;
         $obj = $obj->orderBy('id', 'desc');
@@ -47,9 +47,9 @@ class AdminAttributeGroupController extends RootAdminController
                 'name' => $row['name'],
                 'type' => $row['type'],
                 'action' => '
-                    <a href="' . sc_route_admin('admin_attribute_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . sc_route_admin('admin_attribute_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -57,7 +57,7 @@ class AdminAttributeGroupController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'index';
         return view($this->templatePathAdmin.'screen.attribute_group')
@@ -76,7 +76,7 @@ class AdminAttributeGroupController extends RootAdminController
             'name' => 'required',
             'type' => 'required',
         ], [
-            'name.required' => sc_language_render('validation.required'),
+            'name.required' => vncore_language_render('validation.required'),
         ]);
 
         if ($validator->fails()) {
@@ -93,7 +93,7 @@ class AdminAttributeGroupController extends RootAdminController
         $dataCreate = sc_clean($dataCreate, [], true);
         ShopAttributeGroup::create($dataCreate);
 
-        return redirect()->route('admin_attribute_group.index')->with('success', sc_language_render('action.create_success'));
+        return redirect()->route('admin_attribute_group.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -107,8 +107,8 @@ class AdminAttributeGroupController extends RootAdminController
             return 'No data';
         }
         $data = [
-        'title' => sc_language_render('admin.attribute_group.list'),
-        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . sc_language_render('action.edit'),
+        'title' => vncore_language_render('admin.attribute_group.list'),
+        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('action.edit'),
         'subTitle' => '',
         'icon' => 'fa fa-indent',
         'urlDeleteItem' => sc_route_admin('admin_attribute_group.delete'),
@@ -122,9 +122,9 @@ class AdminAttributeGroupController extends RootAdminController
     ];
 
         $listTh = [
-        'name' => sc_language_render('admin.attribute_group.name'),
-        'type' => sc_language_render('admin.attribute_group.type'),
-        'action' => sc_language_render('action.title'),
+        'name' => vncore_language_render('admin.attribute_group.name'),
+        'type' => vncore_language_render('admin.attribute_group.type'),
+        'action' => vncore_language_render('action.title'),
     ];
         $obj = new ShopAttributeGroup;
         $obj = $obj->orderBy('id', 'desc');
@@ -137,9 +137,9 @@ class AdminAttributeGroupController extends RootAdminController
             'name' => $row['name'],
             'type' => $row['type'],
             'action' => '
-                <a href="' . sc_route_admin('admin_attribute_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . sc_route_admin('admin_attribute_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-              <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+              <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
               ',
         ];
         }
@@ -147,7 +147,7 @@ class AdminAttributeGroupController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'edit';
         return view($this->templatePathAdmin.'screen.attribute_group')
@@ -165,7 +165,7 @@ class AdminAttributeGroupController extends RootAdminController
         $validator = Validator::make($dataOrigin, [
             'name' => 'required',
         ], [
-            'name.required' => sc_language_render('validation.required'),
+            'name.required' => vncore_language_render('validation.required'),
         ]);
 
         if ($validator->fails()) {
@@ -183,7 +183,7 @@ class AdminAttributeGroupController extends RootAdminController
         $dataUpdate = sc_clean($dataUpdate, [], true);
         $obj->update($dataUpdate);
 
-        return redirect()->back()->with('success', sc_language_render('action.edit_success'));
+        return redirect()->back()->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -193,7 +193,7 @@ class AdminAttributeGroupController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

@@ -5,16 +5,16 @@
    <table class="table table-hover box-body text-wrap table-bordered">
      <tbody>
        <tr>
-         <th>{{ sc_language_quickly('admin.admin_custom_config.add_new_detail', 'Key detail') }}</th>
-         <th>{{ sc_language_quickly('admin.admin_custom_config.add_new_key', 'Key') }}</th>
-         <th>{{ sc_language_quickly('admin.admin_custom_config.add_new_value', 'Value') }}</th>
+         <th>{{ vncore_language_quickly('admin.admin_custom_config.add_new_detail', 'Key detail') }}</th>
+         <th>{{ vncore_language_quickly('admin.admin_custom_config.add_new_key', 'Key') }}</th>
+         <th>{{ vncore_language_quickly('admin.admin_custom_config.add_new_value', 'Value') }}</th>
          <th></th>
        </tr>
       @foreach ($configCustomize as $config)
       <tr>
-        <td>{{ sc_language_render($config->detail) }}</td>
+        <td>{{ vncore_language_render($config->detail) }}</td>
         <td>{{ $config->key }}</td>
-        <td><a href="#" class="editable editable-click" data-name="{{ $config->key }}" data-type="text" data-pk="{{ $config->key }}" data-source="" data-url="{{ $urlUpdateConfig }}" data-title="{{ sc_language_render($config->detail) }}" data-value="{{ sc_config($config->key, $storeId) }}" data-original-title="" title=""></a></td>
+        <td><a href="#" class="editable editable-click" data-name="{{ $config->key }}" data-type="text" data-pk="{{ $config->key }}" data-source="" data-url="{{ $urlUpdateConfig }}" data-title="{{ vncore_language_render($config->detail) }}" data-value="{{ sc_config($config->key, $storeId) }}" data-original-title="" title=""></a></td>
         <td><span onclick="deleteKey('{{ $config->key }}');" title="Delete" class="btn btn-flat btn-sm btn-danger">
           <i class="fas fa-trash-alt"></i>
           </span>
@@ -32,22 +32,22 @@
     <tr>
       <td>
         <div class="input-group">
-          <input name="detail" placeholder="{{ sc_language_quickly('admin.admin_custom_config.add_new_detail', 'Key detail') }}" required class="form-control input-sm">
+          <input name="detail" placeholder="{{ vncore_language_quickly('admin.admin_custom_config.add_new_detail', 'Key detail') }}" required class="form-control input-sm">
         </div>
       </td>
       <td>
         <div class="input-group">
-          <input name="key" placeholder="{{ sc_language_quickly('admin.admin_custom_config.add_new_key', 'Key') }}" required class="form-control input-sm">
+          <input name="key" placeholder="{{ vncore_language_quickly('admin.admin_custom_config.add_new_key', 'Key') }}" required class="form-control input-sm">
         </div>
       </td>
       <td>
         <div class="input-group">
-          <input name="value" placeholder="{{ sc_language_quickly('admin.admin_custom_config.add_new_value', 'Value') }}" required class="form-control input-sm">
+          <input name="value" placeholder="{{ vncore_language_quickly('admin.admin_custom_config.add_new_value', 'Value') }}" required class="form-control input-sm">
         </div>
       </td>
       <td>
         <div class="btn-group">
-          <input type="submit" class="btn btn-primary" value="{{ sc_language_quickly('admin.admin_custom_config.add_new', 'Add new config') }}">
+          <input type="submit" class="btn btn-primary" value="{{ vncore_language_quickly('admin.admin_custom_config.add_new', 'Add new config') }}">
         </div>
       </td>
     </tr>
@@ -68,13 +68,13 @@ function deleteKey(key){
     },
     buttonsStyling: true,
   }).fire({
-    title: '{{ sc_language_render('action.delete_confirm') }}',
+    title: '{{ vncore_language_render('action.delete_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ sc_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ sc_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -89,7 +89,7 @@ function deleteKey(key){
                 },
                 success: function (data) {
                     if(data.error == 1){
-                      alertMsg('error', data.msg, '{{ sc_language_render('action.warning') }}');
+                      alertMsg('error', data.msg, '{{ vncore_language_render('action.warning') }}');
                       $.pjax.reload('#pjax-container');
                       return;
                     }else{
@@ -104,7 +104,7 @@ function deleteKey(key){
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ sc_language_render('action.delete_confirm_deleted_msg') }}', '{{ sc_language_render('action.delete_confirm_deleted') }}');
+      alertMsg('success', '{{ vncore_language_render('action.delete_confirm_deleted_msg') }}', '{{ vncore_language_render('action.delete_confirm_deleted') }}');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel

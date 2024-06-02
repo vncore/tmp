@@ -10,7 +10,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        {{ sc_language_render('admin.select_store') }}
+                        {{ vncore_language_render('admin.select_store') }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-left p-0">
                     
@@ -34,7 +34,7 @@
                 <div class="card-body">
                     <div class="card">
                         <div class="card-body">
-                            <h2>{{ sc_language_render('store.admin.css') }}</h2>
+                            <h2>{{ vncore_language_render('store.admin.css') }}</h2>
                             <div class="form-group row {{ $errors->has('css') ? 'text-red' : '' }}">
                                 <div class="col-sm-12">
                                         <textarea  id="css" name="css">{{ old('css',$css??'') }}</textarea>
@@ -59,11 +59,11 @@
 
                     <div class="col-md-8">
                         <div class="btn-group float-right">
-                            <button type="submit" class="btn btn-primary">{{ sc_language_render('action.submit') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                         </div>
 
                         <div class="btn-group float-left">
-                            <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
+                            <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                         </div>
                     </div>
                 </div>

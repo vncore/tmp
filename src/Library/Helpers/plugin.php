@@ -51,7 +51,7 @@ if (!function_exists('sc_get_all_plugin_actived') && !in_array('sc_get_all_plugi
      */
     function sc_get_all_plugin_actived(string $code)
     {
-        $code = sc_word_format_class($code);
+        $code = vncore_word_format_class($code);
         
         $pluginsActived = [];
         $allPlugins = sc_get_all_plugin($code);
@@ -83,7 +83,7 @@ if (!function_exists('sc_get_all_plugin_actived') && !in_array('sc_get_all_plugi
                 return null;
             }
             
-            $key = sc_word_format_class($key);
+            $key = vncore_word_format_class($key);
 
             $nameSpace = sc_get_plugin_namespace($key);
             $nameSpace = $nameSpace . '\Controllers\FrontController';
@@ -103,7 +103,7 @@ if (!function_exists('sc_get_all_plugin_actived') && !in_array('sc_get_all_plugi
     if (!function_exists('sc_get_class_plugin_config') && !in_array('sc_get_class_plugin_config', config('helper_except', []))) {
         function sc_get_class_plugin_config(string $key = "")
         {
-            $key = sc_word_format_class($key);
+            $key = vncore_word_format_class($key);
 
             $nameSpace = sc_get_plugin_namespace($key);
             $nameSpace = $nameSpace . '\AppConfig';
@@ -123,7 +123,7 @@ if (!function_exists('sc_get_all_plugin_actived') && !in_array('sc_get_all_plugi
     if (!function_exists('sc_get_plugin_namespace') && !in_array('sc_get_plugin_namespace', config('helper_except', []))) {
         function sc_get_plugin_namespace(string $key = "")
         {
-            $key = sc_word_format_class($key);
+            $key = vncore_word_format_class($key);
             $nameSpace = '\App\Plugins\\' . $key;
             return $nameSpace;
         }

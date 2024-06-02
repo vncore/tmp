@@ -10,14 +10,14 @@
           </a>
         </div>
         <div class="login-title-des col-md-12 p-b-41">
-          <a><b>{{sc_language_render('admin.login')}}</b></a>
+          <a><b>{{vncore_language_render('admin.login')}}</b></a>
         </div>
         <form action="{{ sc_route_admin('admin.login') }}" method="post">
 
           <div class="input-form {!! !$errors->has('email') ?: 'text-red' !!}">
             <div class="col-md-12 form-group has-feedback {!! !$errors->has('username') ?: 'text-red' !!}">
               <div class="wrap-input100 validate-input form-group ">
-                <input class="input100 form-control" type="text" placeholder="{{ sc_language_render('admin.user.username') }}"
+                <input class="input100 form-control" type="text" placeholder="{{ vncore_language_render('admin.user.username') }}"
                   name="username" value="{{ old('username') }}">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
@@ -35,7 +35,7 @@
           <div class="input-form {!! !$errors->has('password') ?: 'text-red' !!}">
             <div class="col-md-12 form-group has-feedback">
               <div class="wrap-input100 validate-input form-group ">
-                <input class="input100 form-control" type="password" placeholder="{{ sc_language_render('admin.user.password') }}"
+                <input class="input100 form-control" type="password" placeholder="{{ vncore_language_render('admin.user.password') }}"
                   name="password">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
@@ -52,14 +52,14 @@
           <div class="col-md-12">
             <div class="container-login-btn">
               <button class="login-btn" type="submit">
-                {{ sc_language_render('admin.user.login') }}
+                {{ vncore_language_render('admin.user.login') }}
               </button>
             </div>
 
             @if (sc_config_global('admin_forgot_password', 1))
             <div class="text-center">
               <a href="{{ sc_route_admin('admin.forgot') }}" class="forgot">
-                <i class="fa fa-caret-right"></i> <b>{{ sc_language_render('admin.password_forgot') }}</b>
+                <i class="fa fa-caret-right"></i> <b>{{ vncore_language_render('admin.password_forgot') }}</b>
               </a>
             </div>
             @endif
@@ -69,7 +69,7 @@
               <label>
                 <input class="checkbox" type="checkbox" name="remember" value="1"
                   {{ (old('remember')) ? 'checked' : '' }}>
-                <b>{{ sc_language_render('admin.user.remember_me') }}</b>
+                <b>{{ vncore_language_render('admin.user.remember_me') }}</b>
               </label>
             </div>
 

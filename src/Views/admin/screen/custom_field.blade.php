@@ -12,7 +12,7 @@
         <h3 class="card-title">{!! $title_action !!}</h3>
         @if ($layout == 'edit')
         <div class="btn-group float-right" style="margin-right: 5px">
-            <a href="{{ sc_route_admin('admin_custom_field.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ sc_language_render('admin.back_list') }}</span></a>
+            <a href="{{ sc_route_admin('admin_custom_field.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
         </div>
       @endif
       </div>
@@ -22,7 +22,7 @@
         <div class="card-body">
 
           <div class="form-group row {{ $errors->has('name') ? ' text-red' : '' }}">
-            <label for="name" class="col-sm-2 col-form-label">{{ sc_language_render('admin.custom_field.name') }}</label>
+            <label for="name" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.custom_field.name') }}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -41,7 +41,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('code') ? ' text-red' : '' }}">
-            <label for="code" class="col-sm-2 col-form-label">{!! sc_language_render('admin.custom_field.code') !!}</label>
+            <label for="code" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.custom_field.code') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -61,7 +61,7 @@
 
 
           <div class="form-group row {{ $errors->has('type') ? ' text-red' : '' }}">
-            <label for="type" class="col-sm-2 col-form-label">{!! sc_language_render('admin.custom_field.type') !!}</label>
+            <label for="type" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.custom_field.type') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <select class="form-control input-sm" style="width: 100%;" name="type">
@@ -83,7 +83,7 @@
 
 
           <div class="form-group row {{ $errors->has('option') ? ' text-red' : '' }}">
-            <label for="option" class="col-sm-2 col-form-label">{!! sc_language_render('admin.custom_field.option') !!}</label>
+            <label for="option" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.custom_field.option') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <select class="form-control input-sm" style="width: 100%;" name="option">
@@ -104,7 +104,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('default') ? ' text-red' : '' }}">
-            <label for="default" class="col-sm-2 col-form-label">{!! sc_language_render('admin.custom_field.default') !!}</label>
+            <label for="default" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.custom_field.default') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -119,7 +119,7 @@
               </span>
               @else
               <span class="text-sm">
-                <i class="fa fa-info-circle"></i> {!! sc_language_render('admin.custom_field.default_help') !!}
+                <i class="fa fa-info-circle"></i> {!! vncore_language_render('admin.custom_field.default_help') !!}
               </span>
               @endif
 
@@ -127,7 +127,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('required') ? ' text-red' : '' }}">
-            <label for="required" class="col-sm-2 col-form-label">{!! sc_language_render('admin.custom_field.required') !!}</label>
+            <label for="required" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.custom_field.required') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <input class="checkbox" type="checkbox" id="required" name="required"
@@ -146,7 +146,7 @@
 
 
           <div class="form-group row {{ $errors->has('status') ? ' text-red' : '' }}">
-            <label for="status" class="col-sm-2 col-form-label">{!! sc_language_render('admin.custom_field.status') !!}</label>
+            <label for="status" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.custom_field.status') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <input class="checkbox" type="checkbox" id="status" name="status"
@@ -167,8 +167,8 @@
         <!-- /.card-body -->
         @csrf
         <div class="card-footer">
-          <button type="reset" class="btn btn-warning">{{ sc_language_render('action.reset') }}</button>
-          <button type="submit" class="btn btn-primary float-right">{{ sc_language_render('action.submit') }}</button>
+          <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
+          <button type="submit" class="btn btn-primary float-right">{{ vncore_language_render('action.submit') }}</button>
         </div>
         <!-- /.card-footer -->
       </form>
@@ -303,13 +303,13 @@ $('.grid-trash').on('click', function() {
     },
     buttonsStyling: true,
   }).fire({
-    title: '{{ sc_language_render('action.delete_confirm') }}',
+    title: '{{ vncore_language_render('action.delete_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ sc_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ sc_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -323,7 +323,7 @@ $('.grid-trash').on('click', function() {
                 },
                 success: function (data) {
                     if(data.error == 1){
-                      alertMsg('error', data.msg, '{{ sc_language_render('action.warning') }}');
+                      alertMsg('error', data.msg, '{{ vncore_language_render('action.warning') }}');
                       $.pjax.reload('#pjax-container');
                       return;
                     }else{
@@ -338,7 +338,7 @@ $('.grid-trash').on('click', function() {
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ sc_language_render('action.delete_confirm_deleted_msg') }}', '{{ sc_language_render('action.delete_confirm_deleted') }}');
+      alertMsg('success', '{{ vncore_language_render('action.delete_confirm_deleted_msg') }}', '{{ vncore_language_render('action.delete_confirm_deleted') }}');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel

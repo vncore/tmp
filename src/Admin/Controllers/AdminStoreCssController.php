@@ -32,7 +32,7 @@ class AdminStoreCssController extends RootAdminController
             return redirect()->route('admin.data_not_found')->with(['url' => url()->full()]);
         }
         $data = [
-            'title' => sc_language_render('store.admin.css').' #'.$storeId,
+            'title' => vncore_language_render('store.admin.css').' #'.$storeId,
             'subTitle' => '',
             'title_description' => '',
             'template' => $template,
@@ -57,6 +57,6 @@ class AdminStoreCssController extends RootAdminController
         $cssContent = ShopStoreCss::where('store_id', $storeId)->where('template', $template)->first();
         $cssContent->css = request('css');
         $cssContent->save();
-        return redirect()->route('admin_store_css.index', ['store_id' => $storeId])->with('success', sc_language_render('action.edit_success'));
+        return redirect()->route('admin_store_css.index', ['store_id' => $storeId])->with('success', vncore_language_render('action.edit_success'));
     }
 }

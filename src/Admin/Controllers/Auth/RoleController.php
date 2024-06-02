@@ -17,7 +17,7 @@ class RoleController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => sc_language_render('admin.role.list'),
+            'title' => vncore_language_render('admin.role.list'),
             'subTitle' => '',
             'icon' => 'fa fa-indent',
             'urlDeleteItem' => sc_route_admin('admin_role.delete'),
@@ -35,19 +35,19 @@ class RoleController extends RootAdminController
 
         $listTh = [
             'id' => 'ID',
-            'slug' => sc_language_render('admin.role.slug'),
-            'name' => sc_language_render('admin.role.name'),
-            'permission' => sc_language_render('admin.role.permission'),
-            'created_at' => sc_language_render('admin.role.created_at'),
-            'updated_at' => sc_language_render('admin.updated_at'),
-            'action' => sc_language_render('action.title'),
+            'slug' => vncore_language_render('admin.role.slug'),
+            'name' => vncore_language_render('admin.role.name'),
+            'permission' => vncore_language_render('admin.role.permission'),
+            'created_at' => vncore_language_render('admin.role.created_at'),
+            'updated_at' => vncore_language_render('admin.updated_at'),
+            'action' => vncore_language_render('action.title'),
         ];
         $sort_order = sc_clean(request('sort_order') ?? 'id_desc');
         $arrSort = [
-            'id__desc' => sc_language_render('filter_sort.id_desc'),
-            'id__asc' => sc_language_render('filter_sort.id_asc'),
-            'name__desc' => sc_language_render('filter_sort.name_desc'),
-            'name__asc' => sc_language_render('filter_sort.name_asc'),
+            'id__desc' => vncore_language_render('filter_sort.id_desc'),
+            'id__asc' => vncore_language_render('filter_sort.id_asc'),
+            'name__desc' => vncore_language_render('filter_sort.name_desc'),
+            'name__asc' => vncore_language_render('filter_sort.name_asc'),
         ];
         $obj = new AdminRole;
         if ($sort_order && array_key_exists($sort_order, $arrSort)) {
@@ -76,9 +76,9 @@ class RoleController extends RootAdminController
                 'created_at' => $row['created_at'],
                 'updated_at' => $row['updated_at'],
                 'action' => ((in_array($row['id'], SC_GUARD_ROLES)) ? '' : '
-                    <a href="' . sc_route_admin('admin_role.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . sc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . sc_route_admin('admin_role.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
                     ')
-                    . ((in_array($row['id'], SC_GUARD_ROLES)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . sc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
+                    . ((in_array($row['id'], SC_GUARD_ROLES)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
                 ,
             ];
         }
@@ -86,11 +86,11 @@ class RoleController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = sc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
         $data['menuRight'][] = '<a href="' . sc_route_admin('admin_role.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-                           <i class="fa fa-plus" title="'.sc_language_render('action.add').'"></i>
+                           <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
 
@@ -127,9 +127,9 @@ class RoleController extends RootAdminController
     public function create()
     {
         $data = [
-            'title' => sc_language_render('admin.role.add_new_title'),
+            'title' => vncore_language_render('admin.role.add_new_title'),
             'subTitle' => '',
-            'title_description' => sc_language_render('admin.role.add_new_des'),
+            'title_description' => vncore_language_render('admin.role.add_new_des'),
             'icon' => 'fa fa-plus',
             'role' => [],
             'permission' => (new AdminPermission)->pluck('name', 'id')->all(),
@@ -154,7 +154,7 @@ class RoleController extends RootAdminController
             'name' => 'required|string|max:50|unique:"'.AdminRole::class.'",name',
             'slug' => 'required|regex:/(^([0-9A-Za-z\._\-]+)$)/|unique:"'.AdminRole::class.'",slug|string|max:50|min:3',
         ], [
-            'slug.regex' => sc_language_render('admin.role.slug_validate'),
+            'slug.regex' => vncore_language_render('admin.role.slug_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -179,7 +179,7 @@ class RoleController extends RootAdminController
         if ($administrators) {
             $role->administrators()->attach($administrators);
         }
-        return redirect()->route('admin_role.index')->with('success', sc_language_render('action.create_success'));
+        return redirect()->route('admin_role.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -192,7 +192,7 @@ class RoleController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title' => sc_language_render('action.edit'),
+            'title' => vncore_language_render('action.edit'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
@@ -217,7 +217,7 @@ class RoleController extends RootAdminController
             'name' => 'required|string|max:50|unique:"'.AdminRole::class.'",name,' . $role->id . '',
             'slug' => 'required|regex:/(^([0-9A-Za-z\._\-]+)$)/|unique:"'.AdminRole::class.'",slug,' . $role->id . '|string|max:50|min:3',
         ], [
-            'slug.regex' => sc_language_render('admin.role.slug_validate'),
+            'slug.regex' => vncore_language_render('admin.role.slug_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -245,7 +245,7 @@ class RoleController extends RootAdminController
         if ($administrators) {
             $role->administrators()->attach($administrators);
         }
-        return redirect()->route('admin_role.index')->with('success', sc_language_render('action.edit_success'));
+        return redirect()->route('admin_role.index')->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -255,7 +255,7 @@ class RoleController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => sc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

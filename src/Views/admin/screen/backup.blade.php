@@ -12,7 +12,7 @@
 
               <div class="btn-group">
                 <button type="button" class="btn btn-default btn-flat"><i class="fa fa-save"></i> Backup</button>
-                <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" data-loading-text="{{ sc_language_render('admin.backup.processing') }}">
+                <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" data-loading-text="{{ vncore_language_render('admin.backup.processing') }}">
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -56,13 +56,13 @@
               <table id="main-table" class="table table-hover box-body text-wrap table-bordered">
                 <thead>
                 <tr>
-                  <th>{{ sc_language_render('admin.backup.sort') }}</th>
-                  <th>{{ sc_language_render('admin.backup.date') }}</th>
-                  <th>{{ sc_language_render('admin.backup.name') }}</th>
-                  <th>{{ sc_language_render('admin.backup.size') }}</th>
-                  <th>{{ sc_language_render('admin.backup.download') }}</th>
-                  <th>{{ sc_language_render('admin.backup.remove') }}</th>
-                  <th>{{ sc_language_render('admin.backup.restore') }}</th>
+                  <th>{{ vncore_language_render('admin.backup.sort') }}</th>
+                  <th>{{ vncore_language_render('admin.backup.date') }}</th>
+                  <th>{{ vncore_language_render('admin.backup.name') }}</th>
+                  <th>{{ vncore_language_render('admin.backup.size') }}</th>
+                  <th>{{ vncore_language_render('admin.backup.download') }}</th>
+                  <th>{{ vncore_language_render('admin.backup.remove') }}</th>
+                  <th>{{ vncore_language_render('admin.backup.restore') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,9 +75,9 @@
                      <td>{{ $file['time']}}</td>
                      <td>{{ $file['name']}}</td>
                      <td>{{ $file['size']}}</td>
-                      <td>{!! '<a href="?download='.$file['name'].'"><button title="'.sc_language_render('admin.backup.download').'" data-loading-text="'.sc_language_render('admin.backup.processing').'" class="btn btn-flat btn-primary"><i class="fas fa-download"></i> '.sc_language_render('admin.backup.download').'</button ></a>' !!}</td>
-                      <td>{!! '<button  onClick="processBackup($(this),\''.$file['name'].'\',\'remove\');" title="'.sc_language_render('admin.backup.remove').'" data-loading-text="'.sc_language_render('admin.backup.processing').'" class="btn btn-flat btn-danger"><span class="glyphicon glyphicon-trash"></span> '.sc_language_render('admin.backup.remove').'</button >' !!}</td>
-                      <td>{!! '<button  onClick="processBackup($(this),\''.$file['name'].'\',\'restore\');" title="'.sc_language_render('admin.backup.restore').'" data-loading-text="'.sc_language_render('admin.backup.processing').'" class="btn btn-flat btn-warning"><span class="glyphicon glyphicon-retweet"></span> '.sc_language_render('admin.backup.restore').'</button >' !!}</td>
+                      <td>{!! '<a href="?download='.$file['name'].'"><button title="'.vncore_language_render('admin.backup.download').'" data-loading-text="'.vncore_language_render('admin.backup.processing').'" class="btn btn-flat btn-primary"><i class="fas fa-download"></i> '.vncore_language_render('admin.backup.download').'</button ></a>' !!}</td>
+                      <td>{!! '<button  onClick="processBackup($(this),\''.$file['name'].'\',\'remove\');" title="'.vncore_language_render('admin.backup.remove').'" data-loading-text="'.vncore_language_render('admin.backup.processing').'" class="btn btn-flat btn-danger"><span class="glyphicon glyphicon-trash"></span> '.vncore_language_render('admin.backup.remove').'</button >' !!}</td>
+                      <td>{!! '<button  onClick="processBackup($(this),\''.$file['name'].'\',\'restore\');" title="'.vncore_language_render('admin.backup.restore').'" data-loading-text="'.vncore_language_render('admin.backup.processing').'" class="btn btn-flat btn-warning"><span class="glyphicon glyphicon-retweet"></span> '.vncore_language_render('admin.backup.restore').'</button >' !!}</td>
                     </tr>
                   @endforeach
                 </tbody>

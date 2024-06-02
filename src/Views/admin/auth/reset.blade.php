@@ -11,7 +11,7 @@
         </a>
       </div>
       <div class="login-title-des col-md-12 p-b-41">
-        <a><b>{{sc_language_render('admin.password_forgot')}}</b></a>
+        <a><b>{{vncore_language_render('admin.password_forgot')}}</b></a>
       </div>
       <div class="card-body">
       <form action="{{ sc_route('admin.password_request') }}" method="post">
@@ -20,7 +20,7 @@
         <input type="hidden" name="token" value="{{ $token }}">
         <div class="input-form {!! !$errors->has('email') ?: 'text-red' !!}">
           <div class="input-group mb-3">
-            <input class="input100 form-control" type="email" placeholder="{{ sc_language_render('admin.user.email') }}"
+            <input class="input100 form-control" type="email" placeholder="{{ vncore_language_render('admin.user.email') }}"
             name="email" value="{{ old('email') }}">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -36,7 +36,7 @@
 
         <div class="input-form {!! !$errors->has('password') ?: 'text-red' !!}">
           <div class="input-group mb-3">
-            <input class="input100 form-control" type="password" placeholder="{{ sc_language_render('admin.user.password') }}"
+            <input class="input100 form-control" type="password" placeholder="{{ vncore_language_render('admin.user.password') }}"
             name="password" value="{{ old('password') }}">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -52,7 +52,7 @@
 
         <div class="input-form {!! !$errors->has('password_confirmation') ?: 'text-red' !!}">
           <div class="input-group mb-3">
-            <input class="input100 form-control" type="password" placeholder="{{ sc_language_render('admin.user.password_confirmation') }}"
+            <input class="input100 form-control" type="password" placeholder="{{ vncore_language_render('admin.user.password_confirmation') }}"
             name="password_confirmation" value="{{ old('password_confirmation') }}">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -70,14 +70,14 @@
           <div class="col-12">
             <div class="container-login-btn">
               <button class="login-btn" type="submit">
-                {{ sc_language_render('action.submit') }}
+                {{ vncore_language_render('action.submit') }}
               </button>
             </div>
           </div>
         </div>
       </form>
       <p class="mt-3 mb-1">
-      <a href="{{ sc_route('admin.login') }}"><b>{{ sc_language_render('admin.user.login') }}</b></a>
+      <a href="{{ sc_route('admin.login') }}"><b>{{ vncore_language_render('admin.user.login') }}</b></a>
       </p>
       </div>
   </div>

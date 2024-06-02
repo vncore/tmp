@@ -11,7 +11,7 @@
          <tbody>
            @foreach ($orderConfig as $config)
              <tr>
-               <td>{{ sc_language_render($config->detail) }}</td>
+               <td>{{ vncore_language_render($config->detail) }}</td>
                <td><input class="check-data-config" data-store="{{ $storeId }}"  type="checkbox" name="{{ $config->key }}"  {{ $config->value?"checked":"" }}></td>
              </tr>
            @endforeach
