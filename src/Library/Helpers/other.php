@@ -79,7 +79,7 @@ if (!function_exists('vncore_html_render') && !in_array('vncore_html_render', co
     /*
     Html render
      */
-    function vncore_html_render($string):string
+    function vncore_html_render($string)
     {
         if(!is_string($string)) {
             return $string;
@@ -93,7 +93,7 @@ if (!function_exists('vncore_word_format_class') && !in_array('vncore_word_forma
     /*
     Format class name
      */
-    function vncore_word_format_class($word = ""):string
+    function vncore_word_format_class($word = "")
     {
         if(!is_string($word)) {
             return $word;
