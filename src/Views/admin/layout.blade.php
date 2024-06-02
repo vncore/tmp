@@ -66,9 +66,10 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">
-              <i class="{{ $icon??'' }}" aria-hidden="true"></i> {!! $title??'' !!}
-              @if (!empty($subTitle))
-              <span class="sub-title">{!! $subTitle !!}</span>
+              @if (!empty($titleHtml))
+                  {!! $titleHtml !!}
+              @else
+                  <i class="{{ $icon??'' }}" aria-hidden="true"></i> {!! $title??'' !!}
               @endif
             </h1>
             <div class="more_info">{!! $more_info??'' !!}</div>

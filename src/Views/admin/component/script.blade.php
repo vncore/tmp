@@ -1,7 +1,22 @@
 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/i18n/defaults-en_US.min.js"></script>
+
+{{-- //Pjax --}}
+<script src="{{ sc_file('admin/plugin/jquery.pjax.js')}}"></script>
+
 <script type="text/javascript">
 
   $(function () {
+    $('.selectpicker').selectpicker();
+    $('.date_time').datepicker({
+          dateFormat: "yy-mm-dd"
+      });
+
     $('input.checkbox').iCheck({
       checkboxClass: 'icheckbox_square-blue',
       radioClass: 'iradio_square-blue',
@@ -17,14 +32,6 @@
       });
   })
 
-</script>
-
-<script>
-  $(function () {
-      $(".date_time").datepicker({
-          dateFormat: "yy-mm-dd"
-      });
-  });
 </script>
 
 {{-- image file manager --}}

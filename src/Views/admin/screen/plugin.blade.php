@@ -131,8 +131,7 @@
 @endpush
 
 @push('scripts')
-{{-- //Pjax --}}
-<script src="{{ sc_file('admin/plugin/jquery.pjax.js')}}"></script>
+
 
 
 <script type="text/javascript">

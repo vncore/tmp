@@ -330,3 +330,48 @@
   font-size: 14px;
 }
 </style>
+
+
+<style>
+  .nav-top {
+     -ms-flex-direction: column;
+     flex-direction: column;
+     padding-left: 0;
+     margin-bottom: 0;
+     list-style: none;
+  }
+  .nav-top .nav-item {
+     margin: 5px;
+     float: left;
+  }
+  .nav-item .nav-link {
+     padding-right: 1rem;
+     padding-left: 1rem;
+     height: 2.5rem;
+     position: relative;
+     display: block;
+     color: #333;
+  }
+  .nav-top .nav-item .nav-link.active {
+     border-bottom: 1px solid #f4c802;
+     color: #02a9f4;
+  }
+  .nav-top .nav-item .nav-link:hover {
+     border-bottom: 1px solid #02a9f4;
+     color: #02a9f4;
+  }
+  .content-wrapper {
+    background: #e3e8ee !important;
+   }
+   .content-header {
+    margin-bottom: 10px;
+    padding: 10px 0 5px !important;
+    background: #fff;
+   }
+   .button-right {
+      margin: 5px;
+   }
+   .bootstrap-select {
+      border:1px solid #ced4da !important;
+    }
+</style>

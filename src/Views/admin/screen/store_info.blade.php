@@ -263,8 +263,7 @@ $(document).ready(function() {
 
   </script>
 
-{{-- //Pjax --}}
-<script src="{{ sc_file('admin/plugin/jquery.pjax.js')}}"></script>
+
 
 <script>
 //Logo

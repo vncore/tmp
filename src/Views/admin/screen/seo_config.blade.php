@@ -79,8 +79,7 @@ $('input.check-data-config-global').iCheck({
 
 </script>
 
-{{-- //Pjax --}}
-<script src="{{ sc_file('admin/plugin/jquery.pjax.js')}}"></script>
+
 
 
 <script>
