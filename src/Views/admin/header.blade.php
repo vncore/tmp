@@ -8,9 +8,11 @@
       
         @include($templatePathAdmin.'component.language')
         @include($templatePathAdmin.'component.admin_theme')
-        @isset($templatePathSpmo)
-          @includeIf($templatePathSpmo.'component.partner')
-        @endisset
+        @if (is_array(config('vncore.header_module')))
+            @foreach (config('vncore.header_module') as $module)
+              @includeIf($module)
+            @endforeach
+        @endif
 
     </ul>
 
