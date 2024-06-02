@@ -127,23 +127,14 @@
 </script> --}}
 <!-- Bootstrap 4 -->
 <script src="{{ sc_file('admin/LTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-{{-- <!-- ChartJS -->
-<script src="{{ sc_file('admin/LTE/plugins/chart.js/Chart.min.js')}}"></script> --}}
 <!-- JQVMap -->
 <script src="{{ sc_file('admin/LTE/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
 <script src="{{ sc_file('admin/LTE/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
-<!-- daterangepicker -->
-{{-- <script src="{{ sc_file('admin/LTE/plugins/moment/moment.min.js')}}"></script>
-<script src="{{ sc_file('admin/LTE/plugins/daterangepicker/daterangepicker.js')}}"></script> --}}
-<!-- Tempusdominus Bootstrap 4 -->
-{{-- <script src="{{ sc_file('admin/LTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script> --}}
 <!-- Summernote -->
 <script src="{{ sc_file('admin/LTE/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{ sc_file('admin/LTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 
-{{-- <script src="{{ sc_file('admin/AdminLTE/bower_components/raphael/raphael.min.js')}}"></script>
-<script src="{{ sc_file('admin/AdminLTE/bower_components/morris.js/morris.min.js')}}"></script> --}}
 <!-- Sparkline -->
 <script src="{{ sc_file('admin/LTE/plugins/sparklines/sparkline.js')}}"></script>
 <!-- FastClick -->
@@ -152,7 +143,6 @@
 <script src="{{ sc_file('admin/LTE/dist/js/adminlte.js')}}"></script>
 {{-- sweetalert2 --}}
 <script src="{{ sc_file('admin/plugin/sweetalert2.all.min.js')}}"></script>
-{{-- <script src="{{ sc_file('admin/plugin/promise-polyfill.js')}}"></script> --}}
 <!-- Select2 -->
 <script src="{{ sc_file('admin/LTE/plugins/select2/js/select2.full.min.js')}}"></script>
 {{-- switch --}}
