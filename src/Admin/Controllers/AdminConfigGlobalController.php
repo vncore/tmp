@@ -7,7 +7,6 @@ use Vncore\Core\Admin\Models\AdminConfig;
 class AdminConfigGlobalController extends RootAdminController
 {
     public $templates;
-    public $currencies;
     public $languages;
     public $timezones;
 

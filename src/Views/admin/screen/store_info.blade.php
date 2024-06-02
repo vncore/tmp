@@ -124,12 +124,6 @@
 
 @if (sc_store_is_partner($storeId))
 {{-- Only the partner account can edit this information --}}          
-                    <tr>
-                      <td><i class="far fa-money-bill-alt nav-icon"></i> {{ sc_language_render('store.currency') }}</td>
-                      <td>
-                        <a href="#" class="editable-required editable editable-click" data-name="currency" data-type="select" data-pk="" data-source="{{ json_encode($currencies) }}" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ sc_language_render('store.currency') }}" data-value="{{ $store->currency }}" data-original-title="" title=""></a>
-                       </td>
-                    </tr>
           
           
                     <tr>
