@@ -287,7 +287,7 @@ if (!function_exists('sc_route_admin') && !in_array('sc_route_admin', config('he
     }
 }
 
-if (!function_exists('sc_uuid') && !in_array('sc_uuid', config('helper_except', []))) {
+if (!function_exists('vncore_uuid') && !in_array('vncore_uuid', config('helper_except', []))) {
     /**
      * Generate UUID
      *
@@ -296,13 +296,13 @@ if (!function_exists('sc_uuid') && !in_array('sc_uuid', config('helper_except', 
      *
      * @return  [type]         [return description]
      */
-    function sc_uuid()
+    function vncore_uuid()
     {
         return (string)\Illuminate\Support\Str::orderedUuid();
     }
 }
 
-if (!function_exists('sc_generate_id') && !in_array('sc_generate_id', config('helper_except', []))) {
+if (!function_exists('vncore_generate_id') && !in_array('vncore_generate_id', config('helper_except', []))) {
     /**
      * Generate ID
      *
@@ -310,7 +310,7 @@ if (!function_exists('sc_generate_id') && !in_array('sc_generate_id', config('he
      *
      * @return  [type]         [return description]
      */
-    function sc_generate_id($type = null)
+    function vncore_generate_id($type = null)
     {
         switch ($type) {
             case 'shop_store':
@@ -319,12 +319,53 @@ if (!function_exists('sc_generate_id') && !in_array('sc_generate_id', config('he
             case 'shop_order':
                 return 'O-'.sc_token(5).'-'.sc_token(5);
                 break;
-            case 'admin_user':
-                return 'AU-'.sc_token(5).'-'.sc_token(5);
+            case 'pmo_member_mapping':
+                return 'MM-'.sc_token(5);
                 break;
-            
+            case 'pmo_partner':
+                return 'PN-'.sc_token(5);
+                break;
+            case 'partner_user':
+                return 'PU-'.sc_token(5);
+                break;
+            case 'pmo_client':
+                return 'CL-'.sc_token(5);
+                break;
+            case 'pmo_project':
+                return 'PJ-'.sc_token(5);
+                break;
+            case 'pmo_project_attachment':
+                return 'PJA-'.sc_token(10);
+                break;
+            case 'pmo_task':
+                return 'TA-'.sc_token(5);
+                break;
+            case 'pmo_task_attachment':
+                return 'TAAT-'.sc_token(10);
+                break;
+            case 'pmo_task_logtime':
+                return 'TALT-'.sc_token(10);
+                break;
+            case 'pmo_task_checklist':
+                return 'TACL-'.sc_token(10);
+                break;
+            case 'pmo_task_comment':
+                return 'TACM-'.sc_token(10);
+                break;
+            case 'pmo_milestone':
+                return 'MS-'.sc_token(5);
+                break;
+            case 'pmo_sprint':
+                return 'SP-'.sc_token(5);
+                break;
+            case 'pmo_request':
+                return 'RQ-'.sc_token(5);
+                break;
+            case 'admin_user':
+                return 'AU-'.sc_token(5);
+                break;
             default:
-                return sc_uuid();
+                return vncore_uuid();
                 break;
         }
     }

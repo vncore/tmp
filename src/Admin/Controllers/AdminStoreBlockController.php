@@ -172,7 +172,7 @@ class AdminStoreBlockController extends RootAdminController
         }
 
         $dataCreate = [
-            'id'       => sc_uuid(),
+            'id'       => vncore_uuid(),
             'name'     => $data['name'],
             'position' => $data['position'],
             'page'     => in_array('*', $data['page'] ?? []) ? '*' : implode(',', $data['page'] ?? []),

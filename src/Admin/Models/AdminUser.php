@@ -77,7 +77,7 @@ class AdminUser extends Authenticatable
         //Uuid
         static::creating(function ($user) {
             if (empty($user->{$user->getKeyName()})) {
-                $user->{$user->getKeyName()} = sc_generate_id($type = 'admin_user');
+                $user->{$user->getKeyName()} = vncore_generate_id($type = 'admin_user');
             }
         });
 

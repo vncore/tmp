@@ -45,7 +45,7 @@ class ShopStoreBlockContent extends Model
         //Uuid
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = sc_generate_id($type = 'shop_store_block');
+                $model->{$model->getKeyName()} = vncore_generate_id($type = 'shop_store_block');
             }
         });
     }
