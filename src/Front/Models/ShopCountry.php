@@ -29,7 +29,7 @@ class ShopCountry extends Model
                 if (self::$getCodeAll === null) {
                     self::$getCodeAll = self::pluck('name', 'code')->all();
                 }
-                sc_set_cache('cache_country', self::$getCodeAll);
+                vncore_cache_set('cache_country', self::$getCodeAll);
             }
             return Cache::get('cache_country');
         } else {

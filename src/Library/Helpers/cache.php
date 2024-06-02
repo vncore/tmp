@@ -3,7 +3,7 @@
 use Vncore\Core\Front\Models\ShopLanguage;
 use \Illuminate\Support\Facades\Cache;
 
-if (!function_exists('sc_clear_cache') && !in_array('sc_clear_cache', config('helper_except', []))) {
+if (!function_exists('vncore_cache_clear') && !in_array('vncore_cache_clear', config('helper_except', []))) {
     /**
      * Clear cache
      *
@@ -11,7 +11,7 @@ if (!function_exists('sc_clear_cache') && !in_array('sc_clear_cache', config('he
      *
      * @return  [string]         [$domain]
      */
-    function sc_clear_cache($typeCache = 'cache_all', $storeId = null)
+    function vncore_cache_clear($typeCache = 'cache_all', $storeId = null)
     {
         try {
             $storeI = $storeId ?? session('adminStoreId');
@@ -44,9 +44,9 @@ if (!function_exists('sc_clear_cache') && !in_array('sc_clear_cache', config('he
     }
 }
 
-if (!function_exists('sc_set_cache') && !in_array('sc_set_cache', config('helper_except', []))) {
+if (!function_exists('vncore_cache_set') && !in_array('vncore_cache_set', config('helper_except', []))) {
     /**
-     * [sc_set_cache description]
+     * [vncore_cache_set description]
      *
      * @param   [string]$cacheIndex  [$cacheIndex description]
      * @param   [type]$value       [$value description]
@@ -55,7 +55,7 @@ if (!function_exists('sc_set_cache') && !in_array('sc_set_cache', config('helper
      *
      * @return  [type]             [return description]
      */
-    function sc_set_cache($cacheIndex, $value, $time = null)
+    function vncore_cache_set($cacheIndex, $value, $time = null)
     {
         if (empty($cacheIndex)) {
             return ;

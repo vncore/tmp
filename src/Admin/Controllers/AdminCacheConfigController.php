@@ -31,7 +31,7 @@ class AdminCacheConfigController extends RootAdminController
     public function clearCache()
     {
         $action = request('action');
-        $response = sc_clear_cache($action);
+        $response = vncore_cache_clear($action);
         return response()->json(
             $response
         );
