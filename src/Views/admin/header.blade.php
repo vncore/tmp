@@ -8,8 +8,8 @@
       
         @include($templatePathAdmin.'component.language')
         @include($templatePathAdmin.'component.admin_theme')
-        @if (is_array(config('vncore.header_module')))
-            @foreach (config('vncore.header_module') as $module)
+        @if (is_array(config('vncore.module_header_left')))
+            @foreach (config('vncore.module_header_left') as $module)
               @includeIf($module)
             @endforeach
         @endif
