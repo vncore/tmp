@@ -32,7 +32,7 @@ class AdminReportController extends RootAdminController
         $data = [
             'title' => vncore_language_render('product.admin.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
+            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => '',
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
@@ -120,7 +120,7 @@ class AdminReportController extends RootAdminController
 
         //menuSearch
         $data['topMenuRight'][] = '
-                <form action="' . sc_route_admin('admin_report.product') . '" id="button_search">
+                <form action="' . vncore_route_admin('admin_report.product') . '" id="button_search">
                 <div class="input-group input-group" style="width: 350px;">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'

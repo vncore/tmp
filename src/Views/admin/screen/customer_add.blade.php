@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr_5">
-                            <a href="{{ sc_route_admin('admin_customer.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ vncore_route_admin('admin_customer.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -454,7 +454,7 @@
                         @endif
             
                         <span class="btn">
-                            <a title="{{ vncore_language_render('customer.addresses.edit') }}" href="{{ sc_route_admin('admin_customer.update_address', ['id' => $address->id]) }}"><i class="fa fa-edit"></i></a>
+                            <a title="{{ vncore_language_render('customer.addresses.edit') }}" href="{{ vncore_route_admin('admin_customer.update_address', ['id' => $address->id]) }}"><i class="fa fa-edit"></i></a>
                         </span>
                         <span class="btn">
                             <a href="#" title="{{ vncore_language_render('customer.addresses.delete') }}" class="delete-address" data-id="{{ $address->id }}"><i class="fa fa-trash"></i></a>

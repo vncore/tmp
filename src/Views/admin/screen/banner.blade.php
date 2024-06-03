@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ sc_route_admin('admin_banner.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ vncore_route_admin('admin_banner.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                                     @endforeach
                                 </select>
                                 <div class="input-group-append">
-                                    <a href="{{ sc_route_admin('admin_banner_type.index') }}" class="btn  btn-flat" title="New">
+                                    <a href="{{ vncore_route_admin('admin_banner_type.index') }}" class="btn  btn-flat" title="New">
                                         <i class="fa fa-plus" title="{{ vncore_language_render('action.add') }}"></i>
                                      </a>
                                 </div>

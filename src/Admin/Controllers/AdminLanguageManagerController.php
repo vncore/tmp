@@ -30,7 +30,7 @@ class AdminLanguageManagerController extends RootAdminController
         $arrayKeyLanguagesPosition = array_keys($languagesPosition);
         $arrayKeyLanguagesPositionEL = array_keys($languagesPositionEL);
         $arrayKeyDiff = array_diff($arrayKeyLanguagesPositionEL, $arrayKeyLanguagesPosition);
-        $urlUpdateData = sc_route_admin('admin_language_manager.update');
+        $urlUpdateData = vncore_route_admin('admin_language_manager.update');
         $data = [
             'languages' => $languages,
             'lang' => $lang,
@@ -43,7 +43,7 @@ class AdminLanguageManagerController extends RootAdminController
             'urlUpdateData' => $urlUpdateData,
             'title' => vncore_language_render('admin.language_manager.title'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
+            'icon' => 'fa fa-tasks',
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',
@@ -141,6 +141,6 @@ class AdminLanguageManagerController extends RootAdminController
         $dataCreate = sc_clean($dataCreate, ['text'], true);
         Languages::insert($dataCreate);
 
-        return redirect(sc_route_admin('admin_language_manager.index'))->with('success', vncore_language_render('action.create_success'));
+        return redirect(vncore_route_admin('admin_language_manager.index'))->with('success', vncore_language_render('action.create_success'));
     }
 }

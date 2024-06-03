@@ -10,7 +10,7 @@
 
                 <div class="box-body">
                     <div class="fields-group">
-                        <form action="{{ sc_route_admin('admin_language_manager.add') }}" method="POST">
+                        <form action="{{ vncore_route_admin('admin_language_manager.add') }}" method="POST">
                             @csrf
                             <table class="table table-hover box-body text-wrap table-bordered">
                               <tr>
@@ -61,7 +61,7 @@
                                     @endif
                                     <span class="form-text">
                                         <i class="fa fa-info-circle"></i>
-                                        {!! vncore_language_render('admin.language_manager.text_help',['link' => sc_route_admin('admin_language_manager.index')]) !!}
+                                        {!! vncore_language_render('admin.language_manager.text_help',['link' => vncore_route_admin('admin_language_manager.index')]) !!}
                                     </span>
                                 </td>
                               </tr>

@@ -9,13 +9,13 @@
       <div class="card-header p-0 border-bottom-0">
         <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link" href="{{ sc_route_admin('admin_template.index') }}" >{{ vncore_language_render('admin.template.local') }}</a>
+            <a class="nav-link" href="{{ vncore_route_admin('admin_template.index') }}" >{{ vncore_language_render('admin.template.local') }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#" >{{ vncore_language_render('admin.template.online') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" target=_new  href="{{ sc_route_admin('admin_template.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'template']) }}</span></a>
+            <a class="nav-link" target=_new  href="{{ vncore_route_admin('admin_template.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'template']) }}</span></a>
           </li>
           <li class="btn-group float-right m-2">
             {!! vncore_language_render('admin.template.template_more') !!}
@@ -186,7 +186,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ sc_route_admin('admin_template_online.install') }}',
+        url: '{{ vncore_route_admin('admin_template_online.install') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key,

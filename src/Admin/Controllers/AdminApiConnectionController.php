@@ -17,13 +17,13 @@ class AdminApiConnectionController extends RootAdminController
             'title' => vncore_language_render('admin.api_connection.list'),
             'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.api_connection.create'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_api_connection.delete'),
+            'icon' => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_api_connection.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',
             'js' => '',
-            'url_action' => sc_route_admin('admin_api_connection.create'),
+            'url_action' => vncore_route_admin('admin_api_connection.create'),
             'layout' => 'index',
         ];
 
@@ -53,7 +53,7 @@ class AdminApiConnectionController extends RootAdminController
                 'last_active' => $row['last_active'],
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
                 'action' => '
-                    <a href="' . sc_route_admin('admin_api_connection.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vncore_route_admin('admin_api_connection.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
                   <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
@@ -119,15 +119,15 @@ class AdminApiConnectionController extends RootAdminController
         'title' => vncore_language_render('admin.api_connection.list'),
         'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('admin.api_connection.edit'),
         'subTitle' => '',
-        'icon' => 'fa fa-indent',
-        'urlDeleteItem' => sc_route_admin('admin_api_connection.delete'),
+        'icon' => 'fa fa-tasks',
+        'urlDeleteItem' => vncore_route_admin('admin_api_connection.delete'),
         'removeList' => 0, // 1 - Enable function delete list item
         'buttonRefresh' => 0, // 1 - Enable button refresh
         'buttonSort' => 0, // 1 - Enable button sort
         'css' => '',
         'js' => '',
         'api_connection' => $api_connection,
-        'url_action' => sc_route_admin('admin_api_connection.edit', ['id' => $api_connection['id']]),
+        'url_action' => vncore_route_admin('admin_api_connection.edit', ['id' => $api_connection['id']]),
         'layout' => 'edit',
         'id' => $id,
     ];
@@ -158,7 +158,7 @@ class AdminApiConnectionController extends RootAdminController
             'last_active' => $row['last_active'],
             'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
             'action' => '
-                <a href="' . sc_route_admin('admin_api_connection.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . vncore_route_admin('admin_api_connection.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
               <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
               ',
@@ -173,7 +173,7 @@ class AdminApiConnectionController extends RootAdminController
         $data['rightContentMain'] = '<input class="switch-data-config" data-store=0 name="api_connection_required" type="checkbox"  '.(sc_config_global('api_connection_required')?'checked':'').'><br> '.vncore_language_render('admin.api_connection.api_connection_required_help');
 
         $optionSort = '';
-        $data['urlSort'] = sc_route_admin('admin_api_connection.index', request()->except(['_token', '_pjax', 'sort_order']));
+        $data['urlSort'] = vncore_route_admin('admin_api_connection.index', request()->except(['_token', '_pjax', 'sort_order']));
         $data['optionSort'] = $optionSort;
         return view($this->templatePathAdmin.'screen.api_connection')
         ->with($data);

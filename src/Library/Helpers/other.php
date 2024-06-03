@@ -52,9 +52,9 @@ if (!function_exists('sc_url_render') && !in_array('sc_url_render', config('help
             $arrRoute = explode('::', $string);
             if (Str::startsWith($string, 'route::admin')) {
                 if (isset($arrRoute[2])) {
-                    return sc_route_admin($arrRoute[1], explode(',', $arrRoute[2]));
+                    return vncore_route_admin($arrRoute[1], explode(',', $arrRoute[2]));
                 } else {
-                    return sc_route_admin($arrRoute[1]);
+                    return vncore_route_admin($arrRoute[1]);
                 }
             } else {
                 if (isset($arrRoute[2])) {

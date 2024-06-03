@@ -18,7 +18,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <a class="nav-link" href="{{ sc_route_admin('home') }}" target=_new>
+      <a class="nav-link" href="{{ vncore_route_admin('home') }}" target=_new>
         <i class="fas fa-home"></i>
       </a> 
 

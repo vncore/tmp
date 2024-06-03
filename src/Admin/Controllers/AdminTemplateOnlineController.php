@@ -65,18 +65,18 @@ class AdminTemplateOnlineController extends RootAdminController
             $resultItems = vncore_language_render('product.admin.result_item', ['item_from' => $dataApi['from'] ?? 0, 'item_to' => $dataApi['to']??0, 'total' =>  $dataApi['total'] ?? 0]);
             $htmlPaging .= '<ul class="pagination pagination-sm no-margin pull-right">';
             if ($dataApi['current_page'] > 1) {
-                $htmlPaging .= '<li class="page-item"><a class="page-link pjax-container" href="'.sc_route_admin('admin_template_online').'?page='.($dataApi['current_page'] - 1).'" rel="prev">«</a></li>';
+                $htmlPaging .= '<li class="page-item"><a class="page-link pjax-container" href="'.vncore_route_admin('admin_template_online').'?page='.($dataApi['current_page'] - 1).'" rel="prev">«</a></li>';
             } else {
                 for ($i = 1; $i < $dataApi['last_page']; $i++) {
                     if ($dataApi['current_page'] == $i) {
                         $htmlPaging .= '<li class="page-item active"><span class="page-link pjax-container">'.$i.'</span></li>';
                     } else {
-                        $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.sc_route_admin('admin_template_online').'?page='.$i.'">'.$i.'</a></li>';
+                        $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.vncore_route_admin('admin_template_online').'?page='.$i.'">'.$i.'</a></li>';
                     }
                 }
             }
             if ($dataApi['current_page'] < $dataApi['last_page']) {
-                $htmlPaging .= '<li class="page-item"><a class="page-link pjax-container" href="'.sc_route_admin('admin_template_online').'?page='.($dataApi['current_page'] + 1).'" rel="next">»</a></li>';
+                $htmlPaging .= '<li class="page-item"><a class="page-link pjax-container" href="'.vncore_route_admin('admin_template_online').'?page='.($dataApi['current_page'] + 1).'" rel="next">»</a></li>';
             }
             $htmlPaging .= '</ul>';
         }

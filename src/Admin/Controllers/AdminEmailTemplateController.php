@@ -17,8 +17,8 @@ class AdminEmailTemplateController extends RootAdminController
         $data = [
             'title'         => vncore_language_render('admin.email_template.list'),
             'subTitle'      => '',
-            'icon'          => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_email_template.delete'),
+            'icon'          => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_email_template.delete'),
             'removeList'    => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css'           => '',
@@ -47,7 +47,7 @@ class AdminEmailTemplateController extends RootAdminController
                 'group' => $row['group'] ?? 'N/A',
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
                 'action' => '
-                    <a href="' . sc_route_admin('admin_email_template.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.admin.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vncore_route_admin('admin_email_template.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.admin.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
                   <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
@@ -60,7 +60,7 @@ class AdminEmailTemplateController extends RootAdminController
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . sc_route_admin('admin_email_template.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_email_template.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
                            <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
@@ -82,7 +82,7 @@ class AdminEmailTemplateController extends RootAdminController
             'icon' => 'fa fa-plus',
             'arrayGroup' => $this->arrayGroup(),
             'obj' => [],
-            'url_action' => sc_route_admin('admin_email_template.create'),
+            'url_action' => vncore_route_admin('admin_email_template.create'),
         ];
         return view($this->templatePathAdmin.'screen.email_template')
             ->with($data);
@@ -137,7 +137,7 @@ class AdminEmailTemplateController extends RootAdminController
             'icon' => 'fa fa-edit',
             'obj' => $emailTemplate,
             'arrayGroup' => $this->arrayGroup(),
-            'url_action' => sc_route_admin('admin_email_template.edit', ['id' => $emailTemplate['id']]),
+            'url_action' => vncore_route_admin('admin_email_template.edit', ['id' => $emailTemplate['id']]),
         ];
         return view($this->templatePathAdmin.'screen.email_template')
             ->with($data);

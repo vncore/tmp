@@ -263,7 +263,7 @@ if (!function_exists('sc_route') && !in_array('sc_route', config('helper_except'
 }
 
 
-if (!function_exists('sc_route_admin') && !in_array('sc_route_admin', config('helper_except', []))) {
+if (!function_exists('vncore_route_admin') && !in_array('vncore_route_admin', config('helper_except', []))) {
     /**
      * Render route admin
      *
@@ -272,7 +272,7 @@ if (!function_exists('sc_route_admin') && !in_array('sc_route_admin', config('he
      *
      * @return  [type]         [return description]
      */
-    function sc_route_admin($name, $param = [])
+    function vncore_route_admin($name, $param = [])
     {
         if (Route::has($name)) {
             try {

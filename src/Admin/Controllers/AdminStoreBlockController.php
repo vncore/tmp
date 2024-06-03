@@ -27,8 +27,8 @@ class AdminStoreBlockController extends RootAdminController
         $data = [
             'title'         => vncore_language_render('admin.store_block.list'),
             'subTitle'      => '',
-            'icon'          => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_store_block.delete'),
+            'icon'          => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_store_block.delete'),
             'removeList'    => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css'           => '',
@@ -98,7 +98,7 @@ class AdminStoreBlockController extends RootAdminController
             }
 
             $storeTmp['action'] = '
-                <a href="' . sc_route_admin('admin_store_block.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . vncore_route_admin('admin_store_block.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
             <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
             ';
             $dataTr[$row['id']] = $storeTmp;
@@ -112,7 +112,7 @@ class AdminStoreBlockController extends RootAdminController
 
         //menuRight
         $data['menuRight'][] = '
-                           <a href="' . sc_route_admin('admin_store_block.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+                           <a href="' . vncore_route_admin('admin_store_block.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
                            <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
@@ -140,7 +140,7 @@ class AdminStoreBlockController extends RootAdminController
             'listViewBlock'     => $listViewBlock,
             'listViewPage'     => $listViewPage,
             'layout'            => [],
-            'url_action'        => sc_route_admin('admin_store_block.create'),
+            'url_action'        => vncore_route_admin('admin_store_block.create'),
         ];
         return view($this->templatePathAdmin.'screen.store_block')
             ->with($data);
@@ -214,7 +214,7 @@ class AdminStoreBlockController extends RootAdminController
             'listViewPage' => $listViewPage,
             'layout' => $layout,
             'storeId' => $layout->store_id,
-            'url_action' => sc_route_admin('admin_store_block.edit', ['id' => $layout['id']]),
+            'url_action' => vncore_route_admin('admin_store_block.edit', ['id' => $layout['id']]),
         ];
         return view($this->templatePathAdmin.'screen.store_block')
             ->with($data);

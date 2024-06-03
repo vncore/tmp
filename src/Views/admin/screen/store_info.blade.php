@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-tools">
             <div class="btn-group float-right">
-                <a href="{{ sc_route_admin('admin_store.index') }}" class="btn  btn-flat btn-default" title="List">
+                <a href="{{ vncore_route_admin('admin_store.index') }}" class="btn  btn-flat btn-default" title="List">
                     <i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span>
                 </a>
             </div>
@@ -14,7 +14,7 @@
           <h2 class="card-title">{{ $title_description??'' }}</h2>
           <div class="card-tools">
               <div class="btn-group float-right mr-5">
-                  <a href="{{ sc_route_admin('admin_store.index') }}" class="btn  btn-flat btn-default" title="List">
+                  <a href="{{ vncore_route_admin('admin_store.index') }}" class="btn  btn-flat btn-default" title="List">
                       <i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span>
                   </a>
               </div>
@@ -82,42 +82,42 @@
               
                     <tr>
                       <td><i class="fas fa-phone-alt"></i> {{ vncore_language_render('store.phone') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="phone" data-type="number" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.phone') }}" data-value="{{ $store->phone }}" data-original-title="" title="">{{$store->phone }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="phone" data-type="number" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.phone') }}" data-value="{{ $store->phone }}" data-original-title="" title="">{{$store->phone }}</a></td>
                     </tr>
               
                     <tr>
                       <td><i class="fas fa-phone-square"></i> {{ vncore_language_render('store.long_phone') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="long_phone" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.long_phone') }}" data-value="{{ $store->long_phone }}" data-original-title="" title="">{{$store->long_phone }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="long_phone" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.long_phone') }}" data-value="{{ $store->long_phone }}" data-original-title="" title="">{{$store->long_phone }}</a></td>
                     </tr>
               
                     <tr>
                       <td><i class="far fa-calendar-alt"></i> {{ vncore_language_render('store.time_active') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="time_active" data-type="textarea" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.time_active') }}" data-value="{{ $store->time_active }}" data-original-title="" title="">{{$store->time_active }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="time_active" data-type="textarea" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.time_active') }}" data-value="{{ $store->time_active }}" data-original-title="" title="">{{$store->time_active }}</a></td>
                     </tr>
               
                     <tr>
                       <td><i class="fas fa-map-marked"></i> {{ vncore_language_render('store.address') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="address" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.address') }}" data-value="{{ $store->address }}" data-original-title="" title="">{{$store->address }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="address" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.address') }}" data-value="{{ $store->address }}" data-original-title="" title="">{{$store->address }}</a></td>
                     </tr>
                     <tr>
                       <td><i class="fas fa-location-arrow"></i></span> {{ vncore_language_render('store.office') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="office" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.office') }}" data-value="{{ $store->office }}" data-original-title="" title="">{{$store->office }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="office" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.office') }}" data-value="{{ $store->office }}" data-original-title="" title="">{{$store->office }}</a></td>
                     </tr>
                     <tr>
                       <td><i class="fas fa-warehouse"></i> {{ vncore_language_render('store.warehouse') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="warehouse" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.warehouse') }}" data-value="{{ $store->warehouse }}" data-original-title="" title="">{{$store->warehouse }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="warehouse" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.warehouse') }}" data-value="{{ $store->warehouse }}" data-original-title="" title="">{{$store->warehouse }}</a></td>
                     </tr>
               
                     <tr>
                       <td><i class="fas fa-envelope"></i> {{ vncore_language_render('store.email') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="email" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.email') }}" data-value="{{ $store->email }}" data-original-title="" title="">{{$store->email }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="email" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.email') }}" data-value="{{ $store->email }}" data-original-title="" title="">{{$store->email }}</a></td>
                     </tr>
 
 @if ($storeId == SC_ID_ROOT)
 {{-- Only the root domain can edit this information --}}
                     <tr>
                       <td><i class="fab fa-chrome"></i> {{ vncore_language_render('store.admin.domain') }}</td>
-                      <td><a href="#" class="editable-required editable editable-click" data-name="domain" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.admin.domain') }}" data-value="{{ $store->domain }}" data-original-title="" title="">{{$store->domain }}</a></td>
+                      <td><a href="#" class="editable-required editable editable-click" data-name="domain" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.admin.domain') }}" data-value="{{ $store->domain }}" data-original-title="" title="">{{$store->domain }}</a></td>
                     </tr>
 @endif
 
@@ -129,14 +129,14 @@
                     <tr>
                       <td><i class="fas fa-language nav-icon"></i> {{ vncore_language_render('store.language') }}</td>
                       <td>
-                        <a href="#" class="editable-required editable editable-click" data-name="language" data-type="select" data-pk="" data-source="{{ json_encode($languages->pluck('name','code')->toArray()) }}" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.language') }}" data-value="{{ $store->language }}" data-original-title="" title=""></a>
+                        <a href="#" class="editable-required editable editable-click" data-name="language" data-type="select" data-pk="" data-source="{{ json_encode($languages->pluck('name','code')->toArray()) }}" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.language') }}" data-value="{{ $store->language }}" data-original-title="" title=""></a>
                        </td>
                     </tr>
 @endif
                     <tr>
                       <td><i class="nav-icon  fas fa-object-ungroup "></i>{{ vncore_language_render('store.admin.template') }}</td>
                       <td>
-                        <a href="#" class="editable-required editable editable-click" data-name="template" data-type="select" data-pk="" data-source="{{ json_encode($templates) }}" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.admin.template') }}" data-value="{{ $store->template }}" data-original-title="" title=""></a>
+                        <a href="#" class="editable-required editable editable-click" data-name="template" data-type="select" data-pk="" data-source="{{ json_encode($templates) }}" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.admin.template') }}" data-value="{{ $store->template }}" data-original-title="" title=""></a>
                        </td>
                     </tr>
           
@@ -157,7 +157,7 @@
                         <td>
                           @foreach ($languages->toArray() as  $codeLang => $lang)
                             {{ $languages[$codeLang]->name }} <img src="{{ sc_file($languages[$codeLang]->icon )}}" style="width:20px">:<br>
-                          <i><a href="#" class="editable-required editable editable-click" data-name="{{ 'title__'.$codeLang }}" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.title') }}" data-value="{{ $descriptions[$codeLang]['title'] ?? '' }}" data-original-title="" title="">{{ $descriptions[$codeLang]['title'] ?? '' }}</a></i><br>
+                          <i><a href="#" class="editable-required editable editable-click" data-name="{{ 'title__'.$codeLang }}" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.title') }}" data-value="{{ $descriptions[$codeLang]['title'] ?? '' }}" data-original-title="" title="">{{ $descriptions[$codeLang]['title'] ?? '' }}</a></i><br>
                           <br>
                           @endforeach
                         </td>
@@ -168,7 +168,7 @@
                         <td>
                           @foreach ($languages->toArray() as  $codeLang => $lang)
                             {{ $languages[$codeLang]->name }} <img src="{{ sc_file($languages[$codeLang]->icon )}}" style="width:20px">:<br>
-                          <i><a href="#" class="editable-required editable editable-click" data-name="{{ 'keyword__'.$codeLang }}" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.keyword') }}" data-value="{{ $descriptions[$codeLang]['keyword'] ?? '' }}" data-original-title="" title="">{{ $descriptions[$codeLang]['keyword'] ?? '' }}</a></i><br>
+                          <i><a href="#" class="editable-required editable editable-click" data-name="{{ 'keyword__'.$codeLang }}" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.keyword') }}" data-value="{{ $descriptions[$codeLang]['keyword'] ?? '' }}" data-original-title="" title="">{{ $descriptions[$codeLang]['keyword'] ?? '' }}</a></i><br>
                           <br>
                           @endforeach
                         </td>
@@ -179,7 +179,7 @@
                         <td>
                           @foreach ($languages->toArray() as  $codeLang => $lang)
                             {{ $languages[$codeLang]->name }} <img src="{{ sc_file($languages[$codeLang]->icon )}}" style="width:20px">:<br>
-                          <i><a href="#" class="editable-required editable editable-click" data-name="{{ 'description__'.$codeLang }}" data-type="text" data-pk="" data-source="" data-url="{{ sc_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.description') }}" data-value="{{ $descriptions[$codeLang]['description'] ?? '' }}" data-original-title="" title="">{{ $descriptions[$codeLang]['description'] ?? '' }}</a></i><br>
+                          <i><a href="#" class="editable-required editable editable-click" data-name="{{ 'description__'.$codeLang }}" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.description') }}" data-value="{{ $descriptions[$codeLang]['description'] ?? '' }}" data-original-title="" title="">{{ $descriptions[$codeLang]['description'] ?? '' }}</a></i><br>
                           <br>
                           @endforeach
                         </td>
@@ -269,7 +269,7 @@ $(document).ready(function() {
 //Logo
   $('.logo, .icon, .og_image').change(function() {
         $.ajax({
-        url: '{{ sc_route_admin('admin_store.update') }}',
+        url: '{{ vncore_route_admin('admin_store.update') }}',
         type: 'POST',
         dataType: 'JSON',
         data: {"name": $(this).attr('name'),"value":$(this).val(),"_token": "{{ csrf_token() }}", "storeId": "{{ $storeId }}" },
@@ -297,7 +297,7 @@ $("input.switch-data-store").bootstrapSwitch();
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: "{{ sc_route_admin('admin_store.update') }}",
+        url: "{{ vncore_route_admin('admin_store.update') }}",
         data: {
           "_token": "{{ csrf_token() }}",
           "name": $(this).attr('name'),

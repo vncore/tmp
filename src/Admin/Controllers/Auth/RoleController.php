@@ -19,8 +19,8 @@ class RoleController extends RootAdminController
         $data = [
             'title' => vncore_language_render('admin.role.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_role.delete'),
+            'icon' => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_role.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
             'css' => '',
@@ -76,7 +76,7 @@ class RoleController extends RootAdminController
                 'created_at' => $row['created_at'],
                 'updated_at' => $row['updated_at'],
                 'action' => ((in_array($row['id'], SC_GUARD_ROLES)) ? '' : '
-                    <a href="' . sc_route_admin('admin_role.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vncore_route_admin('admin_role.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
                     ')
                     . ((in_array($row['id'], SC_GUARD_ROLES)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
                 ,
@@ -89,7 +89,7 @@ class RoleController extends RootAdminController
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . sc_route_admin('admin_role.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_role.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
                            <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
@@ -104,7 +104,7 @@ class RoleController extends RootAdminController
 
         //topMenuRight
         $data['topMenuRight'][] ='
-                <form action="' . sc_route_admin('admin_role.index') . '" id="button_search">
+                <form action="' . vncore_route_admin('admin_role.index') . '" id="button_search">
                 <div class="input-group input-group float-left">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
@@ -134,7 +134,7 @@ class RoleController extends RootAdminController
             'role' => [],
             'permission' => (new AdminPermission)->pluck('name', 'id')->all(),
             'userList' => (new AdminUser)->pluck('name', 'id')->all(),
-            'url_action' => sc_route_admin('admin_role.create'),
+            'url_action' => vncore_route_admin('admin_role.create'),
 
         ];
 
@@ -199,7 +199,7 @@ class RoleController extends RootAdminController
             'role' => $role,
             'permission' => (new AdminPermission)->pluck('name', 'id')->all(),
             'userList' => (new AdminUser)->pluck('name', 'id')->all(),
-            'url_action' => sc_route_admin('admin_role.edit', ['id' => $role['id']]),
+            'url_action' => vncore_route_admin('admin_role.edit', ['id' => $role['id']]),
         ];
         return view($this->templatePathAdmin.'auth.role')
             ->with($data);

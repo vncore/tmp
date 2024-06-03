@@ -15,7 +15,7 @@
                     <div class="dropdown-menu dropdown-menu-left p-0">
                     
                     @foreach (sc_get_list_code_store() as $id => $code)
-                    <a href="{{ sc_route_admin('admin_store_css.index', ['store_id' => $id]) }}" class="dropdown-item  {{ ($storeId == $id) ? 'disabled active':'' }}">
+                    <a href="{{ vncore_route_admin('admin_store_css.index', ['store_id' => $id]) }}" class="dropdown-item  {{ ($storeId == $id) ? 'disabled active':'' }}">
                         <div class="hover">
                         {{ $code }}
                         </div>

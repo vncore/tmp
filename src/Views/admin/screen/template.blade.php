@@ -11,11 +11,11 @@
               </li>
               @if (config('admin.settings.api_template'))
               <li class="nav-item">
-                <a class="nav-link" href="{{ sc_route_admin('admin_template_online.index') }}" >{{ vncore_language_render('admin.template.online') }}</a>
+                <a class="nav-link" href="{{ vncore_route_admin('admin_template_online.index') }}" >{{ vncore_language_render('admin.template.online') }}</a>
               </li>
               @endif
               <li class="nav-item">
-                <a class="nav-link" target=_new  href="{{ sc_route_admin('admin_template.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'template']) }}</span></a>
+                <a class="nav-link" target=_new  href="{{ vncore_route_admin('admin_template.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'template']) }}</span></a>
               </li>
               <li class="btn-group float-right m-2">
                 {!! vncore_language_render('admin.template.template_more') !!}
@@ -97,16 +97,16 @@
 function processTemplate(obj,key, action = 'refresh') {
 
 if (action == 'refresh' || action == 'install') {
-  var urlAction = '{{ sc_route_admin('admin_template.refresh') }}';
+  var urlAction = '{{ vncore_route_admin('admin_template.refresh') }}';
 }
 if (action == 'remove') {
-  var urlAction = '{{ sc_route_admin('admin_template.remove') }}';
+  var urlAction = '{{ vncore_route_admin('admin_template.remove') }}';
 }
 if (action == 'disable') {
-  var urlAction = '{{ sc_route_admin('admin_template.disable') }}';
+  var urlAction = '{{ vncore_route_admin('admin_template.disable') }}';
 }
 if (action == 'enable') {
-  var urlAction = '{{ sc_route_admin('admin_template.enable') }}';
+  var urlAction = '{{ vncore_route_admin('admin_template.enable') }}';
 }
 
 Swal.fire({

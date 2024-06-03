@@ -46,8 +46,8 @@ class PermissionController extends RootAdminController
         $data = [
             'title' => vncore_language_render('admin.permission.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_permission.delete'),
+            'icon' => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_permission.delete'),
             'removeList' => 1, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
             'buttonSort' => 1, // 1 - Enable button sort
@@ -111,7 +111,7 @@ class PermissionController extends RootAdminController
                 'permission' => $permissions,
                 'updated_at' => $row['updated_at'],
                 'action' => '
-                    <a href="' . sc_route_admin('admin_permission.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vncore_route_admin('admin_permission.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
                     <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>'
                 ,
             ];
@@ -123,7 +123,7 @@ class PermissionController extends RootAdminController
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . sc_route_admin('admin_permission.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_permission.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
                            <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
@@ -133,7 +133,7 @@ class PermissionController extends RootAdminController
         foreach ($arrSort as $key => $status) {
             $optionSort .= '<option  ' . (($sort_order == $key) ? "selected" : "") . ' value="' . $key . '">' . $status . '</option>';
         }
-        $data['urlSort'] = sc_route_admin('admin_permission.index', request()->except(['_token', '_pjax', 'sort_order']));
+        $data['urlSort'] = vncore_route_admin('admin_permission.index', request()->except(['_token', '_pjax', 'sort_order']));
         $data['optionSort'] = $optionSort;
         //=menuSort
 
@@ -154,7 +154,7 @@ class PermissionController extends RootAdminController
             'icon' => 'fa fa-plus',
             'permission' => [],
             'routeAdmin' => $this->routeAdmin,
-            'url_action' => sc_route_admin('admin_permission.create'),
+            'url_action' => vncore_route_admin('admin_permission.create'),
 
         ];
 
@@ -210,7 +210,7 @@ class PermissionController extends RootAdminController
             'icon' => 'fa fa-edit',
             'permission' => $permission,
             'routeAdmin' => $this->routeAdmin,
-            'url_action' => sc_route_admin('admin_permission.edit', ['id' => $permission['id']]),
+            'url_action' => vncore_route_admin('admin_permission.edit', ['id' => $permission['id']]),
         ];
         return view($this->templatePathAdmin.'auth.permission')
             ->with($data);

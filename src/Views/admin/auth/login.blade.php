@@ -12,7 +12,7 @@
         <div class="login-title-des col-md-12 p-b-41">
           <a><b>{{vncore_language_render('admin.login')}}</b></a>
         </div>
-        <form action="{{ sc_route_admin('admin.login') }}" method="post">
+        <form action="{{ vncore_route_admin('admin.login') }}" method="post">
 
           <div class="input-form {!! !$errors->has('email') ?: 'text-red' !!}">
             <div class="col-md-12 form-group has-feedback {!! !$errors->has('username') ?: 'text-red' !!}">
@@ -58,7 +58,7 @@
 
             @if (sc_config_global('admin_forgot_password', 1))
             <div class="text-center">
-              <a href="{{ sc_route_admin('admin.forgot') }}" class="forgot">
+              <a href="{{ vncore_route_admin('admin.forgot') }}" class="forgot">
                 <i class="fa fa-caret-right"></i> <b>{{ vncore_language_render('admin.password_forgot') }}</b>
               </a>
             </div>

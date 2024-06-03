@@ -53,7 +53,7 @@ class ResetPasswordController extends RootAdminController
     public function formResetPassword($token = null)
     {
         if (admin()->user()) {
-            return redirect(sc_route_admin('admin.home'));
+            return redirect(vncore_route_admin('admin.home'));
         }
         $data = [
                 'title'       => vncore_language_render('admin.password_reset'),
@@ -95,7 +95,7 @@ class ResetPasswordController extends RootAdminController
     }
     
     public function redirectPath() {
-        return sc_route_admin('admin.home');
+        return vncore_route_admin('admin.home');
     }
 
     protected function broker()

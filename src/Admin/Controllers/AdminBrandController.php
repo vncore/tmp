@@ -18,13 +18,13 @@ class AdminBrandController extends RootAdminController
             'title' => vncore_language_render('admin.brand.list'),
             'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.brand.add_new_title'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_brand.delete'),
+            'icon' => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_brand.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',
             'js' => '',
-            'url_action' => sc_route_admin('admin_brand.create'),
+            'url_action' => vncore_route_admin('admin_brand.create'),
             'customFields'      => (new ShopCustomField)->getCustomField($type = 'shop_brand'),
         ];
 
@@ -73,7 +73,7 @@ class AdminBrandController extends RootAdminController
                     $dataMap['shop_store'] = '';
                 }
             }
-            $dataMap['action'] = '<a href="' . sc_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+            $dataMap['action'] = '<a href="' . vncore_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
                                 <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                                 ';
             $dataTr[$row['id']] = $dataMap;
@@ -167,13 +167,13 @@ class AdminBrandController extends RootAdminController
         'title' => vncore_language_render('admin.brand.list'),
         'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('action.edit'),
         'subTitle' => '',
-        'icon' => 'fa fa-indent',
-        'urlDeleteItem' => sc_route_admin('admin_brand.delete'),
+        'icon' => 'fa fa-tasks',
+        'urlDeleteItem' => vncore_route_admin('admin_brand.delete'),
         'removeList' => 0, // 1 - Enable function delete list item
         'buttonRefresh' => 0, // 1 - Enable button refresh
         'css' => '',
         'js' => '',
-        'url_action' => sc_route_admin('admin_brand.edit', ['id' => $brand['id']]),
+        'url_action' => vncore_route_admin('admin_brand.edit', ['id' => $brand['id']]),
         'brand' => $brand,
         'id' => $id,
         'customFields'      => (new ShopCustomField)->getCustomField($type = 'shop_brand'),
@@ -198,7 +198,7 @@ class AdminBrandController extends RootAdminController
             'sort' => $row['sort'],
             'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
             'action' => '
-                <a href="' . sc_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . vncore_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
               <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
               ',

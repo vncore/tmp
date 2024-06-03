@@ -11,11 +11,11 @@
             </li>
             @if (config('admin.settings.api_plugin'))
             <li class="nav-item">
-              <a class="nav-link" href="{{ sc_route_admin('admin_plugin_online') }}" >{{ vncore_language_render('admin.plugin.online') }}</a>
+              <a class="nav-link" href="{{ vncore_route_admin('admin_plugin_online') }}" >{{ vncore_language_render('admin.plugin.online') }}</a>
             </li>
             @endif
             <li class="nav-item">
-              <a class="nav-link" target=_new  href="{{ sc_route_admin('admin_plugin.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'plugin']) }}</span></a>
+              <a class="nav-link" target=_new  href="{{ vncore_route_admin('admin_plugin.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'plugin']) }}</span></a>
             </li>
             <li class="btn-group float-right m-2">
               {!! vncore_language_render('admin.plugin.plugin_more') !!}
@@ -141,7 +141,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ sc_route_admin('admin_plugin.enable') }}',
+        url: '{{ vncore_route_admin('admin_plugin.enable') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key
@@ -166,7 +166,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ sc_route_admin('admin_plugin.disable') }}',
+        url: '{{ vncore_route_admin('admin_plugin.disable') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key
@@ -190,7 +190,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ sc_route_admin('admin_plugin.install') }}',
+        url: '{{ vncore_route_admin('admin_plugin.install') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key
@@ -224,7 +224,7 @@
             $.ajax({
               type: 'POST',
               dataType:'json',
-              url: '{{ sc_route_admin('admin_plugin.uninstall') }}',
+              url: '{{ vncore_route_admin('admin_plugin.uninstall') }}',
               data: {
                 "_token": "{{ csrf_token() }}",
                 "key":key,

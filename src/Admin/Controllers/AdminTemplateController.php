@@ -18,7 +18,7 @@ class AdminTemplateController extends RootAdminController
         $data = [
             'title' => vncore_language_render('admin.template.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',        ];
+            'icon' => 'fa fa-tasks',        ];
 
         $data["templates"] = sc_get_all_template();
         $data["templatesActive"] = (new AdminTemplate)->getListTemplateActive();

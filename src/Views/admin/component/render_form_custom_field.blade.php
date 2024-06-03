@@ -1,6 +1,6 @@
 @if (isset($customFields) && count($customFields))
                 <hr class="kind ">
-                <label>{{ vncore_language_render('admin.custom_field.title') }} (<a target=_new href="{{ sc_route_admin('admin_custom_field.index') }}"><i class="fa fa-plus" aria-hidden="true"></i></a>)</label>
+                <label>{{ vncore_language_render('admin.custom_field.title') }} (<a target=_new href="{{ vncore_route_admin('admin_custom_field.index') }}"><i class="fa fa-plus" aria-hidden="true"></i></a>)</label>
                     @foreach ($customFields as $keyField => $field)
                     <div class="form-group row kind   {{ $errors->has('fields.'.$field->code) ? ' text-red' : '' }}">
                         <label class="col-sm-2 col-form-label">{{ vncore_language_render($field->name) }}</label>

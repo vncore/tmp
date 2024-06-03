@@ -83,7 +83,7 @@ class ForgotPasswordController extends RootAdminController
     }
     
     public function redirectPath() {
-        return sc_route_admin('admin.home');
+        return vncore_route_admin('admin.home');
     }
 
     protected function broker()

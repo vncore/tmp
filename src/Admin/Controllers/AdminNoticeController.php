@@ -16,7 +16,7 @@ class AdminNoticeController extends RootAdminController
         $data = [
             'title'         => vncore_language_render('admin_notice.title'),
             'subTitle'      => '',
-            'icon'          => 'fa fa-indent',
+            'icon'          => 'fa fa-tasks',
             'urlDeleteItem' => '',
             'removeList'    => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
@@ -41,7 +41,7 @@ class AdminNoticeController extends RootAdminController
         $dataTr = [];
         foreach ($dataTmp as $key => $row) {
             $dataMap = [
-                'type' => '<a class="notice-'.(($row->status) ? 'read':'unread').'" href="'.sc_route_admin('admin_notice.url',['type' => $row->type,'typeId' => $row->type_id]).'">'.$row->type.'</a>',
+                'type' => '<a class="notice-'.(($row->status) ? 'read':'unread').'" href="'.vncore_route_admin('admin_notice.url',['type' => $row->type,'typeId' => $row->type_id]).'">'.$row->type.'</a>',
                 'type_id' => $row->type_id,
                 'content' => vncore_language_render($row->content),
                 'date' => $row->created_at,
@@ -75,10 +75,10 @@ class AdminNoticeController extends RootAdminController
         ->where('type_id', $typeId)
         ->update(['status' => 1]);
         // if ((in_array($type, ['sc_order_created', 'sc_order_success', 'sc_order_update_status']))) {
-        //     return redirect(sc_route_admin('admin_order.detail', ['id' => $typeId]));
+        //     return redirect(vncore_route_admin('admin_order.detail', ['id' => $typeId]));
         // }
         // if ((in_array($type, ['sc_customer_created']))) {
-        //     return redirect(sc_route_admin('admin_customer.edit', ['id' => $typeId]));
+        //     return redirect(vncore_route_admin('admin_customer.edit', ['id' => $typeId]));
         // }
     }
 }

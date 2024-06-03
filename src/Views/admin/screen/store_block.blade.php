@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ sc_route_admin('admin_store_block.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ vncore_route_admin('admin_store_block.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,7 @@ $(function () {
         $('#loading').show();
         $.ajax({
             method: 'get',
-            url: '{{ sc_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId,
+            url: '{{ vncore_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId,
             success: function (data) {
                 obj.before(data);
                 obj.remove();
@@ -249,7 +249,7 @@ $(function () {
         $('#loading').show();
         $.ajax({
             method: 'get',
-            url: '{{ sc_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId,
+            url: '{{ vncore_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId,
             success: function (data) {
                 obj.before(data);
                 obj.remove();
@@ -267,10 +267,10 @@ $(function () {
         var storeId = $(this).val();
         var url_type = '';
         if (type_checked == 'view') {
-            url_type = '{{ sc_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId;
+            url_type = '{{ vncore_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId;
         }
         if (type_checked == 'page') {
-            url_type = '{{ sc_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId;
+            url_type = '{{ vncore_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId;
         }
         $('#loading').show();
         $.ajax({

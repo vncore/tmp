@@ -32,8 +32,8 @@ class AdminStoreLinkController extends RootAdminController
         $data = [
             'title' => vncore_language_render('admin.link.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_store_link.delete'),
+            'icon' => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_store_link.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
             'css' => '',
@@ -97,7 +97,7 @@ class AdminStoreLinkController extends RootAdminController
                     $dataMap['shop_store'] = '';
                 }
             }
-            $dataMap['action'] = '<a href="' . sc_route_admin('admin_store_link.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+            $dataMap['action'] = '<a href="' . vncore_route_admin('admin_store_link.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
             <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
             ';
             $dataTr[$row['id']] = $dataMap;
@@ -109,10 +109,10 @@ class AdminStoreLinkController extends RootAdminController
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . sc_route_admin('admin_store_link.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_store_link.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
         <i class="fa fa-plus" title="' . vncore_language_render('admin.link.add_new') . '"></i>
         </a>';
-        $data['menuRight'][] = '<a href="' . sc_route_admin('admin_store_link.collection_create') . '" class="btn btn-success btn-flat" title="'.vncore_language_render('admin.link.add_collection_new').'" id="button_create_new">
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_store_link.collection_create') . '" class="btn btn-success btn-flat" title="'.vncore_language_render('admin.link.add_collection_new').'" id="button_create_new">
         <i class="fas fa-network-wired"></i>
         </a>';
         //=menuRight
@@ -137,7 +137,7 @@ class AdminStoreLinkController extends RootAdminController
             'arrGroup'          => $this->arrGroup(),
             'arrCollection'           => $this->arrCollection(),
             'layout'            => 'single',
-            'url_action'        => sc_route_admin('admin_store_link.create'),
+            'url_action'        => vncore_route_admin('admin_store_link.create'),
         ];
         return view($this->templatePathAdmin.'screen.store_link')
             ->with($data);
@@ -159,7 +159,7 @@ class AdminStoreLinkController extends RootAdminController
             'arrGroup'          => $this->arrGroup(),
             'arrCollection'           => $this->arrCollection(),
             'layout'            => 'collection',
-            'url_action'        => sc_route_admin('admin_store_link.collection_create'),
+            'url_action'        => vncore_route_admin('admin_store_link.collection_create'),
         ];
         return view($this->templatePathAdmin.'screen.store_link')
             ->with($data);
@@ -267,7 +267,7 @@ class AdminStoreLinkController extends RootAdminController
             'arrCollection'           => $this->arrCollection(),
             'arrGroup'          => $this->arrGroup(),
             'layout'            => $link->type == 'collection' ? 'collection': 'single',
-            'url_action'        => sc_route_admin('admin_store_link.edit', ['id' => $link['id']]),
+            'url_action'        => vncore_route_admin('admin_store_link.edit', ['id' => $link['id']]),
         ];
         return view($this->templatePathAdmin.'screen.store_link')
             ->with($data);

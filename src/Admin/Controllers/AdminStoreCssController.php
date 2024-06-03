@@ -40,7 +40,7 @@ class AdminStoreCssController extends RootAdminController
             'storeId' => $storeId,
             'icon' => 'fa fa-edit',
             'css' => $cssContent->css,
-            'url_action' => sc_route_admin('admin_store_css.index'),
+            'url_action' => vncore_route_admin('admin_store_css.index'),
         ];
         return view($this->templatePathAdmin.'screen.store_css')
             ->with($data);

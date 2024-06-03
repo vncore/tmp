@@ -311,7 +311,7 @@ function cloneProduct(id){
         return new Promise(function(resolve) {
             $.ajax({
                 method: 'post',
-                url: '{{ sc_route_admin('admin_product.clone') }}',
+                url: '{{ vncore_route_admin('admin_product.clone') }}',
                 data: {
                   pId:id,
                   _token: '{{ csrf_token() }}'

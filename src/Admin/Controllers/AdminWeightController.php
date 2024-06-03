@@ -23,13 +23,13 @@ class AdminWeightController extends RootAdminController
             'title' => vncore_language_render('admin.weightlist'),
             'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.weightadd_new_title'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_weight_unit.delete'),
+            'icon' => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_weight_unit.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',
             'js' => '',
-            'url_action' => sc_route_admin('admin_weight_unit.create'),
+            'url_action' => vncore_route_admin('admin_weight_unit.create'),
         ];
 
         $listTh = [
@@ -47,7 +47,7 @@ class AdminWeightController extends RootAdminController
                 'name' => $row['name'],
                 'description' => $row['description'],
                 'action' => '
-                    <a href="' . sc_route_admin('admin_weight_unit.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vncore_route_admin('admin_weight_unit.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
                   <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
@@ -108,13 +108,13 @@ class AdminWeightController extends RootAdminController
         'title' => vncore_language_render('admin.weightlist'),
         'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('action.edit'),
         'subTitle' => '',
-        'icon' => 'fa fa-indent',
-        'urlDeleteItem' => sc_route_admin('admin_weight_unit.delete'),
+        'icon' => 'fa fa-tasks',
+        'urlDeleteItem' => vncore_route_admin('admin_weight_unit.delete'),
         'removeList' => 0, // 1 - Enable function delete list item
         'buttonRefresh' => 0, // 1 - Enable button refresh
         'css' => '',
         'js' => '',
-        'url_action' => sc_route_admin('admin_weight_unit.edit', ['id' => $weight['id']]),
+        'url_action' => vncore_route_admin('admin_weight_unit.edit', ['id' => $weight['id']]),
         'weight' => $weight,
         'id' => $id,
     ];
@@ -134,7 +134,7 @@ class AdminWeightController extends RootAdminController
             'name' => $row['name'],
             'description' => $row['description'],
             'action' => '
-                <a href="' . sc_route_admin('admin_weight_unit.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . vncore_route_admin('admin_weight_unit.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
             <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
             ',
         ];

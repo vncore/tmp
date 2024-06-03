@@ -26,7 +26,7 @@
         <hr>
       </td>
     </tr>
-    <form method="POST" action="{{ sc_route_admin('admin_config.add_new') }}">
+    <form method="POST" action="{{ vncore_route_admin('admin_config.add_new') }}">
       @csrf
       <input type="hidden" name="storeId" value="{{ $storeId }}">
     <tr>
@@ -81,7 +81,7 @@ function deleteKey(key){
         return new Promise(function(resolve) {
             $.ajax({
                 method: 'post',
-                url: '{{ sc_route_admin('admin_config.delete') }}',
+                url: '{{ vncore_route_admin('admin_config.delete') }}',
                 data: {
                   key:key,
                   storeId:{{ $storeId }},
@@ -94,7 +94,7 @@ function deleteKey(key){
                       return;
                     }else{
                       alertMsg('success', data.msg);
-                      window.location.replace('{{ sc_route_admin('admin_config.index') }}');
+                      window.location.replace('{{ vncore_route_admin('admin_config.index') }}');
                     }
 
                 }

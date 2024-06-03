@@ -22,8 +22,8 @@ class AdminSubscribeController extends RootAdminController
         $data = [
             'title'         => vncore_language_render('subscribe.admin.list'),
             'subTitle'      => '',
-            'icon'          => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_subscribe.delete'),
+            'icon'          => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_subscribe.delete'),
             'removeList'    => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css'           => '',
@@ -63,7 +63,7 @@ class AdminSubscribeController extends RootAdminController
                 'email' => $row['email'],
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
                 'action' => '
-                    <a href="' . sc_route_admin('admin_subscribe.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vncore_route_admin('admin_subscribe.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
                   <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
@@ -78,7 +78,7 @@ class AdminSubscribeController extends RootAdminController
 
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . sc_route_admin('admin_subscribe.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_subscribe.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
         <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
@@ -92,7 +92,7 @@ class AdminSubscribeController extends RootAdminController
 
         //menuSearch
         $data['topMenuRight'][] = '
-                <form action="' . sc_route_admin('admin_subscribe.index') . '" id="button_search">
+                <form action="' . vncore_route_admin('admin_subscribe.index') . '" id="button_search">
                 <div class="input-group input-group" style="width: 350px;">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
@@ -121,7 +121,7 @@ class AdminSubscribeController extends RootAdminController
             'title_description' => vncore_language_render('subscribe.admin.add_new_des'),
             'icon' => 'fa fa-plus',
             'subscribe' => [],
-            'url_action' => sc_route_admin('admin_subscribe.create'),
+            'url_action' => vncore_route_admin('admin_subscribe.create'),
         ];
         return view($this->templatePathAdmin.'screen.subscribe')
             ->with($data);
@@ -172,7 +172,7 @@ class AdminSubscribeController extends RootAdminController
             'title_description' => '',
             'icon' => 'fa fa-edit',
             'subscribe' => $subscribe,
-            'url_action' => sc_route_admin('admin_subscribe.edit', ['id' => $subscribe['id']]),
+            'url_action' => vncore_route_admin('admin_subscribe.edit', ['id' => $subscribe['id']]),
         ];
         return view($this->templatePathAdmin.'screen.subscribe')
             ->with($data);

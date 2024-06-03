@@ -20,7 +20,7 @@ class AdminConfigGlobalController extends RootAdminController
         $data = [
             'title' => vncore_language_render('admin.config.webhook'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
+            'icon' => 'fa fa-tasks',
         ];
         return view($this->templatePathAdmin.'screen.webhook')
             ->with($data);

@@ -15,9 +15,9 @@ class AdminSeoConfigController extends RootAdminController
         $data = [
             'title'    => vncore_language_render('admin.seo.config'),
             'subTitle' => '',
-            'icon'     => 'fa fa-indent',
+            'icon'     => 'fa fa-tasks',
         ];
-        $data['urlUpdateConfigGlobal'] = sc_route_admin('admin_config_global.update');
+        $data['urlUpdateConfigGlobal'] = vncore_route_admin('admin_config_global.update');
         return view($this->templatePathAdmin.'screen.seo_config')
             ->with($data);
     }

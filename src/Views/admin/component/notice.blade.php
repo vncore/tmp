@@ -10,10 +10,10 @@
     </a>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right notice">
   @if ($topNotice->count())
-  <span class="dropdown-item dropdown-header text-right"><a href="{{ sc_route_admin('admin_notice.mark_read') }}">{{ vncore_language_render('admin_notice.mark_read') }}</a></span>
+  <span class="dropdown-item dropdown-header text-right"><a href="{{ vncore_route_admin('admin_notice.mark_read') }}">{{ vncore_language_render('admin_notice.mark_read') }}</a></span>
     @foreach ($topNotice as $notice)
       <div class="dropdown-divider"></div>
-      <a href="{{ sc_route_admin('admin_notice.url',['type' => $notice->type,'typeId' => $notice->type_id]) }}" class="dropdown-item notice-{{ $notice->status ? 'read':'unread' }}">
+      <a href="{{ vncore_route_admin('admin_notice.url',['type' => $notice->type,'typeId' => $notice->type_id]) }}" class="dropdown-item notice-{{ $notice->status ? 'read':'unread' }}">
         @if (in_array($notice->type, ['sc_order_created', 'sc_order_success', 'sc_order_update_status']))
         <i class="fas fa-cart-plus"></i>
         @elseif(in_array($notice->type, ['sc_customer_created']))
@@ -26,7 +26,7 @@
       </a>
     @endforeach
     <div class="dropdown-divider"></div>
-      <a href="{{ sc_route_admin('admin_notice.index') }}" class="dropdown-item text-center">{{ vncore_language_render('action.view_more') }}</a>
+      <a href="{{ vncore_route_admin('admin_notice.index') }}" class="dropdown-item text-center">{{ vncore_language_render('action.view_more') }}</a>
     </div>
   @else
     <div class="dropdown-divider"></div>

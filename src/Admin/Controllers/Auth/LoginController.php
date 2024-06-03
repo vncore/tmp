@@ -100,7 +100,7 @@ class LoginController extends RootAdminController
             'user' => $user,
             'roles' => (new AdminRole)->pluck('name', 'id')->all(),
             'permission' => (new AdminPermission)->pluck('name', 'id')->all(),
-            'url_action' => sc_route_admin('admin.setting'),
+            'url_action' => vncore_route_admin('admin.setting'),
         ];
         return view($this->templatePathAdmin.'auth.setting')
             ->with($data);

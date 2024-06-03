@@ -151,8 +151,8 @@ class AdminStoreConfigController extends RootAdminController
         $data['timezones']                      = $this->timezones;
         $data['languages']                      = $this->languages;
         $data['storeId']                        = $id;
-        $data['urlUpdateConfig']                = sc_route_admin('admin_config.update');
-        $data['urlUpdateConfigGlobal']          = sc_route_admin('admin_config_global.update');
+        $data['urlUpdateConfig']                = vncore_route_admin('admin_config.update');
+        $data['urlUpdateConfigGlobal']          = vncore_route_admin('admin_config_global.update');
 
         return view($this->templatePathAdmin.'screen.config_store_default')
         ->with($data);

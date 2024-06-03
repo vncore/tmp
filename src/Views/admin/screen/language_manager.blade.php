@@ -9,7 +9,7 @@
           <div class="box-body table-responsive">
             <section id="pjax-container" class="table-list">
                 <div class="card-body table-responsivep-0" >
-                  <form action="{{ sc_route_admin('admin_language_manager.index') }}" method="GET">
+                  <form action="{{ vncore_route_admin('admin_language_manager.index') }}" method="GET">
                   <table class="table table-hover box-body text-wrap table-bordered">
                     <tr>
                       <td>
@@ -41,7 +41,7 @@
                           </div>
                           &nbsp; 
                           <div class="btn-group">
-                            <a href="{{ sc_route_admin('admin_language_manager.add') }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></a>
+                            <a href="{{ vncore_route_admin('admin_language_manager.add') }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></a>
                         </div>
                         </div>
                       </td>

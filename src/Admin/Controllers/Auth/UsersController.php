@@ -24,8 +24,8 @@ class UsersController extends RootAdminController
         $data = [
             'title'         => vncore_language_render('admin.user.list'),
             'subTitle'      => '',
-            'icon'          => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_user.delete'),
+            'icon'          => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_user.delete'),
             'removeList'    => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
             'css'           => '',
@@ -93,7 +93,7 @@ class UsersController extends RootAdminController
                 'permission' => $showPermission,
                 'created_at' => $row['created_at'],
                 'action' => '
-                    <a href="' . sc_route_admin('admin_user.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vncore_route_admin('admin_user.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
                     ' . ((Admin::user()->id == $row['id'] || in_array($row['id'], SC_GUARD_ADMIN)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
                 ,
             ];
@@ -105,7 +105,7 @@ class UsersController extends RootAdminController
         $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . sc_route_admin('admin_user.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_user.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
                            <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
@@ -119,7 +119,7 @@ class UsersController extends RootAdminController
 
         //menuSearch
         $data['topMenuRight'][] = '
-                <form action="' . sc_route_admin('admin_user.index') . '" id="button_search">
+                <form action="' . vncore_route_admin('admin_user.index') . '" id="button_search">
                 <div class="input-group input-group" style="width: 350px;">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
@@ -151,7 +151,7 @@ class UsersController extends RootAdminController
             'user'              => [],
             'roles'             => $this->roles,
             'permissions'       => $this->permissions,
-            'url_action'        => sc_route_admin('admin_user.create'),
+            'url_action'        => vncore_route_admin('admin_user.create'),
         ];
 
         return view($this->templatePathAdmin.'auth.user')
@@ -235,7 +235,7 @@ class UsersController extends RootAdminController
             'user'              => $user,
             'roles'             => $this->roles,
             'permissions'       => $this->permissions,
-            'url_action'        => sc_route_admin('admin_user.edit', ['id' => $user['id']]),
+            'url_action'        => vncore_route_admin('admin_user.edit', ['id' => $user['id']]),
             'isAllStore'        => ($user->isAdministrator() || $user->isViewAll()) ? 1: 0,
 
         ];

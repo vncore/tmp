@@ -17,8 +17,8 @@ class AdminLogController extends RootAdminController
         $data = [
             'title' => vncore_language_render('admin.log.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-indent',
-            'urlDeleteItem' => sc_route_admin('admin_log.delete'),
+            'icon' => 'fa fa-tasks',
+            'urlDeleteItem' => vncore_route_admin('admin_log.delete'),
             'removeList' => 1, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
             'css' => '',
@@ -107,7 +107,7 @@ class AdminLogController extends RootAdminController
 
         //topMenuRight
         $data['topMenuRight'][] ='
-                <form action="' . sc_route_admin('admin_log.index') . '" id="button_search">
+                <form action="' . vncore_route_admin('admin_log.index') . '" id="button_search">
                 <div class="input-group input-group float-left">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
