@@ -32,7 +32,6 @@ class AdminReportController extends RootAdminController
         $data = [
             'title' => vc_language_render('product.admin.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => '',
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh

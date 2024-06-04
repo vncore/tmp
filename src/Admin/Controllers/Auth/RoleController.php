@@ -19,7 +19,6 @@ class RoleController extends RootAdminController
         $data = [
             'title' => vc_language_render('admin.role.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => vc_route_admin('admin_role.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh

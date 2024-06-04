@@ -23,7 +23,6 @@ class AdminWeightController extends RootAdminController
             'title' => vc_language_render('admin.weightlist'),
             'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vc_language_render('admin.weightadd_new_title'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => vc_route_admin('admin_weight_unit.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh

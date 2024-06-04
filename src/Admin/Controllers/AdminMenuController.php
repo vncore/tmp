@@ -17,7 +17,6 @@ class AdminMenuController extends RootAdminController
         $data = [
             'title' => vc_language_render('admin.menu.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'menu' => [],
             'treeMenu' => (new AdminMenu)->getTree(),
             'url_action' => vc_route_admin('admin_menu.create'),

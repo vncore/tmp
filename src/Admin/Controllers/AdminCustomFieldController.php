@@ -18,7 +18,6 @@ class AdminCustomFieldController extends RootAdminController
             'title' => vc_language_render('admin.custom_field.list'),
             'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vc_language_render('admin.custom_field.add_new_title'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => vc_route_admin('admin_custom_field.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
@@ -119,7 +118,6 @@ class AdminCustomFieldController extends RootAdminController
             'title' => vc_language_render('admin.custom_field.list'),
             'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vc_language_render('action.edit'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => vc_route_admin('admin_custom_field.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh

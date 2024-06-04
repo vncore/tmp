@@ -43,7 +43,6 @@ class AdminLanguageManagerController extends RootAdminController
             'urlUpdateData' => $urlUpdateData,
             'title' => vc_language_render('admin.language_manager.title'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',

@@ -19,7 +19,6 @@ class AdminSupplierController extends RootAdminController
             'title' => vc_language_render('admin.supplier.list'),
             'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vc_language_render('admin.supplier.add_new_title'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => vc_route_admin('admin_supplier.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh

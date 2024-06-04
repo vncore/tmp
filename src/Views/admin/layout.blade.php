@@ -69,7 +69,7 @@
               @if (!empty($titleHtml))
                   {!! $titleHtml !!}
               @else
-                  <i class="{{ $icon??'' }}" aria-hidden="true"></i> {!! $title??'' !!}
+                  {!! $title??'' !!}
               @endif
             </h1>
             <div class="more_info">{!! $more_info??'' !!}</div>

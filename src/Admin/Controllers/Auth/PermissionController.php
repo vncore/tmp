@@ -46,7 +46,6 @@ class PermissionController extends RootAdminController
         $data = [
             'title' => vc_language_render('admin.permission.list'),
             'subTitle' => '',
-            'icon' => 'fa fa-tasks',
             'urlDeleteItem' => vc_route_admin('admin_permission.delete'),
             'removeList' => 1, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
