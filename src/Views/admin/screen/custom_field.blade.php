@@ -242,42 +242,7 @@
 @endpush
 
 @push('scripts')
-    {{-- //Pjax --}}
-   <script src="{{ vc_file('admin/plugin/jquery.pjax.js')}}"></script>
-
-  <script type="text/javascript">
-
-    $('.grid-refresh').click(function(){
-      $.pjax.reload({container:'#pjax-container'});
-    });
-
-      $(document).on('submit', '#button_search', function(event) {
-        $.pjax.submit(event, '#pjax-container')
-      })
-
-    $(document).on('pjax:send', function() {
-      $('#loading').show()
-    })
-    $(document).on('pjax:complete', function() {
-      $('#loading').hide()
-    })
-
-    // tag a
-    $(function(){
-     $(document).pjax('a.page-link', '#pjax-container')
-    })
-
-
-    $(document).ready(function(){
-    // does current browser support PJAX
-      if ($.support.pjax) {
-        $.pjax.defaults.timeout = 2000; // time in milliseconds
-      }
-    });
-
-  </script>
-    {{-- //End pjax --}}
-
+   
 
 <script type="text/javascript">
 {{-- sweetalert2 --}}

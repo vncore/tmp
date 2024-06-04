@@ -9,6 +9,36 @@
 
 
 <script type="text/javascript">
+  
+  $('.grid-refresh').click(function(){
+        $.pjax.reload({container:'#pjax-container'});
+      });
+  
+        $(document).on('submit', '#button_search', function(event) {
+          $.pjax.submit(event, '#pjax-container')
+        })
+  
+      $(document).on('pjax:send', function() {
+        $('#loading').show()
+      })
+      $(document).on('pjax:complete', function() {
+        $('#loading').hide()
+      })
+  
+      // tag a
+      $(function(){
+        $(document).pjax('a.page-link, a.link-filter', '#pjax-container')
+      })
+  
+  
+      $(document).ready(function(){
+      // does current browser support PJAX
+        if ($.support.pjax) {
+          $.pjax.defaults.timeout = 2000; // time in milliseconds
+        }
+      });
+</script>
+<script type="text/javascript">
 
   $(function () {
     $('.selectpicker').selectpicker();

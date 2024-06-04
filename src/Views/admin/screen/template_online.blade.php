@@ -205,28 +205,6 @@
         }
       });
   }
-
-    $(document).on('pjax:send', function() {
-      $('#loading').show()
-    })
-    $(document).on('pjax:complete', function() {
-      $('#loading').hide()
-    })
-
-    $(document).ready(function(){
-    // does current browser support PJAX
-      if ($.support.pjax) {
-        $.pjax.defaults.timeout = 2000; // time in milliseconds
-      }
-    });
-    // tag a
-    $(function(){
-      $(document).pjax('a.page-link, a.link-filter', '#pjax-container')
-    })
-
-    $(document).on('ready pjax:end', function(event) {
-      //
-    })
     function imagedemo(image) {
       Swal.fire({
         title: '{{  vc_language_render('admin.template.image_demo') }}',
