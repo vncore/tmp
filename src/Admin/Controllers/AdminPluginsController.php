@@ -16,7 +16,7 @@ class AdminPluginsController extends RootAdminController
         $action = request('action');
         $pluginKey = request('pluginKey');
         if ($action == 'config' && $pluginKey != '') {
-            $namespace = sc_get_class_plugin_config($pluginKey);
+            $namespace = vc_get_class_plugin_config($pluginKey);
             $body = (new $namespace)->config();
         } else {
             $body = $this->pluginCode();
@@ -27,9 +27,9 @@ class AdminPluginsController extends RootAdminController
     protected function pluginCode()
     {
         $arrDefault = config('admin.plugin_protected');
-        $pluginsInstalled = sc_get_plugin_installed($onlyActive = false);
-        $plugins = sc_get_all_plugin();
-        $title = vncore_language_render('admin.plugin.index');
+        $pluginsInstalled = vc_get_plugin_installed($onlyActive = false);
+        $plugins = vc_get_all_plugin();
+        $title = vc_language_render('admin.plugin.index');
         return $this->render($pluginsInstalled, $plugins, $title, $arrDefault);
     }
 
@@ -51,7 +51,7 @@ class AdminPluginsController extends RootAdminController
     public function install()
     {
         $key = request('key');
-        $namespace = sc_get_class_plugin_config($key);
+        $namespace = vc_get_class_plugin_config($key);
         $response = (new $namespace)->install();
         return response()->json($response);
     }
@@ -65,7 +65,7 @@ class AdminPluginsController extends RootAdminController
     {
         $key = request('key');
         $onlyRemoveData = request('onlyRemoveData');
-        $namespace = sc_get_class_plugin_config($key);
+        $namespace = vc_get_class_plugin_config($key);
         $response = (new $namespace)->uninstall();
         if (!$onlyRemoveData) {
             File::deleteDirectory(app_path('Plugins/'.$key));
@@ -82,7 +82,7 @@ class AdminPluginsController extends RootAdminController
     public function enable()
     {
         $key = request('key');
-        $namespace = sc_get_class_plugin_config($key);
+        $namespace = vc_get_class_plugin_config($key);
         $response = (new $namespace)->enable();
         return response()->json($response);
     }
@@ -95,7 +95,7 @@ class AdminPluginsController extends RootAdminController
     public function disable()
     {
         $key = request('key');
-        $namespace = sc_get_class_plugin_config($key);
+        $namespace = vc_get_class_plugin_config($key);
         $response = (new $namespace)->disable();
         return response()->json($response);
     }
@@ -106,7 +106,7 @@ class AdminPluginsController extends RootAdminController
     public function importPlugin()
     {
         $data =  [
-            'title' => vncore_language_render('admin.plugin.import')
+            'title' => vc_language_render('admin.plugin.import')
         ];
         return view($this->templatePathAdmin.'screen.plugin_upload')
         ->with($data);
@@ -123,7 +123,7 @@ class AdminPluginsController extends RootAdminController
         $validator = \Validator::make(
             $data,
             [
-                'file'   => 'required|mimetypes:application/zip|max:'.min($maxSizeConfig = sc_getMaximumFileUploadSize($unit = 'K'), 51200),
+                'file'   => 'required|mimetypes:application/zip|max:'.min($maxSizeConfig = vc_getMaximumFileUploadSize($unit = 'K'), 51200),
             ]
         );
 
@@ -134,14 +134,14 @@ class AdminPluginsController extends RootAdminController
         }
         $pathTmp = time();
         $linkRedirect = '';
-        $pathFile = sc_file_upload($data['file'], 'tmp', $pathFolder = $pathTmp)['pathFile'] ?? '';
+        $pathFile = vc_file_upload($data['file'], 'tmp', $pathFolder = $pathTmp)['pathFile'] ?? '';
 
         if (!is_writable(storage_path('tmp'))) {
             return response()->json(['error' => 1, 'msg' => 'No write permission '.storage_path('tmp')]);
         }
         
         if ($pathFile) {
-            $unzip = sc_unzip(storage_path('tmp/'.$pathFile), storage_path('tmp/'.$pathTmp));
+            $unzip = vc_unzip(storage_path('tmp/'.$pathFile), storage_path('tmp/'.$pathTmp));
             if ($unzip) {
                 $checkConfig = glob(storage_path('tmp/'.$pathTmp) . '/*/config.json');
                 if ($checkConfig) {
@@ -152,9 +152,9 @@ class AdminPluginsController extends RootAdminController
                     //Check compatibility 
                     $config = json_decode(file_get_contents($checkConfig[0]), true);
                     $scartVersion = $config['scartVersion'] ?? '';
-                    if (!sc_plugin_compatibility_check($scartVersion)) {
+                    if (!vc_plugin_compatibility_check($scartVersion)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')]));
+                        return redirect()->back()->with('error', vc_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'vc_version' => config('vncore.core')]));
                     }
 
                     $configGroup = $config['configGroup'] ?? '';
@@ -163,13 +163,13 @@ class AdminPluginsController extends RootAdminController
                     //Process if plugin config incorect
                     if (!$configGroup || !$configKey) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_config_format'));
+                        return redirect()->back()->with('error', vc_language_render('admin.plugin.error_config_format'));
                     }
                     //Check plugin exist
-                    $arrPluginLocal = sc_get_all_plugin();
+                    $arrPluginLocal = vc_get_all_plugin();
                     if (array_key_exists($configKey, $arrPluginLocal)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_exist'));
+                        return redirect()->back()->with('error', vc_language_render('admin.plugin.error_exist'));
                     }
 
                     $pathPlugin = $configGroup.'/'.$configKey;
@@ -186,7 +186,7 @@ class AdminPluginsController extends RootAdminController
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path($pathPlugin));
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), app_path($pathPlugin));
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        $namespace = sc_get_class_plugin_config($configKey);
+                        $namespace = vc_get_class_plugin_config($configKey);
                         $response = (new $namespace)->install();
                         if (!is_array($response) || $response['error'] == 1) {
                             return redirect()->back()->with('error', $response['msg']);
@@ -198,18 +198,18 @@ class AdminPluginsController extends RootAdminController
                     }
                 } else {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_check_config'));
+                    return redirect()->back()->with('error', vc_language_render('admin.plugin.error_check_config'));
                 }
             } else {
-                return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_unzip'));
+                return redirect()->back()->with('error', vc_language_render('admin.plugin.error_unzip'));
             }
         } else {
-            return redirect()->back()->with('error', vncore_language_render('admin.plugin.error_upload'));
+            return redirect()->back()->with('error', vc_language_render('admin.plugin.error_upload'));
         }
         if ($linkRedirect) {
-            return redirect($linkRedirect)->with('success', vncore_language_render('admin.plugin.import_success'));
+            return redirect($linkRedirect)->with('success', vc_language_render('admin.plugin.import_success'));
         } else {
-            return redirect()->back()->with('success', vncore_language_render('admin.plugin.import_success'));
+            return redirect()->back()->with('success', vc_language_render('admin.plugin.import_success'));
         }
     }
 }

@@ -20,7 +20,7 @@ class Localization
         //Set language
         $languages = ShopLanguage::getListActive();
         if (!Session::has('locale')) {
-            $detectLocale = sc_store('language') ?? config('app.locale');
+            $detectLocale = vc_store('language') ?? config('app.locale');
         } else {
             $detectLocale = session('locale');
         }

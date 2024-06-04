@@ -9,8 +9,8 @@ class RootFrontController extends Controller
     public $templateFile;
     public function __construct()
     {
-        $this->templatePath = 'templates.' . sc_store('template');
-        $this->templateFile = 'templates/' . sc_store('template');
+        $this->templatePath = 'templates.' . vc_store('template');
+        $this->templateFile = 'templates/' . vc_store('template');
     }
 
 
@@ -21,12 +21,12 @@ class RootFrontController extends Controller
      */
     public function pageNotFound()
     {
-        sc_check_view( $this->templatePath . '.notfound');
+        vc_check_view( $this->templatePath . '.notfound');
         return view(
              $this->templatePath . '.notfound',
             [
-            'title' => vncore_language_render('front.page_not_found_title'),
-            'msg' => vncore_language_render('front.page_not_found'),
+            'title' => vc_language_render('front.page_not_found_title'),
+            'msg' => vc_language_render('front.page_not_found'),
             'description' => '',
             'keyword' => ''
             ]
@@ -40,12 +40,12 @@ class RootFrontController extends Controller
      */
     public function itemNotFound()
     {
-        sc_check_view( $this->templatePath . '.notfound');
+        vc_check_view( $this->templatePath . '.notfound');
         return view(
              $this->templatePath . '.notfound',
             [
-                'title' => vncore_language_render('front.data_not_found_title'),
-                'msg' => vncore_language_render('front.data_not_found'),
+                'title' => vc_language_render('front.data_not_found_title'),
+                'msg' => vc_language_render('front.data_not_found'),
                 'description' => '',
                 'keyword' => '',
             ]

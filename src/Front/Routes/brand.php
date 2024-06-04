@@ -1,5 +1,5 @@
 <?php
-$prefixBrand = sc_config('PREFIX_BRAND')??'brand';
+$prefixBrand = vc_config('PREFIX_BRAND')??'brand';
 if (file_exists(app_path('Http/Controllers/ShopBrandController.php'))) {
     $nameSpaceFrontBrand = 'App\Http\Controllers';
 } else {

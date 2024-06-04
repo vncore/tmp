@@ -18,7 +18,7 @@ class AdminConfigGlobalController extends RootAdminController
     public function webhook()
     {
         $data = [
-            'title' => vncore_language_render('admin.config.webhook'),
+            'title' => vc_language_render('admin.config.webhook'),
             'subTitle' => '',
             'icon' => 'fa fa-tasks',
         ];
@@ -41,7 +41,7 @@ class AdminConfigGlobalController extends RootAdminController
                 ->where('store_id', SC_ID_GLOBAL)
                 ->update(['value' => $value]);
             $error = 0;
-            $msg = vncore_language_render('action.update_success');
+            $msg = vc_language_render('action.update_success');
         } catch (\Throwable $e) {
             $error = 1;
             $msg = $e->getMessage();

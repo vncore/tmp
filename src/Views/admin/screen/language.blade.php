@@ -12,7 +12,7 @@
         <h3 class="card-title">{!! $title_action !!}</h3>
         @if ($layout == 'edit')
         <div class="btn-group float-right" style="margin-right: 5px">
-            <a href="{{ vncore_route_admin('admin_language.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+            <a href="{{ vc_route_admin('admin_language.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span></a>
         </div>
       @endif
       </div>
@@ -22,7 +22,7 @@
         <div class="card-body">
 
           <div class="form-group row {{ $errors->has('name') ? ' text-red' : '' }}">
-            <label for="name" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.language.name') }}</label>
+            <label for="name" class="col-sm-2 col-form-label">{{ vc_language_render('admin.language.name') }}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -41,7 +41,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('code') ? ' text-red' : '' }}">
-            <label for="code" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.language.code') !!}</label>
+            <label for="code" class="col-sm-2 col-form-label">{!! vc_language_render('admin.language.code') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -70,7 +70,7 @@
 
 
           <div class="form-group row {{ $errors->has('icon') ? ' text-red' : '' }}">
-            <label for="icon" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.language.icon') !!}</label>
+            <label for="icon" class="col-sm-2 col-form-label">{!! vc_language_render('admin.language.icon') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -79,7 +79,7 @@
                 <input type="text" id="icon" name="icon" value="{{ old()?old('icon'):$language['icon']??'' }}" class="form-control icon {{ $errors->has('icon') ? ' is-invalid' : '' }}">
                 <div class="input-group-append">
                   <span data-input="icon" data-preview="preview_icon" data-type="language"
-                      class="btn btn-primary lfm"><i class="fa fa-icon"></i>  {{vncore_language_render('admin.choose_icon')}}</span>
+                      class="btn btn-primary lfm"><i class="fa fa-icon"></i>  {{vc_language_render('admin.choose_icon')}}</span>
                 </div>
               </div>
 
@@ -89,14 +89,14 @@
               </span>
               @endif
               <div id="preview_icon" class="img_holder"><img
-                src="{{ sc_file(old('icon',$language['icon']??'images/no-image.jpg')) }}">
+                src="{{ vc_file(old('icon',$language['icon']??'images/no-image.jpg')) }}">
               </div>
             </div>
           </div>
 
 
           <div class="form-group row {{ $errors->has('rtl') ? ' text-red' : '' }}">
-            <label for="rtl" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.language.layout_rtl') !!}</label>
+            <label for="rtl" class="col-sm-2 col-form-label">{!! vc_language_render('admin.language.layout_rtl') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <input class="checkbox" type="checkbox" id="rtl" name="rtl"
@@ -114,7 +114,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('sort') ? ' text-red' : '' }}">
-            <label for="sort" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.language.sort') !!}</label>
+            <label for="sort" class="col-sm-2 col-form-label">{!! vc_language_render('admin.language.sort') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <input type="number" id="sort" name="sort"
@@ -133,7 +133,7 @@
 
 
           <div class="form-group row {{ $errors->has('status') ? ' text-red' : '' }}">
-            <label for="status" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.language.status') !!}</label>
+            <label for="status" class="col-sm-2 col-form-label">{!! vc_language_render('admin.language.status') !!}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <input class="checkbox" type="checkbox" id="status" name="status"
@@ -155,8 +155,8 @@
         <!-- /.card-body -->
         @csrf
         <div class="card-footer">
-          <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
-          <button type="submit" class="btn btn-primary float-right">{{ vncore_language_render('action.submit') }}</button>
+          <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
+          <button type="submit" class="btn btn-primary float-right">{{ vc_language_render('action.submit') }}</button>
         </div>
         <!-- /.card-footer -->
       </form>
@@ -231,7 +231,7 @@
 
 @push('scripts')
     {{-- //Pjax --}}
-   <script src="{{ sc_file('admin/plugin/jquery.pjax.js')}}"></script>
+   <script src="{{ vc_file('admin/plugin/jquery.pjax.js')}}"></script>
 
   <script type="text/javascript">
 
@@ -292,13 +292,13 @@ $('.grid-trash').on('click', function() {
     },
     buttonsStyling: true,
   }).fire({
-    title: '{{ vncore_language_render('action.delete_confirm') }}',
+    title: '{{ vc_language_render('action.delete_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vc_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vc_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -312,12 +312,12 @@ $('.grid-trash').on('click', function() {
                 },
                 success: function (data) {
                     if(data.error == 1){
-                      alertMsg('error', data.msg, '{{ vncore_language_render('action.warning') }}');
+                      alertMsg('error', data.msg, '{{ vc_language_render('action.warning') }}');
                       $.pjax.reload('#pjax-container');
                       return;
                     }else{
                       alertMsg('success', data.msg);
-                      window.location.replace('{{ vncore_route_admin('admin_language.index') }}');
+                      window.location.replace('{{ vc_route_admin('admin_language.index') }}');
                     }
 
                 }
@@ -327,7 +327,7 @@ $('.grid-trash').on('click', function() {
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ vncore_language_render('action.delete_confirm_deleted_msg') }}', '{{ vncore_language_render('action.delete_confirm_deleted') }}');
+      alertMsg('success', '{{ vc_language_render('action.delete_confirm_deleted_msg') }}', '{{ vc_language_render('action.delete_confirm_deleted') }}');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel

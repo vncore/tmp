@@ -1,9 +1,9 @@
 @if (isset($customFields) && count($customFields))
                 <hr class="kind ">
-                <label>{{ vncore_language_render('admin.custom_field.title') }} (<a target=_new href="{{ vncore_route_admin('admin_custom_field.index') }}"><i class="fa fa-plus" aria-hidden="true"></i></a>)</label>
+                <label>{{ vc_language_render('admin.custom_field.title') }} (<a target=_new href="{{ vc_route_admin('admin_custom_field.index') }}"><i class="fa fa-plus" aria-hidden="true"></i></a>)</label>
                     @foreach ($customFields as $keyField => $field)
                     <div class="form-group row kind   {{ $errors->has('fields.'.$field->code) ? ' text-red' : '' }}">
-                        <label class="col-sm-2 col-form-label">{{ vncore_language_render($field->name) }}</label>
+                        <label class="col-sm-2 col-form-label">{{ vc_language_render($field->name) }}</label>
                         <div class="col-sm-8">
                         @php
                             $default  = json_decode($field->default, true);
@@ -20,7 +20,7 @@
                                 'required' =>  $field->required,
                             ];
                         @endphp
-                        {!! sc_form_render_field($dataForm) !!}
+                        {!! vc_form_render_field($dataForm) !!}
 
                             @if ($errors->has('fields.'.$field->code))
                             <span class="form-text">

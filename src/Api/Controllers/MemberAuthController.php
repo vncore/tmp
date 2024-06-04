@@ -112,7 +112,7 @@ class MemberAuthController extends RootFrontController
         $user = ShopCustomer::createCustomer($dataMapp['dataInsert']);
 
         if ($user) {
-            sc_customer_created_by_client($user, $dataMapp['dataInsert']);
+            vc_customer_created_by_client($user, $dataMapp['dataInsert']);
         }
         return $user;
     }

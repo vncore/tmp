@@ -1,12 +1,12 @@
 <?php
-$prefixCustomer = sc_config('PREFIX_MEMBER') ?? 'customer';
+$prefixCustomer = vc_config('PREFIX_MEMBER') ?? 'customer';
 if (file_exists(app_path('Http/Controllers/ShopAccountController.php'))) {
     $nameSpaceFrontCustomer = 'App\Http\Controllers';
 } else {
     $nameSpaceFrontCustomer = 'Vncore\Core\Front\Controllers';
 }
 
-if (sc_config('customer_verify')) {
+if (vc_config('customer_verify')) {
     $midlware = ['auth','email.verify'];
 } else {
     $midlware = ['auth'];
@@ -17,13 +17,13 @@ Route::group(
         'middleware' => $midlware
     ],
     function ($router) use ($suffix, $nameSpaceFrontCustomer) {
-        $prefixCustomerOrderList    = sc_config('PREFIX_MEMBER_ORDER_LIST')??'order-list';
-        $prefixCustomerOrderDetail  = sc_config('PREFIX_MEMBER_ORDER_DETAIL')??'order-detail';
-        $prefixCustomerAddresList   = sc_config('PREFIX_MEMBER_ADDRESS_LIST')??'address-list';
-        $prefixCustomerUpdateAddres = sc_config('PREFIX_MEMBER_UPDATE_ADDRESS')??'update-address';
-        $prefixCustomerDeleteAddres = sc_config('PREFIX_MEMBER_DELETE_ADDRESS')??'delete-address';
-        $prefixCustomerChangePwd    = sc_config('PREFIX_MEMBER_CHANGE_PWD')??'change-password';
-        $prefixCustomerChangeInfo   = sc_config('PREFIX_MEMBER_CHANGE_INFO')??'change-infomation';
+        $prefixCustomerOrderList    = vc_config('PREFIX_MEMBER_ORDER_LIST')??'order-list';
+        $prefixCustomerOrderDetail  = vc_config('PREFIX_MEMBER_ORDER_DETAIL')??'order-detail';
+        $prefixCustomerAddresList   = vc_config('PREFIX_MEMBER_ADDRESS_LIST')??'address-list';
+        $prefixCustomerUpdateAddres = vc_config('PREFIX_MEMBER_UPDATE_ADDRESS')??'update-address';
+        $prefixCustomerDeleteAddres = vc_config('PREFIX_MEMBER_DELETE_ADDRESS')??'delete-address';
+        $prefixCustomerChangePwd    = vc_config('PREFIX_MEMBER_CHANGE_PWD')??'change-password';
+        $prefixCustomerChangeInfo   = vc_config('PREFIX_MEMBER_CHANGE_INFO')??'change-infomation';
 
 
         $router->get('/', $nameSpaceFrontCustomer.'\ShopAccountController@indexProcessFront')

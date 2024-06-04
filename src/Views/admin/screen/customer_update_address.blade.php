@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ vncore_route_admin('admin_customer.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ vc_route_admin('admin_customer.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -21,10 +21,10 @@
                     <div class="card-body">
                         <div class="fields-group">
 
-                            @if (sc_config_admin('customer_lastname'))
+                            @if (vc_config_admin('customer_lastname'))
                             <div class="form-group row {{ $errors->has('first_name') ? ' text-red' : '' }}">
                                 <label for="first_name"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.first_name') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.first_name') }}</label>
     
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group row {{ $errors->has('last_name') ? ' text-red' : '' }}">
                                 <label for="last_name"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.last_name') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.last_name') }}</label>
     
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -61,7 +61,7 @@
                             @else
                             <div class="form-group row {{ $errors->has('first_name') ? ' text-red' : '' }}">
                                 <label for="first_name"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.name') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.name') }}</label>
     
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -80,10 +80,10 @@
                             @endif
     
     
-                            @if (sc_config_admin('customer_phone'))
+                            @if (vc_config_admin('customer_phone'))
                             <div class="form-group row {{ $errors->has('phone') ? ' text-red' : '' }}">
                                 <label for="phone"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.phone') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.phone') }}</label>
     
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -101,10 +101,10 @@
                             </div>
                             @endif
     
-                            @if (sc_config_admin('customer_postcode'))
+                            @if (vc_config_admin('customer_postcode'))
                             <div class="form-group row {{ $errors->has('postcode') ? ' text-red' : '' }}">
                                 <label for="postcode"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.postcode') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.postcode') }}</label>
     
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -126,7 +126,7 @@
 
                             <div class="form-group row {{ $errors->has('address1') ? ' text-red' : '' }}">
                                 <label for="address1"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.address1') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.address1') }}</label>
     
                                 <div class="col-sm-8">
                                     <div class="input-group">
@@ -143,10 +143,10 @@
                                 </div>
                             </div>
 
-                            @if (sc_config_admin('customer_address2'))
+                            @if (vc_config_admin('customer_address2'))
                             <div class="form-group row {{ $errors->has('address2') ? ' text-red' : '' }}">
                                 <label for="address2"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.address2') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.address2') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -164,10 +164,10 @@
                             @endif
     
     
-                            @if (sc_config_admin('customer_address3'))
+                            @if (vc_config_admin('customer_address3'))
                             <div class="form-group row {{ $errors->has('address3') ? ' text-red' : '' }}">
                                 <label for="address3"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.address3') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.address3') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -185,17 +185,17 @@
                             @endif
 
 
-                            @if (sc_config_admin('customer_country'))
+                            @if (vc_config_admin('customer_country'))
                             @php
                             $country = old('country', $address['country'] ?? '');
                             @endphp
     
                             <div class="form-group row {{ $errors->has('country') ? ' text-red' : '' }}">
                                 <label for="country"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('customer.country') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('customer.country') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control country" style="width: 100%;" name="country">
-                                        <option>__{{ vncore_language_render('customer.country') }}__</option>
+                                        <option>__{{ vc_language_render('customer.country') }}__</option>
                                         @foreach ($countries as $k => $v)
                                         <option value="{{ $k }}" {{ ($country == $k) ? 'selected':'' }}>{{ $v }}</option>
                                         @endforeach
@@ -212,7 +212,7 @@
                             @if ($address->id != $customer->address_id)
                             <div class="form-group row">
                                 <label for="default"
-                                    class="col-md-2 col-form-label">{{ vncore_language_render('customer.chose_address_default') }}</label>
+                                    class="col-md-2 col-form-label">{{ vc_language_render('customer.chose_address_default') }}</label>
                                 <div class="col-md-8">
                                     <input id="default" type="checkbox" name="default">
                                 </div>
@@ -234,11 +234,11 @@
     
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vc_language_render('action.submit') }}</button>
                             </div>
     
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>

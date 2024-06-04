@@ -19,22 +19,22 @@ class AdminStoreLinkGroupController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => vncore_language_render('admin.link_group.list'),
-            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.link_group.add_new_title'),
+            'title' => vc_language_render('admin.link_group.list'),
+            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vc_language_render('admin.link_group.add_new_title'),
             'subTitle' => '',
             'icon' => 'fa fa-tasks',
-            'urlDeleteItem' => vncore_route_admin('admin_store_link_group.delete'),
+            'urlDeleteItem' => vc_route_admin('admin_store_link_group.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',
             'js' => '',
-            'url_action' => vncore_route_admin('admin_store_link_group.create'),
+            'url_action' => vc_route_admin('admin_store_link_group.create'),
         ];
 
         $listTh = [
-            'code' => vncore_language_render('admin.link_group.code'),
-            'name' => vncore_language_render('admin.link_group.name'),
-            'action' => vncore_language_render('action.title'),
+            'code' => vc_language_render('admin.link_group.code'),
+            'name' => vc_language_render('admin.link_group.name'),
+            'action' => vc_language_render('action.title'),
         ];
         $obj = new ShopLinkGroup;
         $obj = $obj->orderBy('id', 'desc');
@@ -46,9 +46,9 @@ class AdminStoreLinkGroupController extends RootAdminController
                 'code' => $row['code'] ?? 'N/A',
                 'name' => $row['name'] ?? 'N/A',
                 'action' => '
-                    <a href="' . vncore_route_admin('admin_store_link_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vc_route_admin('admin_store_link_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -56,7 +56,7 @@ class AdminStoreLinkGroupController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'index';
         return view($this->templatePathAdmin.'screen.store_link_group')
@@ -75,7 +75,7 @@ class AdminStoreLinkGroupController extends RootAdminController
             'name' => 'required',
             'code' => 'required|unique:"'.ShopLinkGroup::class.'",code',
         ], [
-            'name.required' => vncore_language_render('validation.required'),
+            'name.required' => vc_language_render('validation.required'),
         ]);
 
         if ($validator->fails()) {
@@ -84,16 +84,16 @@ class AdminStoreLinkGroupController extends RootAdminController
                 ->withErrors($validator)
                 ->withInput();
         }
-        $data['code'] = sc_word_format_url($data['code']);
-        $data['code'] = sc_word_limit($data['code'], 100);
+        $data['code'] = vc_word_format_url($data['code']);
+        $data['code'] = vc_word_limit($data['code'], 100);
         $dataCreate = [
             'code' => $data['code'],
             'name' => $data['name'],
         ];
-        $dataCreate = sc_clean($dataCreate, [], true);
+        $dataCreate = vc_clean($dataCreate, [], true);
         ShopLinkGroup::create($dataCreate);
 
-        return redirect()->route('admin_store_link_group.index')->with('success', vncore_language_render('action.create_success'));
+        return redirect()->route('admin_store_link_group.index')->with('success', vc_language_render('action.create_success'));
     }
 
     /**
@@ -106,25 +106,25 @@ class AdminStoreLinkGroupController extends RootAdminController
             return 'No data';
         }
         $data = [
-        'title' => vncore_language_render('admin.link_group.list'),
-        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('action.edit'),
+        'title' => vc_language_render('admin.link_group.list'),
+        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vc_language_render('action.edit'),
         'subTitle' => '',
         'icon' => 'fa fa-tasks',
-        'urlDeleteItem' => vncore_route_admin('admin_store_link_group.delete'),
+        'urlDeleteItem' => vc_route_admin('admin_store_link_group.delete'),
         'removeList' => 0, // 1 - Enable function delete list item
         'buttonRefresh' => 0, // 1 - Enable button refresh
         'buttonSort' => 0, // 1 - Enable button sort
         'css' => '',
         'js' => '',
-        'url_action' => vncore_route_admin('admin_store_link_group.edit', ['id' => $banner_type['id']]),
+        'url_action' => vc_route_admin('admin_store_link_group.edit', ['id' => $banner_type['id']]),
         'banner_type' => $banner_type,
         'id' => $id,
     ];
 
         $listTh = [
-        'code' => vncore_language_render('admin.link_group.code'),
-        'name' => vncore_language_render('admin.link_group.name'),
-        'action' => vncore_language_render('action.title'),
+        'code' => vc_language_render('admin.link_group.code'),
+        'name' => vc_language_render('admin.link_group.name'),
+        'action' => vc_language_render('action.title'),
     ];
         $obj = new ShopLinkGroup;
         $obj = $obj->orderBy('id', 'desc');
@@ -136,9 +136,9 @@ class AdminStoreLinkGroupController extends RootAdminController
             'code' => $row['code'] ?? 'N/A',
             'name' => $row['name'] ?? 'N/A',
             'action' => '
-                <a href="' . vncore_route_admin('admin_store_link_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . vc_route_admin('admin_store_link_group.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-              <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+              <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
               ',
         ];
         }
@@ -146,7 +146,7 @@ class AdminStoreLinkGroupController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'edit';
         return view($this->templatePathAdmin.'screen.store_link_group')
@@ -165,7 +165,7 @@ class AdminStoreLinkGroupController extends RootAdminController
             'code' => 'required|unique:"'.ShopLinkGroup::class.'",code,' . $obj->id . ',id',
             'name' => 'required',
         ], [
-            'name.required' => vncore_language_render('validation.required'),
+            'name.required' => vc_language_render('validation.required'),
         ]);
 
         if ($validator->fails()) {
@@ -175,16 +175,16 @@ class AdminStoreLinkGroupController extends RootAdminController
                 ->withInput();
         }
         //Edit
-        $data['code'] = sc_word_format_url($data['code']);
-        $data['code'] = sc_word_limit($data['code'], 100);
+        $data['code'] = vc_word_format_url($data['code']);
+        $data['code'] = vc_word_limit($data['code'], 100);
         $dataUpdate = [
             'code' => $data['code'],
             'name' => $data['name'],
         ];
-        $dataUpdate = sc_clean($dataUpdate, [], true);
+        $dataUpdate = vc_clean($dataUpdate, [], true);
         $obj->update($dataUpdate);
 
-        return redirect()->back()->with('success', vncore_language_render('action.edit_success'));
+        return redirect()->back()->with('success', vc_language_render('action.edit_success'));
     }
 
     /*
@@ -194,7 +194,7 @@ class AdminStoreLinkGroupController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

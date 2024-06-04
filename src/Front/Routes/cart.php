@@ -12,9 +12,9 @@ Route::group(
         'prefix' => $langUrl
     ],
     function ($router) use ($suffix, $nameSpaceFrontCart) {
-        $prefixCartWishlist = sc_config('PREFIX_CART_WISHLIST') ?? 'wishlist';
-        $prefixCartCompare = sc_config('PREFIX_CART_COMPARE') ?? 'compare';
-        $prefixCartDefault = sc_config('PREFIX_CART_DEFAULT') ?? 'cart';
+        $prefixCartWishlist = vc_config('PREFIX_CART_WISHLIST') ?? 'wishlist';
+        $prefixCartCompare = vc_config('PREFIX_CART_COMPARE') ?? 'compare';
+        $prefixCartDefault = vc_config('PREFIX_CART_DEFAULT') ?? 'cart';
 
         //Wishlist
         $router->get($prefixCartWishlist.$suffix, $nameSpaceFrontCart.'\ShopCartController@wishlistProcessFront')

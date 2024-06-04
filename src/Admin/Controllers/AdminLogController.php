@@ -15,49 +15,49 @@ class AdminLogController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => vncore_language_render('admin.log.list'),
+            'title' => vc_language_render('admin.log.list'),
             'subTitle' => '',
             'icon' => 'fa fa-tasks',
-            'urlDeleteItem' => vncore_route_admin('admin_log.delete'),
+            'urlDeleteItem' => vc_route_admin('admin_log.delete'),
             'removeList' => 1, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
             'css' => '',
             'js' => '',
         ];
         //Process add content
-        $data['menuRight'] = sc_config_group('menuRight', \Request::route()->getName());
-        $data['menuLeft'] = sc_config_group('menuLeft', \Request::route()->getName());
-        $data['topMenuRight'] = sc_config_group('topMenuRight', \Request::route()->getName());
-        $data['topMenuLeft'] = sc_config_group('topMenuLeft', \Request::route()->getName());
-        $data['blockBottom'] = sc_config_group('blockBottom', \Request::route()->getName());
+        $data['menuRight'] = vc_config_group('menuRight', \Request::route()->getName());
+        $data['menuLeft'] = vc_config_group('menuLeft', \Request::route()->getName());
+        $data['topMenuRight'] = vc_config_group('topMenuRight', \Request::route()->getName());
+        $data['topMenuLeft'] = vc_config_group('topMenuLeft', \Request::route()->getName());
+        $data['blockBottom'] = vc_config_group('blockBottom', \Request::route()->getName());
         
         $listTh = [
             'id' => 'ID',
-            'user' => vncore_language_render('admin.log.user'),
-            'method' => vncore_language_render('admin.log.method'),
-            'path' => vncore_language_render('admin.log.path'),
-            'ip' => vncore_language_render('admin.log.ip'),
-            'user_agent' => vncore_language_render('admin.log.user_agent'),
-            'input' => vncore_language_render('admin.log.input'),
-            'created_at' => vncore_language_render('admin.log.created_at'),
-            'action' => vncore_language_render('action.title'),
+            'user' => vc_language_render('admin.log.user'),
+            'method' => vc_language_render('admin.log.method'),
+            'path' => vc_language_render('admin.log.path'),
+            'ip' => vc_language_render('admin.log.ip'),
+            'user_agent' => vc_language_render('admin.log.user_agent'),
+            'input' => vc_language_render('admin.log.input'),
+            'created_at' => vc_language_render('admin.log.created_at'),
+            'action' => vc_language_render('action.title'),
         ];
 
-        $keyword     = sc_clean(request('keyword') ?? '');
-        $sort_order = sc_clean(request('sort_order') ?? 'id_desc');
+        $keyword     = vc_clean(request('keyword') ?? '');
+        $sort_order = vc_clean(request('sort_order') ?? 'id_desc');
         $arrSort = [
-            'id__desc' => vncore_language_render('filter_sort.id_desc'),
-            'id__asc' => vncore_language_render('filter_sort.id_asc'),
-            'user_id__desc' => vncore_language_render('filter_sort.value_desc', ['value' => 'ID']),
-            'user_id__asc' => vncore_language_render('filter_sort.value_asc', ['value' => 'ID']),
-            'path__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' => 'path']),
-            'path__asc' => vncore_language_render('filter_sort.alpha_asc', ['alpha' => 'path']),
-            'user_agent__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' => 'User agent']),
-            'user_agent__asc' => vncore_language_render('filter_sort.alpha_asc', ['alpha' => 'User agent']),
-            'method__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' => 'Method']),
-            'method__asc' => vncore_language_render('filter_sort.alpha_asc', ['alpha' => 'Method']),
-            'ip__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' => 'Ip']),
-            'ip__asc' => vncore_language_render('filter_sort.alpha_asc', ['alpha' => 'Ip']),
+            'id__desc' => vc_language_render('filter_sort.id_desc'),
+            'id__asc' => vc_language_render('filter_sort.id_asc'),
+            'user_id__desc' => vc_language_render('filter_sort.value_desc', ['value' => 'ID']),
+            'user_id__asc' => vc_language_render('filter_sort.value_asc', ['value' => 'ID']),
+            'path__desc' => vc_language_render('filter_sort.alpha_desc', ['alpha' => 'path']),
+            'path__asc' => vc_language_render('filter_sort.alpha_asc', ['alpha' => 'path']),
+            'user_agent__desc' => vc_language_render('filter_sort.alpha_desc', ['alpha' => 'User agent']),
+            'user_agent__asc' => vc_language_render('filter_sort.alpha_asc', ['alpha' => 'User agent']),
+            'method__desc' => vc_language_render('filter_sort.alpha_desc', ['alpha' => 'Method']),
+            'method__asc' => vc_language_render('filter_sort.alpha_asc', ['alpha' => 'Method']),
+            'ip__desc' => vc_language_render('filter_sort.alpha_desc', ['alpha' => 'Ip']),
+            'ip__asc' => vc_language_render('filter_sort.alpha_asc', ['alpha' => 'Ip']),
 
         ];
         $obj = new AdminLog;
@@ -88,7 +88,7 @@ class AdminLogController extends RootAdminController
                 'input' => htmlspecialchars($row['input']),
                 'created_at' => $row['created_at'],
                 'action' => '
-                  <span  onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span  onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -96,7 +96,7 @@ class AdminLogController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuSearch
         $optionSort = '';
@@ -107,7 +107,7 @@ class AdminLogController extends RootAdminController
 
         //topMenuRight
         $data['topMenuRight'][] ='
-                <form action="' . vncore_route_admin('admin_log.index') . '" id="button_search">
+                <form action="' . vc_route_admin('admin_log.index') . '" id="button_search">
                 <div class="input-group input-group float-left">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
@@ -131,7 +131,7 @@ class AdminLogController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

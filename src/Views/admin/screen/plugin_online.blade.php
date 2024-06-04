@@ -8,16 +8,16 @@
           <div class="card-header p-0 border-bottom-0">
             <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" href="{{ vncore_route_admin('admin_plugin', ['code' => strtolower($code)]) }}" >{{ vncore_language_render('admin.plugin.local') }}</a>
+                <a class="nav-link" href="{{ vc_route_admin('admin_plugin', ['code' => strtolower($code)]) }}" >{{ vc_language_render('admin.plugin.local') }}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#" >{{ vncore_language_render('admin.plugin.online') }}</a>
+                <a class="nav-link active" href="#" >{{ vc_language_render('admin.plugin.online') }}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" target=_new  href="{{ vncore_route_admin('admin_plugin.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'plugin']) }}</span></a>
+                <a class="nav-link" target=_new  href="{{ vc_route_admin('admin_plugin.import') }}" ><span><i class="fas fa-save"></i> {{ vc_language_render('admin.plugin.import_data', ['data' => 'plugin']) }}</span></a>
               </li>
               <li class="btn-group float-right m-2">
-                {!! vncore_language_render('admin.plugin.plugin_more') !!}
+                {!! vc_language_render('admin.plugin.plugin_more') !!}
               </li>
             </ul>
           </div>
@@ -28,16 +28,16 @@
                     <div class="input-group">
                     <select class="form-control" name="filter_free">
                       <option value="">All items</option>
-                      <option value="1" {{ ($filter_free == 1) ? 'selected':''  }}>{{ vncore_language_render('admin.plugin.only_free') }}</option>
+                      <option value="1" {{ ($filter_free == 1) ? 'selected':''  }}>{{ vc_language_render('admin.plugin.only_free') }}</option>
                     </select>
                     <select class="form-control" name="filter_type">
                       <option value="">Choose filter</option>
-                      <option value="download" {{ ($filter_type == 'download') ? 'selected':''  }}>{{ vncore_language_render('admin.plugin.sort_download') }}</option>
-                      <option value="rating" {{ ($filter_type == 'rating') ? 'selected':''  }}>{{ vncore_language_render('admin.plugin.sort_rating') }}</option>
-                      <option value="sort_price_asc" {{ ($filter_type == 'sort_price_asc') ? 'selected':''  }}>{{ vncore_language_render('admin.plugin.sort_price_asc') }}</option>
-                      <option value="sort_price_desc" {{ ($filter_type == 'sort_price_desc') ? 'selected':''  }}>{{ vncore_language_render('admin.plugin.sort_price_desc') }}</option>
+                      <option value="download" {{ ($filter_type == 'download') ? 'selected':''  }}>{{ vc_language_render('admin.plugin.sort_download') }}</option>
+                      <option value="rating" {{ ($filter_type == 'rating') ? 'selected':''  }}>{{ vc_language_render('admin.plugin.sort_rating') }}</option>
+                      <option value="sort_price_asc" {{ ($filter_type == 'sort_price_asc') ? 'selected':''  }}>{{ vc_language_render('admin.plugin.sort_price_asc') }}</option>
+                      <option value="sort_price_desc" {{ ($filter_type == 'sort_price_desc') ? 'selected':''  }}>{{ vc_language_render('admin.plugin.sort_price_desc') }}</option>
                     </select>
-                      <input type="text" name="filter_keyword" class="form-control rounded-0 float-right" placeholder="{{ vncore_language_render('admin.plugin.enter_search_keyword') }}" value="{{ $filter_keyword ?? '' }}">
+                      <input type="text" name="filter_keyword" class="form-control rounded-0 float-right" placeholder="{{ vc_language_render('admin.plugin.enter_search_keyword') }}" value="{{ $filter_keyword ?? '' }}">
                       <div class="input-group-append">
                           <button id="filter-button" class="btn btn-primary  btn-flat"><i class="fas fa-filter"></i></button>
                       </div>
@@ -52,24 +52,24 @@
               <table class="table table-hover text-nowrap table-bordered">
                 <thead>
                   <tr>
-                    <th>{{ vncore_language_render('admin.plugin.image') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.code') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.name') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.version') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.compatible') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.auth') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.price') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.rated') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.image') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.code') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.name') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.version') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.compatible') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.auth') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.price') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.rated') }}</th>
                     <th><i class="fa fa-download" aria-hidden="true"></i></th>
-                    <th>{{ vncore_language_render('admin.plugin.date') }}</th>
-                    <th>{{ vncore_language_render('admin.plugin.action') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.date') }}</th>
+                    <th>{{ vc_language_render('admin.plugin.action') }}</th>
                   </tr>
                 </thead>
                 <tbody>
                   @if (!$arrPluginLibrary)
                     <tr>
                       <td colspan="11" style="text-align: center;color: red;">
-                        {{ vncore_language_render('admin.plugin.empty') }}
+                        {{ vc_language_render('admin.plugin.empty') }}
                       </td>
                     </tr>
                   @else
@@ -84,20 +84,20 @@
 
     if (array_key_exists($plugin['key'], $arrPluginLocal)) 
     {
-      $pluginAction = '<span title="'.vncore_language_render('admin.plugin.located').'" class="btn btn-flat btn-default"><i class="fa fa-check" aria-hidden="true"></i></span>';
+      $pluginAction = '<span title="'.vc_language_render('admin.plugin.located').'" class="btn btn-flat btn-default"><i class="fa fa-check" aria-hidden="true"></i></span>';
 
     } elseif(!in_array(config('vncore.core'), $scVersion)) {
       $pluginAction = '';
     } else {
       if(($plugin['is_free'] || $plugin['price_final'] == 0)) {
-        $pluginAction = '<span onClick="installPlugin($(this),\''.$plugin['key'].'\', \''.$plugin['file'].'\');" title="'.vncore_language_render('admin.plugin.install').'" type="button" class="btn btn-flat btn-success"><i class="fa fa-plus-circle"></i></span>';
+        $pluginAction = '<span onClick="installPlugin($(this),\''.$plugin['key'].'\', \''.$plugin['file'].'\');" title="'.vc_language_render('admin.plugin.install').'" type="button" class="btn btn-flat btn-success"><i class="fa fa-plus-circle"></i></span>';
       } else {
         $pluginAction = '';
       }
     }
 @endphp
                       <tr>
-                        <td>{!! sc_image_render($plugin['image'],'50px', '', $plugin['name']) !!}</td>
+                        <td>{!! vc_image_render($plugin['image'],'50px', '', $plugin['name']) !!}</td>
                         <td>{{ $plugin['key'] }}</td>
                         <td>{{ $plugin['name'] }} <span data-toggle="tooltip" title="{!! $plugin['description'] !!}"><i class="fa fa-info-circle" aria-hidden="true"></i></span></td>
                         <td>{{ $plugin['version']??'' }}</td>
@@ -105,7 +105,7 @@
                         <td>{{ $plugin['username']??'' }}</td>
                         <td>
                           @if ($plugin['is_free'] || $plugin['price_final'] == 0)
-                            <span class="badge badge-success">{{ vncore_language_render('admin.plugin.free') }}</span>
+                            <span class="badge badge-success">{{ vc_language_render('admin.plugin.free') }}</span>
                           @else
                               @if ($plugin['price_final'] != $plugin['price'])
                                   <span class="sc-old-price">{{ number_format($plugin['price']) }}</span><br>
@@ -147,7 +147,7 @@
                           {!! $pluginAction ?? '' !!}
                           <a href="{{ $plugin['link'] }}" title="Link home">
                             <span class="btn btn-flat btn-primary" type="button">
-                              <i class="fa fa-chain-broken" aria-hidden="true"></i> {!! vncore_language_render('admin.plugin.link') !!}
+                              <i class="fa fa-chain-broken" aria-hidden="true"></i> {!! vc_language_render('admin.plugin.link') !!}
                             </span>
                           </a>
                         </td>  
@@ -182,7 +182,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ vncore_route_admin('admin_plugin_online.install') }}',
+        url: '{{ vc_route_admin('admin_plugin_online.install') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key,

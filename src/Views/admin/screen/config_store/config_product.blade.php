@@ -1,4 +1,4 @@
-{{-- Use sc_config with storeId, dont use sc_config_admin because will switch the store to the specified store Id
+{{-- Use vc_config with storeId, dont use vc_config_admin because will switch the store to the specified store Id
 --}}
 
 <div class="row">
@@ -6,7 +6,7 @@
   <div class="col-md-5">
     <div class="card">
       <div class="card-header with-border">
-        <h3 class="card-title">{{ vncore_language_render('product.admin.setting_info') }}</h3>
+        <h3 class="card-title">{{ vc_language_render('product.admin.setting_info') }}</h3>
       </div>
 
       <div class="card-body table-responsivep-0">
@@ -15,12 +15,12 @@
            @foreach ($productConfig as $config)
            @if ($config['key'] == 'product_tax')
            <tr>
-            <td>{{ vncore_language_render('product.config_manager.tax') }}</td>
-            <td><a href="#" class="editable-required" data-name="product_tax" data-type="select" data-pk="" data-source="{{ json_encode($taxs) }}" data-url="{{ $urlUpdateConfig }}" data-title="{{ vncore_language_render('product.config_manager.tax') }}" data-value="{{ sc_config('product_tax', $storeId) }}" data-original-title="" title="" data-placement="left"></a></td>
+            <td>{{ vc_language_render('product.config_manager.tax') }}</td>
+            <td><a href="#" class="editable-required" data-name="product_tax" data-type="select" data-pk="" data-source="{{ json_encode($taxs) }}" data-url="{{ $urlUpdateConfig }}" data-title="{{ vc_language_render('product.config_manager.tax') }}" data-value="{{ vc_config('product_tax', $storeId) }}" data-original-title="" title="" data-placement="left"></a></td>
           </tr>
            @else
            <tr>
-            <td>{{ vncore_language_render($config['detail']) }}</td>
+            <td>{{ vc_language_render($config['detail']) }}</td>
             <td><input class="check-data-config" data-store="{{ $storeId }}"  type="checkbox" name="{{ $config['key'] }}"  {{ $config['value']?"checked":"" }}></td>
           </tr>
            @endif
@@ -35,22 +35,22 @@
   <div class="col-md-7">
     <div class="card">
       <div class="card-header with-border">
-        <h3 class="card-title">{{ vncore_language_render('product.admin.setting_info') }}</h3>
+        <h3 class="card-title">{{ vc_language_render('product.admin.setting_info') }}</h3>
       </div>
 
       <div class="card-body table-responsivep-0">
        <table class="table table-hover box-body text-wrap table-bordered">
         <thead>
           <tr>
-            <th>{{ vncore_language_render('product.config_manager.field') }}</th>
-            <th>{{ vncore_language_render('product.config_manager.value') }}</th>
-            <th>{{ vncore_language_render('product.config_manager.required') }}</th>
+            <th>{{ vc_language_render('product.config_manager.field') }}</th>
+            <th>{{ vc_language_render('product.config_manager.value') }}</th>
+            <th>{{ vc_language_render('product.config_manager.required') }}</th>
           </tr>
         </thead>
          <tbody>
            @foreach ($productConfigAttribute as $key => $config)
            <tr>
-            <td>{{ vncore_language_render($config['detail']) }}</td>
+            <td>{{ vc_language_render($config['detail']) }}</td>
             <td><input class="check-data-config" data-store="{{ $storeId }}"  type="checkbox" name="{{ $config['key'] }}"  {{ $config['value']?"checked":"" }}></td>
             <td>
               @if (!empty($productConfigAttributeRequired[$key.'_required']))

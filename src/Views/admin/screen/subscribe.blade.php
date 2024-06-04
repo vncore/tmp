@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ vncore_route_admin('admin_subscribe.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ vc_route_admin('admin_subscribe.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                         <div class="fields-group">
 
                             <div class="form-group  row {{ $errors->has('email') ? ' text-red' : '' }}">
-                                <label for="email" class="col-sm-2 col-form-label">{{ vncore_language_render('subscribe.admin.email') }}</label>
+                                <label for="email" class="col-sm-2 col-form-label">{{ vc_language_render('subscribe.admin.email') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -41,7 +41,7 @@
 
 
                             <div class="form-group row ">
-                                <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('subscribe.admin.status') }}</label>
+                                <label for="status" class="col-sm-2 col-form-label">{{ vc_language_render('subscribe.admin.status') }}</label>
                                 <div class="col-sm-8">
                                 <input class="checkbox" type="checkbox" name="status"  {{ old('status',(empty($subscribe['status'])?0:1))?'checked':''}}>
 
@@ -56,11 +56,11 @@
     
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vc_language_render('action.submit') }}</button>
                             </div>
     
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>

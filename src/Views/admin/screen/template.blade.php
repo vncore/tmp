@@ -7,18 +7,18 @@
           <div class="card-header p-0 border-bottom-0">
             <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" href="#"  aria-controls="custom-tabs-four-home" aria-selected="true">{{ vncore_language_render('admin.template.local') }}</a>
+                <a class="nav-link active" href="#"  aria-controls="custom-tabs-four-home" aria-selected="true">{{ vc_language_render('admin.template.local') }}</a>
               </li>
               @if (config('admin.settings.api_template'))
               <li class="nav-item">
-                <a class="nav-link" href="{{ vncore_route_admin('admin_template_online.index') }}" >{{ vncore_language_render('admin.template.online') }}</a>
+                <a class="nav-link" href="{{ vc_route_admin('admin_template_online.index') }}" >{{ vc_language_render('admin.template.online') }}</a>
               </li>
               @endif
               <li class="nav-item">
-                <a class="nav-link" target=_new  href="{{ vncore_route_admin('admin_template.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'template']) }}</span></a>
+                <a class="nav-link" target=_new  href="{{ vc_route_admin('admin_template.import') }}" ><span><i class="fas fa-save"></i> {{ vc_language_render('admin.plugin.import_data', ['data' => 'template']) }}</span></a>
               </li>
               <li class="btn-group float-right m-2">
-                {!! vncore_language_render('admin.template.template_more') !!}
+                {!! vc_language_render('admin.template.template_more') !!}
               </li>
             </ul>
           </div>
@@ -29,14 +29,14 @@
               <table class="table table-hover text-nowrap table-bordered">
                 <thead>
                   <tr>
-                    <th>{{ vncore_language_render('admin.template.image') }}</th>
-                    <th>{{ vncore_language_render('admin.template.name') }}</th>
-                    <th>{{ vncore_language_render('admin.template.code') }}</th>
-                    <th>{{ vncore_language_render('admin.template.image_demo') }}</th>
-                    <th>{{ vncore_language_render('admin.template.auth') }}</th>
-                    <th>{{ vncore_language_render('admin.template.website') }}</th>
-                    <th>{{ vncore_language_render('admin.template.version') }}</th>
-                    <th>{{ vncore_language_render('admin.template.action') }}</th>
+                    <th>{{ vc_language_render('admin.template.image') }}</th>
+                    <th>{{ vc_language_render('admin.template.name') }}</th>
+                    <th>{{ vc_language_render('admin.template.code') }}</th>
+                    <th>{{ vc_language_render('admin.template.image_demo') }}</th>
+                    <th>{{ vc_language_render('admin.template.auth') }}</th>
+                    <th>{{ vc_language_render('admin.template.website') }}</th>
+                    <th>{{ vc_language_render('admin.template.version') }}</th>
+                    <th>{{ vc_language_render('admin.template.action') }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -45,29 +45,29 @@
                     @php
                         $pathImage = $template['config']['image'] ?? '';
                     @endphp
-                   <td>{!!sc_image_render(sc_file('templates/'.$key.'/'.$pathImage)??'','50px','', $template['config']['name']??'')!!}</td>
+                   <td>{!!vc_image_render(vc_file('templates/'.$key.'/'.$pathImage)??'','50px','', $template['config']['name']??'')!!}</td>
                    <td>{{ $template['config']['name']??'' }}</td>
                    <td>{{ $key??'' }}</td>
-                   <td class="pointer" onclick="imagedemo('{{ sc_file('templates/'.$key.'/images/demo.jpg') }}')"><a>{{ vncore_language_render('admin.template.click_here') }}</a></td>
+                   <td class="pointer" onclick="imagedemo('{{ vc_file('templates/'.$key.'/images/demo.jpg') }}')"><a>{{ vc_language_render('admin.template.click_here') }}</a></td>
                    <td>{{ $template['config']['auth']??'' }}</td>
                    <td><a href="{{ $template['config']['website']??'' }}" target=_new><i class="fa fa-link" aria-hidden="true"></i>Link</a></td>
                    <td>{{ $template['config']['version']??'' }}</td>
                     <td>
                       @if (!in_array($key, $templatesUsed))
                         @if (!key_exists($key, $templatesInstalled))
-                          <span onClick="processTemplate($(this), '{{ $key }}', 'install');" class="btn btn-flat btn-primary btn-sm" title="{{ vncore_language_render('action.install') }}"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                          <span onClick="processTemplate($(this), '{{ $key }}', 'install');" class="btn btn-flat btn-primary btn-sm" title="{{ vc_language_render('action.install') }}"><i class="fa fa-plus" aria-hidden="true"></i></span>
                         @else
-                          {{-- <span onClick="processTemplate($(this), '{{ $key }}', 'refresh');" class="btn btn-flat btn-info btn-sm" title="{{ vncore_language_render('action.refresh') }}"><i class="fa fa-recycle" aria-hidden="true"></i></span> --}}
+                          {{-- <span onClick="processTemplate($(this), '{{ $key }}', 'refresh');" class="btn btn-flat btn-info btn-sm" title="{{ vc_language_render('action.refresh') }}"><i class="fa fa-recycle" aria-hidden="true"></i></span> --}}
                           @if (!key_exists($key, $templatesActive))
-                          <span onClick="processTemplate($(this), '{{ $key }}', 'enable');" class="btn btn-flat btn-primary btn-sm" title="{{ vncore_language_render('action.enable') }}"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
+                          <span onClick="processTemplate($(this), '{{ $key }}', 'enable');" class="btn btn-flat btn-primary btn-sm" title="{{ vc_language_render('action.enable') }}"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
                           @else
-                            <span onClick="processTemplate($(this), '{{ $key }}', 'disable');" class="btn btn-flat btn-warning btn-sm" title="{{ vncore_language_render('action.disable') }}"><i class="fa fa-power-off" aria-hidden="true"></i></span>
+                            <span onClick="processTemplate($(this), '{{ $key }}', 'disable');" class="btn btn-flat btn-warning btn-sm" title="{{ vc_language_render('action.disable') }}"><i class="fa fa-power-off" aria-hidden="true"></i></span>
                           @endif
                         @endif
-                        <span onClick="processTemplate($(this), '{{ $key }}', 'remove');" title="{{ vncore_language_render('action.remove') }}" class="btn btn-flat btn-danger btn-sm"><i class="fa fa-trash"></i></span>
+                        <span onClick="processTemplate($(this), '{{ $key }}', 'remove');" title="{{ vc_language_render('action.remove') }}" class="btn btn-flat btn-danger btn-sm"><i class="fa fa-trash"></i></span>
                       @else
-                      <span class="btn btn-flat btn-success btn-sm" title="{{ vncore_language_render('admin.template.used') }}"><i class="fa fa-check" aria-hidden="true"></i></span>
-                      {{-- <span onClick="processTemplate($(this), '{{ $key }}', 'refresh');" class="btn btn-flat btn-info btn-sm" title="{{ vncore_language_render('action.refresh') }}"><i class="fa fa-recycle" aria-hidden="true"></i></span> --}}
+                      <span class="btn btn-flat btn-success btn-sm" title="{{ vc_language_render('admin.template.used') }}"><i class="fa fa-check" aria-hidden="true"></i></span>
+                      {{-- <span onClick="processTemplate($(this), '{{ $key }}', 'refresh');" class="btn btn-flat btn-info btn-sm" title="{{ vc_language_render('action.refresh') }}"><i class="fa fa-recycle" aria-hidden="true"></i></span> --}}
                       @endif
                     </td>
                   </tr>
@@ -97,26 +97,26 @@
 function processTemplate(obj,key, action = 'refresh') {
 
 if (action == 'refresh' || action == 'install') {
-  var urlAction = '{{ vncore_route_admin('admin_template.refresh') }}';
+  var urlAction = '{{ vc_route_admin('admin_template.refresh') }}';
 }
 if (action == 'remove') {
-  var urlAction = '{{ vncore_route_admin('admin_template.remove') }}';
+  var urlAction = '{{ vc_route_admin('admin_template.remove') }}';
 }
 if (action == 'disable') {
-  var urlAction = '{{ vncore_route_admin('admin_template.disable') }}';
+  var urlAction = '{{ vc_route_admin('admin_template.disable') }}';
 }
 if (action == 'enable') {
-  var urlAction = '{{ vncore_route_admin('admin_template.enable') }}';
+  var urlAction = '{{ vc_route_admin('admin_template.enable') }}';
 }
 
 Swal.fire({
-  title: '{{ vncore_language_render('action.action_confirm') }}',
-  text: '{{ vncore_language_render('action.action_confirm_warning') }}',
+  title: '{{ vc_language_render('action.action_confirm') }}',
+  text: '{{ vc_language_render('action.action_confirm_warning') }}',
   type: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
+  confirmButtonText: '{{ vc_language_render('action.confirm_yes') }}',
 }).then((result) => {
   if (result.value) {
       $('#loading').show()
@@ -147,7 +147,7 @@ Swal.fire({
 
 function imagedemo(image) {
   Swal.fire({
-    title: '{{  vncore_language_render('admin.template.image_demo') }}',
+    title: '{{  vc_language_render('admin.template.image_demo') }}',
     text: '',
     imageUrl: image,
     imageWidth: 800,

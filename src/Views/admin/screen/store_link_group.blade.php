@@ -12,7 +12,7 @@
         <h3 class="card-title">{!! $title_action !!}</h3>
         @if ($layout == 'edit')
         <div class="btn-group float-right" style="margin-right: 5px">
-            <a href="{{ vncore_route_admin('admin_store_link_group.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+            <a href="{{ vc_route_admin('admin_store_link_group.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span></a>
         </div>
       @endif
       </div>
@@ -22,7 +22,7 @@
         <div class="card-body">
 
           <div class="form-group row {{ $errors->has('name') ? ' text-red' : '' }}">
-            <label for="name" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link_group.name') }}</label>
+            <label for="name" class="col-sm-2 col-form-label">{{ vc_language_render('admin.link_group.name') }}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -41,7 +41,7 @@
           </div>
 
           <div class="form-group row {{ $errors->has('code') ? ' text-red' : '' }}">
-            <label for="code" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.link_group.code') }}</label>
+            <label for="code" class="col-sm-2 col-form-label">{{ vc_language_render('admin.link_group.code') }}</label>
             <div class="col-sm-10 ">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -64,8 +64,8 @@
         <!-- /.card-body -->
         @csrf
         <div class="card-footer">
-          <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
-          <button type="submit" class="btn btn-primary float-right">{{ vncore_language_render('action.submit') }}</button>
+          <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
+          <button type="submit" class="btn btn-primary float-right">{{ vc_language_render('action.submit') }}</button>
         </div>
         <!-- /.card-footer -->
       </form>
@@ -139,7 +139,7 @@
 
 @push('scripts')
     {{-- //Pjax --}}
-   <script src="{{ sc_file('admin/plugin/jquery.pjax.js')}}"></script>
+   <script src="{{ vc_file('admin/plugin/jquery.pjax.js')}}"></script>
 
   <script type="text/javascript">
 
@@ -200,13 +200,13 @@ $('.grid-trash').on('click', function() {
     },
     buttonsStyling: true,
   }).fire({
-    title: '{{ vncore_language_render('action.delete_confirm') }}',
+    title: '{{ vc_language_render('action.delete_confirm') }}',
     text: "",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
+    confirmButtonText: '{{ vc_language_render('action.confirm_yes') }}',
     confirmButtonColor: "#DD6B55",
-    cancelButtonText: '{{ vncore_language_render('action.confirm_no') }}',
+    cancelButtonText: '{{ vc_language_render('action.confirm_no') }}',
     reverseButtons: true,
 
     preConfirm: function() {
@@ -220,12 +220,12 @@ $('.grid-trash').on('click', function() {
                 },
                 success: function (data) {
                     if(data.error == 1){
-                      alertMsg('error', data.msg, '{{ vncore_language_render('action.warning') }}');
+                      alertMsg('error', data.msg, '{{ vc_language_render('action.warning') }}');
                       $.pjax.reload('#pjax-container');
                       return;
                     }else{
                       alertMsg('success', data.msg);
-                      window.location.replace('{{ vncore_route_admin('admin_store_link_group.index') }}');
+                      window.location.replace('{{ vc_route_admin('admin_store_link_group.index') }}');
                     }
 
                 }
@@ -235,7 +235,7 @@ $('.grid-trash').on('click', function() {
 
   }).then((result) => {
     if (result.value) {
-      alertMsg('success', '{{ vncore_language_render('action.delete_confirm_deleted_msg') }}', '{{ vncore_language_render('action.delete_confirm_deleted') }}');
+      alertMsg('success', '{{ vc_language_render('action.delete_confirm_deleted_msg') }}', '{{ vc_language_render('action.delete_confirm_deleted') }}');
     } else if (
       // Read more about handling dismissals
       result.dismiss === Swal.DismissReason.cancel

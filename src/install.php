@@ -29,7 +29,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             $admin_url         = request('admin_url') ?? '';
             $admin_url         = str_replace('/','',strip_tags(strtolower($admin_url)));
             if (in_array($admin_url, ['','admin','css','data','images','js','packages','templates', 'plugin', 'plugins','vendor','component'])) {
-                $admin_url = 'sc_admin';
+                $admin_url = 'vc_admin';
             }
             
         try {
@@ -37,15 +37,15 @@ if (request()->method() == 'POST' && request()->ajax()) {
                 Encrypter::generateKey(config('app.cipher'))
             );
             $getEnv = file_get_contents(base_path() . '/.env.example');
-            $getEnv = str_replace('sc_your_domain', $domain, $getEnv);
-            $getEnv = str_replace('sc_database_host', $database_host, $getEnv);
-            $getEnv = str_replace('sc_database_port', $database_port, $getEnv);
-            $getEnv = str_replace('sc_database_name', $database_name, $getEnv);
-            $getEnv = str_replace('sc_database_user', $database_user, $getEnv);
-            $getEnv = str_replace('DB_PREFIX=sc_', 'DB_PREFIX='.$database_prefix, $getEnv);
-            $getEnv = str_replace('sc_database_password', $database_password, $getEnv);
-            $getEnv = str_replace('sc_api_key', $api_key, $getEnv);
-            $getEnv = str_replace('sc_admin', $admin_url, $getEnv);
+            $getEnv = str_replace('vc_your_domain', $domain, $getEnv);
+            $getEnv = str_replace('vc_database_host', $database_host, $getEnv);
+            $getEnv = str_replace('vc_database_port', $database_port, $getEnv);
+            $getEnv = str_replace('vc_database_name', $database_name, $getEnv);
+            $getEnv = str_replace('vc_database_user', $database_user, $getEnv);
+            $getEnv = str_replace('DB_PREFIX=vc_', 'DB_PREFIX='.$database_prefix, $getEnv);
+            $getEnv = str_replace('vc_database_password', $database_password, $getEnv);
+            $getEnv = str_replace('vc_api_key', $api_key, $getEnv);
+            $getEnv = str_replace('vc_admin', $admin_url, $getEnv);
             $getEnv = str_replace('Asia/ho_chi_minh', $timezone_default, $getEnv);
 
             if (request('only_cms')) {

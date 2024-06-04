@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ vncore_route_admin('admin_store_block.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ vc_route_admin('admin_store_block.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
 
                     <div class="card-body">
                             <div class="form-group row  {{ $errors->has('name') ? ' text-red' : '' }}">
-                                <label for="name" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.store_block.name') }}</label>
+                                <label for="name" class="col-sm-2 col-form-label">{{ vc_language_render('admin.store_block.name') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -36,12 +36,12 @@
                                 </div>
                             </div>
                             <div class="form-group row {{ $errors->has('position') ? ' text-red' : '' }}">
-                                <label for="position" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.store_block.select_position') }}</label>
+                                <label for="position" class="col-sm-2 col-form-label">{{ vc_language_render('admin.store_block.select_position') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control position select2" style="width: 100%;" name="position" >
                                         <option value=""></option>
                                         @foreach ($layoutPosition as $k => $v)
-                                            <option value="{{ $k }}" {{ (old('position',$layout['position']??'') ==$k) ? 'selected':'' }}>{{ vncore_language_render($v) }}</option>
+                                            <option value="{{ $k }}" {{ (old('position',$layout['position']??'') ==$k) ? 'selected':'' }}>{{ vc_language_render($v) }}</option>
                                         @endforeach
                                     </select>
                                         @if ($errors->has('position'))
@@ -54,16 +54,16 @@
                             </div>
 
                             <div class="form-group row {{ $errors->has('page') ? ' text-red' : '' }}">
-                                <label for="page" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.store_block.select_page') }}</label>
+                                <label for="page" class="col-sm-2 col-form-label">{{ vc_language_render('admin.store_block.select_page') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control page select2" multiple="multiple" style="width: 100%;" name="page[]" >
                                         <option value=""></option>
                                         @php
-                                            $layoutPage = ['*'=> vncore_language_render('admin.position_all')] + $layoutPage;
+                                            $layoutPage = ['*'=> vc_language_render('admin.position_all')] + $layoutPage;
                                             $arrPage = explode(',', $layout['page']??'');
                                         @endphp
                                         @foreach ($layoutPage as $k => $v)
-                                            <option value="{{ $k }}" {{ in_array($k,old('page',$arrPage)) ? 'selected':'' }}>{{ vncore_language_render($v) }}</option>
+                                            <option value="{{ $k }}" {{ in_array($k,old('page',$arrPage)) ? 'selected':'' }}>{{ vc_language_render($v) }}</option>
                                         @endforeach
                                     </select>
                                         @if ($errors->has('page'))
@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="form-group row {{ $errors->has('type') ? ' text-red' : '' }}">
-                                <label class="col-sm-2 col-form-label">{{ vncore_language_render('admin.store_block.type') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ vc_language_render('admin.store_block.type') }}</label>
                                 <div class="col-sm-8">
                             @if ($layout)
                             <div class="icheck-primary d-inline">
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div class="form-group row {{ $errors->has('text') ? ' text-red' : '' }}">
-                                <label for="text" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.store_block.text') }}</label>
+                                <label for="text" class="col-sm-2 col-form-label">{{ vc_language_render('admin.store_block.text') }}</label>
                                 <div class="col-sm-8">
                                     @php
                                         $dataType = old('type',$layout['type']??'')
@@ -115,12 +115,12 @@
                                                 <option value="{!! $view !!}" {{ (old('text',$layout['text']??'') == $view)?'selected':'' }} >{{ $view }}</option>
                                             @endforeach
                                         </select>
-                                        <span class="form-text"><i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.store_block.helper_view',['template' => sc_store('template', $storeId)]) }}</span>
+                                        <span class="form-text"><i class="fa fa-info-circle"></i> {{ vc_language_render('admin.store_block.helper_view',['template' => vc_store('template', $storeId)]) }}</span>
                                     @else
                                         <textarea name="text" class="form-control text" rows="5" placeholder="Layout text">
                                             {{ old('text',$layout['text']??'') }}
                                         </textarea>
-                                        <span class="form-text"><i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.store_block.helper_html') }}</span>
+                                        <span class="form-text"><i class="fa fa-info-circle"></i> {{ vc_language_render('admin.store_block.helper_html') }}</span>
                                     @endif
 
 
@@ -134,15 +134,15 @@
 
 
 
-@if (sc_check_multi_shop_installed())
+@if (vc_check_multi_shop_installed())
 
                             <div class="form-group row {{ $errors->has('store_id') ? ' text-red' : '' }}">
-                                <label for="store_id" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.select_store') }}</label>
+                                <label for="store_id" class="col-sm-2 col-form-label">{{ vc_language_render('admin.select_store') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control store_id select2" style="width: 100%;" name="store_id" >
                                         <option value=""></option>
-                                        @foreach (sc_get_list_code_store() as $k => $v)
-                                            <option value="{{ $k }}" {{ (old('store_id', $layout['store_id']??'') ==$k) ? 'selected':'' }}>{{ vncore_language_render($v) }}</option>
+                                        @foreach (vc_get_list_code_store() as $k => $v)
+                                            <option value="{{ $k }}" {{ (old('store_id', $layout['store_id']??'') ==$k) ? 'selected':'' }}>{{ vc_language_render($v) }}</option>
                                         @endforeach
                                     </select>
                                         @if ($errors->has('store_id'))
@@ -156,7 +156,7 @@
 
 
                             <div class="form-group row  {{ $errors->has('sort') ? ' text-red' : '' }}">
-                                <label for="sort" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.store_block.sort') }}</label>
+                                <label for="sort" class="col-sm-2 col-form-label">{{ vc_language_render('admin.store_block.sort') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -174,7 +174,7 @@
 
 
                             <div class="form-group row ">
-                                <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.store_block.status') }}</label>
+                                <label for="status" class="col-sm-2 col-form-label">{{ vc_language_render('admin.store_block.status') }}</label>
                                 <div class="col-sm-8">
                                 <input class="checkbox" type="checkbox" name="status"  {!! old('status',(empty($layout['status'])?0:1))?'checked':''!!}>
 
@@ -193,11 +193,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vc_language_render('action.submit') }}</button>
                             </div>
 
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>
@@ -226,7 +226,7 @@ $(function () {
     var obj = $('[name="text"]');
     obj.next('.form-text').remove();
     if(type =='html'){
-       obj.before('<textarea name="text" class="form-control text" rows="5" placeholder="Layout text"></textarea><span class="form-text"><i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.store_block.helper_html') }}.</span>');
+       obj.before('<textarea name="text" class="form-control text" rows="5" placeholder="Layout text"></textarea><span class="form-text"><i class="fa fa-info-circle"></i> {{ vc_language_render('admin.store_block.helper_html') }}.</span>');
        obj.remove();
     }else if(type =='view'){
 
@@ -235,7 +235,7 @@ $(function () {
         $('#loading').show();
         $.ajax({
             method: 'get',
-            url: '{{ vncore_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId,
+            url: '{{ vc_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId,
             success: function (data) {
                 obj.before(data);
                 obj.remove();
@@ -249,7 +249,7 @@ $(function () {
         $('#loading').show();
         $.ajax({
             method: 'get',
-            url: '{{ vncore_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId,
+            url: '{{ vc_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId,
             success: function (data) {
                 obj.before(data);
                 obj.remove();
@@ -267,10 +267,10 @@ $(function () {
         var storeId = $(this).val();
         var url_type = '';
         if (type_checked == 'view') {
-            url_type = '{{ vncore_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId;
+            url_type = '{{ vc_route_admin('admin_store_block.listblock_view') }}?store_id='+storeId;
         }
         if (type_checked == 'page') {
-            url_type = '{{ vncore_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId;
+            url_type = '{{ vc_route_admin('admin_store_block.listblock_page') }}?store_id='+storeId;
         }
         $('#loading').show();
         $.ajax({
@@ -288,7 +288,7 @@ $(function () {
 
 function imagedemo(image) {
       Swal.fire({
-        title: '{{  vncore_language_render('admin.template.image_demo') }}',
+        title: '{{  vc_language_render('admin.template.image_demo') }}',
         text: '',
         imageUrl: image,
         imageWidth: 600,

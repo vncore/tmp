@@ -45,7 +45,7 @@ class Update extends Command
             );
             $this->info('- Update database done!');
         } catch (Throwable $e) {
-            sc_report($e->getMessage());
+            vc_report($e->getMessage());
             echo  json_encode(['error' => 1, 'msg' => $e->getMessage()]);
             exit();
         }

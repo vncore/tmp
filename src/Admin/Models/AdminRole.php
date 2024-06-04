@@ -71,7 +71,7 @@ class AdminRole extends Model
      */
     public static function updateInfo($dataUpdate, $id)
     {
-        $dataUpdate = sc_clean($dataUpdate);
+        $dataUpdate = vc_clean($dataUpdate);
         $obj        = self::find($id);
         return $obj->update($dataUpdate);
     }
@@ -82,7 +82,7 @@ class AdminRole extends Model
      */
     public static function createRole($dataCreate)
     {
-        $dataCreate = sc_clean($dataCreate);
+        $dataCreate = vc_clean($dataCreate);
         return self::create($dataCreate);
     }
 }

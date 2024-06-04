@@ -6,7 +6,7 @@
           <div class="box-body">
             <div class="error-page text-center">
                 
-                <h4><i class="fas fa-exclamation text-red"></i> {{ vncore_language_render('admin.data_not_found_msg') }}</h4>
+                <h4><i class="fas fa-exclamation text-red"></i> {{ vc_language_render('admin.data_not_found_msg') }}</h4>
                 <br>
                 <h5><span class="text-red">{{ $url }}</span></h5>
               

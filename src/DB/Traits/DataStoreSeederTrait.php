@@ -25,9 +25,9 @@ trait DataStoreSeederTrait
 
         if (file_exists($fileProcess = resource_path() . '/views/templates/'.$this->getTemplateDefault().'/Provider.php')) {
             include_once $fileProcess;
-            if (function_exists('sc_template_install_store')) {
+            if (function_exists('vc_template_install_store')) {
                 //Insert only specify store
-                sc_template_install_store($storeId);
+                vc_template_install_store($storeId);
             }
         } 
     }

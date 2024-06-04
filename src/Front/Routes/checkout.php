@@ -9,9 +9,9 @@ Route::group(
         'prefix' => $langUrl
     ],
     function ($router) use ($suffix, $nameSpaceFrontCart) {
-        $prefixCartCheckout = sc_config('PREFIX_CART_CHECKOUT') ?? 'checkout';
-        $prefixCartCheckoutConfirm = sc_config('PREFIX_CART_CHECKOUT_CONFIRM') ?? 'checkout-confirm';
-        $prefixOrderSuccess = sc_config('PREFIX_ORDER_SUCCESS') ?? 'order-success';
+        $prefixCartCheckout = vc_config('PREFIX_CART_CHECKOUT') ?? 'checkout';
+        $prefixCartCheckoutConfirm = vc_config('PREFIX_CART_CHECKOUT_CONFIRM') ?? 'checkout-confirm';
+        $prefixOrderSuccess = vc_config('PREFIX_ORDER_SUCCESS') ?? 'order-success';
         
         //Checkout prepare, from screen cart to checkout
         $router->post('/checkout-prepare', $nameSpaceFrontCart.'\ShopCartController@prepareCheckout')

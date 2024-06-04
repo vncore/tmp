@@ -4,8 +4,8 @@ use Vncore\Core\Front\Models\ShopEmailTemplate;
 /**
  * Function process mapping validate contact form
  */
-if (!function_exists('sc_contact_mapping_validate') && !in_array('sc_contact_mapping_validate', config('helper_except', []))) {
-    function sc_contact_mapping_validate():array
+if (!function_exists('vc_contact_mapping_validate') && !in_array('vc_contact_mapping_validate', config('helper_except', []))) {
+    function vc_contact_mapping_validate():array
     {
         $validate = [
             'name' => 'required',
@@ -15,13 +15,13 @@ if (!function_exists('sc_contact_mapping_validate') && !in_array('sc_contact_map
             'phone' => config('validation.customer.phone_required', 'required|regex:/^0[^0][0-9\-]{6,12}$/'),
         ];
         $messages = [
-            'name.required'    => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.name')]),
-            'content.required' => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.content')]),
-            'title.required'   => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.subject')]),
-            'email.required'   => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.email')]),
-            'email.email'      => vncore_language_render('validation.email', ['attribute' => vncore_language_render('contact.email')]),
-            'phone.required'   => vncore_language_render('validation.required', ['attribute' => vncore_language_render('contact.phone')]),
-            'phone.regex'      => vncore_language_render('customer.phone_regex'),
+            'name.required'    => vc_language_render('validation.required', ['attribute' => vc_language_render('contact.name')]),
+            'content.required' => vc_language_render('validation.required', ['attribute' => vc_language_render('contact.content')]),
+            'title.required'   => vc_language_render('validation.required', ['attribute' => vc_language_render('contact.subject')]),
+            'email.required'   => vc_language_render('validation.required', ['attribute' => vc_language_render('contact.email')]),
+            'email.email'      => vc_language_render('validation.email', ['attribute' => vc_language_render('contact.email')]),
+            'phone.required'   => vc_language_render('validation.required', ['attribute' => vc_language_render('contact.phone')]),
+            'phone.regex'      => vc_language_render('customer.phone_regex'),
         ];
         $dataMap['validate'] = $validate;
         $dataMap['messages'] = $messages;
@@ -34,10 +34,10 @@ if (!function_exists('sc_contact_mapping_validate') && !in_array('sc_contact_map
 /**
  * Send email contact form
  */
-if (!function_exists('sc_contact_form_sendmail') && !in_array('sc_contact_form_sendmail', config('helper_except', []))) {
-    function sc_contact_form_sendmail(array $data)
+if (!function_exists('vc_contact_form_sendmail') && !in_array('vc_contact_form_sendmail', config('helper_except', []))) {
+    function vc_contact_form_sendmail(array $data)
     {
-        if (sc_config('contact_to_admin')) {
+        if (vc_config('contact_to_admin')) {
             $checkContent = (new ShopEmailTemplate)
                 ->where('group', 'contact_to_admin')
                 ->where('status', 1)
@@ -64,11 +64,11 @@ if (!function_exists('sc_contact_form_sendmail') && !in_array('sc_contact_form_s
                 ];
 
                 $config = [
-                    'to' => sc_store('email'),
+                    'to' => vc_store('email'),
                     'replyTo' => $data['email'],
                     'subject' => $data['title'],
                 ];
-                sc_send_mail('templates.' . sc_store('template') . '.mail.contact_to_admin', $dataView, $config, []);
+                vc_send_mail('templates.' . vc_store('template') . '.mail.contact_to_admin', $dataView, $config, []);
             }
         }
     }

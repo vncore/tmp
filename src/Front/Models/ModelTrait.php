@@ -7,12 +7,12 @@ namespace Vncore\Core\Front\Models;
  */
 trait ModelTrait
 {
-    protected $sc_limit = 'all'; // all or interger
-    protected $sc_paginate = 0; // 0: dont paginate,
-    protected $sc_sort = [];
-    protected $sc_moreQuery = []; // more query
-    protected $sc_random = 0; // 0: no random, 1: random
-    protected $sc_keyword = ''; // search search product
+    protected $vc_limit = 'all'; // all or interger
+    protected $vc_paginate = 0; // 0: dont paginate,
+    protected $vc_sort = [];
+    protected $vc_moreQuery = []; // more query
+    protected $vc_random = 0; // 0: no random, 1: random
+    protected $vc_keyword = ''; // search search product
  
 
     
@@ -23,9 +23,9 @@ trait ModelTrait
     public function setLimit($limit)
     {
         if ($limit === 'all') {
-            $this->sc_limit = $limit;
+            $this->vc_limit = $limit;
         } else {
-            $this->sc_limit = (int)$limit;
+            $this->vc_limit = (int)$limit;
         }
         return $this;
     }
@@ -43,7 +43,7 @@ trait ModelTrait
                     $sort = [$kS, $vS];
                 }
             }
-            $this->sc_sort[] = $sort;
+            $this->vc_sort[] = $sort;
         }
         return $this;
     }
@@ -62,7 +62,7 @@ trait ModelTrait
     public function setMoreQuery(array $moreQuery)
     {
         if (is_array($moreQuery)) {
-            $this->sc_moreQuery[] = $moreQuery;
+            $this->vc_moreQuery[] = $moreQuery;
         }
         return $this;
     }
@@ -75,8 +75,8 @@ trait ModelTrait
      * @return  [type]          [return description]
      */
     protected function processMoreQuery($query) {
-        if (count($this->sc_moreQuery)) {
-            foreach ($this->sc_moreQuery as $objQuery) {
+        if (count($this->vc_moreQuery)) {
+            foreach ($this->vc_moreQuery as $objQuery) {
                 if (is_array($objQuery) && count($objQuery) == 1) {
                     foreach ($objQuery as $queryType => $obj) {
                         if (!is_numeric($queryType) && is_array($obj)) {
@@ -95,7 +95,7 @@ trait ModelTrait
      */
     public function setPaginate(int $value = 1)
     {
-        $this->sc_paginate = $value;
+        $this->vc_paginate = $value;
         return $this;
     }
 
@@ -104,7 +104,7 @@ trait ModelTrait
      */
     public function setRandom(int $value = 1)
     {
-        $this->sc_random = $value;
+        $this->vc_random = $value;
         return $this;
     }
     
@@ -115,7 +115,7 @@ trait ModelTrait
     public function setKeyword(string $keyword)
     {
         if (trim($keyword)) {
-            $this->sc_keyword = trim($keyword);
+            $this->vc_keyword = trim($keyword);
         }
         return $this;
     }
@@ -127,9 +127,9 @@ trait ModelTrait
     public function getSql()
     {
         $query = $this->buildQuery();
-        if (!$this->sc_paginate) {
-            if ($this->sc_limit !== 'all') {
-                $query = $query->limit($this->sc_limit);
+        if (!$this->vc_paginate) {
+            if ($this->vc_limit !== 'all') {
+                $query = $query->limit($this->vc_limit);
             }
         }
         return $query = $query->toSql();
@@ -145,11 +145,11 @@ trait ModelTrait
         if (!empty($action['query'])) {
             return $query;
         }
-        if ($this->sc_paginate) {
-            $data =  $query->paginate(($this->sc_limit === 'all') ? 20 : $this->sc_limit);
+        if ($this->vc_paginate) {
+            $data =  $query->paginate(($this->vc_limit === 'all') ? 20 : $this->vc_limit);
         } else {
-            if ($this->sc_limit !== 'all') {
-                $query = $query->limit($this->sc_limit);
+            if ($this->vc_limit !== 'all') {
+                $query = $query->limit($this->vc_limit);
             }
             $data = $query->get();
                 

@@ -7,18 +7,18 @@
         <div class="card-header p-0 border-bottom-0">
           <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" href="#"  aria-controls="custom-tabs-four-home" aria-selected="true">{{ vncore_language_render('admin.plugin.local') }}</a>
+              <a class="nav-link active" href="#"  aria-controls="custom-tabs-four-home" aria-selected="true">{{ vc_language_render('admin.plugin.local') }}</a>
             </li>
             @if (config('admin.settings.api_plugin'))
             <li class="nav-item">
-              <a class="nav-link" href="{{ vncore_route_admin('admin_plugin_online') }}" >{{ vncore_language_render('admin.plugin.online') }}</a>
+              <a class="nav-link" href="{{ vc_route_admin('admin_plugin_online') }}" >{{ vc_language_render('admin.plugin.online') }}</a>
             </li>
             @endif
             <li class="nav-item">
-              <a class="nav-link" target=_new  href="{{ vncore_route_admin('admin_plugin.import') }}" ><span><i class="fas fa-save"></i> {{ vncore_language_render('admin.plugin.import_data', ['data' => 'plugin']) }}</span></a>
+              <a class="nav-link" target=_new  href="{{ vc_route_admin('admin_plugin.import') }}" ><span><i class="fas fa-save"></i> {{ vc_language_render('admin.plugin.import_data', ['data' => 'plugin']) }}</span></a>
             </li>
             <li class="btn-group float-right m-2">
-              {!! vncore_language_render('admin.plugin.plugin_more') !!}
+              {!! vc_language_render('admin.plugin.plugin_more') !!}
             </li>
           </ul>
         </div>
@@ -29,20 +29,20 @@
             <table class="table table-hover text-nowrap table-bordered">
               <thead>
                 <tr>
-                  <th>{{ vncore_language_render('admin.plugin.image') }}</th>
-                  <th>{{ vncore_language_render('admin.plugin.name') }}</th>
-                  <th>{{ vncore_language_render('admin.plugin.version') }}</th>
-                  <th>{{ vncore_language_render('admin.plugin.auth') }}</th>
-                  <th>{{ vncore_language_render('admin.plugin.link') }}</th>
-                  <th>{{ vncore_language_render('admin.plugin.sort') }}</th>
-                  <th>{{ vncore_language_render('admin.plugin.action') }}</th>
+                  <th>{{ vc_language_render('admin.plugin.image') }}</th>
+                  <th>{{ vc_language_render('admin.plugin.name') }}</th>
+                  <th>{{ vc_language_render('admin.plugin.version') }}</th>
+                  <th>{{ vc_language_render('admin.plugin.auth') }}</th>
+                  <th>{{ vc_language_render('admin.plugin.link') }}</th>
+                  <th>{{ vc_language_render('admin.plugin.sort') }}</th>
+                  <th>{{ vc_language_render('admin.plugin.action') }}</th>
                 </tr>
               </thead>
               <tbody>
                 @if (!$plugins)
                   <tr>
                     <td colspan="8" style="text-align: center;color: red;">
-                      {{ vncore_language_render('admin.plugin.empty') }}
+                      {{ vc_language_render('admin.plugin.empty') }}
                     </td>
                   </tr>
                 @else
@@ -56,43 +56,43 @@
                     $pluginClass = new $classConfig;
                     //Check Plugin installed
                     if (!array_key_exists($codePlugin, $pluginsInstalled->toArray())) {
-                      $pluginStatusTitle = vncore_language_render('admin.plugin.not_install');
-                      $pluginAction = '<span onClick="installPlugin($(this),\''.$codePlugin.'\');" title="'.vncore_language_render('admin.plugin.install').'" type="button" class="btn btn-flat btn-success"><i class="fa fa-plus-circle"></i></span>';
+                      $pluginStatusTitle = vc_language_render('admin.plugin.not_install');
+                      $pluginAction = '<span onClick="installPlugin($(this),\''.$codePlugin.'\');" title="'.vc_language_render('admin.plugin.install').'" type="button" class="btn btn-flat btn-success"><i class="fa fa-plus-circle"></i></span>';
                     } else {
                       //Check plugin enable
                       if($pluginsInstalled[$codePlugin]['value']){
-                        $pluginStatusTitle = vncore_language_render('admin.plugin.actived');
-                        $pluginAction ='<span onClick="disablePlugin($(this),\''.$codePlugin.'\');" title="'.vncore_language_render('admin.plugin.disable').'" type="button" class="btn btn-flat btn-warning btn-flat"><i class="fa fa-power-off"></i></span>&nbsp;';
+                        $pluginStatusTitle = vc_language_render('admin.plugin.actived');
+                        $pluginAction ='<span onClick="disablePlugin($(this),\''.$codePlugin.'\');" title="'.vc_language_render('admin.plugin.disable').'" type="button" class="btn btn-flat btn-warning btn-flat"><i class="fa fa-power-off"></i></span>&nbsp;';
 
                           if($pluginClass->config()){
-                            $pluginAction .='<a href="'.url()->current().'?action=config&pluginKey='.$codePlugin.'"><span title="'.vncore_language_render('admin.plugin.config').'" class="btn btn-flat btn-primary"><i class="fas fa-cog"></i></span>&nbsp;</a>';
+                            $pluginAction .='<a href="'.url()->current().'?action=config&pluginKey='.$codePlugin.'"><span title="'.vc_language_render('admin.plugin.config').'" class="btn btn-flat btn-primary"><i class="fas fa-cog"></i></span>&nbsp;</a>';
                           }
                           //Delete data
-                          $pluginAction .='<span onClick="uninstallPlugin($(this),\''.$codePlugin.'\', 1);" title="'.vncore_language_render('admin.plugin.only_delete_data').'" class="btn btn-flat btn-danger"><i class="fas fa-times"></i></span>';
+                          $pluginAction .='<span onClick="uninstallPlugin($(this),\''.$codePlugin.'\', 1);" title="'.vc_language_render('admin.plugin.only_delete_data').'" class="btn btn-flat btn-danger"><i class="fas fa-times"></i></span>';
 
                           //You can not remove if plugin is default
                           if(!in_array($codePlugin, $arrDefault)) {
-                            $pluginAction .=' <span onClick="uninstallPlugin($(this),\''.$codePlugin.'\');" title="'.vncore_language_render('admin.plugin.remove').'" class="btn btn-flat btn-danger"><i class="fa fa-trash"></i></span>';
+                            $pluginAction .=' <span onClick="uninstallPlugin($(this),\''.$codePlugin.'\');" title="'.vc_language_render('admin.plugin.remove').'" class="btn btn-flat btn-danger"><i class="fa fa-trash"></i></span>';
                           }
                       }else{
-                        $pluginStatusTitle = vncore_language_render('admin.plugin.disabled');
-                        $pluginAction = '<span onClick="enablePlugin($(this),\''.$codePlugin.'\');" title="'.vncore_language_render('admin.plugin.enable').'" type="button" class="btn btn-flat btn-primary"><i class="fa fa-paper-plane"></i></span>&nbsp;';
+                        $pluginStatusTitle = vc_language_render('admin.plugin.disabled');
+                        $pluginAction = '<span onClick="enablePlugin($(this),\''.$codePlugin.'\');" title="'.vc_language_render('admin.plugin.enable').'" type="button" class="btn btn-flat btn-primary"><i class="fa fa-paper-plane"></i></span>&nbsp;';
                           if($pluginClass->config()){
-                            $pluginAction .='<a href="'.url()->current().'?action=config&pluginKey='.$codePlugin.'"><span title="'.vncore_language_render('admin.plugin.config').'" class="btn btn-flat btn-primary"><i class="fas fa-cog"></i></span>&nbsp;</a>';
+                            $pluginAction .='<a href="'.url()->current().'?action=config&pluginKey='.$codePlugin.'"><span title="'.vc_language_render('admin.plugin.config').'" class="btn btn-flat btn-primary"><i class="fas fa-cog"></i></span>&nbsp;</a>';
                           }
                           //Delete data
-                          $pluginAction .='<span onClick="uninstallPlugin($(this),\''.$codePlugin.'\', 1);" title="'.vncore_language_render('admin.plugin.only_delete_data').'" class="btn btn-flat btn-danger"><i class="fas fa-times"></i></span>';
+                          $pluginAction .='<span onClick="uninstallPlugin($(this),\''.$codePlugin.'\', 1);" title="'.vc_language_render('admin.plugin.only_delete_data').'" class="btn btn-flat btn-danger"><i class="fas fa-times"></i></span>';
 
                           //You can not remove if plugin is default
                           if(!in_array($codePlugin, $arrDefault)) {
-                            $pluginAction .=' <span onClick="uninstallPlugin($(this),\''.$codePlugin.'\');" title="'.vncore_language_render('admin.plugin.remove').'" class="btn btn-flat btn-danger"><i class="fa fa-trash"></i></span>';
+                            $pluginAction .=' <span onClick="uninstallPlugin($(this),\''.$codePlugin.'\');" title="'.vc_language_render('admin.plugin.remove').'" class="btn btn-flat btn-danger"><i class="fa fa-trash"></i></span>';
                           }
                       }
                     }
                     @endphp
                     
                     <tr>
-                      <td>{!! sc_image_render($pluginClass->image,'50px', '', $pluginClass->title) !!}</td>
+                      <td>{!! vc_image_render($pluginClass->image,'50px', '', $pluginClass->title) !!}</td>
                       <td>{{ $codePlugin }}</td>
                       <td>{{ $pluginClass->title }}</td>
                       <td>{{ $pluginClass->version??'' }}</td>
@@ -107,7 +107,7 @@
                     @php
                     //End try cacth
                     } catch(\Throwable $e) {
-                      sc_report(json_encode($pluginClassName)." : ".$e->getMessage());
+                      vc_report(json_encode($pluginClassName)." : ".$e->getMessage());
                       echo json_encode($pluginClassName)." : ".$e->getMessage();
                     }
                     @endphp
@@ -141,7 +141,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ vncore_route_admin('admin_plugin.enable') }}',
+        url: '{{ vc_route_admin('admin_plugin.enable') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key
@@ -150,7 +150,7 @@
           console.log(response);
               if(parseInt(response.error) ==0){
                   $.pjax.reload({container:'#pjax-container'});
-                  alertMsg('success', '{{ vncore_language_render('admin.msg_change_success') }}');
+                  alertMsg('success', '{{ vc_language_render('admin.msg_change_success') }}');
               }else{
                 alertMsg('error', response.msg);
               }
@@ -166,7 +166,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ vncore_route_admin('admin_plugin.disable') }}',
+        url: '{{ vc_route_admin('admin_plugin.disable') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key
@@ -175,7 +175,7 @@
           console.log(response);
               if(parseInt(response.error) ==0){
                   $.pjax.reload({container:'#pjax-container'});
-                  alertMsg('success', '{{ vncore_language_render('admin.msg_change_success') }}');
+                  alertMsg('success', '{{ vc_language_render('admin.msg_change_success') }}');
               }else{
                 alertMsg('error', response.msg);
               }
@@ -190,7 +190,7 @@
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: '{{ vncore_route_admin('admin_plugin.install') }}',
+        url: '{{ vc_route_admin('admin_plugin.install') }}',
         data: {
           "_token": "{{ csrf_token() }}",
           "key":key
@@ -210,13 +210,13 @@
   function uninstallPlugin(obj,key, onlyRemoveData = null) {
 
       Swal.fire({
-        title: '{{ vncore_language_render('action.action_confirm') }}',
-        text: '{{ vncore_language_render('action.action_confirm_warning') }}',
+        title: '{{ vc_language_render('action.action_confirm') }}',
+        text: '{{ vc_language_render('action.action_confirm_warning') }}',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: '{{ vncore_language_render('action.confirm_yes') }}',
+        confirmButtonText: '{{ vc_language_render('action.confirm_yes') }}',
       }).then((result) => {
         if (result.value) {
             $('#loading').show()
@@ -224,7 +224,7 @@
             $.ajax({
               type: 'POST',
               dataType:'json',
-              url: '{{ vncore_route_admin('admin_plugin.uninstall') }}',
+              url: '{{ vc_route_admin('admin_plugin.uninstall') }}',
               data: {
                 "_token": "{{ csrf_token() }}",
                 "key":key,

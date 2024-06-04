@@ -19,7 +19,7 @@ class AdminPasswordPolicyController extends RootAdminController
     {
         $id = SC_ID_GLOBAL;
         $data = [
-            'title' => vncore_language_render('admin.menu_titles.password_policy'),
+            'title' => vc_language_render('admin.menu_titles.password_policy'),
             'subTitle' => '',
             'icon' => 'fas fa-cogs',
         ];
@@ -35,7 +35,7 @@ class AdminPasswordPolicyController extends RootAdminController
         //End email
         $data['passwordPolicy']                = $passwordPolicy;
         $data['storeId']                        = $id;
-        $data['urlUpdateConfigGlobal']          = vncore_route_admin('admin_config_global.update');
+        $data['urlUpdateConfigGlobal']          = vc_route_admin('admin_config_global.update');
 
         return view($this->templatePathAdmin.'screen.password_policy')
         ->with($data);
@@ -66,7 +66,7 @@ class AdminPasswordPolicyController extends RootAdminController
                 ->where('store_id', $storeId)
                 ->update(['value' => $value]);
             $error = 0;
-            $msg = vncore_language_render('action.update_success');
+            $msg = vc_language_render('action.update_success');
         } catch (\Throwable $e) {
             $error = 1;
             $msg = $e->getMessage();

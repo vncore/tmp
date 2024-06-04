@@ -3,8 +3,8 @@ use Illuminate\Support\Str;
 /**
  * Get list store
  */
-if (!function_exists('sc_get_list_code_store') && !in_array('sc_get_list_code_store', config('helper_except', []))) {
-    function sc_get_list_code_store()
+if (!function_exists('vc_get_list_code_store') && !in_array('vc_get_list_code_store', config('helper_except', []))) {
+    function vc_get_list_code_store()
     {
         return \Vncore\Core\Admin\Models\AdminStore::getListStoreCode();
     }
@@ -14,8 +14,8 @@ if (!function_exists('sc_get_list_code_store') && !in_array('sc_get_list_code_st
 /**
  * Get domain from code
  */
-if (!function_exists('sc_get_domain_from_code') && !in_array('sc_get_domain_from_code', config('helper_except', []))) {
-    function sc_get_domain_from_code(string $code = ""):string
+if (!function_exists('vc_get_domain_from_code') && !in_array('vc_get_domain_from_code', config('helper_except', []))) {
+    function vc_get_domain_from_code(string $code = ""):string
     {
         $domainList = \Vncore\Core\Admin\Models\AdminStore::getStoreDomainByCode();
         if (!empty($domainList[$code])) {
@@ -29,8 +29,8 @@ if (!function_exists('sc_get_domain_from_code') && !in_array('sc_get_domain_from
 /**
  * Get domain root
  */
-if (!function_exists('sc_get_domain_root') && !in_array('sc_get_domain_root', config('helper_except', []))) {
-    function sc_get_domain_root():string
+if (!function_exists('vc_get_domain_root') && !in_array('vc_get_domain_root', config('helper_except', []))) {
+    function vc_get_domain_root():string
     {
         $store = \Vncore\Core\Admin\Models\AdminStore::find(SC_ID_ROOT);
         return $store->domain;
@@ -40,8 +40,8 @@ if (!function_exists('sc_get_domain_root') && !in_array('sc_get_domain_root', co
 /**
  * Check store is partner
  */
-if (!function_exists('sc_store_is_partner') && !in_array('sc_store_is_partner', config('helper_except', []))) {
-    function sc_store_is_partner(string $storeId):bool
+if (!function_exists('vc_store_is_partner') && !in_array('vc_store_is_partner', config('helper_except', []))) {
+    function vc_store_is_partner(string $storeId):bool
     {
         $store = \Vncore\Core\Admin\Models\AdminStore::find($storeId);
         if (!$store) {
@@ -54,8 +54,8 @@ if (!function_exists('sc_store_is_partner') && !in_array('sc_store_is_partner', 
 /**
  * Check store is root
  */
-if (!function_exists('sc_store_is_root') && !in_array('sc_store_is_root', config('helper_except', []))) {
-    function sc_store_is_root(string $storeId):bool
+if (!function_exists('vc_store_is_root') && !in_array('vc_store_is_root', config('helper_except', []))) {
+    function vc_store_is_root(string $storeId):bool
     {
         return  $storeId == SC_ID_ROOT;
     }
@@ -67,8 +67,8 @@ if (!function_exists('sc_store_is_root') && !in_array('sc_store_is_root', config
 /**
  * Get list store of product detail
  */
-if (!function_exists('sc_get_list_store_of_product_detail') && !in_array('sc_get_list_store_of_product_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_product_detail($pId):array
+if (!function_exists('vc_get_list_store_of_product_detail') && !in_array('vc_get_list_store_of_product_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_product_detail($pId):array
     {
         return \Vncore\Core\Front\Models\ShopProductStore::where('product_id', $pId)
         ->pluck('store_id')
@@ -80,8 +80,8 @@ if (!function_exists('sc_get_list_store_of_product_detail') && !in_array('sc_get
 /**
  * Get list store of discount detail
  */
-if (!function_exists('sc_get_list_store_of_discount_detail') && !in_array('sc_get_list_store_of_discount_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_discount_detail($dId):array
+if (!function_exists('vc_get_list_store_of_discount_detail') && !in_array('vc_get_list_store_of_discount_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_discount_detail($dId):array
     {
         return \App\Plugins\Total\Discount\Models\ShopDiscountStore::where('discount_id', $dId)
             ->pluck('store_id')
@@ -93,8 +93,8 @@ if (!function_exists('sc_get_list_store_of_discount_detail') && !in_array('sc_ge
 /**
  * Get store list of brands
  */
-if (!function_exists('sc_get_list_store_of_brand') && !in_array('sc_get_list_store_of_brand', config('helper_except', []))) {
-    function sc_get_list_store_of_brand(array $arrBrandId)
+if (!function_exists('vc_get_list_store_of_brand') && !in_array('vc_get_list_store_of_brand', config('helper_except', []))) {
+    function vc_get_list_store_of_brand(array $arrBrandId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
         $tableBrandStore = (new \Vncore\Core\Front\Models\ShopBrandStore)->getTable();
@@ -110,8 +110,8 @@ if (!function_exists('sc_get_list_store_of_brand') && !in_array('sc_get_list_sto
 /**
  * Get list store of brand detail
  */
-if (!function_exists('sc_get_list_store_of_brand_detail') && !in_array('sc_get_list_store_of_brand_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_brand_detail($cId):array
+if (!function_exists('vc_get_list_store_of_brand_detail') && !in_array('vc_get_list_store_of_brand_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_brand_detail($cId):array
     {
         return \Vncore\Core\Front\Models\ShopBrandStore::where('brand_id', $cId)
             ->pluck('store_id')
@@ -122,8 +122,8 @@ if (!function_exists('sc_get_list_store_of_brand_detail') && !in_array('sc_get_l
 /**
  * Get store list of banners
  */
-if (!function_exists('sc_get_list_store_of_banner') && !in_array('sc_get_list_store_of_banner', config('helper_except', []))) {
-    function sc_get_list_store_of_banner(array $arrBannerId)
+if (!function_exists('vc_get_list_store_of_banner') && !in_array('vc_get_list_store_of_banner', config('helper_except', []))) {
+    function vc_get_list_store_of_banner(array $arrBannerId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
         $tableBannerStore = (new \Vncore\Core\Front\Models\ShopBannerStore)->getTable();
@@ -138,8 +138,8 @@ if (!function_exists('sc_get_list_store_of_banner') && !in_array('sc_get_list_st
 /**
  * Get list store of banner detail
  */
-if (!function_exists('sc_get_list_store_of_banner_detail') && !in_array('sc_get_list_store_of_banner_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_banner_detail($bId):array
+if (!function_exists('vc_get_list_store_of_banner_detail') && !in_array('vc_get_list_store_of_banner_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_banner_detail($bId):array
     {
         return \Vncore\Core\Front\Models\ShopBannerStore::where('banner_id', $bId)
             ->pluck('store_id')
@@ -150,8 +150,8 @@ if (!function_exists('sc_get_list_store_of_banner_detail') && !in_array('sc_get_
 /**
  * Get store list of news
  */
-if (!function_exists('sc_get_list_store_of_news') && !in_array('sc_get_list_store_of_news', config('helper_except', []))) {
-    function sc_get_list_store_of_news(array $arrNewsId)
+if (!function_exists('vc_get_list_store_of_news') && !in_array('vc_get_list_store_of_news', config('helper_except', []))) {
+    function vc_get_list_store_of_news(array $arrNewsId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
         $tableNewsStore = (new \Vncore\Core\Front\Models\ShopNewsStore)->getTable();
@@ -166,8 +166,8 @@ if (!function_exists('sc_get_list_store_of_news') && !in_array('sc_get_list_stor
 /**
  * Get list store of news detail
  */
-if (!function_exists('sc_get_list_store_of_news_detail') && !in_array('sc_get_list_store_of_news_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_news_detail($nId):array
+if (!function_exists('vc_get_list_store_of_news_detail') && !in_array('vc_get_list_store_of_news_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_news_detail($nId):array
     {
         return \Vncore\Core\Front\Models\ShopNewsStore::where('news_id', $nId)
             ->pluck('store_id')
@@ -178,8 +178,8 @@ if (!function_exists('sc_get_list_store_of_news_detail') && !in_array('sc_get_li
 /**
  * Get store list of pages
  */
-if (!function_exists('sc_get_list_store_of_page') && !in_array('sc_get_list_store_of_page', config('helper_except', []))) {
-    function sc_get_list_store_of_page(array $arrPageId)
+if (!function_exists('vc_get_list_store_of_page') && !in_array('vc_get_list_store_of_page', config('helper_except', []))) {
+    function vc_get_list_store_of_page(array $arrPageId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
         $tablePageStore = (new \Vncore\Core\Front\Models\ShopPageStore)->getTable();
@@ -194,8 +194,8 @@ if (!function_exists('sc_get_list_store_of_page') && !in_array('sc_get_list_stor
 /**
  * Get list store of page detail
  */
-if (!function_exists('sc_get_list_store_of_page_detail') && !in_array('sc_get_list_store_of_page_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_page_detail($pId):array
+if (!function_exists('vc_get_list_store_of_page_detail') && !in_array('vc_get_list_store_of_page_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_page_detail($pId):array
     {
         return \Vncore\Core\Front\Models\ShopPageStore::where('page_id', $pId)
             ->pluck('store_id')
@@ -206,8 +206,8 @@ if (!function_exists('sc_get_list_store_of_page_detail') && !in_array('sc_get_li
 /**
  * Get store list of links
  */
-if (!function_exists('sc_get_list_store_of_link') && !in_array('sc_get_list_store_of_link', config('helper_except', []))) {
-    function sc_get_list_store_of_link($arrLinkId)
+if (!function_exists('vc_get_list_store_of_link') && !in_array('vc_get_list_store_of_link', config('helper_except', []))) {
+    function vc_get_list_store_of_link($arrLinkId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
         $tableLinkStore = (new \Vncore\Core\Front\Models\ShopLinkStore)->getTable();
@@ -222,8 +222,8 @@ if (!function_exists('sc_get_list_store_of_link') && !in_array('sc_get_list_stor
 /**
  * Get list store of link detail
  */
-if (!function_exists('sc_get_list_store_of_link_detail') && !in_array('sc_get_list_store_of_link_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_link_detail($cId)
+if (!function_exists('vc_get_list_store_of_link_detail') && !in_array('vc_get_list_store_of_link_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_link_detail($cId)
     {
         return \Vncore\Core\Front\Models\ShopLinkStore::where('link_id', $cId)
             ->pluck('store_id')
@@ -234,8 +234,8 @@ if (!function_exists('sc_get_list_store_of_link_detail') && !in_array('sc_get_li
 /**
  * Get store list of orders
  */
-if (!function_exists('sc_get_list_store_of_order') && !in_array('sc_get_list_store_of_order', config('helper_except', []))) {
-    function sc_get_list_store_of_order(array $arrOrderId)
+if (!function_exists('vc_get_list_store_of_order') && !in_array('vc_get_list_store_of_order', config('helper_except', []))) {
+    function vc_get_list_store_of_order(array $arrOrderId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
         $tableOrder = (new \Vncore\Core\Front\Models\ShopOrder)->getTable();
@@ -250,8 +250,8 @@ if (!function_exists('sc_get_list_store_of_order') && !in_array('sc_get_list_sto
 /**
  * Get store list of categories
  */
-if (!function_exists('sc_get_list_store_of_category') && !in_array('sc_get_list_store_of_category', config('helper_except', []))) {
-    function sc_get_list_store_of_category(array $arrCategoryId)
+if (!function_exists('vc_get_list_store_of_category') && !in_array('vc_get_list_store_of_category', config('helper_except', []))) {
+    function vc_get_list_store_of_category(array $arrCategoryId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
         $tableCategoryStore = (new \Vncore\Core\Front\Models\ShopCategoryStore)->getTable();
@@ -267,8 +267,8 @@ if (!function_exists('sc_get_list_store_of_category') && !in_array('sc_get_list_
 /**
  * Get list store of category detail
  */
-if (!function_exists('sc_get_list_store_of_category_detail') && !in_array('sc_get_list_store_of_category_detail', config('helper_except', []))) {
-    function sc_get_list_store_of_category_detail($cId):array
+if (!function_exists('vc_get_list_store_of_category_detail') && !in_array('vc_get_list_store_of_category_detail', config('helper_except', []))) {
+    function vc_get_list_store_of_category_detail($cId):array
     {
         return \Vncore\Core\Front\Models\ShopCategoryStore::where('category_id', $cId)
             ->pluck('store_id')
@@ -276,7 +276,7 @@ if (!function_exists('sc_get_list_store_of_category_detail') && !in_array('sc_ge
     }
 }
 
-if (!function_exists('sc_process_domain_store') && !in_array('sc_process_domain_store', config('helper_except', []))) {
+if (!function_exists('vc_process_domain_store') && !in_array('vc_process_domain_store', config('helper_except', []))) {
     /**
      * Process domain store
      *
@@ -284,7 +284,7 @@ if (!function_exists('sc_process_domain_store') && !in_array('sc_process_domain_
      *
      * @return  [string]         [$domain]
      */
-    function sc_process_domain_store(string $domain = "")
+    function vc_process_domain_store(string $domain = "")
     {
         $domain = str_replace(['http://', 'https://'], '', $domain);
         $domain = Str::lower($domain);
@@ -293,86 +293,86 @@ if (!function_exists('sc_process_domain_store') && !in_array('sc_process_domain_
     }
 }
 
-if (!function_exists('sc_check_multi_shop_installed') && !in_array('sc_check_multi_shop_installed', config('helper_except', []))) {
+if (!function_exists('vc_check_multi_shop_installed') && !in_array('vc_check_multi_shop_installed', config('helper_except', []))) {
 /**
  * Check plugin multi shop installed
  *
  * @return
  */
-    function sc_check_multi_shop_installed()
+    function vc_check_multi_shop_installed()
     {
         return 
-        sc_config_global('MultiVendorPro') 
-        || sc_config_global('MultiVendor') 
-        || sc_config_global('B2B') 
-        || sc_config_global('MultiStorePro')
-        || sc_config_global('MultiStore');
+        vc_config_global('MultiVendorPro') 
+        || vc_config_global('MultiVendor') 
+        || vc_config_global('B2B') 
+        || vc_config_global('MultiStorePro')
+        || vc_config_global('MultiStore');
     }
 }
 
-if (!function_exists('sc_check_multi_vendor_installed') && !in_array('sc_check_multi_vendor_installed', config('helper_except', []))) {
+if (!function_exists('vc_check_multi_vendor_installed') && !in_array('vc_check_multi_vendor_installed', config('helper_except', []))) {
     /**
      * Check plugin multi vendor installed
      *
      * @return
      */
-        function sc_check_multi_vendor_installed()
+        function vc_check_multi_vendor_installed()
         {
-            return sc_config_global('MultiVendorPro') || sc_config_global('B2B') || sc_config_global('MultiVendor');
+            return vc_config_global('MultiVendorPro') || vc_config_global('B2B') || vc_config_global('MultiVendor');
         }
 }
 
-if (!function_exists('sc_check_multi_store_installed') && !in_array('sc_check_multi_store_installed', config('helper_except', []))) {
+if (!function_exists('vc_check_multi_store_installed') && !in_array('vc_check_multi_store_installed', config('helper_except', []))) {
     /**
      * Check plugin multi store installed
      *
      * @return
      */
-        function sc_check_multi_store_installed()
+        function vc_check_multi_store_installed()
         {
-            return sc_config_global('MultiStorePro');
+            return vc_config_global('MultiStorePro');
         }
 }
 
-if (!function_exists('sc_link_vendor') && !in_array('sc_link_vendor', config('helper_except', []))) {
+if (!function_exists('vc_link_vendor') && !in_array('vc_link_vendor', config('helper_except', []))) {
     /**
      * Link vendor
      *
      * @return
      */
-        function sc_link_vendor(string $code = "")
+        function vc_link_vendor(string $code = "")
         {
-            $link = sc_route('home');
-            if (sc_config_global('MultiVendorPro')) {
-                $link = sc_route('MultiVendorPro.detail', ['code' => $code]);
+            $link = vc_route('home');
+            if (vc_config_global('MultiVendorPro')) {
+                $link = vc_route('MultiVendorPro.detail', ['code' => $code]);
             }
-            if (sc_config_global('MultiVendor')) {
-                $link = sc_route('MultiVendor.detail', ['code' => $code]);
+            if (vc_config_global('MultiVendor')) {
+                $link = vc_route('MultiVendor.detail', ['code' => $code]);
             }
-            if (sc_config_global('B2B')) {
-                $link = sc_route('B2B.detail', ['code' => $code]);
+            if (vc_config_global('B2B')) {
+                $link = vc_route('B2B.detail', ['code' => $code]);
             }
             return $link;
         }
 }
 
 
-if (!function_exists('sc_path_vendor') && !in_array('sc_path_vendor', config('helper_except', []))) {
+if (!function_exists('vc_path_vendor') && !in_array('vc_path_vendor', config('helper_except', []))) {
     /**
      * Path vendor
      *
      * @return
      */
-        function sc_path_vendor()
+        function vc_path_vendor()
         {
             $path = 'vendor';
-            if (sc_config_global('MultiVendorPro')) {
+            if (vc_config_global('MultiVendorPro')) {
                 $path = config('MultiVendorPro.front_path');
             }
-            if (sc_config_global('MultiVendor')) {
+            if (vc_config_global('MultiVendor')) {
                 $path = config('MultiVendor.front_path');
             }
-            if (sc_config_global('B2B')) {
+            if (vc_config_global('B2B')) {
                 $path = config('B2B.front_path');
             }
             return $path;
@@ -383,8 +383,8 @@ if (!function_exists('sc_path_vendor') && !in_array('sc_path_vendor', config('he
  * Get sum amount order
  * From S-Cart 6.9
  */
-if (!function_exists('sc_get_sum_amount_order') && !in_array('sc_get_sum_amount_order', config('helper_except', []))) {
-    function sc_get_sum_amount_order($storeId = null)
+if (!function_exists('vc_get_sum_amount_order') && !in_array('vc_get_sum_amount_order', config('helper_except', []))) {
+    function vc_get_sum_amount_order($storeId = null)
     {
         return  (new \Vncore\Core\Admin\Models\AdminOrder)->getSumAmountOrder($storeId);
     }

@@ -16,7 +16,7 @@ class ApiConnection
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!sc_config('api_connection_required')) {
+        if (!vc_config('api_connection_required')) {
             return $next($request);
         }
         $apiconnection = $request->header('apiconnection');
@@ -26,7 +26,7 @@ class ApiConnection
         }
         $check = \Vncore\Core\Front\Models\ShopApiConnection::check($apiconnection, $apikey);
         if ($check) {
-            $check->update(['last_active' => sc_time_now()]);
+            $check->update(['last_active' => vc_time_now()]);
             return $next($request);
         } else {
             return  response()->json(['error' => 1, 'msg' => 'Connection not correct']);

@@ -12,8 +12,8 @@
             <h3 class="card-title">{!! $title_action !!}</h3>
             @if ($layout == 'edit')
             <div class="btn-group float-right" style="margin-right: 5px">
-                <a href="{{ vncore_route_admin('admin_api_connection.index') }}" class="btn btn-flat btn-default" title="List"><i class="fa fa-list"></i>
-                  <span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span>
+                <a href="{{ vc_route_admin('admin_api_connection.index') }}" class="btn btn-flat btn-default" title="List"><i class="fa fa-list"></i>
+                  <span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span>
                 </a>
             </div>
           @endif
@@ -24,7 +24,7 @@
             <div class="card-body">
     
               <div class="form-group row {{ $errors->has('description') ? ' text-red' : '' }}">
-                <label for="description" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.api_connection.description') }}</label>
+                <label for="description" class="col-sm-2 col-form-label">{{ vc_language_render('admin.api_connection.description') }}</label>
                 <div class="col-sm-10 ">
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -42,7 +42,7 @@
               </div>
         
               <div class="form-group row {{ $errors->has('apiconnection') ? ' text-red' : '' }}">
-                <label for="apiconnection" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.api_connection.connection') }}</label>
+                <label for="apiconnection" class="col-sm-2 col-form-label">{{ vc_language_render('admin.api_connection.connection') }}</label>
                 <div class="col-sm-10 ">
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -61,7 +61,7 @@
               </div>
 
               <div class="form-group row {{ $errors->has('apikey') ? ' text-red' : '' }}">
-                <label for="apikey" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.api_connection.apikey') }}</label>
+                <label for="apikey" class="col-sm-2 col-form-label">{{ vc_language_render('admin.api_connection.apikey') }}</label>
                 <div class="col-sm-10 ">
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -85,7 +85,7 @@
               </div>
 
               <div class="form-group row {{ $errors->has('expire') ? ' text-red' : '' }}">
-                <label for="expire" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.api_connection.expire') }}</label>
+                <label for="expire" class="col-sm-2 col-form-label">{{ vc_language_render('admin.api_connection.expire') }}</label>
                 <div class="col-sm-10 ">
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -104,7 +104,7 @@
               </div>
 
               <div class="form-group row {{ $errors->has('status') ? ' text-red' : '' }}">
-                <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.api_connection.status') }}</label>
+                <label for="status" class="col-sm-2 col-form-label">{{ vc_language_render('admin.api_connection.status') }}</label>
                 <div class="col-sm-10 ">
                   <div class="input-group mb-3">
                     <input class="checkbox" type="checkbox" name="status"  {{ old('status',(empty($api_connection['status'])?0:1))?'checked':''}}>
@@ -124,10 +124,10 @@
             <div class="card-footer row">
               <div class="col-md-12">
               <div class=" float-left">
-              <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
+              <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
               </div>
               <div class=" float-right">
-              <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
+              <button type="submit" class="btn btn-primary">{{ vc_language_render('action.submit') }}</button>
               </div>
               </div>
             </div>
@@ -141,8 +141,8 @@
           <div class="card-body p-0">   
             <div class="row">
                 <div class="col-md-12 m-2">
-                  <input class="switch-data-config" data-on-text="ON API"  data-off-text="OFF API" name="api_mode" type="checkbox"  {{ (sc_config_global('api_mode')?'checked':'') }}>
-                  <br>&nbsp; {!! vncore_language_render('admin.api_connection.api_connection_required_help') !!}
+                  <input class="switch-data-config" data-on-text="ON API"  data-off-text="OFF API" name="api_mode" type="checkbox"  {{ (vc_config_global('api_mode')?'checked':'') }}>
+                  <br>&nbsp; {!! vc_language_render('admin.api_connection.api_connection_required_help') !!}
                 </div>
             </div>
         </div>
@@ -154,7 +154,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header with-border">
-            <h3 class="card-title">{!! $title ?? '' !!}  | <input class="switch-data-config" data-on-text="ON CONNECTION"  data-off-text="OFF CONNECTION" name="api_connection_required" type="checkbox"  {{ (sc_config_global('api_connection_required')?'checked':'') }}></h3>
+            <h3 class="card-title">{!! $title ?? '' !!}  | <input class="switch-data-config" data-on-text="ON CONNECTION"  data-off-text="OFF CONNECTION" name="api_connection_required" type="checkbox"  {{ (vc_config_global('api_connection_required')?'checked':'') }}></h3>
           </div>
     
           <div class="box-body table-responsive">
@@ -216,7 +216,7 @@ $(document).ready(function() {
         $('#loading').show();
         $.ajax({
             method: 'get',
-            url: '{{ vncore_route_admin('admin_api_connection.generate_key') }}',
+            url: '{{ vc_route_admin('admin_api_connection.generate_key') }}',
             success: function (data) {
                 $('#apikey').val(data.data);
                 $('#loading').hide();
@@ -238,7 +238,7 @@ $("input.switch-data-config").bootstrapSwitch();
       $.ajax({
         type: 'POST',
         dataType:'json',
-        url: "{{ vncore_route_admin('admin_config_global.update') }}",
+        url: "{{ vc_route_admin('admin_config_global.update') }}",
         data: {
           "_token": "{{ csrf_token() }}",
           "name": $(this).attr('name'),
@@ -246,7 +246,7 @@ $("input.switch-data-config").bootstrapSwitch();
         },
         success: function (response) {
           if(parseInt(response.error) ==0){
-            alertMsg('success', '{{ vncore_language_render('admin.msg_change_success') }}');
+            alertMsg('success', '{{ vc_language_render('admin.msg_change_success') }}');
           }else{
             alertMsg('error', response.msg);
           }

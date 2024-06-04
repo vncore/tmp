@@ -55,7 +55,7 @@ class AdminSubscribe extends ShopSubscribe
      */
     public static function createSubscribeAdmin(array $dataInsert)
     {
-        $dataInsert = sc_clean($dataInsert);
+        $dataInsert = vc_clean($dataInsert);
         return self::create($dataInsert);
     }
 }

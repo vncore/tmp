@@ -49,7 +49,7 @@ class AdminUser extends Authenticatable
      */
     public static function updateInfo($dataUpdate, $id)
     {
-        $dataUpdate = sc_clean($dataUpdate);
+        $dataUpdate = vc_clean($dataUpdate);
         $obj        = self::find($id);
         return $obj->update($dataUpdate);
     }
@@ -69,21 +69,21 @@ class AdminUser extends Authenticatable
             }
             $user->roles()->detach();
             $user->permissions()->detach();
-            if (function_exists('vncore_event_admin_deleting')) {
-                vncore_event_admin_deleting($user);
+            if (function_exists('vc_event_admin_deleting')) {
+                vc_event_admin_deleting($user);
             }
         });
 
         //Uuid
         static::creating(function ($user) {
             if (empty($user->{$user->getKeyName()})) {
-                $user->{$user->getKeyName()} = vncore_generate_id($type = 'admin_user');
+                $user->{$user->getKeyName()} = vc_generate_id($type = 'admin_user');
             }
         });
 
         static::created(function ($user) {
-            if (function_exists('vncore_event_admin_created')) {
-                vncore_event_admin_created($user);
+            if (function_exists('vc_event_admin_created')) {
+                vc_event_admin_created($user);
             }
             // ...
         });
@@ -95,7 +95,7 @@ class AdminUser extends Authenticatable
      */
     public static function createUser($dataInsert)
     {
-        $dataInsert = sc_clean($dataInsert);
+        $dataInsert = vc_clean($dataInsert);
         return self::create($dataInsert);
     }
 
@@ -286,6 +286,6 @@ class AdminUser extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $emailReset = $this->getEmailForPasswordReset();
-        return sc_admin_sendmail_reset_notification($token, $emailReset);
+        return vc_admin_sendmail_reset_notification($token, $emailReset);
     }
 }

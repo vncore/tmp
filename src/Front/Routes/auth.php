@@ -1,5 +1,5 @@
 <?php
-$prefixCustomer = sc_config('PREFIX_MEMBER') ?? 'customer';
+$prefixCustomer = vc_config('PREFIX_MEMBER') ?? 'customer';
 $langUrl = config('app.seoLang');
 
 //Process namespace

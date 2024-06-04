@@ -10,23 +10,23 @@
 
                 <div class="box-body">
                     <div class="fields-group">
-                        <form action="{{ vncore_route_admin('admin_language_manager.add') }}" method="POST">
+                        <form action="{{ vc_route_admin('admin_language_manager.add') }}" method="POST">
                             @csrf
                             <table class="table table-hover box-body text-wrap table-bordered">
                               <tr>
-                                  <td>{{ vncore_language_render('admin.language_manager.select_position') }}</td>
-                                  <td>{{ vncore_language_render('admin.language_manager.code') }}</td>
-                                  <td>{{ vncore_language_render('admin.language_manager.text') }}</td>
+                                  <td>{{ vc_language_render('admin.language_manager.select_position') }}</td>
+                                  <td>{{ vc_language_render('admin.language_manager.code') }}</td>
+                                  <td>{{ vc_language_render('admin.language_manager.text') }}</td>
                               </tr>
                               <tr class="form-add-new">
                                 <td class="{{ ($errors->has('position') || $errors->has('position_new')) ? 'text-red':'' }}">
                                       <select class="form-control select-position select2" name="position">
-                                        <option value="">{{ vncore_language_render('admin.language_manager.select_position') }}</option>
+                                        <option value="">{{ vc_language_render('admin.language_manager.select_position') }}</option>
                                         @foreach ($positionLang as $itemPosition)
                                             <option value="{{ $itemPosition }}"  {{ (old('position') == $itemPosition) ? 'selected':'' }} >{{ $itemPosition }}</option>
                                         @endforeach
                                       </select>
-                                        {{ vncore_language_render('admin.language_manager.new_position') }}:
+                                        {{ vc_language_render('admin.language_manager.new_position') }}:
                                       @if ($errors->has('position'))
                                       <span class="form-text">
                                           <i class="fa fa-info-circle"></i>
@@ -34,7 +34,7 @@
                                       </span>
                                       @endif
 
-                                      <input name="position_new" value="{{ old('position_new') }}" class="form-control" placeholder="{{ vncore_language_render('admin.language_manager.position') }}">
+                                      <input name="position_new" value="{{ old('position_new') }}" class="form-control" placeholder="{{ vc_language_render('admin.language_manager.position') }}">
                                       @if ($errors->has('position_new'))
                                       <span class="form-text">
                                           <i class="fa fa-info-circle"></i>
@@ -61,7 +61,7 @@
                                     @endif
                                     <span class="form-text">
                                         <i class="fa fa-info-circle"></i>
-                                        {!! vncore_language_render('admin.language_manager.text_help',['link' => vncore_route_admin('admin_language_manager.index')]) !!}
+                                        {!! vc_language_render('admin.language_manager.text_help',['link' => vc_route_admin('admin_language_manager.index')]) !!}
                                     </span>
                                 </td>
                               </tr>

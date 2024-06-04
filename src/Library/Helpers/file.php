@@ -8,8 +8,8 @@ use Intervention\Image\Facades\Image;
 /**
  * Function upload image
  */
-if (!function_exists('sc_image_upload') && !in_array('sc_image_upload', config('helper_except', []))) {
-    function sc_image_upload($fileContent, $disk = 'public', $path = null, $name = null, $options = ['unique_name' => true, 'thumb' => false, 'watermark' => false])
+if (!function_exists('vc_image_upload') && !in_array('vc_image_upload', config('helper_except', []))) {
+    function vc_image_upload($fileContent, $disk = 'public', $path = null, $name = null, $options = ['unique_name' => true, 'thumb' => false, 'watermark' => false])
     {
         $pathFile = null;
         try {
@@ -29,19 +29,19 @@ if (!function_exists('sc_image_upload') && !in_array('sc_image_upload', config('
                 $pathFile = Storage::disk($disk)->putFile(($path ?? ''), $fileContent);
             }
         } catch (\Throwable $e) {
-            sc_report($e->getMessage());
+            vc_report($e->getMessage());
             return null;
         }
 
         if ($pathFile && $disk == 'public') {
             //generate thumb
-            if (!empty($options['thumb']) && sc_config('upload_image_thumb_status')) {
-                sc_image_generate_thumb($pathFile, $widthThumb = 250, $heightThumb = null, $disk);
+            if (!empty($options['thumb']) && vc_config('upload_image_thumb_status')) {
+                vc_image_generate_thumb($pathFile, $widthThumb = 250, $heightThumb = null, $disk);
             }
 
             //insert watermark
-            if (!empty($options['watermark']) && sc_config('upload_watermark_status')) {
-                sc_image_insert_watermark($pathFile);
+            if (!empty($options['watermark']) && vc_config('upload_watermark_status')) {
+                vc_image_insert_watermark($pathFile);
             }
         }
         if ($disk == 'public') {
@@ -60,8 +60,8 @@ if (!function_exists('sc_image_upload') && !in_array('sc_image_upload', config('
 /**
  * Function upload file
  */
-if (!function_exists('sc_file_upload') && !in_array('sc_file_upload', config('helper_except', []))) {
-    function sc_file_upload($fileContent, $disk = 'public', $path = null, $name = null)
+if (!function_exists('vc_file_upload') && !in_array('vc_file_upload', config('helper_except', []))) {
+    function vc_file_upload($fileContent, $disk = 'public', $path = null, $name = null)
     {
         $pathFile = null;
         try {
@@ -103,8 +103,8 @@ if (!function_exists('sc_file_upload') && !in_array('sc_file_upload', config('he
  * @param   [string]  $prefix  will remove
  *
  */
-if (!function_exists('sc_remove_file') && !in_array('sc_remove_file', config('helper_except', []))) {
-    function sc_remove_file($pathFile, $disk = null)
+if (!function_exists('vc_remove_file') && !in_array('vc_remove_file', config('helper_except', []))) {
+    function vc_remove_file($pathFile, $disk = null)
     {
         if ($disk) {
             return Storage::disk($disk)->delete($pathFile);
@@ -117,11 +117,11 @@ if (!function_exists('sc_remove_file') && !in_array('sc_remove_file', config('he
 /**
  * Function insert watermark
  */
-if (!function_exists('sc_image_insert_watermark') && !in_array('sc_image_insert_watermark', config('helper_except', []))) {
-    function sc_image_insert_watermark($pathFile, $pathWatermark = null)
+if (!function_exists('vc_image_insert_watermark') && !in_array('vc_image_insert_watermark', config('helper_except', []))) {
+    function vc_image_insert_watermark($pathFile, $pathWatermark = null)
     {
         if (!$pathWatermark) {
-            $pathWatermark = sc_config('upload_watermark_path');
+            $pathWatermark = vc_config('upload_watermark_path');
         }
         if (empty($pathWatermark)) {
             return false;
@@ -136,10 +136,10 @@ if (!function_exists('sc_image_insert_watermark') && !in_array('sc_image_insert_
 /**
  * Function generate thumb
  */
-if (!function_exists('sc_image_generate_thumb') && !in_array('sc_image_generate_thumb', config('helper_except', []))) {
-    function sc_image_generate_thumb($pathFile, $widthThumb = null, $heightThumb = null, $disk = 'public')
+if (!function_exists('vc_image_generate_thumb') && !in_array('vc_image_generate_thumb', config('helper_except', []))) {
+    function vc_image_generate_thumb($pathFile, $widthThumb = null, $heightThumb = null, $disk = 'public')
     {
-        $widthThumb = $widthThumb ?? sc_config('upload_image_thumb_width');
+        $widthThumb = $widthThumb ?? vc_config('upload_image_thumb_width');
         if (!Storage::disk($disk)->has('tmp')) {
             Storage::disk($disk)->makeDirectory('tmp');
         }
@@ -161,21 +161,21 @@ if (!function_exists('sc_image_generate_thumb') && !in_array('sc_image_generate_
 /**
  * Function rener image
  */
-if (!function_exists('sc_image_render') && !in_array('sc_image_render', config('helper_except', []))) {
-    function sc_image_render($path, $width = null, $height = null, $alt = null, $title = null, $urlDefault = null, $options = '')
+if (!function_exists('vc_image_render') && !in_array('vc_image_render', config('helper_except', []))) {
+    function vc_image_render($path, $width = null, $height = null, $alt = null, $title = null, $urlDefault = null, $options = '')
     {
-        $image = sc_image_get_path($path, $urlDefault);
+        $image = vc_image_get_path($path, $urlDefault);
         $style = '';
         $style .= ($width) ? ' width:' . $width . ';' : '';
         $style .= ($height) ? ' height:' . $height . ';' : '';
-        return '<img  alt="' . $alt . '" title="' . $title . '" ' . (($options) ?? '') . ' src="' . sc_file($image) . '"   ' . ($style ? 'style="' . $style . '"' : '') . '   >';
+        return '<img  alt="' . $alt . '" title="' . $title . '" ' . (($options) ?? '') . ' src="' . vc_file($image) . '"   ' . ($style ? 'style="' . $style . '"' : '') . '   >';
     }
 }
 /*
 Return path image
  */
-if (!function_exists('sc_image_get_path') && !in_array('sc_image_get_path', config('helper_except', []))) {
-    function sc_image_get_path($path, $urlDefault = null)
+if (!function_exists('vc_image_get_path') && !in_array('vc_image_get_path', config('helper_except', []))) {
+    function vc_image_get_path($path, $urlDefault = null)
     {
         $image = $urlDefault ?? 'images/no-image.jpg';
         if ($path) {
@@ -191,8 +191,8 @@ if (!function_exists('sc_image_get_path') && !in_array('sc_image_get_path', conf
 /*
 Function get path thumb of image if saved in storage
  */
-if (!function_exists('sc_image_get_path_thumb') && !in_array('sc_image_get_path_thumb', config('helper_except', []))) {
-    function sc_image_get_path_thumb($pathFile)
+if (!function_exists('vc_image_get_path_thumb') && !in_array('vc_image_get_path_thumb', config('helper_except', []))) {
+    function vc_image_get_path_thumb($pathFile)
     {
         if (strpos($pathFile, "/storage/") === 0) {
             $arrPath = explode('/', $pathFile);
@@ -201,21 +201,21 @@ if (!function_exists('sc_image_get_path_thumb') && !in_array('sc_image_get_path_
             if (file_exists(public_path($pathThumb))) {
                 return $pathThumb;
             } else {
-                return sc_image_get_path($pathFile);
+                return vc_image_get_path($pathFile);
             }
         } else {
-            return sc_image_get_path($pathFile);
+            return vc_image_get_path($pathFile);
         }
     }
 }
 
 
 
-if (!function_exists('sc_zip') && !in_array('sc_zip', config('helper_except', []))) {
+if (!function_exists('vc_zip') && !in_array('vc_zip', config('helper_except', []))) {
     /*
     Zip file or folder
      */
-    function sc_zip(string $pathToSource, string $pathSaveTo)
+    function vc_zip(string $pathToSource, string $pathSaveTo)
     {
         if (extension_loaded('zip')) {
             if (file_exists($pathToSource)) {
@@ -247,13 +247,13 @@ if (!function_exists('sc_zip') && !in_array('sc_zip', config('helper_except', []
 }
 
 
-if (!function_exists('sc_unzip') && !in_array('sc_unzip', config('helper_except', []))) {
+if (!function_exists('vc_unzip') && !in_array('vc_unzip', config('helper_except', []))) {
     /**
      * Unzip file to folder
      *
      * @return  [type]  [return description]
      */
-    function sc_unzip(string $pathToSource, string $pathSaveTo)
+    function vc_unzip(string $pathToSource, string $pathSaveTo)
     {
         $zip = new \ZipArchive();
         if ($zip->open(str_replace("//", "/", $pathToSource)) === true) {
@@ -268,18 +268,18 @@ if (!function_exists('sc_unzip') && !in_array('sc_unzip', config('helper_except'
 /**
  * Process path file
  */
-if (!function_exists('sc_file') && !in_array('sc_file', config('helper_except', []))) {
-    function sc_file(string $pathFile = "", bool $security = null):string
+if (!function_exists('vc_file') && !in_array('vc_file', config('helper_except', []))) {
+    function vc_file(string $pathFile = "", bool $security = null):string
     {
         return asset($pathFile, $security);
     }
 }
 
-if (!function_exists('sc_path_download_render') && !in_array('sc_path_download_render', config('helper_except', []))) {
+if (!function_exists('vc_path_download_render') && !in_array('vc_path_download_render', config('helper_except', []))) {
     /*
     Render path download
      */
-    function sc_path_download_render(string $string):string
+    function vc_path_download_render(string $string):string
     {
         if (filter_var($string, FILTER_VALIDATE_URL)) {
             return $string;
@@ -289,14 +289,14 @@ if (!function_exists('sc_path_download_render') && !in_array('sc_path_download_r
     }
 }
 
-if (!function_exists('sc_convertPHPSizeToBytes') && !in_array('sc_convertPHPSizeToBytes', config('helper_except', []))) {
+if (!function_exists('vc_convertPHPSizeToBytes') && !in_array('vc_convertPHPSizeToBytes', config('helper_except', []))) {
     /**
     * This function transforms the php.ini notation for numbers (like '2M') to an integer (2*1024*1024 in this case)
     * 
     * @param string $sSize
     * @return integer The value in bytes
     */
-    function sc_convertPHPSizeToBytes(string $sSize):int
+    function vc_convertPHPSizeToBytes(string $sSize):int
     {
         $sSuffix = strtoupper(substr($sSize, -1));
         if (!in_array($sSuffix,array('P','T','G','M','K'))){
@@ -324,13 +324,13 @@ if (!function_exists('sc_convertPHPSizeToBytes') && !in_array('sc_convertPHPSize
     }
 }
 
-if (!function_exists('sc_getMaximumFileUploadSize') && !in_array('sc_getMaximumFileUploadSize', config('helper_except', []))) {
+if (!function_exists('vc_getMaximumFileUploadSize') && !in_array('vc_getMaximumFileUploadSize', config('helper_except', []))) {
     /**
     * This function returns the maximum files size that can be uploaded 
     * in PHP
     * @returns  File size in bytes
     **/
-    function sc_getMaximumFileUploadSize($unit = null)
+    function vc_getMaximumFileUploadSize($unit = null)
     {
         $valueUnit = 1;
         switch ($unit) {
@@ -353,6 +353,6 @@ if (!function_exists('sc_getMaximumFileUploadSize') && !in_array('sc_getMaximumF
                 $valueUnit = 1;
                 break;
         }
-        return min(sc_convertPHPSizeToBytes(ini_get('post_max_size')), sc_convertPHPSizeToBytes(ini_get('upload_max_filesize')))/ $valueUnit;
+        return min(vc_convertPHPSizeToBytes(ini_get('post_max_size')), vc_convertPHPSizeToBytes(ini_get('upload_max_filesize')))/ $valueUnit;
     }
 }

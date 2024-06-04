@@ -6,20 +6,20 @@
       <div class="wrap-login100 main-login">
 
           <div class="card-header text-center">
-            <a href="{{ sc_route('home') }}" class="h1">
-              <img src="{{ sc_file(sc_store('logo')) }}" alt="logo" class="logo">
+            <a href="{{ vc_route('home') }}" class="h1">
+              <img src="{{ vc_file(vc_store('logo')) }}" alt="logo" class="logo">
             </a>
           </div>
           <div class="login-title-des col-md-12 p-b-41">
-            <a><b>{{vncore_language_render('admin.password_forgot')}}</b></a>
+            <a><b>{{vc_language_render('admin.password_forgot')}}</b></a>
           </div>
           <div class="card-body">
-          <form action="{{ sc_route('admin.forgot') }}" method="post">
+          <form action="{{ vc_route('admin.forgot') }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <div class="input-form {!! !$errors->has('email') ?: 'text-red' !!}">
               <div class="input-group mb-3">
-                <input class="input100 form-control" type="email" placeholder="{{ vncore_language_render('admin.user.email') }}"
+                <input class="input100 form-control" type="email" placeholder="{{ vc_language_render('admin.user.email') }}"
                 name="email" value="{{ old('email') }}">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
@@ -37,14 +37,14 @@
               <div class="col-12">
                 <div class="container-login-btn">
                   <button class="login-btn" type="submit">
-                    {{ vncore_language_render('action.submit') }}
+                    {{ vc_language_render('action.submit') }}
                   </button>
                 </div>
               </div>
             </div>
           </form>
           <p class="mt-3 mb-1">
-          <a href="{{ sc_route('admin.login') }}"><b>{{ vncore_language_render('admin.user.login') }}</b></a>
+          <a href="{{ vc_route('admin.login') }}"><b>{{ vc_language_render('admin.user.login') }}</b></a>
           </p>
           </div>
       </div>
@@ -56,7 +56,7 @@
     @push('styles')
     <style type="text/css">
       .container-login100 {
-        background-image: url({!! sc_file('images/bg-system.jpg') !!});
+        background-image: url({!! vc_file('images/bg-system.jpg') !!});
       }
     </style>
     @endpush

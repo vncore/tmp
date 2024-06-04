@@ -1,8 +1,8 @@
    <!-- Main Sidebar Container -->
    <aside class="main-sidebar sidebar-light-pink elevation-4 sidebar-no-expand">
     <!-- Brand Logo -->
-    <a href="{{ vncore_route_admin('admin.home') }}" class="brand-link navbar-secondary"">
-      {!! sc_config_admin('ADMIN_LOGO') !!}
+    <a href="{{ vc_route_admin('admin.home') }}" class="brand-link navbar-secondary"">
+      {!! vc_config_admin('ADMIN_LOGO') !!}
     </a>
 
     <!-- Sidebar -->
@@ -22,15 +22,15 @@
         @if (!empty($menus[$level0->id]))
         <li class="nav-link header">
           <i class="nav-icon  {{ $level0->icon }} "></i> 
-          <p class="sub-header"> {!! vncore_language_render($level0->title) !!}</p>
+          <p class="sub-header"> {!! vc_language_render($level0->title) !!}</p>
         </li>
           @foreach ($menus[$level0->id] as $level1)
             @if($level1->uri)
-            <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), sc_url_render($level1->uri)) ? 'active' : '' }}">
-              <a href="{{ $level1->uri?sc_url_render($level1->uri):'#' }}" class="nav-link">
+            <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), vc_url_render($level1->uri)) ? 'active' : '' }}">
+              <a href="{{ $level1->uri?vc_url_render($level1->uri):'#' }}" class="nav-link">
                 <i class="nav-icon {{ $level1->icon }}"></i>
                 <p>
-                  {!! vncore_language_render($level1->title) !!}
+                  {!! vc_language_render($level1->title) !!}
                 </p>
               </a>
             </li>
@@ -42,7 +42,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon  {{ $level1->icon }} "></i>
                 <p>
-                  {!! vncore_language_render($level1->title) !!}
+                  {!! vc_language_render($level1->title) !!}
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -50,10 +50,10 @@
               <ul class="nav nav-treeview">
                 @foreach ($menus[$level1->id] as $level2)
                   @if($level2->uri)
-                  <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), sc_url_render($level2->uri)) ? 'active' : '' }}">
-                    <a href="{{ $level2->uri?sc_url_render($level2->uri):'#' }}" class="nav-link">
+                  <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), vc_url_render($level2->uri)) ? 'active' : '' }}">
+                    <a href="{{ $level2->uri?vc_url_render($level2->uri):'#' }}" class="nav-link">
                       <i class="{{ $level2->icon }} nav-icon"></i>
-                      <p>{!! vncore_language_render($level2->title) !!}</p>
+                      <p>{!! vc_language_render($level2->title) !!}</p>
                     </a>
                   </li>
                   @else
@@ -64,7 +64,7 @@
                     <a href="#" class="nav-link">
                       <i class="nav-icon  {{ $level2->icon }} "></i>
                       <p>
-                        {!! vncore_language_render($level2->title) !!}
+                        {!! vc_language_render($level2->title) !!}
                         <i class="right fas fa-angle-left"></i>
                       </p>
                     </a>
@@ -72,10 +72,10 @@
                   <ul class="nav nav-treeview">
                     @foreach ($menus[$level2->id] as $level3)
                       @if($level3->uri)
-                        <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), sc_url_render($level3->uri)) ? 'active' : '' }}">
-                          <a href="{{ $level3->uri?sc_url_render($level3->uri):'#' }}" class="nav-link">
+                        <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), vc_url_render($level3->uri)) ? 'active' : '' }}">
+                          <a href="{{ $level3->uri?vc_url_render($level3->uri):'#' }}" class="nav-link">
                             <i class="{{ $level3->icon }} nav-icon"></i>
-                            <p>{!! vncore_language_render($level3->title) !!}</p>
+                            <p>{!! vc_language_render($level3->title) !!}</p>
                           </a>
                         </li>
                       @else
@@ -83,7 +83,7 @@
                         <a href="#" class="nav-link">
                           <i class="nav-icon  {{ $level3->icon }} "></i>
                           <p>
-                            {!! vncore_language_render($level3->title) !!}
+                            {!! vc_language_render($level3->title) !!}
                             <i class="right fas fa-angle-left"></i>
                           </p>
                         </a>

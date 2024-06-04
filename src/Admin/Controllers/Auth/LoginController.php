@@ -29,7 +29,7 @@ class LoginController extends RootAdminController
             return redirect($this->redirectPath());
         }
 
-        return view($this->templatePathAdmin.'auth.login', ['title'=> vncore_language_render('admin.login')]);
+        return view($this->templatePathAdmin.'auth.login', ['title'=> vc_language_render('admin.login')]);
     }
 
     /**
@@ -47,8 +47,8 @@ class LoginController extends RootAdminController
         $remember = $request->get('remember', false);
 
         if ($this->guard()->attempt($credentials, $remember)) {
-            if (function_exists('vncore_event_admin_login')) {
-                vncore_event_admin_login(\Admin::user());
+            if (function_exists('vc_event_admin_login')) {
+                vc_event_admin_login(\Admin::user());
             }
             return $this->sendLoginResponse($request);
         }
@@ -93,14 +93,14 @@ class LoginController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title' => vncore_language_render('admin.setting_account'),
+            'title' => vc_language_render('admin.setting_account'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
             'user' => $user,
             'roles' => (new AdminRole)->pluck('name', 'id')->all(),
             'permission' => (new AdminPermission)->pluck('name', 'id')->all(),
-            'url_action' => vncore_route_admin('admin.setting'),
+            'url_action' => vc_route_admin('admin.setting'),
         ];
         return view($this->templatePathAdmin.'auth.setting')
             ->with($data);
@@ -116,7 +116,7 @@ class LoginController extends RootAdminController
             'avatar' => 'nullable|string|max:255',
             'password' => 'nullable|string|max:60|min:6|confirmed',
         ], [
-            'username.regex' => vncore_language_render('admin.user.username_validate'),
+            'username.regex' => vc_language_render('admin.user.username_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -133,10 +133,10 @@ class LoginController extends RootAdminController
         if ($data['password']) {
             $dataUpdate['password'] = bcrypt($data['password']);
         }
-        $dataUpdate = sc_clean($dataUpdate, [], true);
+        $dataUpdate = vc_clean($dataUpdate, [], true);
         $user->update($dataUpdate);
 
-        return redirect()->route('admin.home')->with('success', vncore_language_render('action.edit_success'));
+        return redirect()->route('admin.home')->with('success', vc_language_render('action.edit_success'));
     }
 
     /**
@@ -145,7 +145,7 @@ class LoginController extends RootAdminController
     protected function getFailedLoginMessage()
     {
         return lang::has('auth.failed')
-        ? vncore_language_render('admin.failed')
+        ? vc_language_render('admin.failed')
         : 'These credentials do not match our records.';
     }
 
@@ -174,7 +174,7 @@ class LoginController extends RootAdminController
     {
         $request->session()->regenerate();
 
-        return redirect()->intended($this->redirectPath())->with(['success' => vncore_language_render('admin.login_successful')]);
+        return redirect()->intended($this->redirectPath())->with(['success' => vc_language_render('admin.login_successful')]);
     }
 
     /**

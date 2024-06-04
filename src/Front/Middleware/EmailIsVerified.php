@@ -23,11 +23,11 @@ class EmailIsVerified
         ];
         if ($request->user()->hasVerifiedEmail()) {
             if (!in_array($request->route()->getName(), $arrExclude)) {
-                return redirect()->guest(sc_route('customer.verify'));
+                return redirect()->guest(vc_route('customer.verify'));
             }
         } else {
             if (in_array($request->route()->getName(), $arrExclude)) {
-                return redirect(sc_route('customer.index'));
+                return redirect(vc_route('customer.index'));
             }
         }
 

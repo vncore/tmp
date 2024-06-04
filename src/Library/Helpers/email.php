@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Mail;
  *
  * @return  mixed
  */
-if (!function_exists('sc_send_mail') && !in_array('sc_send_mail', config('helper_except', []))) {
-    function sc_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
+if (!function_exists('vc_send_mail') && !in_array('vc_send_mail', config('helper_except', []))) {
+    function vc_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
     {
-        if (!empty(sc_config('email_action_mode'))) {
-            if (!empty(sc_config('email_action_queue'))) {
+        if (!empty(vc_config('email_action_mode'))) {
+            if (!empty(vc_config('email_action_queue'))) {
                 dispatch(new SendEmailJob($view, $dataView, $emailConfig, $attach));
             } else {
-                sc_process_send_mail($view, $dataView, $emailConfig, $attach);
+                vc_process_send_mail($view, $dataView, $emailConfig, $attach);
             }
         } else {
             return false;
@@ -38,13 +38,13 @@ if (!function_exists('sc_send_mail') && !in_array('sc_send_mail', config('helper
  *
  * @return  [][][]                [return description]
  */
-if (!function_exists('sc_process_send_mail') && !in_array('sc_process_send_mail', config('helper_except', []))) {
-    function sc_process_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
+if (!function_exists('vc_process_send_mail') && !in_array('vc_process_send_mail', config('helper_except', []))) {
+    function vc_process_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
     {
         try {
             Mail::send(new SendMail($view, $dataView, $emailConfig, $attach));
         } catch (\Throwable $e) {
-            sc_report("Sendmail view:" . $view . PHP_EOL . $e->getMessage());
+            vc_report("Sendmail view:" . $view . PHP_EOL . $e->getMessage());
         }
     }
 }

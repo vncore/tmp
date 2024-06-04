@@ -15,27 +15,27 @@ class AdminCustomFieldController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => vncore_language_render('admin.custom_field.list'),
-            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.custom_field.add_new_title'),
+            'title' => vc_language_render('admin.custom_field.list'),
+            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vc_language_render('admin.custom_field.add_new_title'),
             'subTitle' => '',
             'icon' => 'fa fa-tasks',
-            'urlDeleteItem' => vncore_route_admin('admin_custom_field.delete'),
+            'urlDeleteItem' => vc_route_admin('admin_custom_field.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',
             'js' => '',
-            'url_action' => vncore_route_admin('admin_custom_field.create'),
+            'url_action' => vc_route_admin('admin_custom_field.create'),
         ];
 
         $listTh = [
-            'type' => vncore_language_render('admin.custom_field.type'),
-            'code' => vncore_language_render('admin.custom_field.code'),
-            'name' => vncore_language_render('admin.custom_field.name'),
-            'required' => vncore_language_render('admin.custom_field.required'),
-            'option' => vncore_language_render('admin.custom_field.option'),
-            'default' => vncore_language_render('admin.custom_field.default'),
-            'status' => vncore_language_render('admin.custom_field.status'),
-            'action' => vncore_language_render('action.title'),
+            'type' => vc_language_render('admin.custom_field.type'),
+            'code' => vc_language_render('admin.custom_field.code'),
+            'name' => vc_language_render('admin.custom_field.name'),
+            'required' => vc_language_render('admin.custom_field.required'),
+            'option' => vc_language_render('admin.custom_field.option'),
+            'default' => vc_language_render('admin.custom_field.default'),
+            'status' => vc_language_render('admin.custom_field.status'),
+            'action' => vc_language_render('action.title'),
         ];
         $obj = new ShopCustomField;
         $obj = $obj->orderBy('id', 'desc');
@@ -52,9 +52,9 @@ class AdminCustomFieldController extends RootAdminController
                 'default' => $row['default'],
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
                 'action' => '
-                    <a href="' . vncore_route_admin('admin_custom_field.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vc_route_admin('admin_custom_field.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
     
-                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -62,7 +62,7 @@ class AdminCustomFieldController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'index';
         $data['fieldTypes'] = $this->fieldTypes();
@@ -100,10 +100,10 @@ class AdminCustomFieldController extends RootAdminController
             'required' => (!empty($data['required']) ? 1 : 0),
             'status' => (!empty($data['status']) ? 1 : 0),
         ];
-        $dataCreate = sc_clean($dataCreate, ['default'], true);
+        $dataCreate = vc_clean($dataCreate, ['default'], true);
         ShopCustomField::create($dataCreate);
 
-        return redirect()->route('admin_custom_field.index')->with('success', vncore_language_render('action.create_success'));
+        return redirect()->route('admin_custom_field.index')->with('success', vc_language_render('action.create_success'));
     }
 
     /**
@@ -116,30 +116,30 @@ class AdminCustomFieldController extends RootAdminController
             return 'No data';
         }
         $data = [
-            'title' => vncore_language_render('admin.custom_field.list'),
-            'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('action.edit'),
+            'title' => vc_language_render('admin.custom_field.list'),
+            'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vc_language_render('action.edit'),
             'subTitle' => '',
             'icon' => 'fa fa-tasks',
-            'urlDeleteItem' => vncore_route_admin('admin_custom_field.delete'),
+            'urlDeleteItem' => vc_route_admin('admin_custom_field.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'buttonSort' => 0, // 1 - Enable button sort
             'css' => '',
             'js' => '',
-            'url_action' => vncore_route_admin('admin_custom_field.edit', ['id' => $customField['id']]),
+            'url_action' => vc_route_admin('admin_custom_field.edit', ['id' => $customField['id']]),
             'customField' => $customField,
             'id' => $id,
         ];
 
         $listTh = [
-            'type' => vncore_language_render('admin.custom_field.type'),
-            'code' => vncore_language_render('admin.custom_field.code'),
-            'name' => vncore_language_render('admin.custom_field.name'),
-            'required' => vncore_language_render('admin.custom_field.required'),
-            'option' => vncore_language_render('admin.custom_field.option'),
-            'default' => vncore_language_render('admin.custom_field.default'),
-            'status' => vncore_language_render('admin.custom_field.status'),
-            'action' => vncore_language_render('action.title'),
+            'type' => vc_language_render('admin.custom_field.type'),
+            'code' => vc_language_render('admin.custom_field.code'),
+            'name' => vc_language_render('admin.custom_field.name'),
+            'required' => vc_language_render('admin.custom_field.required'),
+            'option' => vc_language_render('admin.custom_field.option'),
+            'default' => vc_language_render('admin.custom_field.default'),
+            'status' => vc_language_render('admin.custom_field.status'),
+            'action' => vc_language_render('action.title'),
         ];
         $obj = new ShopCustomField;
         $obj = $obj->orderBy('id', 'desc');
@@ -156,9 +156,9 @@ class AdminCustomFieldController extends RootAdminController
                 'default' => $row['default'],
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
                 'action' => '
-                    <a href="' . vncore_route_admin('admin_custom_field.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vc_route_admin('admin_custom_field.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                 ',
             ];
         }
@@ -166,7 +166,7 @@ class AdminCustomFieldController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
         $data['fieldTypes'] = $this->fieldTypes();
         $data['selectTypes'] = $this->selectTypes();
         $data['layout'] = 'edit';
@@ -204,11 +204,11 @@ class AdminCustomFieldController extends RootAdminController
             'required' => (!empty($data['required']) ? 1 : 0),
             'status' => (!empty($data['status']) ? 1 : 0),
         ];
-        $dataUpdate = sc_clean($dataUpdate, ['default'], true);
+        $dataUpdate = vc_clean($dataUpdate, ['default'], true);
 
         $customField->update($dataUpdate);
         
-        return redirect()->back()->with('success', vncore_language_render('action.edit_success'));
+        return redirect()->back()->with('success', vc_language_render('action.edit_success'));
     }
 
     /*
@@ -218,7 +218,7 @@ class AdminCustomFieldController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
@@ -234,14 +234,14 @@ class AdminCustomFieldController extends RootAdminController
      */
     public function fieldTypes() {
             return     [
-            'shop_customer' => vncore_language_render('admin.field_name.shop_customer'),
-            'shop_product'  => vncore_language_render('admin.field_name.shop_product'),
-            'shop_banner'   => vncore_language_render('admin.field_name.shop_banner'),
-            'shop_brand'    => vncore_language_render('admin.field_name.shop_brand'),
-            'shop_supplier' => vncore_language_render('admin.field_name.shop_supplier'),
-            'shop_category' => vncore_language_render('admin.field_name.shop_category'),
-            'shop_news'     => vncore_language_render('admin.field_name.shop_news'),
-            'shop_page'     => vncore_language_render('admin.field_name.shop_page'),
+            'shop_customer' => vc_language_render('admin.field_name.shop_customer'),
+            'shop_product'  => vc_language_render('admin.field_name.shop_product'),
+            'shop_banner'   => vc_language_render('admin.field_name.shop_banner'),
+            'shop_brand'    => vc_language_render('admin.field_name.shop_brand'),
+            'shop_supplier' => vc_language_render('admin.field_name.shop_supplier'),
+            'shop_category' => vc_language_render('admin.field_name.shop_category'),
+            'shop_news'     => vc_language_render('admin.field_name.shop_news'),
+            'shop_page'     => vc_language_render('admin.field_name.shop_page'),
             ];
     }
 

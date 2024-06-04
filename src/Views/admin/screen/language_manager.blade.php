@@ -9,14 +9,14 @@
           <div class="box-body table-responsive">
             <section id="pjax-container" class="table-list">
                 <div class="card-body table-responsivep-0" >
-                  <form action="{{ vncore_route_admin('admin_language_manager.index') }}" method="GET">
+                  <form action="{{ vc_route_admin('admin_language_manager.index') }}" method="GET">
                   <table class="table table-hover box-body text-wrap table-bordered">
                     <tr>
                       <td>
                         <div class="input-group float-left ml-1">
                           <div class="btn-group">
                             <select class="form-control select2" name="position">
-                              <option value="">{{ vncore_language_render('admin.language.select_position') }}</option>
+                              <option value="">{{ vc_language_render('admin.language.select_position') }}</option>
                               @foreach ($positionLang as $itemPosition)
                                   <option value="{{ $itemPosition }}" {{ ($itemPosition === $position)? 'selected': '' }}>{{ $itemPosition }}</option>
                               @endforeach
@@ -24,7 +24,7 @@
                           </div>
                           <div class="btn-group">
                             <select class="form-control select2" name="lang">
-                              <option value="">{{ vncore_language_render('admin.language.select_lang') }}</option>
+                              <option value="">{{ vc_language_render('admin.language.select_lang') }}</option>
                               @php
                                   $lang = $lang ?? 'en';
                               @endphp
@@ -41,7 +41,7 @@
                           </div>
                           &nbsp; 
                           <div class="btn-group">
-                            <a href="{{ vncore_route_admin('admin_language_manager.add') }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></a>
+                            <a href="{{ vc_route_admin('admin_language_manager.add') }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></a>
                         </div>
                         </div>
                       </td>
@@ -52,8 +52,8 @@
                   <table class="table table-hover box-body text-wrap table-bordered">
                       <thead>
                          <tr>
-                           <th>{{ vncore_language_render('admin.language_manager.position') }}</th>
-                           <th>{{ vncore_language_render('admin.language_manager.code') }}</th>
+                           <th>{{ vc_language_render('admin.language_manager.position') }}</th>
+                           <th>{{ vc_language_render('admin.language_manager.code') }}</th>
                            @if ($lang != 'en')
                            <th>English</th>
                            @endif
@@ -105,7 +105,7 @@
 
 @push('scripts')
 <!-- Ediable -->
-<script src="{{ sc_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
+<script src="{{ vc_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
 <script type="text/javascript">
   // Editable
   $(document).ready(function() {
@@ -120,12 +120,12 @@ $.fn.editable.defaults.params = function (params) {
 $('.editable-required').editable({
   validate: function(value) {
       if (value == '') {
-          return '{{  vncore_language_render('admin.not_empty') }}';
+          return '{{  vc_language_render('admin.not_empty') }}';
       }
   },
   success: function(data) {
     if(data.error == 0){
-      alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
+      alertJs('success', '{{ vc_language_render('admin.msg_change_success') }}');
     } else {
       alertJs('error', data.msg);
     }

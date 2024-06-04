@@ -1,5 +1,5 @@
 <?php
-$prefixProduct = sc_config('PREFIX_PRODUCT')??'product';
+$prefixProduct = vc_config('PREFIX_PRODUCT')??'product';
 if (file_exists(app_path('Http/Controllers/ShopProductController.php'))) {
     $nameSpaceFrontProduct = 'App\Http\Controllers';
 } else {

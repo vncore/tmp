@@ -21,7 +21,7 @@
                         @foreach ($languages as $code => $language)
                         <div class="card">
                             <div class="card-header with-border">
-                                <h3 class="card-title">{{ $language->name }} {!! sc_image_render($language->icon,'20px','20px', $language->name) !!}</h3>
+                                <h3 class="card-title">{{ $language->name }} {!! vc_image_render($language->icon,'20px','20px', $language->name) !!}</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                       <i class="fas fa-minus"></i>
@@ -32,7 +32,7 @@
                                 <div
                                     class="form-group {{ $errors->has('descriptions.'.$code.'.maintain_content') ? ' text-red' : '' }}">
                                     <label for="{{ $code }}__maintain_content"
-                                        class="col-sm-2 col-form-label">{{ vncore_language_render('admin.maintain.description') }}</label>
+                                        class="col-sm-2 col-form-label">{{ vc_language_render('admin.maintain.description') }}</label>
                                     <div class="col-sm-8">
                                         <textarea id="{{ $code }}__maintain_content" class="editor"
                                             name="descriptions[{{ $code }}][maintain_content]">{{ old('descriptions.'.$code.'.maintain_content',($descriptions[$code]['maintain_content']??'')) }}</textarea>
@@ -47,7 +47,7 @@
                                 <div
                                 class="form-group {{ $errors->has('descriptions.'.$code.'.maintain_note') ? ' text-red' : '' }}">
                                 <label for="{{ $code }}__maintain_note"
-                                    class="col-sm-2 col-form-label">{{ vncore_language_render('admin.maintain.description_note') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vc_language_render('admin.maintain.description_note') }}</label>
                                 <div class="col-sm-8">
                                     <input id="{{ $code }}__maintain_note" type="text" class="form-control input-sm"
                                         name="descriptions[{{ $code }}][maintain_note]" value="{{ old('descriptions.'.$code.'.maintain_note',($descriptions[$code]['maintain_note']??'')) }}">
@@ -73,11 +73,11 @@
 
                     <div class="col-md-8">
                         <div class="btn-group float-right">
-                            <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ vc_language_render('action.submit') }}</button>
                         </div>
 
                         <div class="btn-group float-left">
-                            <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
+                            <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
                         </div>
                     </div>
                 </div>
@@ -108,10 +108,10 @@
 <script type="text/javascript">
     $('textarea.editor').ckeditor(
     {
-        filebrowserImageBrowseUrl: '{{ vncore_route_admin('admin.home').'/'.config('lfm.url_prefix') }}?type=content',
-        filebrowserImageUploadUrl: '{{ vncore_route_admin('admin.home').'/'.config('lfm.url_prefix') }}/upload?type=content&_token={{csrf_token()}}',
-        filebrowserBrowseUrl: '{{ vncore_route_admin('admin.home').'/'.config('lfm.url_prefix') }}?type=Files',
-        filebrowserUploadUrl: '{{ vncore_route_admin('admin.home').'/'.config('lfm.url_prefix') }}/upload?type=file&_token={{csrf_token()}}',
+        filebrowserImageBrowseUrl: '{{ vc_route_admin('admin.home').'/'.config('lfm.url_prefix') }}?type=content',
+        filebrowserImageUploadUrl: '{{ vc_route_admin('admin.home').'/'.config('lfm.url_prefix') }}/upload?type=content&_token={{csrf_token()}}',
+        filebrowserBrowseUrl: '{{ vc_route_admin('admin.home').'/'.config('lfm.url_prefix') }}?type=Files',
+        filebrowserUploadUrl: '{{ vc_route_admin('admin.home').'/'.config('lfm.url_prefix') }}/upload?type=file&_token={{csrf_token()}}',
         filebrowserWindowWidth: '900',
         filebrowserWindowHeight: '500'
     }

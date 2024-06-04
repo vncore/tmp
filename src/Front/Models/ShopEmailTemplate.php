@@ -27,7 +27,7 @@ class ShopEmailTemplate extends Model
         //Uuid
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = vncore_generate_id($type = 'shop_email_template');
+                $model->{$model->getKeyName()} = vc_generate_id($type = 'shop_email_template');
             }
         });
     }

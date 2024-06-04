@@ -15,27 +15,27 @@ class AdminEmailTemplateController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'         => vncore_language_render('admin.email_template.list'),
+            'title'         => vc_language_render('admin.email_template.list'),
             'subTitle'      => '',
             'icon'          => 'fa fa-tasks',
-            'urlDeleteItem' => vncore_route_admin('admin_email_template.delete'),
+            'urlDeleteItem' => vc_route_admin('admin_email_template.delete'),
             'removeList'    => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css'           => '',
             'js'            => '',
         ];
         //Process add content
-        $data['menuRight'] = sc_config_group('menuRight', \Request::route()->getName());
-        $data['menuLeft'] = sc_config_group('menuLeft', \Request::route()->getName());
-        $data['topMenuRight'] = sc_config_group('topMenuRight', \Request::route()->getName());
-        $data['topMenuLeft'] = sc_config_group('topMenuLeft', \Request::route()->getName());
-        $data['blockBottom'] = sc_config_group('blockBottom', \Request::route()->getName());
+        $data['menuRight'] = vc_config_group('menuRight', \Request::route()->getName());
+        $data['menuLeft'] = vc_config_group('menuLeft', \Request::route()->getName());
+        $data['topMenuRight'] = vc_config_group('topMenuRight', \Request::route()->getName());
+        $data['topMenuLeft'] = vc_config_group('topMenuLeft', \Request::route()->getName());
+        $data['blockBottom'] = vc_config_group('blockBottom', \Request::route()->getName());
 
         $listTh = [
-            'name' => vncore_language_render('admin.email_template.name'),
-            'group' => vncore_language_render('admin.email_template.group'),
-            'status' => vncore_language_render('admin.email_template.status'),
-            'action' => vncore_language_render('action.title'),
+            'name' => vc_language_render('admin.email_template.name'),
+            'group' => vc_language_render('admin.email_template.group'),
+            'status' => vc_language_render('admin.email_template.status'),
+            'action' => vc_language_render('action.title'),
         ];
         $dataSearch = [];
         $dataTmp = AdminEmailTemplate::getEmailTemplateListAdmin($dataSearch);
@@ -47,9 +47,9 @@ class AdminEmailTemplateController extends RootAdminController
                 'group' => $row['group'] ?? 'N/A',
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
                 'action' => '
-                    <a href="' . vncore_route_admin('admin_email_template.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.admin.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    <a href="' . vc_route_admin('admin_email_template.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.admin.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -57,11 +57,11 @@ class AdminEmailTemplateController extends RootAdminController
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
         $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_email_template.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-                           <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
+        $data['menuRight'][] = '<a href="' . vc_route_admin('admin_email_template.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+                           <i class="fa fa-plus" title="'.vc_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
 
@@ -76,13 +76,13 @@ class AdminEmailTemplateController extends RootAdminController
     public function create()
     {
         $data = [
-            'title' => vncore_language_render('admin.email_template.add_new_title'),
+            'title' => vc_language_render('admin.email_template.add_new_title'),
             'subTitle' => '',
-            'title_description' => vncore_language_render('admin.email_template.add_new_des'),
+            'title_description' => vc_language_render('admin.email_template.add_new_des'),
             'icon' => 'fa fa-plus',
             'arrayGroup' => $this->arrayGroup(),
             'obj' => [],
-            'url_action' => vncore_route_admin('admin_email_template.create'),
+            'url_action' => vc_route_admin('admin_email_template.create'),
         ];
         return view($this->templatePathAdmin.'screen.email_template')
             ->with($data);
@@ -115,10 +115,10 @@ class AdminEmailTemplateController extends RootAdminController
             'status'   => !empty($data['status']) ? 1 : 0,
             'store_id' => session('adminStoreId'),
         ];
-        $dataCreate = sc_clean($dataCreate, ['text'], true);
+        $dataCreate = vc_clean($dataCreate, ['text'], true);
         AdminEmailTemplate::createEmailTemplateAdmin($dataCreate);
 
-        return redirect()->route('admin_email_template.index')->with('success', vncore_language_render('action.create_success'));
+        return redirect()->route('admin_email_template.index')->with('success', vc_language_render('action.create_success'));
     }
 
     /**
@@ -131,13 +131,13 @@ class AdminEmailTemplateController extends RootAdminController
             return redirect()->route('admin.data_not_found')->with(['url' => url()->full()]);
         }
         $data = [
-            'title' => vncore_language_render('action.edit'),
+            'title' => vc_language_render('action.edit'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
             'obj' => $emailTemplate,
             'arrayGroup' => $this->arrayGroup(),
-            'url_action' => vncore_route_admin('admin_email_template.edit', ['id' => $emailTemplate['id']]),
+            'url_action' => vc_route_admin('admin_email_template.edit', ['id' => $emailTemplate['id']]),
         ];
         return view($this->templatePathAdmin.'screen.email_template')
             ->with($data);
@@ -173,10 +173,10 @@ class AdminEmailTemplateController extends RootAdminController
             'status'   => !empty($data['status']) ? 1 : 0,
             'store_id' => session('adminStoreId'),
         ];
-        $dataUpdate = sc_clean($dataUpdate, ['text'], true);
+        $dataUpdate = vc_clean($dataUpdate, ['text'], true);
         $emailTemplate->update($dataUpdate);
 
-        return redirect()->route('admin_email_template.index')->with('success', vncore_language_render('action.edit_success'));
+        return redirect()->route('admin_email_template.index')->with('success', vc_language_render('action.edit_success'));
     }
 
     /*
@@ -186,7 +186,7 @@ class AdminEmailTemplateController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
@@ -197,7 +197,7 @@ class AdminEmailTemplateController extends RootAdminController
                 }
             }
             if (count($arrDontPermission)) {
-                return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': ' . json_encode($arrDontPermission)]);
+                return response()->json(['error' => 1, 'msg' => vc_language_render('admin.remove_dont_permisison') . ': ' . json_encode($arrDontPermission)]);
             }
             ShopEmailTemplate::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);
@@ -293,13 +293,13 @@ class AdminEmailTemplateController extends RootAdminController
     public function arrayGroup()
     {
         return  [
-            'order_success_to_admin' => vncore_language_render('email.admin.order_success_to_admin'),
-            'order_success_to_customer' => vncore_language_render('email.admin.order_success_to_cutomer'),
-            'forgot_password' => vncore_language_render('email.admin.forgot_password'),
-            'customer_verify' => vncore_language_render('email.admin.customer_verify'),
-            'welcome_customer' => vncore_language_render('email.admin.welcome_customer'),
-            'contact_to_admin' => vncore_language_render('email.admin.contact_to_admin'),
-            'other' => vncore_language_render('email.admin.other'),
+            'order_success_to_admin' => vc_language_render('email.admin.order_success_to_admin'),
+            'order_success_to_customer' => vc_language_render('email.admin.order_success_to_cutomer'),
+            'forgot_password' => vc_language_render('email.admin.forgot_password'),
+            'customer_verify' => vc_language_render('email.admin.customer_verify'),
+            'welcome_customer' => vc_language_render('email.admin.welcome_customer'),
+            'contact_to_admin' => vc_language_render('email.admin.contact_to_admin'),
+            'other' => vc_language_render('email.admin.other'),
         ];
     }
 

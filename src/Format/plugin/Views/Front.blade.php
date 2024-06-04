@@ -1,4 +1,4 @@
-@extends($sc_templatePath.'.layout')
+@extends($vc_templatePath.'.layout')
 
 @section('main')
     {{-- Content --}}
@@ -7,7 +7,7 @@
 @section('breadcrumb')
     <div class="breadcrumbs">
         <ol class="breadcrumb">
-          <li><a href="{{ sc_route('home') }}">{{ vncore_language_render('front.home') }}</a></li>
+          <li><a href="{{ vc_route('home') }}">{{ vc_language_render('front.home') }}</a></li>
           <li class="active">{{ $title ?? '' }}</li>
         </ol>
       </div>

@@ -16,11 +16,11 @@ class AdminTemplateController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => vncore_language_render('admin.template.list'),
+            'title' => vc_language_render('admin.template.list'),
             'subTitle' => '',
             'icon' => 'fa fa-tasks',        ];
 
-        $data["templates"] = sc_get_all_template();
+        $data["templates"] = vc_get_all_template();
         $data["templatesActive"] = (new AdminTemplate)->getListTemplateActive();
         $data["templatesInstalled"] = (new AdminTemplate)->getListTemplate();
         $data["templatesUsed"] = AdminStore::getAllTemplateUsed();
@@ -52,9 +52,9 @@ class AdminTemplateController extends RootAdminController
         //Run function process before remove template
         if (file_exists($fileProcess = resource_path() . '/views/templates/'.$key.'/Provider.php')) {
             include_once $fileProcess;
-            if (function_exists('sc_template_uninstall')) {
+            if (function_exists('vc_template_uninstall')) {
                 // Remove template from all stories
-                sc_template_uninstall();
+                vc_template_uninstall();
                 (new AdminTemplate)->where('key', $key)->delete();
             }
         }
@@ -90,11 +90,11 @@ class AdminTemplateController extends RootAdminController
         if (file_exists($fileProcess = resource_path() . '/views/templates/'.$key.'/Provider.php')) {
             include_once $fileProcess;
             $data = ['store_id' => session('adminStoreId')];
-            if (function_exists('sc_template_uninstall') && function_exists('sc_template_install')) {
+            if (function_exists('vc_template_uninstall') && function_exists('vc_template_install')) {
                 //Remove all stories
-                sc_template_uninstall();
+                vc_template_uninstall();
                 //Install data default and data for root domain
-                sc_template_install($data);
+                vc_template_install($data);
             }
         }
         $response = ['error' => 0, 'msg' => 'Re-install template success'];
@@ -110,7 +110,7 @@ class AdminTemplateController extends RootAdminController
     {
         $key = request('key');
         (new AdminTemplate)->where('key', $key)->update(['status' => 0]);
-        $response = ['error' => 0, 'msg' => vncore_language_render('action.disable_success')];
+        $response = ['error' => 0, 'msg' => vc_language_render('action.disable_success')];
         return response()->json($response);
     }
 
@@ -123,7 +123,7 @@ class AdminTemplateController extends RootAdminController
     {
         $key = request('key');
         (new AdminTemplate)->where('key', $key)->update(['status' => 1]);
-        $response = ['error' => 0, 'msg' => vncore_language_render('action.enable_success')];
+        $response = ['error' => 0, 'msg' => vc_language_render('action.enable_success')];
         return response()->json($response);
     }
 
@@ -135,7 +135,7 @@ class AdminTemplateController extends RootAdminController
     public function importTemplate()
     {
         $data =  [
-            'title' => vncore_language_render('admin.template.import')
+            'title' => vc_language_render('admin.template.import')
         ];
         return view($this->templatePathAdmin.'screen.template_upload')
         ->with($data);
@@ -153,7 +153,7 @@ class AdminTemplateController extends RootAdminController
         $validator = \Validator::make(
             $data,
             [
-                'file'   => 'required|mimetypes:application/zip|max:'.min($maxSizeConfig = sc_getMaximumFileUploadSize($unit = 'K'), 51200),
+                'file'   => 'required|mimetypes:application/zip|max:'.min($maxSizeConfig = vc_getMaximumFileUploadSize($unit = 'K'), 51200),
             ]
         );
 
@@ -163,7 +163,7 @@ class AdminTemplateController extends RootAdminController
                 ->withInput();
         }
         $pathTmp = time();
-        $pathFile = sc_file_upload($data['file'], 'tmp', $pathFolder = $pathTmp)['pathFile'] ?? '';
+        $pathFile = vc_file_upload($data['file'], 'tmp', $pathFolder = $pathTmp)['pathFile'] ?? '';
 
         if ($pathFile) {
     
@@ -171,7 +171,7 @@ class AdminTemplateController extends RootAdminController
                 return response()->json(['error' => 1, 'msg' => 'No write permission '.storage_path('tmp')]);
             }
 
-            $unzip = sc_unzip(storage_path('tmp/'.$pathFile), storage_path('tmp/'.$pathTmp));
+            $unzip = vc_unzip(storage_path('tmp/'.$pathFile), storage_path('tmp/'.$pathTmp));
             if ($unzip) {
                 $checkConfig = glob(storage_path('tmp/'.$pathTmp) . '/*/config.json');
                 if ($checkConfig) {
@@ -182,9 +182,9 @@ class AdminTemplateController extends RootAdminController
                     //Check compatibility 
                     $config = json_decode(file_get_contents($checkConfig[0]), true);
                     $scartVersion = $config['scartVersion'] ?? '';
-                    if (!sc_plugin_compatibility_check($scartVersion)) {
+                    if (!vc_plugin_compatibility_check($scartVersion)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'sc_version' => config('vncore.core')])]);
+                        return response()->json(['error' => 1, 'msg' => vc_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'vc_version' => config('vncore.core')])]);
                     }
 
                     $configKey = $config['configKey'] ?? '';
@@ -201,13 +201,13 @@ class AdminTemplateController extends RootAdminController
                     $configKey = str_replace('.', '-', $configKey);
                     if (!$configKey) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', vncore_language_render('admin.template.error_config'));
+                        return redirect()->back()->with('error', vc_language_render('admin.template.error_config'));
                     }
 
-                    $arrTemplateLocal = sc_get_all_template();
+                    $arrTemplateLocal = vc_get_all_template();
                     if (array_key_exists($configKey, $arrTemplateLocal)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', vncore_language_render('admin.template.error_exist'));
+                        return redirect()->back()->with('error', vc_language_render('admin.template.error_exist'));
                     }
                     try {
                         File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path('templates/'.$configKey));
@@ -221,13 +221,13 @@ class AdminTemplateController extends RootAdminController
                             /**
                              * Import template do from root domain
                              */
-                            if (function_exists('sc_template_uninstall')) {
+                            if (function_exists('vc_template_uninstall')) {
                                 //Remove all old data from all stories
-                                sc_template_uninstall();
+                                vc_template_uninstall();
                             }
-                            if (function_exists('sc_template_install')) {
+                            if (function_exists('vc_template_install')) {
                                 //Install data default and data for root domain
-                                sc_template_install($data);
+                                vc_template_install($data);
                             }
                         }
                     } catch (\Throwable $e) {
@@ -236,18 +236,18 @@ class AdminTemplateController extends RootAdminController
                     }
                 } else {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    return redirect()->back()->with('error', vncore_language_render('admin.template.error_check_config'));
+                    return redirect()->back()->with('error', vc_language_render('admin.template.error_check_config'));
                 }
             } else {
-                return redirect()->back()->with('error', vncore_language_render('admin.template.error_unzip'));
+                return redirect()->back()->with('error', vc_language_render('admin.template.error_unzip'));
             }
         } else {
-            return redirect()->back()->with('error', vncore_language_render('admin.template.error_upload'));
+            return redirect()->back()->with('error', vc_language_render('admin.template.error_upload'));
         }
         
         if (count($config)) {
             (new AdminTemplate)->create(['key' => $config['configKey'] ?? '', 'name' => $config['name'] ?? '', 'status' => 1]);
         }
-        return redirect()->route('admin_template.index')->with('success', vncore_language_render('admin.template.import_success')); 
+        return redirect()->route('admin_template.index')->with('success', vc_language_render('admin.template.import_success')); 
     }
 }

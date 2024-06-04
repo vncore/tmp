@@ -1,6 +1,6 @@
-{{-- Use sc_config with storeId, dont use sc_config_admin because will switch the store to the specified store Id
+{{-- Use vc_config with storeId, dont use vc_config_admin because will switch the store to the specified store Id
 --}}
-{{-- Use sc_config with storeId, dont use sc_config_admin because will switch the store to the specified store Id
+{{-- Use vc_config with storeId, dont use vc_config_admin because will switch the store to the specified store Id
 --}}
 
 <div class="card">
@@ -9,15 +9,15 @@
    <table class="table table-hover box-body text-wrap table-bordered">
      <thead>
        <tr>
-         <th>{{ vncore_language_render('customer.admin.field') }}</th>
-         <th>{{ vncore_language_render('customer.admin.value') }}</th>
-         <th>{{ vncore_language_render('customer.admin.required') }}</th>
+         <th>{{ vc_language_render('customer.admin.field') }}</th>
+         <th>{{ vc_language_render('customer.admin.value') }}</th>
+         <th>{{ vc_language_render('customer.admin.required') }}</th>
        </tr>
      </thead>
      <tbody>
        @foreach ($customerConfigs as $key => $customerConfig)
          <tr>
-           <td>{{ vncore_language_render($customerConfig['detail']) }}</td>
+           <td>{{ vc_language_render($customerConfig['detail']) }}</td>
            <td><input class="check-data-config" data-store="{{ $storeId }}" type="checkbox" name="{{ $customerConfig['key'] }}"  {{ $customerConfig['value']?"checked":"" }}></td>
            <td>
              @if (!empty($customerConfigsRequired[$key.'_required']))

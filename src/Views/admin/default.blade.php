@@ -5,7 +5,7 @@
       <div class="col-md-12">
           <div class="box-body">
             <div class="error-page text-center">
-              <h1>{{ vncore_language_render('admin.welcome_dasdboard') }}</h1>
+              <h1>{{ vc_language_render('admin.welcome_dasdboard') }}</h1>
             </div>
         </div>
       </div>

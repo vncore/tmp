@@ -1,5 +1,5 @@
 <?php
-$prefixCategory = sc_config('PREFIX_CATEGORY')??'category';
+$prefixCategory = vc_config('PREFIX_CATEGORY')??'category';
 if (file_exists(app_path('Http/Controllers/ShopCategoryController.php'))) {
     $nameSpaceFrontCategory = 'App\Http\Controllers';
 } else {

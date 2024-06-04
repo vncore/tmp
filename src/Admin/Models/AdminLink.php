@@ -59,7 +59,7 @@ class AdminLink extends ShopLink
      */
     public static function createLinkAdmin(array $dataCreate)
     {
-        $dataCreate = sc_clean($dataCreate);
+        $dataCreate = vc_clean($dataCreate);
         return self::create($dataCreate);
     }
 }

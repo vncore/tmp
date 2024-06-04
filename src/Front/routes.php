@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-$suffix = sc_config('SUFFIX_URL')??'';
+$suffix = vc_config('SUFFIX_URL')??'';
 $langUrl = config('app.seoLang');
 //Process namespace
 if (file_exists(app_path('Http/Controllers/ShopContentController.php'))) {
@@ -48,7 +48,7 @@ if (config('vncore.ecommerce_mode', 1)) {
             'middleware' => SC_FRONT_MIDDLEWARE
         ],
         function () use ($langUrl, $nameSpaceFrontStore) {
-            $prefixShop = sc_config('PREFIX_SHOP') ?? 'shop';
+            $prefixShop = vc_config('PREFIX_SHOP') ?? 'shop';
             Route::get($langUrl.$prefixShop, $nameSpaceFrontStore.'\ShopStoreController@shopProcessFront')
             ->name('shop');
         }
@@ -64,10 +64,10 @@ Route::group(
         'middleware' => SC_FRONT_MIDDLEWARE
     ],
     function () use ($suffix, $nameSpaceFrontContent, $nameSpaceFrontStore) {
-        $prefixSearch = sc_config('PREFIX_SEARCH')??'search';
-        $prefixContact = sc_config('PREFIX_CONTACT')??'contact';
-        $prefixAbout = sc_config('PREFIX_ABOUT')??'about';
-        $prefixNews = sc_config('PREFIX_NEWS')??'news';
+        $prefixSearch = vc_config('PREFIX_SEARCH')??'search';
+        $prefixContact = vc_config('PREFIX_CONTACT')??'contact';
+        $prefixAbout = vc_config('PREFIX_ABOUT')??'about';
+        $prefixNews = vc_config('PREFIX_NEWS')??'news';
 
         //Search
         if (config('vncore.ecommerce_mode', 1)) {
@@ -131,9 +131,9 @@ Route::group(
             ) {
                 return redirect()->route('home');
             }
-            if (sc_route('home.lang') === redirect()->back()->getTargetUrl()
+            if (vc_route('home.lang') === redirect()->back()->getTargetUrl()
             ) {
-                return redirect(sc_route('home.lang', ['lang' => $code]));
+                return redirect(vc_route('home.lang', ['lang' => $code]));
             }
             $urlBack = str_replace(url('/' . app()->getLocale()) . '/', url('/' . $code) . '/', back()->getTargetUrl());
             return redirect($urlBack);
