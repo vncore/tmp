@@ -103,24 +103,16 @@ trait DataDefaultSeederTrait
             ['id' => 48,'parent_id' => 38,'sort' => 0,'title' => 'admin.menu_titles.permission','icon' => 'fas fa-ban','uri' => 'admin::permission','key' => null,'type' => 0],
 
             ['id' => 31,'parent_id' => 30,'sort' => 1,'title' => 'admin.menu_titles.language','icon' => 'fas fa-language','uri' => 'admin::language','key' => null,'type' => 0],
-            ['id' => 32,'parent_id' => 30,'sort' => 3,'title' => 'admin.menu_titles.currency','icon' => 'far fa-money-bill-alt','uri' => 'admin::currency','key' => null,'type' => 0],
             ['id' => 69,'parent_id' => 30,'sort' => 2,'title' => 'admin.menu_titles.language_manager','icon' => 'fa fa-universal-access','uri' => 'admin::language_manager','key' => null,'type' => 0],
 
             //Setting store
             ['id' => 26,'parent_id' => 65,'sort' => 1,'title' => 'admin.menu_titles.store_info','icon' => 'fas fa-h-square','uri' => 'admin::store_info','key' => null,'type' => 0],
             ['id' => 57,'parent_id' => 65,'sort' => 2,'title' => 'admin.menu_titles.store_config','icon' => 'fas fa-cog','uri' => 'admin::store_config','key' => null,'type' => 0],
             ['id' => 60,'parent_id' => 65,'sort' => 3,'title' => 'admin.menu_titles.store_maintain','icon' => 'fas fa-wrench','uri' => 'admin::store_maintain','key' => null,'type' => 0],
-            ['id' => 67,'parent_id' => 65,'sort' => 5,'title' => 'admin.menu_titles.layout','icon' => 'far fa-object-group','uri' => '','key' => null,'type' => 0],
-            ['id' => 22,'parent_id' => 67,'sort' => 1,'title' => 'admin.menu_titles.block_content','icon' => 'far fa-newspaper','uri' => 'admin::store_block','key' => null,'type' => 0],
-            ['id' => 23,'parent_id' => 67,'sort' => 2,'title' => 'admin.menu_titles.block_link','icon' => 'fab fa-chrome','uri' => 'admin::store_link','key' => null,'type' => 0],
-            ['id' => 44,'parent_id' => 67,'sort' => 3,'title' => 'admin.menu_titles.css','icon' => 'far fa-file-code','uri' => 'admin::store_css','key' => null,'type' => 0],
 
             //Extension
             ['id' => 4,'parent_id' => 8,'sort' => 201,'title' => 'admin.menu_titles.template_layout','icon' => 'fab fa-windows','uri' => 'admin::template','key' => 'TEMPLATE','type' => 0],
             ['id' => 35,'parent_id' => 8,'sort' => 202,'title' => 'admin.menu_titles.plugin','icon' => 'fas fa-puzzle-piece','uri' => 'admin::plugin','key' => 'PLUGIN','type' => 0],
-
-            //Customer
-            ['id' => 21,'parent_id' => 3,'sort' => 0,'title' => 'admin.menu_titles.subscribe','icon' => 'fas fa-user-circle','uri' => 'admin::subscribe','key' => null,'type' => 0],
 
         ];
         return $dataMenu;
@@ -268,36 +260,6 @@ trait DataDefaultSeederTrait
 
     public function updateDataVersion() {
 
-        $db = DB::connection(SC_CONNECTION);
-        $schema = Schema::connection(SC_CONNECTION);
-        //Ony use updated v8.0 -> v8.1
-        //--Update menu admin
-        $db->table(SC_DB_PREFIX.'admin_menu')->where('id','27')->update(['parent_id' => 65]);
-        $db->table(SC_DB_PREFIX.'admin_menu')->whereIn('id',['17','18'])->update(['parent_id' => 2]);
-        $db->table(SC_DB_PREFIX.'admin_menu')->whereIn('id',['36','50'])->update(['parent_id' => 70]);
-        
-        // Add column
-        if (!$schema->hasColumn(SC_DB_PREFIX.'admin_store', 'og_image')) {
-            $schema->table(SC_DB_PREFIX.'admin_store',
-                function (Blueprint $table) {
-                $table->string('og_image', 255)->nullable()->default('images/org.jpg');
-            });
-        }
-
-        //Notice
-        if (!$schema->hasTable(SC_DB_PREFIX.'admin_notice')) {
-            $schema->create(SC_DB_PREFIX . 'admin_notice', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->string('type')->index()->comment('order, customer, admin,...');
-                $table->string('type_id', 36)->index()->nullable();
-                $table->integer('status', 0)->default(0)->index();
-                $table->string('admin_id', 36)->index();
-                $table->string('url', 100);
-                $table->text('content');
-                $table->timestamps();
-            });
-        }
-        //==End notice
     }
 
 }
