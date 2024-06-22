@@ -6,7 +6,6 @@ use Vncore\Core\Front\Models\ShopLanguage;
 use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\Admin\Models\AdminTemplate;
 use Vncore\Core\Admin\Models\AdminPage;
-use Vncore\Core\Front\Models\ShopTax;
 
 class AdminStoreConfigController extends RootAdminController
 {
@@ -49,10 +48,6 @@ class AdminStoreConfigController extends RootAdminController
         ];
         $customerConfigsRequired = AdminConfig::getListConfigByCode($dataCustomerConfigRequired);
         //End customer
-
-        //Product config
-        $taxs = ShopTax::pluck('name', 'id')->toArray();
-        $taxs[0] = vc_language_render('admin.tax.non_tax');
 
         $productConfigQuery = [
             'code' => 'product_config',
@@ -128,11 +123,6 @@ class AdminStoreConfigController extends RootAdminController
             'contact'  => vc_language_render('admin.captcha.captcha_page_contact'),
             'review'   => vc_language_render('admin.captcha.captcha_page_review'),
         ];
-        if (vc_check_multi_shop_installed()) {
-            $pageList = (new AdminPage)->getListPageAlias($id);
-        } else {
-            $pageList = (new AdminPage)->getListPageAlias();
-        }
         //End email
         $data['customerConfigs']                = $customerConfigs;
         $data['customerConfigsRequired']        = $customerConfigsRequired;
@@ -141,8 +131,6 @@ class AdminStoreConfigController extends RootAdminController
         $data['productConfigAttributeRequired'] = $productConfigAttributeRequired;
         $data['configLayout']                   = $configLayout;
         $data['pluginCaptchaInstalled']         = vc_get_plugin_captcha_installed();
-        $data['pageList']                       = $pageList;
-        $data['taxs']                           = $taxs;
         $data['configDisplay']                  = $configDisplay;
         $data['orderConfig']                    = $orderConfig;
         $data['configCaptcha']                  = $configCaptcha;
