@@ -1,4 +1,4 @@
-@extends($templatePathAdmin.'layout')
+@extends($vc_templatePathAdmin.'layout')
 
 @section('main')
 <div class="row">
@@ -271,7 +271,7 @@
                             $customFields = isset($customFields) ? $customFields : [];
                             $fields = !empty($category) ? $category->getCustomFields() : [];
                         @endphp
-                        @includeIf($templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
+                        @includeIf($vc_templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
                         {{-- //Custom fields --}}
 
                 </div>

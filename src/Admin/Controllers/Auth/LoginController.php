@@ -29,7 +29,7 @@ class LoginController extends RootAdminController
             return redirect($this->redirectPath());
         }
 
-        return view($this->templatePathAdmin.'auth.login', ['title'=> vc_language_render('admin.login')]);
+        return view($this->vc_templatePathAdmin.'auth.login', ['title'=> vc_language_render('admin.login')]);
     }
 
     /**
@@ -102,7 +102,7 @@ class LoginController extends RootAdminController
             'permission' => (new AdminPermission)->pluck('name', 'id')->all(),
             'url_action' => vc_route_admin('admin.setting'),
         ];
-        return view($this->templatePathAdmin.'auth.setting')
+        return view($this->vc_templatePathAdmin.'auth.setting')
             ->with($data);
     }
 

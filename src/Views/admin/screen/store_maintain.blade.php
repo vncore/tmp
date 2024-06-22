@@ -1,4 +1,4 @@
-@extends($templatePathAdmin.'layout')
+@extends($vc_templatePathAdmin.'layout')
 
 @section('main')
 <div class="row">
@@ -95,7 +95,7 @@
 @endpush
 
 @push('scripts')
-@include($templatePathAdmin.'component.ckeditor_js')
+@include($vc_templatePathAdmin.'component.ckeditor_js')
 
 
 <script type="text/javascript">

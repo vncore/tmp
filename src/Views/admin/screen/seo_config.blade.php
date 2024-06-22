@@ -1,4 +1,4 @@
-@extends($templatePathAdmin.'layout')
+@extends($vc_templatePathAdmin.'layout')
 @section('main')
       <div class="row">
       <div class="col-md-12">

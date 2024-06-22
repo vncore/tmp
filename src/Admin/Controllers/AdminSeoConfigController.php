@@ -18,7 +18,7 @@ class AdminSeoConfigController extends RootAdminController
             'icon'     => 'fa fa-tasks',
         ];
         $data['urlUpdateConfigGlobal'] = vc_route_admin('admin_config_global.update');
-        return view($this->templatePathAdmin.'screen.seo_config')
+        return view($this->vc_templatePathAdmin.'screen.seo_config')
             ->with($data);
     }
 }

@@ -61,10 +61,10 @@ class AdminApiConnectionController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
     
-        return view($this->templatePathAdmin.'screen.api_connection')
+        return view($this->vc_templatePathAdmin.'screen.api_connection')
             ->with($data);
     }
 
@@ -166,7 +166,7 @@ class AdminApiConnectionController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
     
         $data['rightContentMain'] = '<input class="switch-data-config" data-store=0 name="api_connection_required" type="checkbox"  '.(vc_config_global('api_connection_required')?'checked':'').'><br> '.vc_language_render('admin.api_connection.api_connection_required_help');
@@ -174,7 +174,7 @@ class AdminApiConnectionController extends RootAdminController
         $optionSort = '';
         $data['urlSort'] = vc_route_admin('admin_api_connection.index', request()->except(['_token', '_pjax', 'sort_order']));
         $data['optionSort'] = $optionSort;
-        return view($this->templatePathAdmin.'screen.api_connection')
+        return view($this->vc_templatePathAdmin.'screen.api_connection')
         ->with($data);
     }
 

@@ -1,4 +1,4 @@
-@extends($templatePathAdmin.'layout')
+@extends($vc_templatePathAdmin.'layout')
 @section('main')
       <div class="card card-primary card-outline card-outline-tabs">
         <div class="card-header p-0 border-bottom-0">
@@ -52,7 +52,7 @@
             {{-- Tab order --}}
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <div class="tab-pane fade  fade active show" id="tab-store-order" role="tabpanel" aria-labelledby="store-order">
-              @include($templatePathAdmin.'screen.config_store.config_order')
+              @include($vc_templatePathAdmin.'screen.config_store.config_order')
             </div>
             @endif
             {{-- //End tab order --}}
@@ -60,7 +60,7 @@
             {{-- Tab customer --}}
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <div class="tab-pane fade" id="tab-store-customer" role="tabpanel" aria-labelledby="tab-store-customer-tab">
-              @include($templatePathAdmin.'screen.config_store.config_customer')
+              @include($vc_templatePathAdmin.'screen.config_store.config_customer')
             </div>
             @endif
             {{-- //Tab customer --}}
@@ -68,7 +68,7 @@
             {{-- Tab product --}}
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <div class="tab-pane fade" id="tab-store-product" role="tabpanel" aria-labelledby="tab-store-product-tab">
-              @include($templatePathAdmin.'screen.config_store.config_product')
+              @include($vc_templatePathAdmin.'screen.config_store.config_product')
             </div>
             @endif
             
@@ -76,46 +76,46 @@
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             {{-- Tab email config --}}
             <div class="tab-pane fade" id="tab-store-email" role="tabpanel" aria-labelledby="tab-store-email-tab">
-              @include($templatePathAdmin.'screen.config_store.config_mail')
+              @include($vc_templatePathAdmin.'screen.config_store.config_mail')
             </div>
             {{-- // Email config --}}
             @endif
 
             {{-- Tab url config --}}
             <div class="tab-pane fade" id="tab-store-url" role="tabpanel" aria-labelledby="tab-store-url-tab">
-              @include($templatePathAdmin.'screen.config_store.config_url')
+              @include($vc_templatePathAdmin.'screen.config_store.config_url')
             </div>
             {{-- // Url config --}}
 
             {{-- Tab captcha config --}}
             <div class="tab-pane fade" id="tab-store-captcha" role="tabpanel" aria-labelledby="tab-store-captcha-tab">
-              @include($templatePathAdmin.'screen.config_store.config_captcha')
+              @include($vc_templatePathAdmin.'screen.config_store.config_captcha')
             </div>
             {{-- // captcha config --}}
 
             @if (count($configLayout) && config('vncore.ecommerce_mode'))
             {{-- Tab layout config --}}
             <div class="tab-pane fade" id="tab-store-layout" role="tabpanel" aria-labelledby="tab-store-layout-tab">
-              @include($templatePathAdmin.'screen.config_store.config_layout')
+              @include($vc_templatePathAdmin.'screen.config_store.config_layout')
             </div>
             {{-- // layout config --}}
             @endif
 
             {{-- Tab display config --}}
             <div class="tab-pane fade" id="tab-store-display" role="tabpanel" aria-labelledby="tab-store-display-tab">
-              @include($templatePathAdmin.'screen.config_store.config_display')
+              @include($vc_templatePathAdmin.'screen.config_store.config_display')
             </div>
             {{-- // display config --}}
 
             {{-- Tab admin config --}}
             <div class="tab-pane fade" id="tab-admin-other" role="tabpanel" aria-labelledby="tab-admin-other-tab">
-              @include($templatePathAdmin.'screen.config_store.config_admin_other')
+              @include($vc_templatePathAdmin.'screen.config_store.config_admin_other')
             </div>
             {{-- // admin config --}}
 
             {{-- Tab admin config customize --}}
             <div class="tab-pane fade" id="tab-admin-customize" role="tabpanel" aria-labelledby="tab-admin-customize-tab">
-              @include($templatePathAdmin.'screen.config_store.config_admin_customize')
+              @include($vc_templatePathAdmin.'screen.config_store.config_admin_customize')
             </div>
             {{-- // admin config customize --}}
 

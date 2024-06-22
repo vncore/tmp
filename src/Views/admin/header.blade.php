@@ -6,8 +6,8 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       
-        @include($templatePathAdmin.'component.language')
-        @include($templatePathAdmin.'component.admin_theme')
+        @include($vc_templatePathAdmin.'component.language')
+        @include($vc_templatePathAdmin.'component.admin_theme')
         @if (is_array(config('vncore.module_header_left')))
             @foreach (config('vncore.module_header_left') as $module)
               @includeIf($module)
@@ -22,9 +22,9 @@
         <i class="fas fa-home"></i>
       </a> 
 
-      @include($templatePathAdmin.'component.notice')
+      @include($vc_templatePathAdmin.'component.notice')
 
-      @include($templatePathAdmin.'component.admin_profile')
+      @include($vc_templatePathAdmin.'component.admin_profile')
 
 
       {{-- <li class="nav-item">

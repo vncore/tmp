@@ -60,13 +60,13 @@ class AdminCustomFieldController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'index';
         $data['fieldTypes'] = $this->fieldTypes();
         $data['selectTypes'] = $this->selectTypes();
-        return view($this->templatePathAdmin.'screen.custom_field')
+        return view($this->vc_templatePathAdmin.'screen.custom_field')
             ->with($data);
     }
 
@@ -163,12 +163,12 @@ class AdminCustomFieldController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
         $data['fieldTypes'] = $this->fieldTypes();
         $data['selectTypes'] = $this->selectTypes();
         $data['layout'] = 'edit';
-        return view($this->templatePathAdmin.'screen.custom_field')
+        return view($this->vc_templatePathAdmin.'screen.custom_field')
             ->with($data);
     }
 

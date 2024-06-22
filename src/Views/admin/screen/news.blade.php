@@ -1,4 +1,4 @@
-@extends($templatePathAdmin.'layout')
+@extends($vc_templatePathAdmin.'layout')
 
 @section('main')
 <div class="row">
@@ -257,7 +257,7 @@
                             $customFields = isset($customFields) ? $customFields : [];
                             $fields = !empty($news) ? $news->getCustomFields() : [];
                         @endphp
-                        @includeIf($templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
+                        @includeIf($vc_templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
                         {{-- //Custom fields --}}
 
 
@@ -296,7 +296,7 @@
 @endpush
 
 @push('scripts')
-@include($templatePathAdmin.'component.ckeditor_js')
+@include($vc_templatePathAdmin.'component.ckeditor_js')
 
 <script type="text/javascript">
     $('textarea.editor').ckeditor(

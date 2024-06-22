@@ -62,7 +62,7 @@ class ResetPasswordController extends RootAdminController
                     ['url'    => '', 'title' => vc_language_render('admin.password_reset')],
                 ],
             ];
-        return view($this->templatePathAdmin.'auth.reset')
+        return view($this->vc_templatePathAdmin.'auth.reset')
         ->with($data);
     }
 

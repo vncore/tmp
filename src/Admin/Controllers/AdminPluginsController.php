@@ -35,7 +35,7 @@ class AdminPluginsController extends RootAdminController
 
     public function render($pluginsInstalled, $plugins, $title,$arrDefault)
     {
-        return view($this->templatePathAdmin.'screen.plugin')->with(
+        return view($this->vc_templatePathAdmin.'screen.plugin')->with(
             [
                 "title"            => $title,
                 "pluginsInstalled" => $pluginsInstalled,
@@ -108,7 +108,7 @@ class AdminPluginsController extends RootAdminController
         $data =  [
             'title' => vc_language_render('admin.plugin.import')
         ];
-        return view($this->templatePathAdmin.'screen.plugin_upload')
+        return view($this->vc_templatePathAdmin.'screen.plugin_upload')
         ->with($data);
     }
 

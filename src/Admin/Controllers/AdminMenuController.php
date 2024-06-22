@@ -24,7 +24,7 @@ class AdminMenuController extends RootAdminController
             'title_form' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vc_language_render('admin.menu.create'),
         ];
         $data['layout'] = 'index';
-        return view($this->templatePathAdmin.'screen.list_menu')
+        return view($this->vc_templatePathAdmin.'screen.list_menu')
             ->with($data);
     }
 
@@ -80,7 +80,7 @@ class AdminMenuController extends RootAdminController
         $data['urlDeleteItem'] = vc_route_admin('admin_menu.delete');
         $data['id'] = $id;
         $data['layout'] = 'edit';
-        return view($this->templatePathAdmin.'screen.list_menu')
+        return view($this->vc_templatePathAdmin.'screen.list_menu')
             ->with($data);
     }
 

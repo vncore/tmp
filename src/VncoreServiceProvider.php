@@ -250,7 +250,7 @@ class VncoreServiceProvider extends ServiceProvider
         view()->share('vc_templatePath', 'templates.' . vc_store('template'));
         view()->share('vc_templateFile', 'templates/' . vc_store('template'));
         //
-        view()->share('templatePathAdmin', config('admin.path_view'));
+        view()->share('vc_templatePathAdmin', config('admin.path_view'));
     }
 
     /**

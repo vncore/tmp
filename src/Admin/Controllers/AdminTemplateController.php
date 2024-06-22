@@ -24,7 +24,7 @@ class AdminTemplateController extends RootAdminController
         $data["templatesActive"] = (new AdminTemplate)->getListTemplateActive();
         $data["templatesInstalled"] = (new AdminTemplate)->getListTemplate();
         $data["templatesUsed"] = AdminStore::getAllTemplateUsed();
-        return view($this->templatePathAdmin.'screen.template')
+        return view($this->vc_templatePathAdmin.'screen.template')
             ->with($data);
     }
 
@@ -137,7 +137,7 @@ class AdminTemplateController extends RootAdminController
         $data =  [
             'title' => vc_language_render('admin.template.import')
         ];
-        return view($this->templatePathAdmin.'screen.template_upload')
+        return view($this->vc_templatePathAdmin.'screen.template_upload')
         ->with($data);
     }
 

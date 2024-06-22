@@ -1,4 +1,4 @@
-@extends($templatePathAdmin.'layout')
+@extends($vc_templatePathAdmin.'layout')
 @section('main')
       <div class="card card-primary card-outline card-outline-tabs">
         <div class="card-header p-0 border-bottom-0">
@@ -16,7 +16,7 @@
             {{-- Tab policy --}}
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <div class="tab-pane fade  fade active show" id="tab-password_policy_customer" role="tabpanel" aria-labelledby="password_policy_customer">
-              @include($templatePathAdmin.'screen.password_policy_customer')
+              @include($vc_templatePathAdmin.'screen.password_policy_customer')
             </div>
             @endif
             {{-- //End tab policy --}}

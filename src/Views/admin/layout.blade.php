@@ -34,7 +34,7 @@
   {{-- <link rel="stylesheet" href="{{ vc_file('admin/LTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}"> --}}
 
   @section('block_component_css')
-    @include($templatePathAdmin.'component.css')
+    @include($vc_templatePathAdmin.'component.css')
   @show
 
 
@@ -51,11 +51,11 @@
 <div class="wrapper">
 
   @section('block_header')
-    @include($templatePathAdmin.'header')
+    @include($vc_templatePathAdmin.'header')
   @show
 
   @section('block_sidebar')
-    @include($templatePathAdmin.'sidebar')
+    @include($vc_templatePathAdmin.'sidebar')
   @show
 
   <!-- Content Wrapper. Contains page content -->
@@ -99,7 +99,7 @@
   <!-- /.content-wrapper -->
 
   @section('block_footer')
-    @include($templatePathAdmin.'footer')
+    @include($vc_templatePathAdmin.'footer')
   @show
 
   <!-- Control Sidebar -->
@@ -160,11 +160,11 @@
 @stack('scripts')
 
 @section('block_component_script')
-@include($templatePathAdmin.'component.script')
+@include($vc_templatePathAdmin.'component.script')
 @show
 
 @section('block_component_alerts')
-@include($templatePathAdmin.'component.alerts')
+@include($vc_templatePathAdmin.'component.alerts')
 @show
 
 </body>

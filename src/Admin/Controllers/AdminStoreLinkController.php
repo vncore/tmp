@@ -104,7 +104,7 @@ class AdminStoreLinkController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
@@ -116,7 +116,7 @@ class AdminStoreLinkController extends RootAdminController
         </a>';
         //=menuRight
 
-        return view($this->templatePathAdmin.'screen.list')
+        return view($this->vc_templatePathAdmin.'screen.list')
             ->with($data);
     }
 
@@ -138,7 +138,7 @@ class AdminStoreLinkController extends RootAdminController
             'layout'            => 'single',
             'url_action'        => vc_route_admin('admin_store_link.create'),
         ];
-        return view($this->templatePathAdmin.'screen.store_link')
+        return view($this->vc_templatePathAdmin.'screen.store_link')
             ->with($data);
     }
 
@@ -160,7 +160,7 @@ class AdminStoreLinkController extends RootAdminController
             'layout'            => 'collection',
             'url_action'        => vc_route_admin('admin_store_link.collection_create'),
         ];
-        return view($this->templatePathAdmin.'screen.store_link')
+        return view($this->vc_templatePathAdmin.'screen.store_link')
             ->with($data);
     }
 
@@ -268,7 +268,7 @@ class AdminStoreLinkController extends RootAdminController
             'layout'            => $link->type == 'collection' ? 'collection': 'single',
             'url_action'        => vc_route_admin('admin_store_link.edit', ['id' => $link['id']]),
         ];
-        return view($this->templatePathAdmin.'screen.store_link')
+        return view($this->vc_templatePathAdmin.'screen.store_link')
             ->with($data);
     }
 

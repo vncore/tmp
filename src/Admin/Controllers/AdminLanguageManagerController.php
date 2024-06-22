@@ -51,7 +51,7 @@ class AdminLanguageManagerController extends RootAdminController
         ];
 
 
-        return view($this->templatePathAdmin.'screen.language_manager')
+        return view($this->vc_templatePathAdmin.'screen.language_manager')
             ->with($data);
     }
 
@@ -104,7 +104,7 @@ class AdminLanguageManagerController extends RootAdminController
             'positionLang' => $positionLang,
             'languages' => $languages,
         ];
-        return view($this->templatePathAdmin.'screen.language_manager_add')
+        return view($this->vc_templatePathAdmin.'screen.language_manager_add')
             ->with($data);
     }
 

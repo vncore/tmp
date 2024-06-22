@@ -1,7 +1,7 @@
-@extends($templatePathAdmin.'layout_portable')
+@extends($vc_templatePathAdmin.'layout_portable')
 
 @section('main')
-@include($templatePathAdmin.'component.css_login')
+@include($vc_templatePathAdmin.'component.css_login')
     <div class="container-login100">
       <div class="wrap-login100 main-login">
         <div class="card-header text-center">

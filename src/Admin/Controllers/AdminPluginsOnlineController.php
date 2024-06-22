@@ -98,7 +98,7 @@ class AdminPluginsOnlineController extends RootAdminController
         $arrPluginLocal = vc_get_all_plugin();
         $title = vc_language_render('admin.plugin.plugin');
 
-        return view($this->templatePathAdmin.'screen.plugin_online')->with(
+        return view($this->vc_templatePathAdmin.'screen.plugin_online')->with(
             [
                 "title" => $title,
                 "arrPluginLocal" => $arrPluginLocal,

@@ -46,7 +46,7 @@ class AdminBackupController extends RootAdminController
             }
         }
         krsort($arrFiles);
-        return view($this->templatePathAdmin.'screen.backup')->with(
+        return view($this->vc_templatePathAdmin.'screen.backup')->with(
             [
                 "title"    => vc_language_render('admin.backup.title'),
                 "arrFiles" => $arrFiles,

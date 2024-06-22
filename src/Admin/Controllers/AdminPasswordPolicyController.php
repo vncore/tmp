@@ -37,7 +37,7 @@ class AdminPasswordPolicyController extends RootAdminController
         $data['storeId']                        = $id;
         $data['urlUpdateConfigGlobal']          = vc_route_admin('admin_config_global.update');
 
-        return view($this->templatePathAdmin.'screen.password_policy')
+        return view($this->vc_templatePathAdmin.'screen.password_policy')
         ->with($data);
     }
 

@@ -17,12 +17,12 @@ class DashboardController extends RootAdminController
         //Check user allow view dasdboard
         if (!\Admin::user()->checkUrlAllowAccess(route('admin.home'))) {
             $data['title'] = vc_language_render('admin.dashboard');
-            return view($this->templatePathAdmin.'default', $data);
+            return view($this->vc_templatePathAdmin.'default', $data);
         }
 
         $data                   = [];
         $data['title']          = vc_language_render('admin.dashboard');
-        return view($this->templatePathAdmin.'dashboard', $data);
+        return view($this->vc_templatePathAdmin.'dashboard', $data);
     }
 
     /**
@@ -37,7 +37,7 @@ class DashboardController extends RootAdminController
             'icon' => '',
             'url' => session('url'),
         ];
-        return view($this->templatePathAdmin.'data_not_found', $data);
+        return view($this->vc_templatePathAdmin.'data_not_found', $data);
     }
 
 
@@ -54,7 +54,7 @@ class DashboardController extends RootAdminController
             'method' => session('method'),
             'url' => session('url'),
         ];
-        return view($this->templatePathAdmin.'deny', $data);
+        return view($this->vc_templatePathAdmin.'deny', $data);
     }
 
     /**
@@ -68,6 +68,6 @@ class DashboardController extends RootAdminController
             'method' => session('method'),
             'url' => session('url'),
         ];
-        return view($this->templatePathAdmin.'deny_single', $data);
+        return view($this->vc_templatePathAdmin.'deny_single', $data);
     }
 }

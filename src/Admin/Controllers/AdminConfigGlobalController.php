@@ -21,7 +21,7 @@ class AdminConfigGlobalController extends RootAdminController
             'title' => vc_language_render('admin.config.webhook'),
             'subTitle' => '',
         ];
-        return view($this->templatePathAdmin.'screen.webhook')
+        return view($this->vc_templatePathAdmin.'screen.webhook')
             ->with($data);
     }
 

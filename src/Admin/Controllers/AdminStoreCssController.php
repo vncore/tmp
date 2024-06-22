@@ -42,7 +42,7 @@ class AdminStoreCssController extends RootAdminController
             'css' => $cssContent->css,
             'url_action' => vc_route_admin('admin_store_css.index'),
         ];
-        return view($this->templatePathAdmin.'screen.store_css')
+        return view($this->vc_templatePathAdmin.'screen.store_css')
             ->with($data);
     }
     

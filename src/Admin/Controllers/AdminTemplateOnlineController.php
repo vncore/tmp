@@ -84,7 +84,7 @@ class AdminTemplateOnlineController extends RootAdminController
     
         $title = vc_language_render('admin.template.list');
     
-        return view($this->templatePathAdmin.'screen.template_online')->with(
+        return view($this->vc_templatePathAdmin.'screen.template_online')->with(
             [
                     "title" => $title,
                     "arrTemplateLocal" => vc_get_all_template(),

@@ -72,7 +72,7 @@ class AdminSubscribeController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
 
@@ -105,7 +105,7 @@ class AdminSubscribeController extends RootAdminController
                 </form>';
         //=menuSearch
 
-        return view($this->templatePathAdmin.'screen.list')
+        return view($this->vc_templatePathAdmin.'screen.list')
             ->with($data);
     }
 
@@ -123,7 +123,7 @@ class AdminSubscribeController extends RootAdminController
             'subscribe' => [],
             'url_action' => vc_route_admin('admin_subscribe.create'),
         ];
-        return view($this->templatePathAdmin.'screen.subscribe')
+        return view($this->vc_templatePathAdmin.'screen.subscribe')
             ->with($data);
     }
 
@@ -174,7 +174,7 @@ class AdminSubscribeController extends RootAdminController
             'subscribe' => $subscribe,
             'url_action' => vc_route_admin('admin_subscribe.edit', ['id' => $subscribe['id']]),
         ];
-        return view($this->templatePathAdmin.'screen.subscribe')
+        return view($this->vc_templatePathAdmin.'screen.subscribe')
             ->with($data);
     }
 

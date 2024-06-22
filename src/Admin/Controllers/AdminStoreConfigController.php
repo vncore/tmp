@@ -142,7 +142,7 @@ class AdminStoreConfigController extends RootAdminController
         $data['urlUpdateConfig']                = vc_route_admin('admin_config.update');
         $data['urlUpdateConfigGlobal']          = vc_route_admin('admin_config_global.update');
 
-        return view($this->templatePathAdmin.'screen.config_store_default')
+        return view($this->vc_templatePathAdmin.'screen.config_store_default')
         ->with($data);
     }
 

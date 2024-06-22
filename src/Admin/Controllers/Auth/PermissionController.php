@@ -118,7 +118,7 @@ class PermissionController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->templatePathAdmin.'component.pagination');
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
         $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
@@ -136,7 +136,7 @@ class PermissionController extends RootAdminController
         $data['optionSort'] = $optionSort;
         //=menuSort
 
-        return view($this->templatePathAdmin.'screen.list')
+        return view($this->vc_templatePathAdmin.'screen.list')
             ->with($data);
     }
 
@@ -157,7 +157,7 @@ class PermissionController extends RootAdminController
 
         ];
 
-        return view($this->templatePathAdmin.'auth.permission')
+        return view($this->vc_templatePathAdmin.'auth.permission')
             ->with($data);
     }
 
@@ -211,7 +211,7 @@ class PermissionController extends RootAdminController
             'routeAdmin' => $this->routeAdmin,
             'url_action' => vc_route_admin('admin_permission.edit', ['id' => $permission['id']]),
         ];
-        return view($this->templatePathAdmin.'auth.permission')
+        return view($this->vc_templatePathAdmin.'auth.permission')
             ->with($data);
     }
 
