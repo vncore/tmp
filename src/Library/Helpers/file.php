@@ -269,8 +269,11 @@ if (!function_exists('vc_unzip') && !in_array('vc_unzip', config('helper_except'
  * Process path file
  */
 if (!function_exists('vc_file') && !in_array('vc_file', config('helper_except', []))) {
-    function vc_file(string $pathFile = "", bool $security = null):string
+    function vc_file($pathFile = "", bool $security = null):string
     {
+        if (is_null($pathFile)) {
+            return '';
+        }
         return asset($pathFile, $security);
     }
 }
