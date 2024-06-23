@@ -215,8 +215,11 @@ if (!function_exists('vc_zip') && !in_array('vc_zip', config('helper_except', []
     /*
     Zip file or folder
      */
-    function vc_zip(string $pathToSource, string $pathSaveTo)
+    function vc_zip($pathToSource = "", $pathSaveTo = "")
     {
+        if (!is_string($pathToSource) || !is_string($pathSaveTo)) {
+            return false;
+        }
         if (extension_loaded('zip')) {
             if (file_exists($pathToSource)) {
                 $zip = new \ZipArchive();
@@ -253,8 +256,11 @@ if (!function_exists('vc_unzip') && !in_array('vc_unzip', config('helper_except'
      *
      * @return  [type]  [return description]
      */
-    function vc_unzip(string $pathToSource, string $pathSaveTo)
+    function vc_unzip($pathToSource = "", $pathSaveTo = "")
     {
+        if (!is_string($pathToSource) || !is_string($pathSaveTo)) {
+            return false;
+        }
         $zip = new \ZipArchive();
         if ($zip->open(str_replace("//", "/", $pathToSource)) === true) {
             $zip->extractTo($pathSaveTo);
@@ -271,7 +277,7 @@ if (!function_exists('vc_unzip') && !in_array('vc_unzip', config('helper_except'
 if (!function_exists('vc_file') && !in_array('vc_file', config('helper_except', []))) {
     function vc_file($pathFile = "", bool $security = null):string
     {
-        if (is_null($pathFile)) {
+        if (!is_string($pathFile)) {
             return '';
         }
         return asset($pathFile, $security);
