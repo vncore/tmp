@@ -13,7 +13,7 @@ class MakePlugin extends Command
      *
      * @var string
      */
-    protected $signature = 'sc:make {function} {--name=} {--download=0}';
+    protected $signature = 'vc:make {function} {--name=} {--download=0}';
 
     /**
      * The console command description.

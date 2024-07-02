@@ -13,14 +13,14 @@ class Restore extends Command
      *
      * @var string
      */
-    protected $signature = 'sc:restore {--path=}';
+    protected $signature = 'vc:restore {--path=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Restore database "sc:restore --path=abc.sql"';
+    protected $description = 'Restore database "vc:restore --path=abc.sql"';
 
     /**
      * Execute the console command.

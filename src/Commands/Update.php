@@ -14,7 +14,7 @@ class Update extends Command
      *
      * @var string
      */
-    protected $signature = 'sc:update';
+    protected $signature = 'vc:update';
 
     /**
      * The console command description.

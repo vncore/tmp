@@ -13,7 +13,7 @@ class Customize extends Command
      *
      * @var string
      */
-    protected $signature = 'sc:customize {obj?}';
+    protected $signature = 'vc:customize {obj?}';
 
     /**
      * The console command description.
@@ -32,28 +32,28 @@ class Customize extends Command
         $obj = $this->argument('obj');
         switch ($obj) {
             case 'admin':
-                $this->call('vendor:publish', ['--tag' => 'sc:config-admin']);
-                $this->call('vendor:publish', ['--tag' => 'sc:view-admin']);
+                $this->call('vendor:publish', ['--tag' => 'vc:config-admin']);
+                $this->call('vendor:publish', ['--tag' => 'vc:view-admin']);
                 break;
             
             case 'validation':
-                $this->call('vendor:publish', ['--tag' => 'sc:config-validation']);
+                $this->call('vendor:publish', ['--tag' => 'vc:config-validation']);
                 break;
 
             case 'middleware':
-                $this->call('vendor:publish', ['--tag' => 'sc:config-middleware']);
+                $this->call('vendor:publish', ['--tag' => 'vc:config-middleware']);
                 break;
                 
             case 'lfm':
-                $this->call('vendor:publish', ['--tag' => 'sc:config-lfm']);
+                $this->call('vendor:publish', ['--tag' => 'vc:config-lfm']);
                 break;
 
             case 'cart':
-                $this->call('vendor:publish', ['--tag' => 'sc:config-cart']);
+                $this->call('vendor:publish', ['--tag' => 'vc:config-cart']);
                 break;
 
             case 'api':
-                $this->call('vendor:publish', ['--tag' => 'sc:config-api']);
+                $this->call('vendor:publish', ['--tag' => 'vc:config-api']);
                 break;
 
             default:

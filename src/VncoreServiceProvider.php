@@ -326,14 +326,14 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'sc:view-admin');
-            $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'sc:view-front');
-            $this->publishes([__DIR__.'/Config/admin.php' => config_path('admin.php')], 'sc:config-admin');
-            $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'sc:config-validation');
-            $this->publishes([__DIR__.'/Config/cart.php' => config_path('cart.php')], 'sc:config-cart');
-            $this->publishes([__DIR__.'/Config/api.php' => config_path('api.php')], 'sc:config-api');
-            $this->publishes([__DIR__.'/Config/middleware.php' => config_path('middleware.php')], 'sc:config-middleware');
-            $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'sc:config-lfm');
+            $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vc:view-admin');
+            $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vc:view-front');
+            $this->publishes([__DIR__.'/Config/admin.php' => config_path('admin.php')], 'vc:config-admin');
+            $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'vc:config-validation');
+            $this->publishes([__DIR__.'/Config/cart.php' => config_path('cart.php')], 'vc:config-cart');
+            $this->publishes([__DIR__.'/Config/api.php' => config_path('api.php')], 'vc:config-api');
+            $this->publishes([__DIR__.'/Config/middleware.php' => config_path('middleware.php')], 'vc:config-middleware');
+            $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vc:config-lfm');
         }
     }
 }

@@ -157,7 +157,7 @@ if (!function_exists('vc_handle_exception') && !in_array('vc_handle_exception', 
         $msg .= "```IP:```".request()->ip().PHP_EOL;
         $msg .= "*File* `".$exception->getFile()."`, *Line:* ".$exception->getLine().", *Code:* ".$exception->getCode().PHP_EOL.'URL= '.url()->current();
         if (function_exists('vc_report') && $msg) {
-            vc_report($msg);
+            vc_report(msg:$msg);
         }
     }
 }

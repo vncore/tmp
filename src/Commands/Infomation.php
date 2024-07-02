@@ -13,7 +13,7 @@ class Infomation extends Command
      *
      * @var string
      */
-    protected $signature = 'sc:info';
+    protected $signature = 'vc:info';
 
     /**
      * The console command description.

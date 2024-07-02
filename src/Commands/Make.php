@@ -13,7 +13,7 @@ class Make extends Command
      *
      * @var string
      */
-    protected $signature = 'sc:make {function} {--name=} {--download=0}';
+    protected $signature = 'vc:make {function} {--name=} {--download=0}';
 
     /**
      * The console command description.
@@ -21,8 +21,8 @@ class Make extends Command
      * @var string
      */
     protected $description = 'Make format plugin and template:'
-    .PHP_EOL.'Plugin:   "php artisan sc:make plugin --name=Payment/YourPluginName --download=0"'
-    .PHP_EOL.'Template:  "php artisan sc:make tmplate --name=YourTemplateName --download=0"';
+    .PHP_EOL.'Plugin:   "php artisan vc:make plugin --name=Payment/YourPluginName --download=0"'
+    .PHP_EOL.'Template:  "php artisan vc:make tmplate --name=YourTemplateName --download=0"';
 
     protected $tmpFolder = 'tmp';
     /**
