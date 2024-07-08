@@ -36,7 +36,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             $api_key = 'base64:' . base64_encode(
                 Encrypter::generateKey(config('app.cipher'))
             );
-            $getEnv = file_get_contents(base_path() . '/.env.example');
+            $getEnv = file_get_contents(__DIR__ . '/.env.example_vncore');
             $getEnv = str_replace('vncore_your_domain', $domain, $getEnv);
             $getEnv = str_replace('vncore_database_host', $database_host, $getEnv);
             $getEnv = str_replace('vncore_database_port', $database_port, $getEnv);
