@@ -26,6 +26,7 @@ use Vncore\Core\Admin\Middleware\AdminStoreId;
 use Vncore\Core\Admin\Middleware\AdminTheme;
 use Laravel\Sanctum\Sanctum;
 use Vncore\Core\Front\Models\PersonalAccessToken;
+use Illuminate\Pagination\Paginator;
 
 class VncoreServiceProvider extends ServiceProvider
 {
@@ -46,6 +47,12 @@ class VncoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+        //If env is production, then disable debug mode
+        if (config('app.env') === 'production') {
+            config(['app.debug' => false]);
+        }
+        
         if(file_exists(base_path('bootstrap/cache/routes-v7.php'))) {
             echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! SC cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
         }
