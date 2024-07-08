@@ -119,8 +119,8 @@ class PermissionMiddleware
     {
         $routePath = $request->path();
         $exceptsPAth = [
-            SC_ADMIN_PREFIX . '/auth/login',
-            SC_ADMIN_PREFIX . '/auth/logout',
+            VNCORE_ADMIN_PREFIX . '/auth/login',
+            VNCORE_ADMIN_PREFIX . '/auth/logout',
         ];
         return in_array($routePath, $exceptsPAth);
     }
@@ -150,15 +150,15 @@ class PermissionMiddleware
     public function viewWithoutToMessage()
     {
         return [
-            SC_ADMIN_PREFIX . '/uploads/delete',
-            SC_ADMIN_PREFIX . '/uploads/newfolder',
-            SC_ADMIN_PREFIX . '/uploads/domove',
-            SC_ADMIN_PREFIX . '/uploads/rename',
-            SC_ADMIN_PREFIX . '/uploads/resize',
-            SC_ADMIN_PREFIX . '/uploads/doresize',
-            SC_ADMIN_PREFIX . '/uploads/cropimage',
-            SC_ADMIN_PREFIX . '/uploads/crop',
-            SC_ADMIN_PREFIX . '/uploads/move',
+            VNCORE_ADMIN_PREFIX . '/uploads/delete',
+            VNCORE_ADMIN_PREFIX . '/uploads/newfolder',
+            VNCORE_ADMIN_PREFIX . '/uploads/domove',
+            VNCORE_ADMIN_PREFIX . '/uploads/rename',
+            VNCORE_ADMIN_PREFIX . '/uploads/resize',
+            VNCORE_ADMIN_PREFIX . '/uploads/doresize',
+            VNCORE_ADMIN_PREFIX . '/uploads/cropimage',
+            VNCORE_ADMIN_PREFIX . '/uploads/crop',
+            VNCORE_ADMIN_PREFIX . '/uploads/move',
         ];
     }
 }

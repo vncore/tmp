@@ -83,7 +83,7 @@ class LoginController extends RootAdminController
 
         $request->session()->invalidate();
 
-        return redirect(SC_ADMIN_PREFIX);
+        return redirect(VNCORE_ADMIN_PREFIX);
     }
 
     public function getSetting()
@@ -160,7 +160,7 @@ class LoginController extends RootAdminController
             return $this->redirectTo();
         }
 
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : SC_ADMIN_PREFIX;
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : VNCORE_ADMIN_PREFIX;
     }
 
     /**

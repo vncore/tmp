@@ -259,9 +259,9 @@ class AdminUser extends Authenticatable
                     if (
                         in_array($method[0], ['ANY', 'POST'])
                         && (
-                            SC_ADMIN_PREFIX . '/config/*' == $method[1]
-                        || SC_ADMIN_PREFIX . '/config/update_info' == $method[1]
-                        || SC_ADMIN_PREFIX . '/config' == $method[1]
+                            VNCORE_ADMIN_PREFIX . '/config/*' == $method[1]
+                        || VNCORE_ADMIN_PREFIX . '/config/update_info' == $method[1]
+                        || VNCORE_ADMIN_PREFIX . '/config' == $method[1]
                         )
                     ) {
                         return true;

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(
     [
-        'prefix' => SC_ADMIN_PREFIX,
+        'prefix' => VNCORE_ADMIN_PREFIX,
         'middleware' => SC_ADMIN_MIDDLEWARE,
     ],
     function () {

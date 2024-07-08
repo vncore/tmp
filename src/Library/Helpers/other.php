@@ -67,7 +67,7 @@ if (!function_exists('vncore_url_render') && !in_array('vncore_url_render', conf
 
         if (count($arrCheckUrl) == 2) {
             $string = Str::start($arrCheckUrl[1], '/');
-            $string = SC_ADMIN_PREFIX . $string;
+            $string = VNCORE_ADMIN_PREFIX . $string;
             return url($string);
         }
         return url($string);

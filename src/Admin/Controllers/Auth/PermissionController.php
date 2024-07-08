@@ -17,7 +17,7 @@ class PermissionController extends RootAdminController
         $routes = app()->routes->getRoutes();
 
         foreach ($routes as $route) {
-            if (Str::startsWith($route->uri(), SC_ADMIN_PREFIX)) {
+            if (Str::startsWith($route->uri(), VNCORE_ADMIN_PREFIX)) {
                 $prefix = ltrim($route->getPrefix(), '/');
                 $routeAdmin[$prefix] = [
                     'uri'    => 'ANY::' . $prefix . '/*',
@@ -265,7 +265,7 @@ class PermissionController extends RootAdminController
 
     public function without()
     {
-        $prefix = SC_ADMIN_PREFIX?SC_ADMIN_PREFIX.'/':'';
+        $prefix = VNCORE_ADMIN_PREFIX?VNCORE_ADMIN_PREFIX.'/':'';
         return [
             $prefix . 'login',
             $prefix . 'logout',

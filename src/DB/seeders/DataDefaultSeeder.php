@@ -46,7 +46,7 @@ class DataDefaultSeeder extends Seeder
         $dataMenu = $this->dataMenu();
         $db->table(SC_DB_PREFIX.'admin_menu')->insertOrIgnore($dataMenu);
         
-        $dataAdminPermission = $this->dataAdminPermission(SC_ADMIN_PREFIX);
+        $dataAdminPermission = $this->dataAdminPermission(VNCORE_ADMIN_PREFIX);
         $db->table(SC_DB_PREFIX.'admin_permission')->insertOrIgnore($dataAdminPermission);
         
         $dataAdminRole = $this->dataAdminRole();

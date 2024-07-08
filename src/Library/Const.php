@@ -15,7 +15,7 @@ define('SC_API_MIDDLEWARE', ['api', 'api.extend']);
 define('SC_CONNECTION', 'mysql');
 define('SC_CONNECTION_LOG', 'mysql');
 //Prefix url admin
-define('SC_ADMIN_PREFIX', config('const.ADMIN_PREFIX'));
+define('VNCORE_ADMIN_PREFIX', config('const.ADMIN_PREFIX'));
 //Prefix database
 define('SC_DB_PREFIX', config('const.DB_PREFIX'));
 // Root ID store
