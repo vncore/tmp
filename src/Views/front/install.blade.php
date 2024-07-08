@@ -60,18 +60,18 @@
         </div>
         <div style="clear: both;display: block;">
             <p>
-                {{ trans('install.info.about') }}<br>
-                {!! trans('install.info.about_us') !!}<br>
-                {!! trans('install.info.document') !!}<br>
+                {{ trans('vncore::install.info.about') }}<br>
+                {!! trans('vncore::install.info.about_us') !!}<br>
+                {!! trans('vncore::install.info.document') !!}<br>
             </p>
-            <p><b>{{ trans('install.info.version') }}</b>: {{ config('vncore.version') }}</p>
-            <p>{!! trans('install.info.terms') !!}</p>
+            <p><b>{{ trans('vncore::install.info.version') }}</b>: {{ config('vncore.version') }}</p>
+            <p>{!! trans('vncore::install.info.terms') !!}</p>
         </div>
 
 @php
     $checkRequire = 'pass';
 @endphp
-<b>{{ trans('install.check_extension') }}</b>:
+<b>{{ trans('vncore::install.check_extension') }}</b>:
 @if (count($requirements['ext']))
     <ul>
         @foreach ($requirements['ext'] as $label => $result)
@@ -82,11 +82,11 @@
                     $status = $checkRequire = 'failed';
                 }
             @endphp
-                <li>{{ $label }}<span class='{{ $status }}'>{{ $result ? trans('install.check_ok') : trans('install.check_failed') }}</span></li>
+                <li>{{ $label }}<span class='{{ $status }}'>{{ $result ? trans('vncore::install.check_ok') : trans('vncore::install.check_failed') }}</span></li>
         @endforeach
     </ul>
 @endif
-<b>{{ trans('install.check_writable') }}</b>:
+<b>{{ trans('vncore::install.check_writable') }}</b>:
 @if (count($requirements['writable']))
     <ul>
         @foreach ($requirements['writable'] as $label => $result)
@@ -97,7 +97,7 @@
                     $status = $checkRequire = 'failed';
                 }
             @endphp
-                <li>{{ $label }}<span class='{{ $status }}'>{{ $result ? trans('install.check_ok') : trans('install.check_failed') }}</span></li>
+                <li>{{ $label }}<span class='{{ $status }}'>{{ $result ? trans('vncore::install.check_ok') : trans('vncore::install.check_failed') }}</span></li>
         @endforeach
     </ul>
 @endif
@@ -110,44 +110,44 @@
             <div class="panel-body" >
                     <form  class="form-horizontal" id="formInstall">
                         <div id="div_database_host" class="form-group info-install required">
-                            <label for="database_host"  required class="control-label col-md-4  requiredField"> {{ trans('install.database_host') }} </label>
+                            <label for="database_host"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.database_host') }} </label>
                             <div class="controls col-md-8 ">
-                                <input class="input-md  textInput form-control" id="database_host"  name="database_host" placeholder="{{ trans('install.database_host') }}" style="margin-bottom: 10px" type="text" value="127.0.0.1" />
+                                <input class="input-md  textInput form-control" id="database_host"  name="database_host" placeholder="{{ trans('vncore::install.database_host') }}" style="margin-bottom: 10px" type="text" value="127.0.0.1" />
                             </div>
                         </div>
                         <div id="div_database_port" class="form-group info-install required">
-                            <label for="database_port"  required class="control-label col-md-4  requiredField"> {{ trans('install.database_port') }} </label>
+                            <label for="database_port"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.database_port') }} </label>
                             <div class="controls col-md-8 ">
-                                <input class="input-md  textInput form-control" id="database_port"  name="database_port" placeholder="{{ trans('install.database_port') }}" style="margin-bottom: 10px" type="number" value="3306" />
+                                <input class="input-md  textInput form-control" id="database_port"  name="database_port" placeholder="{{ trans('vncore::install.database_port') }}" style="margin-bottom: 10px" type="number" value="3306" />
                             </div>
                         </div>
                         <div id="div_database_name" class="form-group info-install required">
-                            <label for="database_name"  required class="control-label col-md-4  requiredField"> {{ trans('install.database_name') }} </label>
+                            <label for="database_name"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.database_name') }} </label>
                             <div class="controls col-md-8 ">
-                                <input class="input-md  textInput form-control" id="database_name"  name="database_name" placeholder="{{ trans('install.database_name') }}" style="margin-bottom: 10px" type="text" value="vncore" />
+                                <input class="input-md  textInput form-control" id="database_name"  name="database_name" placeholder="{{ trans('vncore::install.database_name') }}" style="margin-bottom: 10px" type="text" value="vncore" />
                             </div>
                         </div>
                         <div id="div_database_user" class="form-group info-install required">
-                            <label for="database_user"  required class="control-label col-md-4  requiredField"> {{ trans('install.database_user') }} </label>
+                            <label for="database_user"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.database_user') }} </label>
                             <div class="controls col-md-8 ">
-                                <input class="input-md  textInput form-control" id="database_user"  name="database_user" placeholder="{{ trans('install.database_user') }}" style="margin-bottom: 10px" type="text" value="root" />
+                                <input class="input-md  textInput form-control" id="database_user"  name="database_user" placeholder="{{ trans('vncore::install.database_user') }}" style="margin-bottom: 10px" type="text" value="root" />
                             </div>
                         </div>
                         <div id="div_database_password" class="form-group info-install required">
-                            <label for="database_password"  required class="control-label col-md-4  requiredField"> {{ trans('install.database_password') }} </label>
+                            <label for="database_password"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.database_password') }} </label>
                             <div class="controls col-md-8 ">
-                                <input class="input-md  textInput form-control" id="database_password"  name="database_password" placeholder="{{ trans('install.database_password') }}" style="margin-bottom: 10px" type="password" value="" />
+                                <input class="input-md  textInput form-control" id="database_password"  name="database_password" placeholder="{{ trans('vncore::install.database_password') }}" style="margin-bottom: 10px" type="password" value="" />
                             </div>
                         </div>
                         <div id="div_database_prefix" class="form-group info-install">
-                            <label for="database_prefix"  class="control-label col-md-4 "> {{ trans('install.database_prefix') }} </label>
+                            <label for="database_prefix"  class="control-label col-md-4 "> {{ trans('vncore::install.database_prefix') }} </label>
                             <div class="controls col-md-8 ">
-                                <input class="input-md  textInput form-control" id="database_prefix"  name="database_prefix" placeholder="{{ trans('install.database_prefix_help') }}" style="margin-bottom: 10px" type="text"  value="vc_" />
+                                <input class="input-md  textInput form-control" id="database_prefix"  name="database_prefix" placeholder="{{ trans('vncore::install.database_prefix_help') }}" style="margin-bottom: 10px" type="text"  value="vc_" />
                             </div>
                         </div>
                         <hr>
                         <div id="div_language_default" class="form-group info-install required">
-                            <label for="language_default"  required class="control-label col-md-4  requiredField"> {{ trans('install.language_default') }} </label>
+                            <label for="language_default"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.language_default') }} </label>
                             <div class="controls col-md-8">
                                 <select name="language_default" class="form-control" id="language_default">
                                     @foreach (['vi' => 'VietNam', 'en' => 'English'] as $key => $value)
@@ -158,7 +158,7 @@
                         </div>
                         <br>
                         <div id="div_timezone_default" class="form-group info-install required">
-                            <label for="timezone_default"  required class="control-label col-md-4  requiredField"> {{ trans('install.timezone_default') }} </label>
+                            <label for="timezone_default"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.timezone_default') }} </label>
                             <div class="controls col-md-8">
                                 <select name="timezone_default" class="form-control" id="timezone_default">
                                 @foreach (timezone_identifiers_list() as $key => $value)
@@ -169,58 +169,58 @@
                         </div>
                         <hr>
                         <div id="div_website_title" class="form-group info-install required">
-                            <label for="website_title"  required class="control-label col-md-4  requiredField"> {{ trans('install.website_title') }} </label>
+                            <label for="website_title"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.website_title') }} </label>
                             <div class="controls col-md-8">
-                                <input class="input-md  textInput form-control" id="website_title"  name="website_title" placeholder="{{ trans('install.website_title_place') }}" style="margin-bottom: 10px" type="text" value="" />
+                                <input class="input-md  textInput form-control" id="website_title"  name="website_title" placeholder="{{ trans('vncore::install.website_title_place') }}" style="margin-bottom: 10px" type="text" value="" />
                             </div>
                         </div>
                         <div id="div_admin_url" class="form-group info-install required">
-                            <label for="admin_url"  required class="control-label col-md-4  requiredField"> {{ trans('install.admin_url') }} </label>
+                            <label for="admin_url"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.admin_url') }} </label>
                             <div class="controls col-md-8">
-                                <input class="input-md  textInput form-control" id="admin_url"  name="admin_url" placeholder="{{ trans('install.admin_url') }}" style="margin-bottom: 10px" type="text" value="vc_admin" />
+                                <input class="input-md  textInput form-control" id="admin_url"  name="admin_url" placeholder="{{ trans('vncore::install.admin_url') }}" style="margin-bottom: 10px" type="text" value="vc_admin" />
                             </div>
                         </div>
                         <div id="div_admin_user" class="form-group info-install required">
-                            <label for="admin_user"  required class="control-label col-md-4  requiredField"> {{ trans('install.admin_user') }} </label>
+                            <label for="admin_user"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.admin_user') }} </label>
                             <div class="controls col-md-8">
-                                <input class="input-md  textInput form-control" id="admin_user"  name="admin_user" placeholder="{{ trans('install.admin_user') }}" style="margin-bottom: 10px" type="text" value="admin" />
+                                <input class="input-md  textInput form-control" id="admin_user"  name="admin_user" placeholder="{{ trans('vncore::install.admin_user') }}" style="margin-bottom: 10px" type="text" value="admin" />
                             </div>
                         </div>
                         <div id="div_admin_password" class="form-group info-install required">
-                            <label for="admin_password"  required class="control-label col-md-4  requiredField"> {{ trans('install.admin_password') }} </label>
+                            <label for="admin_password"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.admin_password') }} </label>
                             <div class="controls col-md-8">
-                                <input class="input-md  textInput form-control" id="admin_password"  name="admin_password" placeholder="{{ trans('install.admin_password') }}" style="margin-bottom: 10px" type="password" value="admin" />
+                                <input class="input-md  textInput form-control" id="admin_password"  name="admin_password" placeholder="{{ trans('vncore::install.admin_password') }}" style="margin-bottom: 10px" type="password" value="admin" />
                             </div>
                         </div>
                         <div id="div_admin_email" class="form-group info-install required">
-                            <label for="admin_email"  required class="control-label col-md-4  requiredField"> {{ trans('install.admin_email') }} </label>
+                            <label for="admin_email"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.admin_email') }} </label>
                             <div class="controls col-md-8">
-                                <input class="input-md  textInput form-control" value="admin@example.com" id="admin_email"  name="admin_email" placeholder="{{ trans('install.admin_email') }}" style="margin-bottom: 10px" type="email" />
+                                <input class="input-md  textInput form-control" value="admin@example.com" id="admin_email"  name="admin_email" placeholder="{{ trans('vncore::install.admin_email') }}" style="margin-bottom: 10px" type="email" />
                             </div>
                         </div>
                         <div class="form-group info-install required">
                             <div class="controls col-md-offset-4 col-md-8 ">
                                 <input class="input-md" id="exclude_sample" name="exclude_sample"  style="margin-bottom: 10px" type="checkbox" />
-                                         {!! trans('install.exclude_sample') !!}
+                                         {!! trans('vncore::install.exclude_sample') !!}
                             </div>
                         </div>
                         <div class="form-group info-install required">
                             <div class="controls col-md-offset-4 col-md-8 ">
                                 <input class="input-md" id="only_cms" name="only_cms"  style="margin-bottom: 10px" type="checkbox" />
-                                         {!! trans('install.only_cms') !!}
+                                         {!! trans('vncore::install.only_cms') !!}
                             </div>
                         </div>
                         <div class="form-group info-install required">
                             <div class="controls col-md-offset-4 col-md-8 ">
                                 <input required class="input-md checkboxinput" id="id_terms" name="terms" style="margin-bottom: 10px" type="checkbox" />
-                                         {!! trans('install.terms') !!}
+                                         {!! trans('vncore::install.terms') !!}
                             </div>
                         </div>
                         <div id="msg" class="form-group info-install"></div>
                         <div class="form-group">
                             <div class="controls col-md-4 "></div>
                             <div class="controls col-md-8 ">
-                                <input  type="button" {{ ($checkRequire == 'pass')?'':'disabled'}} data-loading-text="{{ trans('install.installing_button') }}"  value="{{ trans('install.installing') }}" class="btn btn-primary btn btn-info" id="submit-install" />
+                                <input  type="button" {{ ($checkRequire == 'pass')?'':'disabled'}} data-loading-text="{{ trans('vncore::install.installing_button') }}"  value="{{ trans('vncore::install.installing') }}" class="btn btn-primary btn btn-info" id="submit-install" />
                             </div>
                         </div>
                         <div class="row">
@@ -296,7 +296,7 @@ $('#submit-install').click(function(event) {
             .fail(function() {
                 $('#msg').removeClass('success');
                 $('#msg').addClass('error');
-                $('#msg').html('{{ trans('install.env.error') }}');
+                $('#msg').html('{{ trans('vncore::install.env.error') }}');
                 $('#submit-install').button('reset');
 
             })
@@ -338,7 +338,7 @@ function installDatabaseStep1(infoInstall){
     .fail(function() {
         $('#msg').removeClass('success');
         $('#msg').addClass('error');
-        $('#msg').html('{{ trans('install.database.error_1') }}');
+        $('#msg').html('{{ trans('vncore::install.database.error_1') }}');
         $('#submit-install').button('reset');
     })
 }
@@ -379,7 +379,7 @@ function installDatabaseStep2(infoInstall){
     .fail(function() {
         $('#msg').removeClass('success');
         $('#msg').addClass('error');
-        $('#msg').html('{{ trans('install.database.error_2') }}');
+        $('#msg').html('{{ trans('vncore::install.database.error_2') }}');
         $('#submit-install').button('reset');
     })
 }
@@ -419,7 +419,7 @@ function installDatabaseStep3(infoInstall){
     .fail(function() {
         $('#msg').removeClass('success');
         $('#msg').addClass('error');
-        $('#msg').html('{{ trans('install.database.error_3') }}');
+        $('#msg').html('{{ trans('vncore::install.database.error_3') }}');
         $('#submit-install').button('reset');
     })
 }
@@ -459,7 +459,7 @@ function installDatabaseStep4(infoInstall){
     .fail(function() {
         $('#msg').removeClass('success');
         $('#msg').addClass('error');
-        $('#msg').html('{{ trans('install.database.error_4') }}');
+        $('#msg').html('{{ trans('vncore::install.database.error_4') }}');
         $('#submit-install').button('reset');
     })
 }
@@ -497,7 +497,7 @@ function installDatabaseStep5(infoInstall){
     .fail(function() {
         $('#msg').removeClass('success');
         $('#msg').addClass('error');
-        $('#msg').html('{{ trans('install.database.error_5') }}');
+        $('#msg').html('{{ trans('vncore::install.database.error_5') }}');
         $('#submit-install').button('reset');
     })
 }
@@ -522,7 +522,7 @@ function completeInstall() {
             $('#msg').html(data.msg);
             $('.progress-bar').css("width","100%");
             $('.progress-bar').html("100%");
-            $('#msg').html('{{ trans('install.complete.process_success') }}');
+            $('#msg').html('{{ trans('vncore::install.complete.process_success') }}');
             setTimeout(function(){ window.location.replace($('#admin_url').val()); }, 1000);
         }else{
             $('#msg').addClass('error');
@@ -533,7 +533,7 @@ function completeInstall() {
     .fail(function() {
         $('#msg').removeClass('success');
         $('#msg').addClass('error');
-        $('#msg').html('{{ trans('install.complete.error') }}');
+        $('#msg').html('{{ trans('vncore::install.complete.error') }}');
         $('#submit-install').button('reset');
     })
 }
@@ -575,35 +575,35 @@ function validateForm(){
         },
         messages: {
             "database_host": {
-                required: "{{ trans('install.validate.database_host_required') }}",
+                required: "{{ trans('vncore::install.validate.database_host_required') }}",
             },
             "database_port": {
-                required: "{{ trans('install.validate.database_port_required') }}",
-                number: "{{ trans('install.validate.database_port_number') }}",
+                required: "{{ trans('vncore::install.validate.database_port_required') }}",
+                number: "{{ trans('vncore::install.validate.database_port_number') }}",
             },
             "admin_url": {
-                required: "{{ trans('install.validate.admin_url_required') }}",
+                required: "{{ trans('vncore::install.validate.admin_url_required') }}",
             },
             "database_name": {
-                required: "{{ trans('install.validate.database_name_required') }}",
+                required: "{{ trans('vncore::install.validate.database_name_required') }}",
             },
             "database_user": {
-                required: "{{ trans('install.validate.database_user_required') }}",
+                required: "{{ trans('vncore::install.validate.database_user_required') }}",
             },
             "admin_user": {
-                required: "{{ trans('install.validate.admin_user_required') }}",
+                required: "{{ trans('vncore::install.validate.admin_user_required') }}",
             },
             "admin_password": {
-                required: "{{ trans('install.validate.admin_password_required') }}",
+                required: "{{ trans('vncore::install.validate.admin_password_required') }}",
             },
             "admin_email": {
-                required: "{{ trans('install.validate.admin_email_required') }}",
+                required: "{{ trans('vncore::install.validate.admin_email_required') }}",
             },
             "timezone_default": {
-                required: "{{ trans('install.validate.timezone_default_required') }}",
+                required: "{{ trans('vncore::install.validate.timezone_default_required') }}",
             },
             "language_default": {
-                required: "{{ trans('install.validate.language_default_required') }}",
+                required: "{{ trans('vncore::install.validate.language_default_required') }}",
             }
             
         }

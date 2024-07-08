@@ -52,7 +52,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
                 $getEnv = str_replace('SC_ECOMMERCE_MODE=1', 'SC_ECOMMERCE_MODE=0', $getEnv);
             }
 
-            $env = fopen(base_path() . "/.env", "w") or die(json_encode(['error' => 1, 'msg' => trans('install.env.error_open')]));
+            $env = fopen(base_path() . "/.env", "w") or die(json_encode(['error' => 1, 'msg' => trans('vncore::install.env.error_open')]));
             fwrite($env, $getEnv);
             fclose($env);
 
@@ -71,7 +71,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             'only_cms' => request('only_cms'),
             'website_title' => request('website_title'),
         ];
-            echo json_encode(['error' => 0, 'msg' => trans('install.env.process_sucess'), 'infoInstall' => $infoInstall]);
+            echo json_encode(['error' => 0, 'msg' => trans('vncore::install.env.process_sucess'), 'infoInstall' => $infoInstall]);
             break;
 
     case 'step2-1':
@@ -89,7 +89,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         }
         echo json_encode([
             'error' => '0',
-            'msg' => trans('install.database.process_sucess_1'),
+            'msg' => trans('vncore::install.database.process_sucess_1'),
             'infoInstall' => request('infoInstall')
         ]);
         break;
@@ -107,7 +107,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             }
             echo json_encode([
                 'error' => '0',
-                'msg' => trans('install.database.process_sucess_2'),
+                'msg' => trans('vncore::install.database.process_sucess_2'),
                 'infoInstall' => request('infoInstall')
             ]);
             break;
@@ -136,7 +136,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             }
             echo json_encode([
                 'error' => '0',
-                'msg' => trans('install.database.process_sucess_3'),
+                'msg' => trans('vncore::install.database.process_sucess_3'),
                 'infoInstall' => request('infoInstall')
             ]);
             break;
@@ -160,7 +160,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
                 session()->forget('infoInstall');
                 echo json_encode([
                     'error' => '0',
-                    'msg' => trans('install.database.process_sucess_4'),
+                    'msg' => trans('vncore::install.database.process_sucess_4'),
                     'infoInstall' => request('infoInstall')
                 ]);
                 break;
@@ -193,7 +193,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
                     }
                     echo json_encode([
                         'error' => '0',
-                        'msg' => trans('install.database.process_sucess_5'),
+                        'msg' => trans('vncore::install.database.process_sucess_5'),
                     ]);
                     break;
 
@@ -204,7 +204,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         } catch (\Throwable $e) {
             echo json_encode([
                 'error' => '1',
-                'msg' => '#ISC007::'.trans('install.rename_error'),
+                'msg' => '#ISC007::'.trans('vncore::install.rename_error'),
             ]);
             break;
         }
@@ -234,7 +234,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
     } catch (\Throwable $e) {   
         echo json_encode([
             'error' => '1',
-            'msg' => '#ISC008::'.trans('install.writealble_error'),
+            'msg' => '#ISC008::'.trans('vncore::install.writealble_error'),
         ]);
     }
     $requirements = [
@@ -255,17 +255,14 @@ if (request()->method() == 'POST' && request()->ajax()) {
         ],
         'writable' => [
             storage_path() => is_writable(storage_path()),
-            public_path('data') => is_writable(public_path('data')),
-            public_path('templates') => is_writable(public_path('templates')),
             base_path('vendor') => is_writable(base_path('vendor')),
             base_path('bootstrap/cache') => is_writable(base_path('bootstrap/cache')),
-            base_path('app/Plugins') => is_writable(base_path('app/Plugins')),
         ]
     ];
 
     echo view('vncore-front::install', array(
         'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),
-        'title'     => trans('install.title'), 'requirements' => $requirements)
+        'title'     => trans('vncore::install.title'), 'requirements' => $requirements)
     );
     exit();
 }
