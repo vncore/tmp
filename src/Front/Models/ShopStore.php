@@ -88,7 +88,7 @@ class ShopStore extends Model
         //Uuid
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = vc_generate_id($type = 'shop_store');
+                $model->{$model->getKeyName()} = vncore_generate_id($type = 'shop_store');
             }
         });
     }
@@ -207,7 +207,7 @@ class ShopStore extends Model
     //Function get text description
     public function getText()
     {
-        return $this->descriptions()->where('lang', vc_get_locale())->first();
+        return $this->descriptions()->where('lang', vncore_get_locale())->first();
     }
     public function getTitle()
     {

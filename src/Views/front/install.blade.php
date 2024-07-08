@@ -142,7 +142,7 @@
                         <div id="div_database_prefix" class="form-group info-install">
                             <label for="database_prefix"  class="control-label col-md-4 "> {{ trans('vncore::install.database_prefix') }} </label>
                             <div class="controls col-md-8 ">
-                                <input class="input-md  textInput form-control" id="database_prefix"  name="database_prefix" placeholder="{{ trans('vncore::install.database_prefix_help') }}" style="margin-bottom: 10px" type="text"  value="vc_" />
+                                <input class="input-md  textInput form-control" id="database_prefix"  name="database_prefix" placeholder="{{ trans('vncore::install.database_prefix_help') }}" style="margin-bottom: 10px" type="text"  value="vncore_" />
                             </div>
                         </div>
                         <hr>
@@ -177,7 +177,7 @@
                         <div id="div_admin_url" class="form-group info-install required">
                             <label for="admin_url"  required class="control-label col-md-4  requiredField"> {{ trans('vncore::install.admin_url') }} </label>
                             <div class="controls col-md-8">
-                                <input class="input-md  textInput form-control" id="admin_url"  name="admin_url" placeholder="{{ trans('vncore::install.admin_url') }}" style="margin-bottom: 10px" type="text" value="vc_admin" />
+                                <input class="input-md  textInput form-control" id="admin_url"  name="admin_url" placeholder="{{ trans('vncore::install.admin_url') }}" style="margin-bottom: 10px" type="text" value="vncore_admin" />
                             </div>
                         </div>
                         <div id="div_admin_user" class="form-group info-install required">

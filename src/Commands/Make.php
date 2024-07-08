@@ -72,12 +72,12 @@ class Make extends Command
         $msg = '';
 
         $arrcodePlugin = ['Cms', 'Other', 'Payment', 'Shipping', 'Total'];
-        $pluginKey = vc_word_format_class($key);
-        $pluginCode = vc_word_format_class($code);
+        $pluginKey = vncore_word_format_class($key);
+        $pluginCode = vncore_word_format_class($code);
         if (!in_array($pluginCode, $arrcodePlugin)) {
             $pluginCode = 'Other';
         }
-        $pluginUrlKey = vc_word_format_url($key);
+        $pluginUrlKey = vncore_word_format_url($key);
         $pluginUrlKey = str_replace('-', '_', $pluginUrlKey);
 
         $source = "Format/plugin";
@@ -149,7 +149,7 @@ class Make extends Command
         try {
             if ($download) {
                 $path = storage_path($this->tmpFolder.'/'.$sID.'.zip');
-                vc_zip(storage_path($this->tmpFolder."/".$sID), $path);
+                vncore_zip(storage_path($this->tmpFolder."/".$sID), $path);
             } else {
                 File::copyDirectory(storage_path($tmp), app_path($destination));
                 File::copyDirectory(storage_path($tmpPublic), public_path($destination));
@@ -199,7 +199,7 @@ class Make extends Command
         try {
             if ($download) {
                 $path = storage_path($this->tmpFolder.'/'.$sID.'.zip');
-                vc_zip(storage_path($this->tmpFolder."/".$sID), $path);
+                vncore_zip(storage_path($this->tmpFolder."/".$sID), $path);
             } else {
                 File::copyDirectory(storage_path($tmp), resource_path('views/'.$destination));
                 File::copyDirectory(storage_path($tmpPublic), public_path($destination));

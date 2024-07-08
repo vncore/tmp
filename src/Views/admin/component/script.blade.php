@@ -1,11 +1,11 @@
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ vc_file('admin/plugin/bootstrap-select.min.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('admin/plugin/bootstrap-select.min.css')}}">
 <!-- Latest compiled and minified JavaScript -->
-<script src="{{ vc_file('admin/plugin/bootstrap-select.min.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/bootstrap-select.min.js')}}"></script>
 
 {{-- //Pjax --}}
-<script src="{{ vc_file('admin/plugin/jquery.pjax.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/jquery.pjax.js')}}"></script>
 
 
 <script type="text/javascript">
@@ -72,10 +72,10 @@
 
         this.on('click', function(e) {
           type = $(this).data('type') || type;//sc
-          var route_prefix = (options && options.prefix) ? options.prefix : '{{ vc_route_admin('admin.home').'/'.config('lfm.url_prefix') }}';
+          var route_prefix = (options && options.prefix) ? options.prefix : '{{ vncore_route_admin('admin.home').'/'.config('lfm.url_prefix') }}';
           var target_input = $('#' + $(this).data('input'));
           var target_preview = $('#' + $(this).data('preview'));
-          window.open(route_prefix + '?type=' + type, '{{ vc_language_render('admin.file_manager') }}', 'width=900,height=600');
+          window.open(route_prefix + '?type=' + type, '{{ vncore_language_render('admin.file_manager') }}', 'width=900,height=600');
           window.SetUrl = function (items) {
             var file_path = items.map(function (item) {
               return item.url;

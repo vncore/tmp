@@ -37,7 +37,7 @@ class AppConfig extends ConfigDefault
         $check = AdminConfig::where('key', $this->configKey)->first();
         if ($check) {
             //Check Plugin key exist
-            $return = ['error' => 1, 'msg' =>  vc_language_render('admin.plugin.plugin_exist')];
+            $return = ['error' => 1, 'msg' =>  vncore_language_render('admin.plugin.plugin_exist')];
         } else {
             //Insert plugin to config
             $dataInsert = [
@@ -77,7 +77,7 @@ class AppConfig extends ConfigDefault
             //     ]
             // );
             if (!$process) {
-                $return = ['error' => 1, 'msg' => vc_language_render('admin.plugin.install_faild')];
+                $return = ['error' => 1, 'msg' => vncore_language_render('admin.plugin.install_faild')];
             } else {
                 $return = (new PluginModel)->installExtension();
             }
@@ -95,7 +95,7 @@ class AppConfig extends ConfigDefault
             ->orWhere('code', $this->configKey.'_config')
             ->delete();
         if (!$process) {
-            $return = ['error' => 1, 'msg' => vc_language_render('admin.plugin.action_error', ['action' => 'Uninstall'])];
+            $return = ['error' => 1, 'msg' => vncore_language_render('admin.plugin.action_error', ['action' => 'Uninstall'])];
         }
         (new PluginModel)->uninstallExtension();
         return $return;

@@ -34,7 +34,7 @@ class Backup extends Command
         $includeTables = $this->option('includeTables');
         $excludeTables = $this->option('excludeTables');
         if (count(glob(storage_path() . "/backups/*.sql")) >= self::LIMIT) {
-            echo json_encode(['error' => 1, 'msg' => vc_language_render('admin.backup.limit_backup')]);
+            echo json_encode(['error' => 1, 'msg' => vncore_language_render('admin.backup.limit_backup')]);
             exit;
         }
         if ($path) {
@@ -72,7 +72,7 @@ class Backup extends Command
             if (file_exists($fileBackup)) {
                 @unlink($fileBackup);
             }
-            vc_report($exception->getMessage());
+            vncore_report($exception->getMessage());
             echo json_encode(['error' => 1, 'msg' => $exception->getMessage()]);
             exit;
         }

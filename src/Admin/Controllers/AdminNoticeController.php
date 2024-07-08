@@ -14,7 +14,7 @@ class AdminNoticeController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'         => vc_language_render('admin_notice.title'),
+            'title'         => vncore_language_render('admin_notice.title'),
             'subTitle'      => '',
             'icon'          => 'fa fa-tasks',
             'urlDeleteItem' => '',
@@ -24,26 +24,26 @@ class AdminNoticeController extends RootAdminController
             'js'            => '',
         ];
         //Process add content
-        $data['menuRight']    = vc_config_group('menuRight', \Request::route()->getName());
-        $data['menuLeft']     = vc_config_group('menuLeft', \Request::route()->getName());
-        $data['topMenuRight'] = vc_config_group('topMenuRight', \Request::route()->getName());
-        $data['topMenuLeft']  = vc_config_group('topMenuLeft', \Request::route()->getName());
-        $data['blockBottom']  = vc_config_group('blockBottom', \Request::route()->getName());
+        $data['menuRight']    = vncore_config_group('menuRight', \Request::route()->getName());
+        $data['menuLeft']     = vncore_config_group('menuLeft', \Request::route()->getName());
+        $data['topMenuRight'] = vncore_config_group('topMenuRight', \Request::route()->getName());
+        $data['topMenuLeft']  = vncore_config_group('topMenuLeft', \Request::route()->getName());
+        $data['blockBottom']  = vncore_config_group('blockBottom', \Request::route()->getName());
 
         $listTh = [
             'type'    => 'Type',
             'type_id' => 'Type ID',
             'content' => 'Content',
-            'date'    => vc_language_render('admin.created_at')
+            'date'    => vncore_language_render('admin.created_at')
         ];
         $dataTmp = (new AdminNotice)->getNoticeListAdmin();
 
         $dataTr = [];
         foreach ($dataTmp as $key => $row) {
             $dataMap = [
-                'type' => '<a class="notice-'.(($row->status) ? 'read':'unread').'" href="'.vc_route_admin('admin_notice.url',['type' => $row->type,'typeId' => $row->type_id]).'">'.$row->type.'</a>',
+                'type' => '<a class="notice-'.(($row->status) ? 'read':'unread').'" href="'.vncore_route_admin('admin_notice.url',['type' => $row->type,'typeId' => $row->type_id]).'">'.$row->type.'</a>',
                 'type_id' => $row->type_id,
-                'content' => vc_language_render($row->content),
+                'content' => vncore_language_render($row->content),
                 'date' => $row->created_at,
             ];
             $dataTr[$row['id']] = $dataMap;
@@ -51,10 +51,10 @@ class AdminNoticeController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
-        return view($this->vc_templatePathAdmin.'screen.list')
+        return view($this->vncore_templatePathAdmin.'screen.list')
             ->with($data);
     }
 
@@ -74,11 +74,11 @@ class AdminNoticeController extends RootAdminController
         ->where('type', $type)
         ->where('type_id', $typeId)
         ->update(['status' => 1]);
-        // if ((in_array($type, ['vc_order_created', 'vc_order_success', 'vc_order_update_status']))) {
-        //     return redirect(vc_route_admin('admin_order.detail', ['id' => $typeId]));
+        // if ((in_array($type, ['vncore_order_created', 'vncore_order_success', 'vncore_order_update_status']))) {
+        //     return redirect(vncore_route_admin('admin_order.detail', ['id' => $typeId]));
         // }
-        // if ((in_array($type, ['vc_customer_created']))) {
-        //     return redirect(vc_route_admin('admin_customer.edit', ['id' => $typeId]));
+        // if ((in_array($type, ['vncore_customer_created']))) {
+        //     return redirect(vncore_route_admin('admin_customer.edit', ['id' => $typeId]));
         // }
     }
 }

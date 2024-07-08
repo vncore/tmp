@@ -73,17 +73,17 @@ class ForgotPasswordController extends RootAdminController
             return redirect()->route('admin.home');
         }
         $data = [
-            'title'       => vc_language_render('admin.password_forgot'),
+            'title'       => vncore_language_render('admin.password_forgot'),
             'breadcrumbs' => [
-                ['url'    => '', 'title' => vc_language_render('admin.password_forgot')],
+                ['url'    => '', 'title' => vncore_language_render('admin.password_forgot')],
             ],
         ];
-        return view($this->vc_templatePathAdmin.'auth.forgot')
+        return view($this->vncore_templatePathAdmin.'auth.forgot')
         ->with($data);
     }
     
     public function redirectPath() {
-        return vc_route_admin('admin.home');
+        return vncore_route_admin('admin.home');
     }
 
     protected function broker()

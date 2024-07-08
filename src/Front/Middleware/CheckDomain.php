@@ -17,21 +17,21 @@ class CheckDomain
     public function handle($request, Closure $next)
     {
         //Only apply for when plugin multi-vendor or multi-store active
-        if (vc_check_multi_shop_installed() && vc_config_global('domain_strict')) {
+        if (vncore_check_multi_shop_installed() && vncore_config_global('domain_strict')) {
             //Check domain exist
-            $domain = vc_process_domain_store(url('/')); //domain currently
-            $domainRoot = vc_process_domain_store(config('app.url')); //Domain root config in .env
+            $domain = vncore_process_domain_store(url('/')); //domain currently
+            $domainRoot = vncore_process_domain_store(config('app.url')); //Domain root config in .env
             $arrDomainPartner = ShopStore::getDomainPartner(); // List domain is partner active
             $arrDomainActive = ShopStore::getDomainStore(); // List domain is unlock domain
 
-            if (vc_check_multi_vendor_installed()) {
+            if (vncore_check_multi_vendor_installed()) {
                 if (!in_array($domain, $arrDomainPartner) && $domain != $domainRoot) {
                     echo view('deny_domain')->render();
                     exit();
                 }
             }
 
-            if (vc_check_multi_store_installed()) {
+            if (vncore_check_multi_store_installed()) {
                 if (!in_array($domain, $arrDomainActive) && $domain != $domainRoot) {
                     echo view('deny_domain')->render();
                     exit();

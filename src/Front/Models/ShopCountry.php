@@ -24,12 +24,12 @@ class ShopCountry extends Model
 
     public static function getCodeAll()
     {
-        if (vc_config_global('cache_status') && vc_config_global('cache_country')) {
+        if (vncore_config_global('cache_status') && vncore_config_global('cache_country')) {
             if (!Cache::has('cache_country')) {
                 if (self::$getCodeAll === null) {
                     self::$getCodeAll = self::pluck('name', 'code')->all();
                 }
-                vc_cache_set('cache_country', self::$getCodeAll);
+                vncore_cache_set('cache_country', self::$getCodeAll);
             }
             return Cache::get('cache_country');
         } else {

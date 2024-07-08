@@ -17,7 +17,7 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        $redirectTo = vc_route_admin('admin.login');
+        $redirectTo = vncore_route_admin('admin.login');
         if (Auth::guard('admin')->guest() && !$this->shouldPassThrough($request)) {
             return redirect()->guest($redirectTo);
         }

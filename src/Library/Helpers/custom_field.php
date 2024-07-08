@@ -5,8 +5,8 @@ use Vncore\Core\Admin\Controllers\AdminCustomFieldController;
 /**
  * Update custom field
  */
-if (!function_exists('vc_update_custom_field') && !in_array('vc_update_custom_field', config('helper_except', []))) {
-    function vc_update_custom_field(array $fields = [], string $itemId, string $type)
+if (!function_exists('vncore_update_custom_field') && !in_array('vncore_update_custom_field', config('helper_except', []))) {
+    function vncore_update_custom_field(array $fields = [], string $itemId, string $type)
     {
         $arrFields = array_keys((new AdminCustomFieldController)->fieldTypes());
         if (in_array($type, $arrFields) && !empty($fields)) {
@@ -20,7 +20,7 @@ if (!function_exists('vc_update_custom_field') && !in_array('vc_update_custom_fi
             foreach ($fields as $key => $value) {
                 $field = (new ShopCustomField)->where('code', $key)->where('type', $type)->first();
                 if ($field) {
-                    $dataField = vc_clean([
+                    $dataField = vncore_clean([
                         'custom_field_id' => $field->id,
                         'rel_id' => $itemId,
                         'text' => is_array($value) ? implode(',', $value) : trim($value),

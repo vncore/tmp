@@ -59,7 +59,7 @@ class LogOperation
      */
     protected function inExceptArray($request)
     {
-        foreach (explode(',', vc_config_global('ADMIN_LOG_EXP','')) as $except) {
+        foreach (explode(',', vncore_config_global('ADMIN_LOG_EXP','')) as $except) {
             if ($except !== '/') {
                 $except = trim($except, '/');
             }

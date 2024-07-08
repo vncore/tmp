@@ -43,7 +43,7 @@ class AdminMenu extends Model
             if (!$menu->uri) {
                 $listVisible[] = $menu;
             } else {
-                $url = vc_url_render($menu->uri);
+                $url = vncore_url_render($menu->uri);
                 if (\Admin::user()->checkUrlAllowAccess($url)) {
                     $listVisible[] = $menu;
                 }
@@ -95,7 +95,7 @@ class AdminMenu extends Model
         $tree = $tree ?? [];
         $lisMenu = $menus[$parent] ?? [];
         foreach ($lisMenu as $menu) {
-            $tree[$menu->id] = $st . ' ' . vc_language_render($menu->title);
+            $tree[$menu->id] = $st . ' ' . vncore_language_render($menu->title);
             if (!empty($menus[$menu->id])) {
                 $st .= '--';
                 $this->getTree($menu->id, $tree, $menus, $st);

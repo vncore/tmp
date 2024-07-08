@@ -18,10 +18,10 @@ class AdminConfigGlobalController extends RootAdminController
     public function webhook()
     {
         $data = [
-            'title' => vc_language_render('admin.config.webhook'),
+            'title' => vncore_language_render('admin.config.webhook'),
             'subTitle' => '',
         ];
-        return view($this->vc_templatePathAdmin.'screen.webhook')
+        return view($this->vncore_templatePathAdmin.'screen.webhook')
             ->with($data);
     }
 
@@ -40,7 +40,7 @@ class AdminConfigGlobalController extends RootAdminController
                 ->where('store_id', SC_ID_GLOBAL)
                 ->update(['value' => $value]);
             $error = 0;
-            $msg = vc_language_render('action.update_success');
+            $msg = vncore_language_render('action.update_success');
         } catch (\Throwable $e) {
             $error = 1;
             $msg = $e->getMessage();

@@ -22,40 +22,40 @@ class UsersController extends RootAdminController
     public function index()
     {
         $data = [
-            'title'         => vc_language_render('admin.user.list'),
+            'title'         => vncore_language_render('admin.user.list'),
             'subTitle'      => '',
             'icon'          => 'fa fa-tasks',
-            'urlDeleteItem' => vc_route_admin('admin_user.delete'),
+            'urlDeleteItem' => vncore_route_admin('admin_user.delete'),
             'removeList'    => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 1, // 1 - Enable button refresh
             'css'           => '',
             'js'            => '',
         ];
         //Process add content
-        $data['menuRight']    = vc_config_group('menuRight', \Request::route()->getName());
-        $data['menuLeft']     = vc_config_group('menuLeft', \Request::route()->getName());
-        $data['topMenuRight'] = vc_config_group('topMenuRight', \Request::route()->getName());
-        $data['topMenuLeft']  = vc_config_group('topMenuLeft', \Request::route()->getName());
-        $data['blockBottom']  = vc_config_group('blockBottom', \Request::route()->getName());
+        $data['menuRight']    = vncore_config_group('menuRight', \Request::route()->getName());
+        $data['menuLeft']     = vncore_config_group('menuLeft', \Request::route()->getName());
+        $data['topMenuRight'] = vncore_config_group('topMenuRight', \Request::route()->getName());
+        $data['topMenuLeft']  = vncore_config_group('topMenuLeft', \Request::route()->getName());
+        $data['blockBottom']  = vncore_config_group('blockBottom', \Request::route()->getName());
 
         $listTh = [
             'id'         => 'ID',
-            'username'   => vc_language_render('admin.user.user_name'),
-            'name'       => vc_language_render('admin.user.name'),
-            'roles'      => vc_language_render('admin.user.roles'),
-            'permission' => vc_language_render('admin.user.permission'),
-            'created_at' => vc_language_render('admin.created_at'),
-            'action'     => vc_language_render('action.title'),
+            'username'   => vncore_language_render('admin.user.user_name'),
+            'name'       => vncore_language_render('admin.user.name'),
+            'roles'      => vncore_language_render('admin.user.roles'),
+            'permission' => vncore_language_render('admin.user.permission'),
+            'created_at' => vncore_language_render('admin.created_at'),
+            'action'     => vncore_language_render('action.title'),
         ];
-        $sort_order = vc_clean(request('sort_order') ?? 'id_desc');
-        $keyword    = vc_clean(request('keyword') ?? '');
+        $sort_order = vncore_clean(request('sort_order') ?? 'id_desc');
+        $keyword    = vncore_clean(request('keyword') ?? '');
         $arrSort = [
-            'id__desc'       => vc_language_render('filter_sort.id_desc'),
-            'id__asc'        => vc_language_render('filter_sort.id_asc'),
-            'username__desc' => vc_language_render('filter_sort.alpha_desc', ['alpha' => 'username']),
-            'alpha__asc'  => vc_language_render('filter_sort.alpha_asc', ['alpha' => 'username']),
-            'name__desc'     => vc_language_render('filter_sort.name_desc'),
-            'name__asc'      => vc_language_render('filter_sort.name_asc'),
+            'id__desc'       => vncore_language_render('filter_sort.id_desc'),
+            'id__asc'        => vncore_language_render('filter_sort.id_asc'),
+            'username__desc' => vncore_language_render('filter_sort.alpha_desc', ['alpha' => 'username']),
+            'alpha__asc'  => vncore_language_render('filter_sort.alpha_asc', ['alpha' => 'username']),
+            'name__desc'     => vncore_language_render('filter_sort.name_desc'),
+            'name__asc'      => vncore_language_render('filter_sort.name_asc'),
         ];
         $obj = new AdminUser;
 
@@ -93,20 +93,20 @@ class UsersController extends RootAdminController
                 'permission' => $showPermission,
                 'created_at' => $row['created_at'],
                 'action' => '
-                    <a href="' . vc_route_admin('admin_user.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-                    ' . ((Admin::user()->id == $row['id'] || in_array($row['id'], SC_GUARD_ADMIN)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
+                    <a href="' . vncore_route_admin('admin_user.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                    ' . ((Admin::user()->id == $row['id'] || in_array($row['id'], SC_GUARD_ADMIN)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
                 ,
             ];
         }
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menuRight
-        $data['menuRight'][] = '<a href="' . vc_route_admin('admin_user.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
-                           <i class="fa fa-plus" title="'.vc_language_render('action.add').'"></i>
+        $data['menuRight'][] = '<a href="' . vncore_route_admin('admin_user.create') . '" class="btn  btn-success  btn-flat" title="New" id="button_create_new">
+                           <i class="fa fa-plus" title="'.vncore_language_render('action.add').'"></i>
                            </a>';
         //=menuRight
 
@@ -119,12 +119,12 @@ class UsersController extends RootAdminController
 
         //menuSearch
         $data['topMenuRight'][] = '
-                <form action="' . vc_route_admin('admin_user.index') . '" id="button_search">
+                <form action="' . vncore_route_admin('admin_user.index') . '" id="button_search">
                 <div class="input-group input-group" style="width: 350px;">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
                     </select> &nbsp;
-                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . vc_language_render('admin.user.search_place') . '" value="' . $keyword . '">
+                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . vncore_language_render('admin.user.search_place') . '" value="' . $keyword . '">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
@@ -133,7 +133,7 @@ class UsersController extends RootAdminController
         //=menuSearch
 
 
-        return view($this->vc_templatePathAdmin.'screen.list')
+        return view($this->vncore_templatePathAdmin.'screen.list')
             ->with($data);
     }
 
@@ -144,17 +144,17 @@ class UsersController extends RootAdminController
     public function create()
     {
         $data = [
-            'title'             => vc_language_render('admin.user.add_new_title'),
+            'title'             => vncore_language_render('admin.user.add_new_title'),
             'subTitle'          => '',
-            'title_description' => vc_language_render('admin.user.add_new_des'),
+            'title_description' => vncore_language_render('admin.user.add_new_des'),
             'icon'              => 'fa fa-plus',
             'user'              => [],
             'roles'             => $this->roles,
             'permissions'       => $this->permissions,
-            'url_action'        => vc_route_admin('admin_user.create'),
+            'url_action'        => vncore_route_admin('admin_user.create'),
         ];
 
-        return view($this->vc_templatePathAdmin.'auth.user')
+        return view($this->vncore_templatePathAdmin.'auth.user')
             ->with($data);
     }
 
@@ -173,7 +173,7 @@ class UsersController extends RootAdminController
             'password' => 'required|string|max:60|min:6|confirmed',
             'email'    => 'required|string|email|max:255|unique:"'.AdminUser::class.'",email',
         ], [
-            'username.regex' => vc_language_render('admin.user.username_validate'),
+            'username.regex' => vncore_language_render('admin.user.username_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -188,7 +188,7 @@ class UsersController extends RootAdminController
             'email'    => strtolower($data['email']),
             'password' => bcrypt($data['password']),
         ];
-        $dataCreate = vc_clean($dataCreate, [], true);
+        $dataCreate = vncore_clean($dataCreate, [], true);
         $user = AdminUser::createUser($dataCreate);
 
         $roles = $data['roles'] ?? [];
@@ -215,7 +215,7 @@ class UsersController extends RootAdminController
             $user->permissions()->attach($permission);
         }
 
-        return redirect()->route('admin_user.index')->with('success', vc_language_render('action.create_success'));
+        return redirect()->route('admin_user.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -228,18 +228,18 @@ class UsersController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title'             => vc_language_render('action.edit'),
+            'title'             => vncore_language_render('action.edit'),
             'subTitle'          => '',
             'title_description' => '',
             'icon'              => 'fa fa-edit',
             'user'              => $user,
             'roles'             => $this->roles,
             'permissions'       => $this->permissions,
-            'url_action'        => vc_route_admin('admin_user.edit', ['id' => $user['id']]),
+            'url_action'        => vncore_route_admin('admin_user.edit', ['id' => $user['id']]),
             'isAllStore'        => ($user->isAdministrator() || $user->isViewAll()) ? 1: 0,
 
         ];
-        return view($this->vc_templatePathAdmin.'auth.user')
+        return view($this->vncore_templatePathAdmin.'auth.user')
             ->with($data);
     }
 
@@ -258,7 +258,7 @@ class UsersController extends RootAdminController
             'password' => 'nullable|string|max:60|min:6|confirmed',
             'email'    => 'required|string|email|max:255|unique:"'.AdminUser::class.'",email,' . $user->id,
         ], [
-            'username.regex' => vc_language_render('admin.user.username_validate'),
+            'username.regex' => vncore_language_render('admin.user.username_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -276,7 +276,7 @@ class UsersController extends RootAdminController
         if ($data['password']) {
             $dataUpdate['password'] = bcrypt($data['password']);
         }
-        $dataUpdate = vc_clean($dataUpdate, [], true);
+        $dataUpdate = vncore_clean($dataUpdate, [], true);
         AdminUser::updateInfo($dataUpdate, $id);
 
         if (!in_array($user->id, SC_GUARD_ADMIN)) {
@@ -295,7 +295,7 @@ class UsersController extends RootAdminController
         }
 
 //
-        return redirect()->route('admin_user.index')->with('success', vc_language_render('action.edit_success'));
+        return redirect()->route('admin_user.index')->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -305,7 +305,7 @@ class UsersController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

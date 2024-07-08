@@ -66,7 +66,7 @@ class VncoreServiceProvider extends ServiceProvider
             }
         } catch (\Throwable $e) {
             $msg = '#SC001::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            // vc_report($msg);
+            // vncore_report($msg);
             echo $msg;
             exit;
         }
@@ -78,7 +78,7 @@ class VncoreServiceProvider extends ServiceProvider
                 DB::connection(SC_CONNECTION)->getPdo();
             } catch (\Throwable $e) {
                 $msg = '#SC003::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vc_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
@@ -89,7 +89,7 @@ class VncoreServiceProvider extends ServiceProvider
                 }
             } catch (\Throwable $e) {
                 $msg = '#SC004::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vc_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
@@ -99,7 +99,7 @@ class VncoreServiceProvider extends ServiceProvider
                 $this->bootScart();
             } catch (\Throwable $e) {
                 $msg = '#SC005::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vc_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
@@ -111,21 +111,21 @@ class VncoreServiceProvider extends ServiceProvider
                 }
             } catch (\Throwable $e) {
                 $msg = '#SC006::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vc_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
 
             //Route Api
             try {
-                if (vc_config_global('api_mode')) {
+                if (vncore_config_global('api_mode')) {
                     if (file_exists($routes = __DIR__.'/Api/routes.php')) {
                         $this->loadRoutesFrom($routes);
                     }
                 }
             } catch (\Throwable $e) {
                 $msg = '#SC007::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vc_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
@@ -137,7 +137,7 @@ class VncoreServiceProvider extends ServiceProvider
                 }
             } catch (\Throwable $e) {
                 $msg = '#SC008::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vc_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
@@ -147,7 +147,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->registerPublishing();
         } catch (\Throwable $e) {
             $msg = '#SC009::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vc_report($msg);
+            vncore_report($msg);
             echo $msg;
             exit;
         }
@@ -156,7 +156,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->registerRouteMiddleware();
         } catch (\Throwable $e) {
             $msg = '#SC010::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vc_report($msg);
+            vncore_report($msg);
             echo $msg;
             exit;
         }
@@ -165,7 +165,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->commands($this->commands);
         } catch (\Throwable $e) {
             $msg = '#SC011::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vc_report($msg);
+            vncore_report($msg);
             echo $msg;
             exit;
         }
@@ -174,7 +174,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->validationExtend();
         } catch (\Throwable $e) {
             $msg = '#SC012::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vc_report($msg);
+            vncore_report($msg);
             echo $msg;
             exit;
         }
@@ -212,52 +212,52 @@ class VncoreServiceProvider extends ServiceProvider
         config(['app.storeId' => $storeId]);
         // end set store Id
 
-        if (vc_config_global('LOG_SLACK_WEBHOOK_URL')) {
-            config(['logging.channels.slack.url' => vc_config_global('LOG_SLACK_WEBHOOK_URL')]);
+        if (vncore_config_global('LOG_SLACK_WEBHOOK_URL')) {
+            config(['logging.channels.slack.url' => vncore_config_global('LOG_SLACK_WEBHOOK_URL')]);
         }
 
         //Config language url
-        config(['app.seoLang' => (vc_config_global('url_seo_lang') ? '{lang?}/' : '')]);
+        config(['app.seoLang' => (vncore_config_global('url_seo_lang') ? '{lang?}/' : '')]);
 
         //Title app
-        config(['app.name' => vc_store('title')]);
+        config(['app.name' => vncore_store('title')]);
 
         //Config for  email
         if (
             // Default use smtp mode for for supplier if use multi-store
-            ($storeId != SC_ID_ROOT && vc_check_multi_shop_installed())
+            ($storeId != SC_ID_ROOT && vncore_check_multi_shop_installed())
             ||
             // Use smtp config from admin if root domain have smtp_mode enable
-            ($storeId == SC_ID_ROOT && vc_config_global('smtp_mode'))
+            ($storeId == SC_ID_ROOT && vncore_config_global('smtp_mode'))
             ) {
-            $smtpHost     = vc_config('smtp_host');
-            $smtpPort     = vc_config('smtp_port');
-            $smtpSecurity = vc_config('smtp_security');
-            $smtpUser     = vc_config('smtp_user');
-            $smtpPassword = vc_config('smtp_password');
-            $smtpName     = vc_config('smtp_name');
-            $smtpFrom     = vc_config('smtp_from');
+            $smtpHost     = vncore_config('smtp_host');
+            $smtpPort     = vncore_config('smtp_port');
+            $smtpSecurity = vncore_config('smtp_security');
+            $smtpUser     = vncore_config('smtp_user');
+            $smtpPassword = vncore_config('smtp_password');
+            $smtpName     = vncore_config('smtp_name');
+            $smtpFrom     = vncore_config('smtp_from');
             config(['mail.default'                 => 'smtp']);
             config(['mail.mailers.smtp.host'       => $smtpHost]);
             config(['mail.mailers.smtp.port'       => $smtpPort]);
             config(['mail.mailers.smtp.encryption' => $smtpSecurity]);
             config(['mail.mailers.smtp.username'   => $smtpUser]);
             config(['mail.mailers.smtp.password' => $smtpPassword]);
-            config(['mail.from.address' => ($smtpFrom ?? vc_store('email'))]);
-            config(['mail.from.name' => ($smtpName ?? vc_store('title'))]);
+            config(['mail.from.address' => ($smtpFrom ?? vncore_store('email'))]);
+            config(['mail.from.name' => ($smtpName ?? vncore_store('title'))]);
         } else {
             //Set default
-            config(['mail.from.address' => (config('mail.from.address')) ? config('mail.from.address'): vc_store('email')]);
-            config(['mail.from.name' => (config('mail.from.name')) ? config('mail.from.name'): vc_store('title')]);
+            config(['mail.from.address' => (config('mail.from.address')) ? config('mail.from.address'): vncore_store('email')]);
+            config(['mail.from.name' => (config('mail.from.name')) ? config('mail.from.name'): vncore_store('title')]);
         }
         //email
 
         //Share variable for view
-        view()->share('vc_languages', vc_language_all());
-        view()->share('vc_templatePath', 'templates.' . vc_store('template'));
-        view()->share('vc_templateFile', 'templates/' . vc_store('template'));
+        view()->share('vncore_languages', vncore_language_all());
+        view()->share('vncore_templatePath', 'templates.' . vncore_store('template'));
+        view()->share('vncore_templateFile', 'templates/' . vncore_store('template'));
         //
-        view()->share('vc_templatePathAdmin', config('admin.path_view'));
+        view()->share('vncore_templatePathAdmin', config('admin.path_view'));
     }
 
     /**

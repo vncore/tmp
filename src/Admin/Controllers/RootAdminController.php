@@ -5,10 +5,10 @@ use App\Http\Controllers\Controller;
 
 class RootAdminController extends Controller
 {
-    public $vc_templatePathAdmin;
+    public $vncore_templatePathAdmin;
     public function __construct()
     {
-        $this->vc_templatePathAdmin = config('admin.path_view');
+        $this->vncore_templatePathAdmin = config('admin.path_view');
     }
 
 }

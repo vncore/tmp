@@ -60,7 +60,7 @@ class MemberOrderController extends RootFrontController
         $dataOrder['customer_id'] = $user->id;
         $dataReturn = (new ShopOrder)->createOrder($dataOrder, $dataTotal, $itemDetail);
         if ($dataReturn['error'] == 1) {
-            vc_report($dataReturn['msg']);
+            vncore_report($dataReturn['msg']);
         }
         return response()->json($dataReturn, 200);
     }

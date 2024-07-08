@@ -1,4 +1,4 @@
-@extends($vc_templatePathAdmin.'layout')
+@extends($vncore_templatePathAdmin.'layout')
 
 @section('main')
     {{-- content --}}

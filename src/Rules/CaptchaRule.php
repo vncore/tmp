@@ -17,7 +17,7 @@ class CaptchaRule implements Rule
 
     public function __construct()
     {
-        $this->captchaMethod = vc_captcha_method();
+        $this->captchaMethod = vncore_captcha_method();
     }
 
     /**

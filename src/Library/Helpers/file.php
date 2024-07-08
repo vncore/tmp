@@ -8,8 +8,8 @@ use Intervention\Image\Facades\Image;
 /**
  * Function upload image
  */
-if (!function_exists('vc_image_upload') && !in_array('vc_image_upload', config('helper_except', []))) {
-    function vc_image_upload($fileContent, $disk = 'public', $path = null, $name = null, $options = ['unique_name' => true, 'thumb' => false, 'watermark' => false])
+if (!function_exists('vncore_image_upload') && !in_array('vncore_image_upload', config('helper_except', []))) {
+    function vncore_image_upload($fileContent, $disk = 'public', $path = null, $name = null, $options = ['unique_name' => true, 'thumb' => false, 'watermark' => false])
     {
         $pathFile = null;
         try {
@@ -29,19 +29,19 @@ if (!function_exists('vc_image_upload') && !in_array('vc_image_upload', config('
                 $pathFile = Storage::disk($disk)->putFile(($path ?? ''), $fileContent);
             }
         } catch (\Throwable $e) {
-            vc_report($e->getMessage());
+            vncore_report($e->getMessage());
             return null;
         }
 
         if ($pathFile && $disk == 'public') {
             //generate thumb
-            if (!empty($options['thumb']) && vc_config('upload_image_thumb_status')) {
-                vc_image_generate_thumb($pathFile, $widthThumb = 250, $heightThumb = null, $disk);
+            if (!empty($options['thumb']) && vncore_config('upload_image_thumb_status')) {
+                vncore_image_generate_thumb($pathFile, $widthThumb = 250, $heightThumb = null, $disk);
             }
 
             //insert watermark
-            if (!empty($options['watermark']) && vc_config('upload_watermark_status')) {
-                vc_image_insert_watermark($pathFile);
+            if (!empty($options['watermark']) && vncore_config('upload_watermark_status')) {
+                vncore_image_insert_watermark($pathFile);
             }
         }
         if ($disk == 'public') {
@@ -60,8 +60,8 @@ if (!function_exists('vc_image_upload') && !in_array('vc_image_upload', config('
 /**
  * Function upload file
  */
-if (!function_exists('vc_file_upload') && !in_array('vc_file_upload', config('helper_except', []))) {
-    function vc_file_upload($fileContent, $disk = 'public', $path = null, $name = null)
+if (!function_exists('vncore_file_upload') && !in_array('vncore_file_upload', config('helper_except', []))) {
+    function vncore_file_upload($fileContent, $disk = 'public', $path = null, $name = null)
     {
         $pathFile = null;
         try {
@@ -103,8 +103,8 @@ if (!function_exists('vc_file_upload') && !in_array('vc_file_upload', config('he
  * @param   [string]  $prefix  will remove
  *
  */
-if (!function_exists('vc_remove_file') && !in_array('vc_remove_file', config('helper_except', []))) {
-    function vc_remove_file($pathFile, $disk = null)
+if (!function_exists('vncore_remove_file') && !in_array('vncore_remove_file', config('helper_except', []))) {
+    function vncore_remove_file($pathFile, $disk = null)
     {
         if ($disk) {
             return Storage::disk($disk)->delete($pathFile);
@@ -117,11 +117,11 @@ if (!function_exists('vc_remove_file') && !in_array('vc_remove_file', config('he
 /**
  * Function insert watermark
  */
-if (!function_exists('vc_image_insert_watermark') && !in_array('vc_image_insert_watermark', config('helper_except', []))) {
-    function vc_image_insert_watermark($pathFile, $pathWatermark = null)
+if (!function_exists('vncore_image_insert_watermark') && !in_array('vncore_image_insert_watermark', config('helper_except', []))) {
+    function vncore_image_insert_watermark($pathFile, $pathWatermark = null)
     {
         if (!$pathWatermark) {
-            $pathWatermark = vc_config('upload_watermark_path');
+            $pathWatermark = vncore_config('upload_watermark_path');
         }
         if (empty($pathWatermark)) {
             return false;
@@ -136,10 +136,10 @@ if (!function_exists('vc_image_insert_watermark') && !in_array('vc_image_insert_
 /**
  * Function generate thumb
  */
-if (!function_exists('vc_image_generate_thumb') && !in_array('vc_image_generate_thumb', config('helper_except', []))) {
-    function vc_image_generate_thumb($pathFile, $widthThumb = null, $heightThumb = null, $disk = 'public')
+if (!function_exists('vncore_image_generate_thumb') && !in_array('vncore_image_generate_thumb', config('helper_except', []))) {
+    function vncore_image_generate_thumb($pathFile, $widthThumb = null, $heightThumb = null, $disk = 'public')
     {
-        $widthThumb = $widthThumb ?? vc_config('upload_image_thumb_width');
+        $widthThumb = $widthThumb ?? vncore_config('upload_image_thumb_width');
         if (!Storage::disk($disk)->has('tmp')) {
             Storage::disk($disk)->makeDirectory('tmp');
         }
@@ -161,21 +161,21 @@ if (!function_exists('vc_image_generate_thumb') && !in_array('vc_image_generate_
 /**
  * Function rener image
  */
-if (!function_exists('vc_image_render') && !in_array('vc_image_render', config('helper_except', []))) {
-    function vc_image_render($path, $width = null, $height = null, $alt = null, $title = null, $urlDefault = null, $options = '')
+if (!function_exists('vncore_image_render') && !in_array('vncore_image_render', config('helper_except', []))) {
+    function vncore_image_render($path, $width = null, $height = null, $alt = null, $title = null, $urlDefault = null, $options = '')
     {
-        $image = vc_image_get_path($path, $urlDefault);
+        $image = vncore_image_get_path($path, $urlDefault);
         $style = '';
         $style .= ($width) ? ' width:' . $width . ';' : '';
         $style .= ($height) ? ' height:' . $height . ';' : '';
-        return '<img  alt="' . $alt . '" title="' . $title . '" ' . (($options) ?? '') . ' src="' . vc_file($image) . '"   ' . ($style ? 'style="' . $style . '"' : '') . '   >';
+        return '<img  alt="' . $alt . '" title="' . $title . '" ' . (($options) ?? '') . ' src="' . vncore_file($image) . '"   ' . ($style ? 'style="' . $style . '"' : '') . '   >';
     }
 }
 /*
 Return path image
  */
-if (!function_exists('vc_image_get_path') && !in_array('vc_image_get_path', config('helper_except', []))) {
-    function vc_image_get_path($path, $urlDefault = null)
+if (!function_exists('vncore_image_get_path') && !in_array('vncore_image_get_path', config('helper_except', []))) {
+    function vncore_image_get_path($path, $urlDefault = null)
     {
         $image = $urlDefault ?? 'images/no-image.jpg';
         if ($path) {
@@ -191,8 +191,8 @@ if (!function_exists('vc_image_get_path') && !in_array('vc_image_get_path', conf
 /*
 Function get path thumb of image if saved in storage
  */
-if (!function_exists('vc_image_get_path_thumb') && !in_array('vc_image_get_path_thumb', config('helper_except', []))) {
-    function vc_image_get_path_thumb($pathFile)
+if (!function_exists('vncore_image_get_path_thumb') && !in_array('vncore_image_get_path_thumb', config('helper_except', []))) {
+    function vncore_image_get_path_thumb($pathFile)
     {
         if (strpos($pathFile, "/storage/") === 0) {
             $arrPath = explode('/', $pathFile);
@@ -201,21 +201,21 @@ if (!function_exists('vc_image_get_path_thumb') && !in_array('vc_image_get_path_
             if (file_exists(public_path($pathThumb))) {
                 return $pathThumb;
             } else {
-                return vc_image_get_path($pathFile);
+                return vncore_image_get_path($pathFile);
             }
         } else {
-            return vc_image_get_path($pathFile);
+            return vncore_image_get_path($pathFile);
         }
     }
 }
 
 
 
-if (!function_exists('vc_zip') && !in_array('vc_zip', config('helper_except', []))) {
+if (!function_exists('vncore_zip') && !in_array('vncore_zip', config('helper_except', []))) {
     /*
     Zip file or folder
      */
-    function vc_zip($pathToSource = "", $pathSaveTo = "")
+    function vncore_zip($pathToSource = "", $pathSaveTo = "")
     {
         if (!is_string($pathToSource) || !is_string($pathSaveTo)) {
             return false;
@@ -250,13 +250,13 @@ if (!function_exists('vc_zip') && !in_array('vc_zip', config('helper_except', []
 }
 
 
-if (!function_exists('vc_unzip') && !in_array('vc_unzip', config('helper_except', []))) {
+if (!function_exists('vncore_unzip') && !in_array('vncore_unzip', config('helper_except', []))) {
     /**
      * Unzip file to folder
      *
      * @return  [type]  [return description]
      */
-    function vc_unzip($pathToSource = "", $pathSaveTo = "")
+    function vncore_unzip($pathToSource = "", $pathSaveTo = "")
     {
         if (!is_string($pathToSource) || !is_string($pathSaveTo)) {
             return false;
@@ -274,8 +274,8 @@ if (!function_exists('vc_unzip') && !in_array('vc_unzip', config('helper_except'
 /**
  * Process path file
  */
-if (!function_exists('vc_file') && !in_array('vc_file', config('helper_except', []))) {
-    function vc_file($pathFile = "", bool $security = null):string
+if (!function_exists('vncore_file') && !in_array('vncore_file', config('helper_except', []))) {
+    function vncore_file($pathFile = "", bool $security = null):string
     {
         if (!is_string($pathFile)) {
             return '';
@@ -284,11 +284,11 @@ if (!function_exists('vc_file') && !in_array('vc_file', config('helper_except', 
     }
 }
 
-if (!function_exists('vc_path_download_render') && !in_array('vc_path_download_render', config('helper_except', []))) {
+if (!function_exists('vncore_path_download_render') && !in_array('vncore_path_download_render', config('helper_except', []))) {
     /*
     Render path download
      */
-    function vc_path_download_render(string $string):string
+    function vncore_path_download_render(string $string):string
     {
         if (filter_var($string, FILTER_VALIDATE_URL)) {
             return $string;
@@ -298,14 +298,14 @@ if (!function_exists('vc_path_download_render') && !in_array('vc_path_download_r
     }
 }
 
-if (!function_exists('vc_convertPHPSizeToBytes') && !in_array('vc_convertPHPSizeToBytes', config('helper_except', []))) {
+if (!function_exists('vncore_convertPHPSizeToBytes') && !in_array('vncore_convertPHPSizeToBytes', config('helper_except', []))) {
     /**
     * This function transforms the php.ini notation for numbers (like '2M') to an integer (2*1024*1024 in this case)
     * 
     * @param string $sSize
     * @return integer The value in bytes
     */
-    function vc_convertPHPSizeToBytes(string $sSize):int
+    function vncore_convertPHPSizeToBytes(string $sSize):int
     {
         $sSuffix = strtoupper(substr($sSize, -1));
         if (!in_array($sSuffix,array('P','T','G','M','K'))){
@@ -333,13 +333,13 @@ if (!function_exists('vc_convertPHPSizeToBytes') && !in_array('vc_convertPHPSize
     }
 }
 
-if (!function_exists('vc_getMaximumFileUploadSize') && !in_array('vc_getMaximumFileUploadSize', config('helper_except', []))) {
+if (!function_exists('vncore_getMaximumFileUploadSize') && !in_array('vncore_getMaximumFileUploadSize', config('helper_except', []))) {
     /**
     * This function returns the maximum files size that can be uploaded 
     * in PHP
     * @returns  File size in bytes
     **/
-    function vc_getMaximumFileUploadSize($unit = null)
+    function vncore_getMaximumFileUploadSize($unit = null)
     {
         $valueUnit = 1;
         switch ($unit) {
@@ -362,6 +362,6 @@ if (!function_exists('vc_getMaximumFileUploadSize') && !in_array('vc_getMaximumF
                 $valueUnit = 1;
                 break;
         }
-        return min(vc_convertPHPSizeToBytes(ini_get('post_max_size')), vc_convertPHPSizeToBytes(ini_get('upload_max_filesize')))/ $valueUnit;
+        return min(vncore_convertPHPSizeToBytes(ini_get('post_max_size')), vncore_convertPHPSizeToBytes(ini_get('upload_max_filesize')))/ $valueUnit;
     }
 }

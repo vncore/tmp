@@ -1,11 +1,11 @@
-@extends($vc_templatePathAdmin.'layout')
+@extends($vncore_templatePathAdmin.'layout')
 @section('main')
       <div class="card card-primary card-outline card-outline-tabs">
         <div class="card-header p-0 border-bottom-0">
           <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <li class="nav-item">
-              <a class="nav-link active" id="tab-password_policy_customer-tab" data-toggle="pill" href="#tab-password_policy_customer" role="tab" aria-controls="tab-password_policy_customer" aria-selected="false">{{ vc_language_render('password_policy.customer.title') }}</a>
+              <a class="nav-link active" id="tab-password_policy_customer-tab" data-toggle="pill" href="#tab-password_policy_customer" role="tab" aria-controls="tab-password_policy_customer" aria-selected="false">{{ vncore_language_render('password_policy.customer.title') }}</a>
             </li>
             @endif
           </ul>
@@ -16,7 +16,7 @@
             {{-- Tab policy --}}
             @if ((admin()->user()->isAdministrator() ||  admin()->user()->isViewAll()) && config('vncore.ecommerce_mode'))
             <div class="tab-pane fade  fade active show" id="tab-password_policy_customer" role="tabpanel" aria-labelledby="password_policy_customer">
-              @include($vc_templatePathAdmin.'screen.password_policy_customer')
+              @include($vncore_templatePathAdmin.'screen.password_policy_customer')
             </div>
             @endif
             {{-- //End tab policy --}}
@@ -29,7 +29,7 @@
 
 @push('styles')
 <!-- Ediable -->
-<link rel="stylesheet" href="{{ vc_file('admin/plugin/bootstrap-editable.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('admin/plugin/bootstrap-editable.css')}}">
 <style type="text/css">
   #maintain_content img{
     max-width: 100%;
@@ -40,7 +40,7 @@
 @if (empty($dataNotFound))
 @push('scripts')
 <!-- Ediable -->
-<script src="{{ vc_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
 
 <script type="text/javascript">
 
@@ -57,12 +57,12 @@ $(document).ready(function() {
       $('.editable-required').editable({
         validate: function(value) {
             if (value == '') {
-                return '{{  vc_language_render('admin.not_empty') }}';
+                return '{{  vncore_language_render('admin.not_empty') }}';
             }
         },
         success: function(data) {
           if(data.error == 0){
-            alertJs('success', '{{ vc_language_render('admin.msg_change_success') }}');
+            alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
           } else {
             alertJs('error', data.msg);
           }
@@ -75,7 +75,7 @@ $(document).ready(function() {
         success: function(data) {
           console.log(data);
           if(data.error == 0){
-            alertJs('success', '{{ vc_language_render('admin.msg_change_success') }}');
+            alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
           } else {
             alertMsg('error', data.msg);
           }
@@ -109,7 +109,7 @@ $(document).ready(function() {
         } else {
           $('#smtp-config').show();
         }
-        alertJs('success', '{{ vc_language_render('admin.msg_change_success') }}');
+        alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
       } else {
         alertJs('error', data.msg);
       }

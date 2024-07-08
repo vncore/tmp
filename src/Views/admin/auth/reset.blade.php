@@ -1,26 +1,26 @@
-@extends($vc_templatePathAdmin.'layout_portable')
+@extends($vncore_templatePathAdmin.'layout_portable')
 
 @section('main')
-@include($vc_templatePathAdmin.'component.css_login')
+@include($vncore_templatePathAdmin.'component.css_login')
 <div class="container-login100">
   <div class="wrap-login100 main-login">
 
       <div class="card-header text-center">
-        <a href="{{ vc_route('home') }}" class="h1">
-          <img src="{{ vc_file(vc_store('logo')) }}" alt="logo" class="logo">
+        <a href="{{ vncore_route('home') }}" class="h1">
+          <img src="{{ vncore_file(vncore_store('logo')) }}" alt="logo" class="logo">
         </a>
       </div>
       <div class="login-title-des col-md-12 p-b-41">
-        <a><b>{{vc_language_render('admin.password_forgot')}}</b></a>
+        <a><b>{{vncore_language_render('admin.password_forgot')}}</b></a>
       </div>
       <div class="card-body">
-      <form action="{{ vc_route('admin.password_request') }}" method="post">
+      <form action="{{ vncore_route('admin.password_request') }}" method="post">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="token" value="{{ $token }}">
         <div class="input-form {!! !$errors->has('email') ?: 'text-red' !!}">
           <div class="input-group mb-3">
-            <input class="input100 form-control" type="email" placeholder="{{ vc_language_render('admin.user.email') }}"
+            <input class="input100 form-control" type="email" placeholder="{{ vncore_language_render('admin.user.email') }}"
             name="email" value="{{ old('email') }}">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -36,7 +36,7 @@
 
         <div class="input-form {!! !$errors->has('password') ?: 'text-red' !!}">
           <div class="input-group mb-3">
-            <input class="input100 form-control" type="password" placeholder="{{ vc_language_render('admin.user.password') }}"
+            <input class="input100 form-control" type="password" placeholder="{{ vncore_language_render('admin.user.password') }}"
             name="password" value="{{ old('password') }}">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -52,7 +52,7 @@
 
         <div class="input-form {!! !$errors->has('password_confirmation') ?: 'text-red' !!}">
           <div class="input-group mb-3">
-            <input class="input100 form-control" type="password" placeholder="{{ vc_language_render('admin.user.password_confirmation') }}"
+            <input class="input100 form-control" type="password" placeholder="{{ vncore_language_render('admin.user.password_confirmation') }}"
             name="password_confirmation" value="{{ old('password_confirmation') }}">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -70,14 +70,14 @@
           <div class="col-12">
             <div class="container-login-btn">
               <button class="login-btn" type="submit">
-                {{ vc_language_render('action.submit') }}
+                {{ vncore_language_render('action.submit') }}
               </button>
             </div>
           </div>
         </div>
       </form>
       <p class="mt-3 mb-1">
-      <a href="{{ vc_route('admin.login') }}"><b>{{ vc_language_render('admin.user.login') }}</b></a>
+      <a href="{{ vncore_route('admin.login') }}"><b>{{ vncore_language_render('admin.user.login') }}</b></a>
       </p>
       </div>
   </div>
@@ -89,7 +89,7 @@
     @push('styles')
     <style type="text/css">
       .container-login100 {
-        background-image: url({!! vc_file('images/bg-system.jpg') !!});
+        background-image: url({!! vncore_file('images/bg-system.jpg') !!});
       }
     </style>
     @endpush

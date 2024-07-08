@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('vc_get_all_plugin') && !in_array('vc_get_all_plugin', config('helper_except', []))) {
+if (!function_exists('vncore_get_all_plugin') && !in_array('vncore_get_all_plugin', config('helper_except', []))) {
     /**
      * Get all class plugin
      *
@@ -8,7 +8,7 @@ if (!function_exists('vc_get_all_plugin') && !in_array('vc_get_all_plugin', conf
      *
      * @return  [array]
      */
-    function vc_get_all_plugin()
+    function vncore_get_all_plugin()
     {
         $arrClass = [];
         $dirs = array_filter(glob(app_path() . '/Plugins/*'), 'is_dir');
@@ -25,14 +25,14 @@ if (!function_exists('vc_get_all_plugin') && !in_array('vc_get_all_plugin', conf
     }
 }
 
-if (!function_exists('vc_get_plugin_installed') && !in_array('vc_get_plugin_installed', config('helper_except', []))) {
+if (!function_exists('vncore_get_plugin_installed') && !in_array('vncore_get_plugin_installed', config('helper_except', []))) {
     /**
      * Get all class plugin
      *
      * @param   [string]  $code  Payment, Shipping
      *
      */
-    function vc_get_plugin_installed($onlyActive = true)
+    function vncore_get_plugin_installed($onlyActive = true)
     {
         return \Vncore\Core\Admin\Models\AdminConfig::getPluginCode($onlyActive);
     }
@@ -41,7 +41,7 @@ if (!function_exists('vc_get_plugin_installed') && !in_array('vc_get_plugin_inst
 
 
 
-if (!function_exists('vc_get_all_plugin_actived') && !in_array('vc_get_all_plugin_actived', config('helper_except', []))) {
+if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_all_plugin_actived', config('helper_except', []))) {
     /**
      * Get all class plugin actived
      *
@@ -49,15 +49,15 @@ if (!function_exists('vc_get_all_plugin_actived') && !in_array('vc_get_all_plugi
      *
      * @return  [array]
      */
-    function vc_get_all_plugin_actived(string $code)
+    function vncore_get_all_plugin_actived(string $code)
     {
-        $code = vc_word_format_class($code);
+        $code = vncore_word_format_class($code);
         
         $pluginsActived = [];
-        $allPlugins = vc_get_all_plugin($code);
+        $allPlugins = vncore_get_all_plugin($code);
         if (count($allPlugins)) {
             foreach ($allPlugins as $keyPlugin => $plugin) {
-                if (vc_config($keyPlugin) == 1) {
+                if (vncore_config($keyPlugin) == 1) {
                     $pluginsActived[$keyPlugin] = $plugin;
                 }
             }
@@ -76,16 +76,16 @@ if (!function_exists('vc_get_all_plugin_actived') && !in_array('vc_get_all_plugi
      * @return  [array]
      */
 
-    if (!function_exists('vc_get_class_plugin_controller') && !in_array('vc_get_class_plugin_controller', config('helper_except', []))) {
-        function vc_get_class_plugin_controller(string $key = "")
+    if (!function_exists('vncore_get_class_plugin_controller') && !in_array('vncore_get_class_plugin_controller', config('helper_except', []))) {
+        function vncore_get_class_plugin_controller(string $key = "")
         {
             if (!$key) {
                 return null;
             }
             
-            $key = vc_word_format_class($key);
+            $key = vncore_word_format_class($key);
 
-            $nameSpace = vc_get_plugin_namespace($key);
+            $nameSpace = vncore_get_plugin_namespace($key);
             $nameSpace = $nameSpace . '\Controllers\FrontController';
 
             return $nameSpace;
@@ -100,12 +100,12 @@ if (!function_exists('vc_get_all_plugin_actived') && !in_array('vc_get_all_plugi
      *
      * @return  [array]
      */
-    if (!function_exists('vc_get_class_plugin_config') && !in_array('vc_get_class_plugin_config', config('helper_except', []))) {
-        function vc_get_class_plugin_config(string $key = "")
+    if (!function_exists('vncore_get_class_plugin_config') && !in_array('vncore_get_class_plugin_config', config('helper_except', []))) {
+        function vncore_get_class_plugin_config(string $key = "")
         {
-            $key = vc_word_format_class($key);
+            $key = vncore_word_format_class($key);
 
-            $nameSpace = vc_get_plugin_namespace($key);
+            $nameSpace = vncore_get_plugin_namespace($key);
             $nameSpace = $nameSpace . '\AppConfig';
 
             return $nameSpace;
@@ -120,10 +120,10 @@ if (!function_exists('vc_get_all_plugin_actived') && !in_array('vc_get_all_plugi
      *
      * @return  [array]
      */
-    if (!function_exists('vc_get_plugin_namespace') && !in_array('vc_get_plugin_namespace', config('helper_except', []))) {
-        function vc_get_plugin_namespace(string $key = "")
+    if (!function_exists('vncore_get_plugin_namespace') && !in_array('vncore_get_plugin_namespace', config('helper_except', []))) {
+        function vncore_get_plugin_namespace(string $key = "")
         {
-            $key = vc_word_format_class($key);
+            $key = vncore_word_format_class($key);
             $nameSpace = '\App\Plugins\\' . $key;
             return $nameSpace;
         }
@@ -136,8 +136,8 @@ if (!function_exists('vc_get_all_plugin_actived') && !in_array('vc_get_all_plugi
      *
      * @return  [type]                   [return description]
      */
-    if (!function_exists('vc_plugin_compatibility_check') && !in_array('vc_plugin_compatibility_check', config('helper_except', []))) {
-        function vc_plugin_compatibility_check(string $versionsConfig) {
+    if (!function_exists('vncore_plugin_compatibility_check') && !in_array('vncore_plugin_compatibility_check', config('helper_except', []))) {
+        function vncore_plugin_compatibility_check(string $versionsConfig) {
             $arrVersionSCart = explode('|', $versionsConfig);
             return in_array(config('vncore.core'), $arrVersionSCart);
         }

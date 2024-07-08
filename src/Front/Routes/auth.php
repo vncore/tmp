@@ -1,5 +1,5 @@
 <?php
-$prefixCustomer = vc_config('PREFIX_MEMBER') ?? 'customer';
+$prefixCustomer = vncore_config('PREFIX_MEMBER') ?? 'customer';
 $langUrl = config('app.seoLang');
 
 //Process namespace

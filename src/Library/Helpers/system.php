@@ -6,21 +6,21 @@ use Vncore\Core\Front\Models\ShopStoreBlockContent;
 use Vncore\Core\Front\Models\ShopStoreCss;
 use Illuminate\Support\Arr;
 
-if (!function_exists('vc_admin_can_config')) {
+if (!function_exists('vncore_admin_can_config')) {
     /**
      * Check user can change config value
      *
      * @return  [type]          [return description]
      */
-    function vc_admin_can_config()
+    function vncore_admin_can_config()
     {
         return \Vncore\Core\Admin\Admin::user()->checkPermissionConfig();
     }
 }
 
-if (!function_exists('vc_config') && !in_array('vc_config', config('helper_except', []))) {
+if (!function_exists('vncore_config') && !in_array('vncore_config', config('helper_except', []))) {
     /**
-     * Get value config from table vc_config
+     * Get value config from table vncore_config
      * Default value is only used if the config key does not exist (including null values)
      *
      * @param   [string|array]  $key      [$key description]
@@ -29,7 +29,7 @@ if (!function_exists('vc_config') && !in_array('vc_config', config('helper_excep
      *
      * @return  [type]            [return description]
      */
-    function vc_config($key = "", $storeId = null, $default = null)
+    function vncore_config($key = "", $storeId = null, $default = null)
     {
         $storeId = ($storeId === null) ? config('app.storeId') : $storeId;
         if (!is_string($key)) {
@@ -42,12 +42,12 @@ if (!function_exists('vc_config') && !in_array('vc_config', config('helper_excep
             return $allConfig;
         }
         return array_key_exists($key, $allConfig) ? $allConfig[$key] : 
-            (array_key_exists($key, vc_config_global()) ? vc_config_global()[$key] : $default);
+            (array_key_exists($key, vncore_config_global()) ? vncore_config_global()[$key] : $default);
     }
 }
 
 
-if (!function_exists('vc_config_admin') && !in_array('vc_config_admin', config('helper_except', []))) {
+if (!function_exists('vncore_config_admin') && !in_array('vncore_config_admin', config('helper_except', []))) {
     /**
      * Get config value in adin with session store id
      * Default value is only used if the config key does not exist (including null values)
@@ -57,16 +57,16 @@ if (!function_exists('vc_config_admin') && !in_array('vc_config_admin', config('
      *
      * @return  [type]      [return description]
      */
-    function vc_config_admin($key = "", $default = null)
+    function vncore_config_admin($key = "", $default = null)
     {
-        return vc_config($key, session('adminStoreId'), $default);
+        return vncore_config($key, session('adminStoreId'), $default);
     }
 }
 
 
-if (!function_exists('vc_config_global') && !in_array('vc_config_global', config('helper_except', []))) {
+if (!function_exists('vncore_config_global') && !in_array('vncore_config_global', config('helper_except', []))) {
     /**
-     * Get value config from table vc_config for store_id 0
+     * Get value config from table vncore_config for store_id 0
      * Default value is only used if the config key does not exist (including null values)
      *
      * @param   [string|array] $key      [$key description]
@@ -74,7 +74,7 @@ if (!function_exists('vc_config_global') && !in_array('vc_config_global', config
      *
      * @return  [type]          [return description]
      */
-    function vc_config_global($key = "", $default = null)
+    function vncore_config_global($key = "", $default = null)
     {
         if (!is_string($key)) {
             return;
@@ -96,11 +96,11 @@ if (!function_exists('vc_config_global') && !in_array('vc_config_global', config
     }
 }
 
-if (!function_exists('vc_config_group') && !in_array('vc_config_group', config('helper_except', []))) {
+if (!function_exists('vncore_config_group') && !in_array('vncore_config_group', config('helper_except', []))) {
     /*
     Group Config info
      */
-    function vc_config_group($group = null, $suffix = null)
+    function vncore_config_group($group = null, $suffix = null)
     {
         $groupData = AdminConfig::getGroup($group, $suffix);
         return $groupData;
@@ -108,7 +108,7 @@ if (!function_exists('vc_config_group') && !in_array('vc_config_group', config('
 }
 
 
-if (!function_exists('vc_store') && !in_array('vc_store', config('helper_except', []))) {
+if (!function_exists('vncore_store') && !in_array('vncore_store', config('helper_except', []))) {
     /**
      * Get info store_id, table admin_store
      *
@@ -117,7 +117,7 @@ if (!function_exists('vc_store') && !in_array('vc_store', config('helper_except'
      *
      * @return  [mix]
      */
-    function vc_store($key = null, $store_id = null, $default = null)
+    function vncore_store($key = null, $store_id = null, $default = null)
     {
         $store_id = ($store_id == null) ? config('app.storeId') : $store_id;
 
@@ -154,8 +154,8 @@ if (!function_exists('vc_store') && !in_array('vc_store', config('helper_except'
     }
 }
 
-if (!function_exists('vc_store_active') && !in_array('vc_store_active', config('helper_except', []))) {
-    function vc_store_active($field = null)
+if (!function_exists('vncore_store_active') && !in_array('vncore_store_active', config('helper_except', []))) {
+    function vncore_store_active($field = null)
     {
         switch ($field) {
             case 'code':
@@ -177,8 +177,8 @@ if (!function_exists('vc_store_active') && !in_array('vc_store_active', config('
 /*
 Get all layouts
  */
-if (!function_exists('vc_store_block') && !in_array('vc_store_block', config('helper_except', []))) {
-    function vc_store_block()
+if (!function_exists('vncore_store_block') && !in_array('vncore_store_block', config('helper_except', []))) {
+    function vncore_store_block()
     {
         return ShopStoreBlockContent::getLayout();
     }
@@ -187,10 +187,10 @@ if (!function_exists('vc_store_block') && !in_array('vc_store_block', config('he
 /**
  * Get css template
  */
-if (!function_exists('vc_store_css')) {
-    function vc_store_css()
+if (!function_exists('vncore_store_css')) {
+    function vncore_store_css()
     {
-        $template = vc_store('template', config('app.storeId'));
+        $template = vncore_store('template', config('app.storeId'));
         if (\Schema::connection(SC_CONNECTION)->hasColumn((new ShopStoreCss)->getTable(), 'template')) {
             $cssStore =  ShopStoreCss::where('store_id', config('app.storeId'))
             ->where('template', $template)->first();
@@ -206,11 +206,11 @@ if (!function_exists('vc_store_css')) {
 
 
 
-if (!function_exists('vc_get_all_template') && !in_array('vc_get_all_template', config('helper_except', []))) {
+if (!function_exists('vncore_get_all_template') && !in_array('vncore_get_all_template', config('helper_except', []))) {
     /*
     Get all template
     */
-    function vc_get_all_template():array
+    function vncore_get_all_template():array
     {
         $arrTemplates = [];
         foreach (glob(resource_path() . "/views/templates/*") as $template) {
@@ -229,7 +229,7 @@ if (!function_exists('vc_get_all_template') && !in_array('vc_get_all_template', 
 }
 
 
-if (!function_exists('vc_route') && !in_array('vc_route', config('helper_except', []))) {
+if (!function_exists('vncore_route') && !in_array('vncore_route', config('helper_except', []))) {
     /**
      * Render route
      *
@@ -238,7 +238,7 @@ if (!function_exists('vc_route') && !in_array('vc_route', config('helper_except'
      *
      * @return  [type]         [return description]
      */
-    function vc_route($name, $param = [])
+    function vncore_route($name, $param = [])
     {
         if (!config('app.seoLang')) {
             $param = Arr::except($param, ['lang']);
@@ -263,7 +263,7 @@ if (!function_exists('vc_route') && !in_array('vc_route', config('helper_except'
 }
 
 
-if (!function_exists('vc_route_admin') && !in_array('vc_route_admin', config('helper_except', []))) {
+if (!function_exists('vncore_route_admin') && !in_array('vncore_route_admin', config('helper_except', []))) {
     /**
      * Render route admin
      *
@@ -272,7 +272,7 @@ if (!function_exists('vc_route_admin') && !in_array('vc_route_admin', config('he
      *
      * @return  [type]         [return description]
      */
-    function vc_route_admin($name, $param = [])
+    function vncore_route_admin($name, $param = [])
     {
         if (Route::has($name)) {
             try {
@@ -287,7 +287,7 @@ if (!function_exists('vc_route_admin') && !in_array('vc_route_admin', config('he
     }
 }
 
-if (!function_exists('vc_uuid') && !in_array('vc_uuid', config('helper_except', []))) {
+if (!function_exists('vncore_uuid') && !in_array('vncore_uuid', config('helper_except', []))) {
     /**
      * Generate UUID
      *
@@ -296,13 +296,13 @@ if (!function_exists('vc_uuid') && !in_array('vc_uuid', config('helper_except', 
      *
      * @return  [type]         [return description]
      */
-    function vc_uuid()
+    function vncore_uuid()
     {
         return (string)\Illuminate\Support\Str::orderedUuid();
     }
 }
 
-if (!function_exists('vc_generate_id') && !in_array('vc_generate_id', config('helper_except', []))) {
+if (!function_exists('vncore_generate_id') && !in_array('vncore_generate_id', config('helper_except', []))) {
     /**
      * Generate ID
      *
@@ -310,69 +310,69 @@ if (!function_exists('vc_generate_id') && !in_array('vc_generate_id', config('he
      *
      * @return  [type]         [return description]
      */
-    function vc_generate_id($type = null)
+    function vncore_generate_id($type = null)
     {
         switch ($type) {
             case 'shop_store':
-                return 'S-'.vc_token(5).'-'.vc_token(5);
+                return 'S-'.vncore_token(5).'-'.vncore_token(5);
                 break;
             case 'shop_order':
-                return 'O-'.vc_token(5).'-'.vc_token(5);
+                return 'O-'.vncore_token(5).'-'.vncore_token(5);
                 break;
             case 'pmo_member_mapping':
-                return 'MM-'.vc_token(5);
+                return 'MM-'.vncore_token(5);
                 break;
             case 'pmo_partner':
-                return 'PN-'.vc_token(5);
+                return 'PN-'.vncore_token(5);
                 break;
             case 'partner_user':
-                return 'PU-'.vc_token(5);
+                return 'PU-'.vncore_token(5);
                 break;
             case 'pmo_client':
-                return 'CL-'.vc_token(5);
+                return 'CL-'.vncore_token(5);
                 break;
             case 'pmo_project':
-                return 'PJ-'.vc_token(5);
+                return 'PJ-'.vncore_token(5);
                 break;
             case 'pmo_project_attachment':
-                return 'PJA-'.vc_token(10);
+                return 'PJA-'.vncore_token(10);
                 break;
             case 'pmo_task':
-                return 'TA-'.vc_token(5);
+                return 'TA-'.vncore_token(5);
                 break;
             case 'pmo_task_attachment':
-                return 'TAAT-'.vc_token(10);
+                return 'TAAT-'.vncore_token(10);
                 break;
             case 'pmo_task_logtime':
-                return 'TALT-'.vc_token(10);
+                return 'TALT-'.vncore_token(10);
                 break;
             case 'pmo_task_checklist':
-                return 'TACL-'.vc_token(10);
+                return 'TACL-'.vncore_token(10);
                 break;
             case 'pmo_task_comment':
-                return 'TACM-'.vc_token(10);
+                return 'TACM-'.vncore_token(10);
                 break;
             case 'pmo_milestone':
-                return 'MS-'.vc_token(5);
+                return 'MS-'.vncore_token(5);
                 break;
             case 'pmo_sprint':
-                return 'SP-'.vc_token(5);
+                return 'SP-'.vncore_token(5);
                 break;
             case 'pmo_request':
-                return 'RQ-'.vc_token(5);
+                return 'RQ-'.vncore_token(5);
                 break;
             case 'admin_user':
-                return 'AU-'.vc_token(5);
+                return 'AU-'.vncore_token(5);
                 break;
             default:
-                return vc_uuid();
+                return vncore_uuid();
                 break;
         }
     }
 }
 
 
-if (!function_exists('vc_config_update') && !in_array('vc_config_update', config('helper_except', []))) {
+if (!function_exists('vncore_config_update') && !in_array('vncore_config_update', config('helper_except', []))) {
 
     /**
      * Update key config
@@ -382,7 +382,7 @@ if (!function_exists('vc_config_update') && !in_array('vc_config_update', config
      *
      * @return  [type]              [return description]
      */
-    function vc_config_update($dataUpdate = null, $storeId = null)
+    function vncore_config_update($dataUpdate = null, $storeId = null)
     {
         $storeId = ($storeId === null) ? config('app.storeId') : $storeId;
         //Update config
@@ -401,7 +401,7 @@ if (!function_exists('vc_config_update') && !in_array('vc_config_update', config
     }
 }
 
-if (!function_exists('vc_config_exist') && !in_array('vc_config_exist', config('helper_except', []))) {
+if (!function_exists('vncore_config_exist') && !in_array('vncore_config_exist', config('helper_except', []))) {
 
     /**
      * Check key config exist
@@ -411,7 +411,7 @@ if (!function_exists('vc_config_exist') && !in_array('vc_config_exist', config('
      *
      * @return  [type]            [return description]
      */
-    function vc_config_exist($key = "", $storeId = null)
+    function vncore_config_exist($key = "", $storeId = null)
     {
         if(!is_string($key)) {
             return false;
@@ -426,15 +426,15 @@ if (!function_exists('vc_config_exist') && !in_array('vc_config_exist', config('
     }
 }
 
-if (!function_exists('vc_config_global_update') && !in_array('vc_config_global_update', config('helper_except', []))) {
+if (!function_exists('vncore_config_global_update') && !in_array('vncore_config_global_update', config('helper_except', []))) {
     /**
-     * [vc_config_global_update description]
+     * [vncore_config_global_update description]
      *
      * @param   [type]  $arrayData  [$arrayData description]
      *
      * @return  []                  [return description]
      */
-    function vc_config_global_update($arrayData = [])
+    function vncore_config_global_update($arrayData = [])
     {
         //Update config
         if (is_array($arrayData)) {

@@ -1,4 +1,4 @@
-@extends($vc_templatePathAdmin.'layout')
+@extends($vncore_templatePathAdmin.'layout')
 
 @section('main')
    <div class="row">
@@ -9,7 +9,7 @@
 
                     <div class="card-tools">
                         <div class="btn-group float-right mr-5">
-                            <a href="{{ vc_route_admin('admin_banner.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span></a>
+                            <a href="{{ vncore_route_admin('admin_banner.index') }}" class="btn  btn-flat btn-default" title="List"><i class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -22,13 +22,13 @@
                         <div class="fields-group">
 
                             <div class="form-group  row {{ $errors->has('image') ? ' text-red' : '' }}">
-                                <label for="image" class="col-sm-2 col-form-label">{{ vc_language_render('admin.banner.image') }}</label>
+                                <label for="image" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.banner.image') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <input type="text" id="image" name="image" value="{{ old('image',$banner['image']??'') }}" class="form-control image" placeholder=""  />
                                         <div class="input-group-append">
                                          <a data-input="image" data-preview="preview_image" data-type="banner" class="btn btn-primary lfm">
-                                           <i class="fa fa-image"></i> {{vc_language_render('product.admin.choose_image')}}
+                                           <i class="fa fa-image"></i> {{vncore_language_render('product.admin.choose_image')}}
                                          </a>
                                         </div>
                                     </div>
@@ -39,14 +39,14 @@
                                         @endif
                                     <div id="preview_image" class="img_holder">
                                         @if (old('image',$banner['image']??''))
-                                        <img src="{{ vc_file(old('image',$banner['image']??'')) }}">
+                                        <img src="{{ vncore_file(old('image',$banner['image']??'')) }}">
                                         @endif
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group  row {{ $errors->has('url') ? ' text-red' : '' }}">
-                                <label for="url" class="col-sm-2 col-form-label">{{ vc_language_render('admin.banner.url') }}</label>
+                                <label for="url" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.banner.url') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -66,7 +66,7 @@
 
 
                             <div class="form-group  row {{ $errors->has('title') ? ' text-red' : '' }}">
-                                <label for="title" class="col-sm-2 col-form-label">{{ vc_language_render('admin.banner.title') }}</label>
+                                <label for="title" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.banner.title') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -86,7 +86,7 @@
 
 
                             <div class="form-group row {{ $errors->has('target') ? ' text-red' : '' }}">
-                                    <label for="target" class="col-sm-2 col-form-label">{{ vc_language_render('admin.banner.select_target') }}</label>
+                                    <label for="target" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.banner.select_target') }}</label>
                                     <div class="col-sm-8">
                                         <select class="form-control target select2" style="width: 100%;" name="target" >
                                             <option value=""></option>
@@ -103,7 +103,7 @@
                                 </div>
 
                             <div class="form-group row {{ $errors->has('html') ? ' text-red' : '' }}">
-                                <label for="html" class="col-sm-2 col-form-label">{{ vc_language_render('admin.email_template.html') }}</label>
+                                <label for="html" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.email_template.html') }}</label>
                                 <div class="col-sm-8">
                                         <textarea class="form-control" rows="10" id="html" name="html">{{ old('html',$banner['html']??'') }}</textarea>
                                         @if ($errors->has('html'))
@@ -116,7 +116,7 @@
                             
                             @if (!empty($dataType))
                             <div class="form-group row {{ $errors->has('type') ? ' text-red' : '' }}">
-                                <label class="col-sm-2 col-form-label">{{ vc_language_render('admin.banner.type') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ vncore_language_render('admin.banner.type') }}</label>
                                 <div class="col-sm-8">
                                 <div class="input-group">
                                 <select class="form-control" name="type">
@@ -125,8 +125,8 @@
                                     @endforeach
                                 </select>
                                 <div class="input-group-append">
-                                    <a href="{{ vc_route_admin('admin_banner_type.index') }}" class="btn  btn-flat" title="New">
-                                        <i class="fa fa-plus" title="{{ vc_language_render('action.add') }}"></i>
+                                    <a href="{{ vncore_route_admin('admin_banner_type.index') }}" class="btn  btn-flat" title="New">
+                                        <i class="fa fa-plus" title="{{ vncore_language_render('action.add') }}"></i>
                                      </a>
                                 </div>
                                 </div>
@@ -141,7 +141,7 @@
 
 
                             <div class="form-group  row {{ $errors->has('sort') ? ' text-red' : '' }}">
-                                <label for="sort" class="col-sm-2 col-form-label">{{ vc_language_render('admin.banner.sort') }}</label>
+                                <label for="sort" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.banner.sort') }}</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -157,12 +157,12 @@
                                 </div>
                             </div>
 
-@if (vc_check_multi_shop_installed())
+@if (vncore_check_multi_shop_installed())
                             {{-- select shop_store --}}
                             @php
                             $listStore = [];
-                            if (function_exists('vc_get_list_store_of_banner_detail')) {
-                                $oldData = vc_get_list_store_of_banner_detail($banner['id'] ?? '');
+                            if (function_exists('vncore_get_list_store_of_banner_detail')) {
+                                $oldData = vncore_get_list_store_of_banner_detail($banner['id'] ?? '');
                             } else {
                                 $oldData = null;
                             }
@@ -177,16 +177,16 @@
     
                             <div class="form-group row {{ $errors->has('shop_store') ? ' text-red' : '' }}">
                                 <label for="shop_store"
-                                    class="col-sm-2 col-form-label">{{ vc_language_render('admin.select_store') }}</label>
+                                    class="col-sm-2 col-form-label">{{ vncore_language_render('admin.select_store') }}</label>
                                 <div class="col-sm-8">
                                     <select class="form-control shop_store select2" 
-                                    @if (vc_check_multi_store_installed())
+                                    @if (vncore_check_multi_store_installed())
                                         multiple="multiple"
                                     @endif
-                                    data-placeholder="{{ vc_language_render('admin.select_store') }}" style="width: 100%;"
+                                    data-placeholder="{{ vncore_language_render('admin.select_store') }}" style="width: 100%;"
                                     name="shop_store[]">
                                         <option value=""></option>
-                                        @foreach (vc_get_list_code_store() as $k => $v)
+                                        @foreach (vncore_get_list_code_store() as $k => $v)
                                         <option value="{{ $k }}"
                                             {{ (count($listStore) && in_array($k, $listStore))?'selected':'' }}>{{ $v }}
                                         </option>
@@ -202,7 +202,7 @@
                             {{-- //select shop_store --}}
     @endif
                             <div class="form-group row ">
-                                <label for="status" class="col-sm-2 col-form-label">{{ vc_language_render('admin.banner.status') }}</label>
+                                <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.banner.status') }}</label>
                                 <div class="col-sm-8">
                                     <input class="checkbox" type="checkbox" name="status"  {{ old('status',(empty($banner['status'])?0:1))?'checked':''}}>
                                 </div>
@@ -214,7 +214,7 @@
                     $customFields = isset($customFields) ? $customFields : [];
                     $fields = !empty($banner) ? $banner->getCustomFields() : [];
                 @endphp
-                @includeIf($vc_templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
+                @includeIf($vncore_templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
                 {{-- //Custom fields --}}
 
 
@@ -227,11 +227,11 @@
 
                         <div class="col-md-8">
                             <div class="btn-group float-right">
-                                <button type="submit" class="btn btn-primary">{{ vc_language_render('action.submit') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                             </div>
     
                             <div class="btn-group float-left">
-                                <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
+                                <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                             </div>
                         </div>
                     </div>
@@ -245,15 +245,15 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{ vc_file('admin/plugin/mirror/doc/docs.css')}}">
-<link rel="stylesheet" href="{{ vc_file('admin/plugin/mirror/lib/codemirror.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('admin/plugin/mirror/doc/docs.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('admin/plugin/mirror/lib/codemirror.css')}}">
 @endpush
 
 @push('scripts')
-<script src="{{ vc_file('admin/plugin/mirror/lib/codemirror.js')}}"></script>
-<script src="{{ vc_file('admin/plugin/mirror/mode/javascript/javascript.js')}}"></script>
-<script src="{{ vc_file('admin/plugin/mirror/mode/css/css.js')}}"></script>
-<script src="{{ vc_file('admin/plugin/mirror/mode/htmlmixed/htmlmixed.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/mirror/lib/codemirror.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/mirror/mode/javascript/javascript.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/mirror/mode/css/css.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/mirror/mode/htmlmixed/htmlmixed.js')}}"></script>
 <script>
     window.onload = function() {
       editor = CodeMirror(document.getElementById("html"), {

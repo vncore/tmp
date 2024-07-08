@@ -1,4 +1,4 @@
-{{-- Use vc_config with storeId, dont use vc_config_admin because will switch the store to the specified store Id
+{{-- Use vncore_config with storeId, dont use vncore_config_admin because will switch the store to the specified store Id
 --}}
 
 <div class="row">
@@ -10,23 +10,23 @@
            @foreach ($configCaptcha as $config)
            @if ($config->key == 'captcha_mode')
            <tr>
-            <td>{{ vc_language_render($config->detail) }}</td>
+            <td>{{ vncore_language_render($config->detail) }}</td>
             <td><input class="check-data-config" data-store="{{ $storeId }}" type="checkbox" name="{{ $config->key }}"  {{ $config->value ? "checked":"" }}></td>
           </tr>
            @elseif($config->key == 'captcha_page')
            <tr>
-            <td>{{ vc_language_render('admin.captcha.captcha_page_help') }}</td>
-            <td align="left"><a href="#" class="editable-required editable editable-click" data-name="{{ $config->key }}" data-type="checklist" data-pk="{{ $config->key }}" data-source="{{ json_encode($captcha_page) }}" data-url="{{ $urlUpdateConfig }}" data-title="{{ vc_language_render($config->detail) }}" data-value="{{ $config->value }}" data-original-title="" title=""></a></td>
+            <td>{{ vncore_language_render('admin.captcha.captcha_page_help') }}</td>
+            <td align="left"><a href="#" class="editable-required editable editable-click" data-name="{{ $config->key }}" data-type="checklist" data-pk="{{ $config->key }}" data-source="{{ json_encode($captcha_page) }}" data-url="{{ $urlUpdateConfig }}" data-title="{{ vncore_language_render($config->detail) }}" data-value="{{ $config->value }}" data-original-title="" title=""></a></td>
           </tr>
            @elseif($config->key == 'captcha_method')
           <tr>
-            <td>{{ vc_language_render($config->detail) }}</td>
-            <td align="left"><a href="#" class="editable-required editable editable-click" data-name="{{ $config->key }}" data-type="select" data-pk="{{ $config->key }}" data-source="{{ json_encode($pluginCaptchaInstalled) }}" data-url="{{ $urlUpdateConfig }}" data-title="{{ vc_language_render($config->detail) }}" data-value="{{ $config->value }}" data-original-title="" title=""></a></td>
+            <td>{{ vncore_language_render($config->detail) }}</td>
+            <td align="left"><a href="#" class="editable-required editable editable-click" data-name="{{ $config->key }}" data-type="select" data-pk="{{ $config->key }}" data-source="{{ json_encode($pluginCaptchaInstalled) }}" data-url="{{ $urlUpdateConfig }}" data-title="{{ vncore_language_render($config->detail) }}" data-value="{{ $config->value }}" data-original-title="" title=""></a></td>
           </tr>
           @else
           <tr>
-            <td>{{ vc_language_render($config->detail) }}</td>
-            <td align="left"><a href="#" class="editable-required editable editable-click" data-name="{{ $config->key }}" data-type="text" data-pk="{{ $config->key }}" data-source="" data-url="{{ $urlUpdateConfig }}" data-title="{{ vc_language_render($config->detail) }}" data-value="{{ $config->value }}" data-original-title="" title=""></a></td>
+            <td>{{ vncore_language_render($config->detail) }}</td>
+            <td align="left"><a href="#" class="editable-required editable editable-click" data-name="{{ $config->key }}" data-type="text" data-pk="{{ $config->key }}" data-source="" data-url="{{ $urlUpdateConfig }}" data-title="{{ vncore_language_render($config->detail) }}" data-value="{{ $config->value }}" data-original-title="" title=""></a></td>
           </tr>
            @endif
 

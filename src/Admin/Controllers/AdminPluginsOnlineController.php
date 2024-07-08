@@ -17,7 +17,7 @@ class AdminPluginsOnlineController extends RootAdminController
         $action = request('action');
         $pluginKey = request('pluginKey');
         if ($action == 'config' && $pluginKey != '') {
-            $namespace = vc_get_class_plugin_config($pluginKey);
+            $namespace = vncore_get_class_plugin_config($pluginKey);
             $body = (new $namespace)->config();
         } else {
             $body = $this->pluginCode();
@@ -30,7 +30,7 @@ class AdminPluginsOnlineController extends RootAdminController
         $arrPluginLibrary = [];
         $resultItems = '';
         $htmlPaging = '';
-        $vc_version = config('vncore.core');
+        $vncore_version = config('vncore.core');
         $filter_free = request('filter_free', '');
         $filter_type = request('filter_type', '');
         $filter_keyword = request('filter_keyword', '');
@@ -38,7 +38,7 @@ class AdminPluginsOnlineController extends RootAdminController
         $page = request('page') ?? 1;
 
         $url = config('vncore.api_link').'/plugins?page[size]=20&page[number]='.$page;
-        $url .='&version='.$vc_version;
+        $url .='&version='.$vncore_version;
         $url .='&filter_free='.$filter_free;
         $url .='&filter_type='.$filter_type;
         $url .='&filter_keyword='.$filter_keyword;
@@ -76,29 +76,29 @@ class AdminPluginsOnlineController extends RootAdminController
                     'link' =>  $data['link'] ?? '',
                 ];
             }
-            $resultItems = vc_language_render('admin.result_item', ['item_from' => $dataApi['from'] ?? 0, 'item_to' => $dataApi['to']??0, 'total' =>  $dataApi['total'] ?? 0]);
+            $resultItems = vncore_language_render('admin.result_item', ['item_from' => $dataApi['from'] ?? 0, 'item_to' => $dataApi['to']??0, 'total' =>  $dataApi['total'] ?? 0]);
             $htmlPaging .= '<ul class="pagination pagination-sm no-margin pull-right">';
             if ($dataApi['current_page'] > 1) {
-                $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.vc_route_admin('admin_plugin_online', ['code' => strtolower($code)]).'?page='.($dataApi['current_page'] - 1).'" rel="prev">«</a></li>';
+                $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.vncore_route_admin('admin_plugin_online', ['code' => strtolower($code)]).'?page='.($dataApi['current_page'] - 1).'" rel="prev">«</a></li>';
             } else {
                 for ($i = 1; $i < $dataApi['last_page']; $i++) {
                     if ($dataApi['current_page'] == $i) {
                         $htmlPaging .= '<li class="page-item active"><span class="page-link">'.$i.'</span></li>';
                     } else {
-                        $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.vc_route_admin('admin_plugin_online', ['code' => strtolower($code)]).'?page='.$i.'">'.$i.'</a></li>';
+                        $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.vncore_route_admin('admin_plugin_online', ['code' => strtolower($code)]).'?page='.$i.'">'.$i.'</a></li>';
                     }
                 }
             }
             if ($dataApi['current_page'] < $dataApi['last_page']) {
-                $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.vc_route_admin('admin_plugin_online', ['code' => strtolower($code)]).'?page='.($dataApi['current_page'] + 1).'" rel="next">»</a></li>';
+                $htmlPaging .= '<li class="page-item"><a class="page-link" href="'.vncore_route_admin('admin_plugin_online', ['code' => strtolower($code)]).'?page='.($dataApi['current_page'] + 1).'" rel="next">»</a></li>';
             }
             $htmlPaging .= '</ul>';
         }
 
-        $arrPluginLocal = vc_get_all_plugin();
-        $title = vc_language_render('admin.plugin.plugin');
+        $arrPluginLocal = vncore_get_all_plugin();
+        $title = vncore_language_render('admin.plugin.plugin');
 
-        return view($this->vc_templatePathAdmin.'screen.plugin_online')->with(
+        return view($this->vncore_templatePathAdmin.'screen.plugin_online')->with(
             [
                 "title" => $title,
                 "arrPluginLocal" => $arrPluginLocal,
@@ -137,7 +137,7 @@ class AdminPluginsOnlineController extends RootAdminController
             $pathTmp = $code.'_'.$key.'_'.time();
             $fileTmp = $pathTmp.'.zip';
             Storage::disk('tmp')->put($pathTmp.'/'.$fileTmp, $data);
-            $unzip = vc_unzip(storage_path('tmp/'.$pathTmp.'/'.$fileTmp), storage_path('tmp/'.$pathTmp));
+            $unzip = vncore_unzip(storage_path('tmp/'.$pathTmp.'/'.$fileTmp), storage_path('tmp/'.$pathTmp));
             if ($unzip) {
                 $checkConfig = glob(storage_path('tmp/'.$pathTmp) . '/*/config.json');
 
@@ -149,9 +149,9 @@ class AdminPluginsOnlineController extends RootAdminController
                 //Check compatibility 
                 $config = json_decode(file_get_contents($checkConfig[0]), true);
                 $scartVersion = $config['scartVersion'] ?? '';
-                if (!vc_plugin_compatibility_check($scartVersion)) {
+                if (!vncore_plugin_compatibility_check($scartVersion)) {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    $response = ['error' => 1, 'msg' => vc_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'vc_version' => config('vncore.core')])];
+                    $response = ['error' => 1, 'msg' => vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'vncore_version' => config('vncore.core')])];
                 } else {
                     $folderName = explode('/config.json', $checkConfig[0]);
                     $folderName = explode('/', $folderName[0]);
@@ -159,7 +159,7 @@ class AdminPluginsOnlineController extends RootAdminController
                     File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path($pathPlugin));
                     File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), app_path($pathPlugin));
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    $namespace = vc_get_class_plugin_config($key);
+                    $namespace = vncore_get_class_plugin_config($key);
                     $response = (new $namespace)->install();
                 }
 

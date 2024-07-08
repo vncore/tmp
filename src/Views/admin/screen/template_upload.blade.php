@@ -1,4 +1,4 @@
-@extends($vc_templatePathAdmin.'layout')
+@extends($vncore_templatePathAdmin.'layout')
 
 @section('main')
 <div class="row">
@@ -8,7 +8,7 @@
                 <h3 class="card-title">{!! $title!!}</h3>
             </div>
 
-            <form action="{{ vc_route_admin('admin_template.process_import') }}" method="post" accept-charset="UTF-8" class="form-horizontal" id="import-product" enctype="multipart/form-data">
+            <form action="{{ vncore_route_admin('admin_template.process_import') }}" method="post" accept-charset="UTF-8" class="form-horizontal" id="import-product" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
                     <div class="fields-group">
@@ -22,7 +22,7 @@
                                       <label class="custom-file-label" for="input-file">Choose file</label>
                                     </div>
                                     <div class="input-group-append">
-                                      <span class="btn button-upload">{{ vc_language_render('admin.template.import_submit') }}</span>
+                                      <span class="btn button-upload">{{ vncore_language_render('admin.template.import_submit') }}</span>
                                     </div>
                                 </div>
 
@@ -33,7 +33,7 @@
                                     </span>
                                     @else
                                     <span class="form-text">
-                                        <i class="fa fa-info-circle"></i> {!! vc_language_render('admin.template.import_note') !!}
+                                        <i class="fa fa-info-circle"></i> {!! vncore_language_render('admin.template.import_note') !!}
                                     </span>
                                     @endif
                                 </div>

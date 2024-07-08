@@ -28,7 +28,7 @@ class AdminStoreConfigController extends RootAdminController
     {
         $id = session('adminStoreId');
         $data = [
-            'title' => vc_language_render('admin.menu_titles.config_store_default'),
+            'title' => vncore_language_render('admin.menu_titles.config_store_default'),
             'subTitle' => '',
             'icon' => 'fas fa-cogs',
         ];
@@ -117,11 +117,11 @@ class AdminStoreConfigController extends RootAdminController
         $data['emailConfig'] = $emailConfig;
         $data['smtp_method'] = ['' => 'None Secirity', 'TLS' => 'TLS', 'SSL' => 'SSL'];
         $data['captcha_page'] = [
-            'register' => vc_language_render('admin.captcha.captcha_page_register'),
-            'forgot'   => vc_language_render('admin.captcha.captcha_page_forgot_password'),
-            'checkout' => vc_language_render('admin.captcha.captcha_page_checkout'),
-            'contact'  => vc_language_render('admin.captcha.captcha_page_contact'),
-            'review'   => vc_language_render('admin.captcha.captcha_page_review'),
+            'register' => vncore_language_render('admin.captcha.captcha_page_register'),
+            'forgot'   => vncore_language_render('admin.captcha.captcha_page_forgot_password'),
+            'checkout' => vncore_language_render('admin.captcha.captcha_page_checkout'),
+            'contact'  => vncore_language_render('admin.captcha.captcha_page_contact'),
+            'review'   => vncore_language_render('admin.captcha.captcha_page_review'),
         ];
         //End email
         $data['customerConfigs']                = $customerConfigs;
@@ -130,7 +130,7 @@ class AdminStoreConfigController extends RootAdminController
         $data['productConfigAttribute']         = $productConfigAttribute;
         $data['productConfigAttributeRequired'] = $productConfigAttributeRequired;
         $data['configLayout']                   = $configLayout;
-        $data['pluginCaptchaInstalled']         = vc_get_plugin_captcha_installed();
+        $data['pluginCaptchaInstalled']         = vncore_get_plugin_captcha_installed();
         $data['configDisplay']                  = $configDisplay;
         $data['orderConfig']                    = $orderConfig;
         $data['configCaptcha']                  = $configCaptcha;
@@ -139,10 +139,10 @@ class AdminStoreConfigController extends RootAdminController
         $data['timezones']                      = $this->timezones;
         $data['languages']                      = $this->languages;
         $data['storeId']                        = $id;
-        $data['urlUpdateConfig']                = vc_route_admin('admin_config.update');
-        $data['urlUpdateConfigGlobal']          = vc_route_admin('admin_config_global.update');
+        $data['urlUpdateConfig']                = vncore_route_admin('admin_config.update');
+        $data['urlUpdateConfigGlobal']          = vncore_route_admin('admin_config_global.update');
 
-        return view($this->vc_templatePathAdmin.'screen.config_store_default')
+        return view($this->vncore_templatePathAdmin.'screen.config_store_default')
         ->with($data);
     }
 
@@ -171,7 +171,7 @@ class AdminStoreConfigController extends RootAdminController
                 ->where('store_id', $storeId)
                 ->update(['value' => $value]);
             $error = 0;
-            $msg = vc_language_render('action.update_success');
+            $msg = vncore_language_render('action.update_success');
         } catch (\Throwable $e) {
             $error = 1;
             $msg = $e->getMessage();
@@ -199,20 +199,20 @@ class AdminStoreConfigController extends RootAdminController
         $storeId = $data['storeId'] ?? '';
 
         if (session('adminStoreId') != SC_ID_ROOT && $storeId != session('adminStoreId')) {
-            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.remove_dont_permisison') . ': storeId#' . $storeId]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': storeId#' . $storeId]);
         }
 
         if (!$key) {
-            return redirect()->back()->with('error', 'Key: '.vc_language_render('admin.not_empty'));
+            return redirect()->back()->with('error', 'Key: '.vncore_language_render('admin.not_empty'));
         }
         $group = $data['group'] ?? 'admin_custom_config';
         $dataUpdate = ['key' => $key, 'value' => $value, 'code' => $group, 'store_id' => $storeId, 'detail' => $detail];
         if (AdminConfig::where(['key' => $key, 'store_id' => $storeId])->first()) {
-            return redirect()->back()->with('error', vc_language_quickly('admin.admin_custom_config.key_exist', 'Key already exist'));
+            return redirect()->back()->with('error', vncore_language_quickly('admin.admin_custom_config.key_exist', 'Key already exist'));
         }
-        $dataUpdate = vc_clean($dataUpdate, [], true);
+        $dataUpdate = vncore_clean($dataUpdate, [], true);
         AdminConfig::insert($dataUpdate);
-        return redirect()->back()->with('success', vc_language_render('action.update_success'));
+        return redirect()->back()->with('success', vncore_language_render('action.update_success'));
     }
 
     /**
@@ -225,9 +225,9 @@ class AdminStoreConfigController extends RootAdminController
         $storeId = request('storeId');
 
         if (session('adminStoreId') != SC_ID_ROOT && $storeId != session('adminStoreId')) {
-            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.remove_dont_permisison') . ': storeId#' . $storeId]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': storeId#' . $storeId]);
         }
         AdminConfig::where('key', $key)->where('store_id', $storeId)->delete();
-        return response()->json(['error' => 0, 'msg' => vc_language_render('action.update_success')]);
+        return response()->json(['error' => 0, 'msg' => vncore_language_render('action.update_success')]);
     }
 }

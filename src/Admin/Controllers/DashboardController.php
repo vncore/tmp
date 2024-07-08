@@ -16,13 +16,13 @@ class DashboardController extends RootAdminController
     {
         //Check user allow view dasdboard
         if (!\Admin::user()->checkUrlAllowAccess(route('admin.home'))) {
-            $data['title'] = vc_language_render('admin.dashboard');
-            return view($this->vc_templatePathAdmin.'default', $data);
+            $data['title'] = vncore_language_render('admin.dashboard');
+            return view($this->vncore_templatePathAdmin.'default', $data);
         }
 
         $data                   = [];
-        $data['title']          = vc_language_render('admin.dashboard');
-        return view($this->vc_templatePathAdmin.'dashboard', $data);
+        $data['title']          = vncore_language_render('admin.dashboard');
+        return view($this->vncore_templatePathAdmin.'dashboard', $data);
     }
 
     /**
@@ -33,11 +33,11 @@ class DashboardController extends RootAdminController
     public function dataNotFound()
     {
         $data = [
-            'title' => vc_language_render('admin.data_not_found'),
+            'title' => vncore_language_render('admin.data_not_found'),
             'icon' => '',
             'url' => session('url'),
         ];
-        return view($this->vc_templatePathAdmin.'data_not_found', $data);
+        return view($this->vncore_templatePathAdmin.'data_not_found', $data);
     }
 
 
@@ -49,12 +49,12 @@ class DashboardController extends RootAdminController
     public function deny()
     {
         $data = [
-            'title' => vc_language_render('admin.deny'),
+            'title' => vncore_language_render('admin.deny'),
             'icon' => '',
             'method' => session('method'),
             'url' => session('url'),
         ];
-        return view($this->vc_templatePathAdmin.'deny', $data);
+        return view($this->vncore_templatePathAdmin.'deny', $data);
     }
 
     /**
@@ -68,6 +68,6 @@ class DashboardController extends RootAdminController
             'method' => session('method'),
             'url' => session('url'),
         ];
-        return view($this->vc_templatePathAdmin.'deny_single', $data);
+        return view($this->vncore_templatePathAdmin.'deny_single', $data);
     }
 }

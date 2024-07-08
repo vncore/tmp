@@ -42,11 +42,11 @@ class Restore extends Command
                 try {
                     DB::connection(SC_CONNECTION)->transaction(function () use ($pathFull) {
                         DB::connection(SC_CONNECTION)->unprepared(file_get_contents($pathFull));
-                        echo json_encode(['error' => 0, 'msg' => vc_language_render('admin.backup.restore_success')]);
+                        echo json_encode(['error' => 0, 'msg' => vncore_language_render('admin.backup.restore_success')]);
                         exit();
                     });
                 } catch (Throwable $e) {
-                    vc_report($e->getMessage());
+                    vncore_report($e->getMessage());
                     echo  json_encode(['error' => 1, 'msg' => $e->getMessage()]);
                     exit();
                 }

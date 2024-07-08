@@ -30,7 +30,7 @@ class AdminLanguageManagerController extends RootAdminController
         $arrayKeyLanguagesPosition = array_keys($languagesPosition);
         $arrayKeyLanguagesPositionEL = array_keys($languagesPositionEL);
         $arrayKeyDiff = array_diff($arrayKeyLanguagesPositionEL, $arrayKeyLanguagesPosition);
-        $urlUpdateData = vc_route_admin('admin_language_manager.update');
+        $urlUpdateData = vncore_route_admin('admin_language_manager.update');
         $data = [
             'languages' => $languages,
             'lang' => $lang,
@@ -41,7 +41,7 @@ class AdminLanguageManagerController extends RootAdminController
             'languagesPositionEL' => $languagesPositionEL,
             'arrayKeyDiff' => $arrayKeyDiff,
             'urlUpdateData' => $urlUpdateData,
-            'title' => vc_language_render('admin.language_manager.title'),
+            'title' => vncore_language_render('admin.language_manager.title'),
             'subTitle' => '',
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
@@ -51,7 +51,7 @@ class AdminLanguageManagerController extends RootAdminController
         ];
 
 
-        return view($this->vc_templatePathAdmin.'screen.language_manager')
+        return view($this->vncore_templatePathAdmin.'screen.language_manager')
             ->with($data);
     }
 
@@ -63,16 +63,16 @@ class AdminLanguageManagerController extends RootAdminController
     public function postUpdate()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $data = request()->all();
-            $lang = vc_clean($data['lang']);
-            $name = vc_clean($data['name']);
-            $value = vc_clean($data['value']);
-            $position = vc_clean($data['pk']);
+            $lang = vncore_clean($data['lang']);
+            $name = vncore_clean($data['name']);
+            $value = vncore_clean($data['value']);
+            $position = vncore_clean($data['pk']);
             $languages = ShopLanguage::getCodeAll();
             if (!in_array($lang, array_keys($languages))) {
-                return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
+                return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
             }
             if ($position) {
                 Languages::updateOrCreate(
@@ -86,7 +86,7 @@ class AdminLanguageManagerController extends RootAdminController
                 );
             }
 
-            return response()->json(['error' => 0, 'msg' => vc_language_render('action.update_success')]);
+            return response()->json(['error' => 0, 'msg' => vncore_language_render('action.update_success')]);
         }
     }
 
@@ -100,11 +100,11 @@ class AdminLanguageManagerController extends RootAdminController
         $languages = ShopLanguage::getListAll();
         $positionLang = Languages::getPosition();
         $data = [
-            'title' => vc_language_render('admin.language_manager.add'),
+            'title' => vncore_language_render('admin.language_manager.add'),
             'positionLang' => $positionLang,
             'languages' => $languages,
         ];
-        return view($this->vc_templatePathAdmin.'screen.language_manager_add')
+        return view($this->vncore_templatePathAdmin.'screen.language_manager_add')
             ->with($data);
     }
 
@@ -137,9 +137,9 @@ class AdminLanguageManagerController extends RootAdminController
             'position' => trim(empty($data['position_new']) ? $data['position'] : $data['position_new']),
             'location' => 'en',
         ];
-        $dataCreate = vc_clean($dataCreate, ['text'], true);
+        $dataCreate = vncore_clean($dataCreate, ['text'], true);
         Languages::insert($dataCreate);
 
-        return redirect(vc_route_admin('admin_language_manager.index'))->with('success', vc_language_render('action.create_success'));
+        return redirect(vncore_route_admin('admin_language_manager.index'))->with('success', vncore_language_render('action.create_success'));
     }
 }

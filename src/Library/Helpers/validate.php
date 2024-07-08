@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('vc_check_view') && !in_array('vc_check_view', config('helper_except', []))) {
+if (!function_exists('vncore_check_view') && !in_array('vncore_check_view', config('helper_except', []))) {
     /**
      * Check view exist
      *
@@ -8,27 +8,27 @@ if (!function_exists('vc_check_view') && !in_array('vc_check_view', config('help
      *
      * @return  [string]         [$domain]
      */
-    function vc_check_view($view)
+    function vncore_check_view($view)
     {
         if (!view()->exists($view)) {
-            vc_report('View not found '.$view);
-            echo  vc_language_render('front.view_not_exist', ['view' => $view]);
+            vncore_report('View not found '.$view);
+            echo  vncore_language_render('front.view_not_exist', ['view' => $view]);
             exit();
         }
     }
 }
 
 
-if (!function_exists('vc_clean') && !in_array('vc_clean', config('helper_except', []))) {
+if (!function_exists('vncore_clean') && !in_array('vncore_clean', config('helper_except', []))) {
     /**
      * Clear data
      */
-    function vc_clean($data = null, $exclude = [], $level_high = false)
+    function vncore_clean($data = null, $exclude = [], $level_high = false)
     {
         if (is_array($data)) {
             array_walk($data, function (&$v, $k) use ($exclude, $level_high) {
                 if (is_array($v)) {
-                    $v = vc_clean($v, $exclude, $level_high);
+                    $v = vncore_clean($v, $exclude, $level_high);
                 } 
                 if (is_string($v)) {
                     if (in_array($k, $exclude)) {

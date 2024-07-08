@@ -1,4 +1,4 @@
-@extends($vc_templatePathAdmin.'layout')
+@extends($vncore_templatePathAdmin.'layout')
 
 @section('main')
 <div class="row">
@@ -9,8 +9,8 @@
 
                 <div class="card-tools">
                     <div class="btn-group float-right mr-5">
-                        <a href="{{ vc_route_admin('admin_category.index') }}" class="btn  btn-flat btn-default" title="List"><i
-                                class="fa fa-list"></i><span class="hidden-xs"> {{ vc_language_render('admin.back_list') }}</span></a>
+                        <a href="{{ vncore_route_admin('admin_category.index') }}" class="btn  btn-flat btn-default" title="List"><i
+                                class="fa fa-list"></i><span class="hidden-xs"> {{ vncore_language_render('admin.back_list') }}</span></a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     
                     <div class="card">
                         <div class="card-header with-border">
-                            <h3 class="card-title">{{ $language->name }} {!! vc_image_render($language->icon,'20px','20px', $language->name) !!}</h3>
+                            <h3 class="card-title">{{ $language->name }} {!! vncore_image_render($language->icon,'20px','20px', $language->name) !!}</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -41,7 +41,7 @@
 
                         <div class="form-group row  {{ $errors->has('descriptions.'.$code.'.title') ? ' text-red' : '' }}">
                             <label for="{{ $code }}__title"
-                                class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.title') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.title') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -57,7 +57,7 @@
                                 </span>
                                 @else
                                     <span class="form-text">
-                                        <i class="fa fa-info-circle"></i> {{ vc_language_render('admin.max_c',['max'=>200]) }}
+                                        <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.max_c',['max'=>200]) }}
                                     </span>
                                 @endif
                             </div>
@@ -66,7 +66,7 @@
                         <div
                             class="form-group row  {{ $errors->has('descriptions.'.$code.'.keyword') ? ' text-red' : '' }}">
                             <label for="{{ $code }}__keyword"
-                                class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.keyword') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.keyword') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -83,7 +83,7 @@
                                 </span>
                                 @else
                                     <span class="form-text">
-                                        <i class="fa fa-info-circle"></i> {{ vc_language_render('admin.max_c',['max'=>200]) }}
+                                        <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.max_c',['max'=>200]) }}
                                     </span>
                                 @endif
                             </div>
@@ -92,7 +92,7 @@
                         <div
                             class="form-group row  {{ $errors->has('descriptions.'.$code.'.description') ? ' text-red' : '' }}">
                             <label for="{{ $code }}__description"
-                                class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.description') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.description') }} <span class="seo" title="SEO"><i class="fa fa-coffee" aria-hidden="true"></i></span></label>
                             <div class="col-sm-8">
                                     <textarea type="text" id="{{ $code }}__description" 
                                         name="descriptions[{{ $code }}][description]"
@@ -103,7 +103,7 @@
                                 </span>
                                 @else
                                     <span class="form-text">
-                                        <i class="fa fa-info-circle"></i> {{ vc_language_render('admin.max_c',['max'=>300]) }}
+                                        <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.max_c',['max'=>300]) }}
                                     </span>
                                 @endif
                             </div>
@@ -114,7 +114,7 @@
 
                         <div class="form-group row {{ $errors->has('parent') ? ' text-red' : '' }}">
                             <label for="parent"
-                                class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.select_category') }}</label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.select_category') }}</label>
                             <div class="col-sm-8">
                                 <select class="form-control parent select2" style="width: 100%;" name="parent">
                                     <option value=""></option>
@@ -137,12 +137,12 @@
 
 
 
-@if (vc_check_multi_store_installed())
+@if (vncore_check_multi_store_installed())
                         {{-- select shop_store --}}
                         @php
                         $listStore = [];
-                        if (function_exists('vc_get_list_store_of_category_detail')) {
-                                $oldData = vc_get_list_store_of_category_detail($category['id'] ?? '');
+                        if (function_exists('vncore_get_list_store_of_category_detail')) {
+                                $oldData = vncore_get_list_store_of_category_detail($category['id'] ?? '');
                             } else {
                                 $oldData = null;
                             }
@@ -157,13 +157,13 @@
 
                         <div class="form-group row {{ $errors->has('shop_store') ? ' text-red' : '' }}">
                             <label for="shop_store"
-                                class="col-sm-2 col-form-label">{{ vc_language_render('admin.select_store') }}</label>
+                                class="col-sm-2 col-form-label">{{ vncore_language_render('admin.select_store') }}</label>
                             <div class="col-sm-8">
                                 <select class="form-control shop_store select2" multiple="multiple"
-                                    data-placeholder="{{ vc_language_render('admin.select_store') }}" style="width: 100%;"
+                                    data-placeholder="{{ vncore_language_render('admin.select_store') }}" style="width: 100%;"
                                     name="shop_store[]">
                                     <option value=""></option>
-                                    @foreach (vc_get_list_code_store() as $k => $v)
+                                    @foreach (vncore_get_list_code_store() as $k => $v)
                                     <option value="{{ $k }}"
                                         {{ (count($listStore) && in_array($k, $listStore))?'selected':'' }}>{{ $v }}
                                     </option>
@@ -181,7 +181,7 @@
 
 
                         <div class="form-group row  {{ $errors->has('alias') ? ' text-red' : '' }}">
-                            <label for="alias" class="col-sm-2 col-form-label">{!! vc_language_render('admin.category.alias') !!}</label>
+                            <label for="alias" class="col-sm-2 col-form-label">{!! vncore_language_render('admin.category.alias') !!}</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -200,7 +200,7 @@
                         </div>                        
 
                         <div class="form-group row  {{ $errors->has('image') ? ' text-red' : '' }}">
-                            <label for="image" class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.image') }}</label>
+                            <label for="image" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.image') }}</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <input type="text" id="image" name="image"
@@ -209,7 +209,7 @@
                                     <div class="input-group-append">
                                         <a data-input="image" data-preview="preview_image" data-type="category"
                                             class="btn btn-primary lfm">
-                                            <i class="fa fa-image"></i> {{vc_language_render('product.admin.choose_image')}}
+                                            <i class="fa fa-image"></i> {{vncore_language_render('product.admin.choose_image')}}
                                         </a>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                 @endif
                                 <div id="preview_image" class="img_holder">
                                     @if (old('image',$category['image']??''))
-                                    <img src="{{ vc_file(old('image',$category['image']??'')) }}">
+                                    <img src="{{ vncore_file(old('image',$category['image']??'')) }}">
                                     @endif
 
                                 </div>
@@ -228,7 +228,7 @@
                         </div>
 
                         <div class="form-group row  {{ $errors->has('sort') ? ' text-red' : '' }}">
-                            <label for="sort" class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.sort') }}</label>
+                            <label for="sort" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.sort') }}</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -247,18 +247,18 @@
                         </div>
 
                         <div class="form-group  row">
-                            <label for="top" class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.top') }}</label>
+                            <label for="top" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.top') }}</label>
                             <div class="col-sm-8">
                                 <input class="checkbox" type="checkbox" name="top"
                                     {{ old('top',(empty($category['top'])?0:1))?'checked':''}}>
                             </div>
                             <span class="form-text">
-                                <i class="fa fa-info-circle"></i> {{ vc_language_render('admin.category.top_help') }}
+                                <i class="fa fa-info-circle"></i> {{ vncore_language_render('admin.category.top_help') }}
                             </span>
                         </div>
 
                         <div class="form-group  row">
-                            <label for="status" class="col-sm-2 col-form-label">{{ vc_language_render('admin.category.status') }}</label>
+                            <label for="status" class="col-sm-2 col-form-label">{{ vncore_language_render('admin.category.status') }}</label>
                             <div class="col-sm-8">
                                 <input class="checkbox" type="checkbox" name="status"
                                     {{ old('status',(empty($category['status'])?0:1))?'checked':''}}>
@@ -271,7 +271,7 @@
                             $customFields = isset($customFields) ? $customFields : [];
                             $fields = !empty($category) ? $category->getCustomFields() : [];
                         @endphp
-                        @includeIf($vc_templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
+                        @includeIf($vncore_templatePathAdmin.'component.render_form_custom_field', ['customFields' => $customFields, 'fields' => $fields])
                         {{-- //Custom fields --}}
 
                 </div>
@@ -287,11 +287,11 @@
 
                     <div class="col-md-8">
                         <div class="btn-group float-right">
-                            <button type="submit" class="btn btn-primary">{{ vc_language_render('action.submit') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ vncore_language_render('action.submit') }}</button>
                         </div>
 
                         <div class="btn-group float-left">
-                            <button type="reset" class="btn btn-warning">{{ vc_language_render('action.reset') }}</button>
+                            <button type="reset" class="btn btn-warning">{{ vncore_language_render('action.reset') }}</button>
                         </div>
                     </div>
                 </div>

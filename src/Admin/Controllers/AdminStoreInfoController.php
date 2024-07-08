@@ -24,7 +24,7 @@ class AdminStoreInfoController extends RootAdminController
     public function updateInfo()
     {
         $data      = request()->all();
-        $data = vc_clean($data, [], true);
+        $data = vncore_clean($data, [], true);
         $storeId   = $data['storeId'];
         $fieldName = $data['name'];
         $value     = $data['value'];
@@ -43,30 +43,30 @@ class AdminStoreInfoController extends RootAdminController
                 if ($name == 'type') {
                     // Can not change type in here
                     $error = 1;
-                    $msg = vc_language_render('store.admin.value_cannot_change');
+                    $msg = vncore_language_render('store.admin.value_cannot_change');
                 } elseif ($name == 'domain') {
                     if (
                         $storeId == SC_ID_ROOT 
-                        || ((vc_check_multi_vendor_installed()) && vc_store_is_partner($storeId)) 
-                        || vc_check_multi_store_installed()
+                        || ((vncore_check_multi_vendor_installed()) && vncore_store_is_partner($storeId)) 
+                        || vncore_check_multi_store_installed()
                     ) {
                         // Only store root can edit domain
-                        $domain = vc_process_domain_store($value);
+                        $domain = vncore_process_domain_store($value);
                         if (AdminStore::where('domain', $domain)->where('id', '<>', $storeId)->first()) {
                             $error = 1;
-                            $msg = vc_language_render('store.admin.domain_exist');
+                            $msg = vncore_language_render('store.admin.domain_exist');
                         } else {
                             AdminStore::where('id', $storeId)->update([$name => $domain]);
                             $error = 0;
                         }
                     } else {
                         $error = 1;
-                        $msg = vc_language_render('store.admin.value_cannot_change');
+                        $msg = vncore_language_render('store.admin.value_cannot_change');
                     }
                 } elseif ($name == 'code') {
                     if (AdminStore::where('code', $value)->where('id', '<>', $storeId)->first()) {
                         $error = 1;
-                        $msg = vc_language_render('store.admin.code_exist');
+                        $msg = vncore_language_render('store.admin.code_exist');
                     } else {
                         AdminStore::where('id', $storeId)->update([$name => $value]);
                         $error = 0;
@@ -76,14 +76,14 @@ class AdminStoreInfoController extends RootAdminController
                     //Install template for store
                     if (file_exists($fileProcess = resource_path() . '/views/templates/'.$value.'/Provider.php')) {
                         include_once $fileProcess;
-                        if (function_exists('vc_template_install_store')) {
+                        if (function_exists('vncore_template_install_store')) {
                             //Insert only specify store
                             $checkTemplateEnableStore = (new \Vncore\Core\Front\Models\ShopStoreCss)
                                 ->where('template', $value)
                                 ->where('store_id', $storeId)
                                 ->first();
                             if (!$checkTemplateEnableStore) {
-                                vc_template_install_store($storeId);
+                                vncore_template_install_store($storeId);
                             }
                         }
                     }
@@ -104,7 +104,7 @@ class AdminStoreInfoController extends RootAdminController
                 'name' => $name,
                 'value' => $value,
             ];
-            $dataUpdate = vc_clean($dataUpdate, [], true);
+            $dataUpdate = vncore_clean($dataUpdate, [], true);
             try {
                 AdminStore::updateDescription($dataUpdate);
                 $error = 0;
@@ -122,16 +122,16 @@ class AdminStoreInfoController extends RootAdminController
         $store = AdminStore::find($id);
         if (!$store) {
             $data = [
-                'title' => vc_language_render('store.admin.title'),
+                'title' => vncore_language_render('store.admin.title'),
                 'subTitle' => '',
                 'icon' => 'fas fa-cogs',
                 'dataNotFound' => 1
             ];
-            return view($this->vc_templatePathAdmin.'screen.store_info')
+            return view($this->vncore_templatePathAdmin.'screen.store_info')
             ->with($data);
         }
         $data = [
-            'title' => vc_language_render('store.admin.title'),
+            'title' => vncore_language_render('store.admin.title'),
             'subTitle' => '',
             'icon' => 'fas fa-cogs',
         ];
@@ -140,7 +140,7 @@ class AdminStoreInfoController extends RootAdminController
         $data['languages'] = $this->languages;
         $data['storeId'] = $id;
 
-        return view($this->vc_templatePathAdmin.'screen.store_info')
+        return view($this->vncore_templatePathAdmin.'screen.store_info')
         ->with($data);
     }
 }

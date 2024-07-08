@@ -2,7 +2,7 @@
 /**
  * Route front
  */
-if(vc_config_exist('Plugin_Key')) {
+if(vncore_config_exist('Plugin_Key')) {
 Route::group(
     [
         'prefix'    => 'plugin/PluginUrlKey',
@@ -17,7 +17,7 @@ Route::group(
 /**
  * Route admin
  */
-if(vc_config_exist('Plugin_Key', SC_ID_ROOT)) {
+if(vncore_config_exist('Plugin_Key', SC_ID_ROOT)) {
 Route::group(
     [
         'prefix' => SC_ADMIN_PREFIX.'/PluginUrlKey',

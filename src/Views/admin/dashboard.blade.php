@@ -1,4 +1,4 @@
-@extends($vc_templatePathAdmin.'layout')
+@extends($vncore_templatePathAdmin.'layout')
 
 
 
@@ -11,7 +11,7 @@
 @endpush
 
 @push('scripts')
-  <script src="{{ vc_file('admin/plugin/chartjs/highcharts.js') }}"></script>
-  <script src="{{ vc_file('admin/plugin/chartjs/highcharts-3d.js') }}"></script>
+  <script src="{{ vncore_file('admin/plugin/chartjs/highcharts.js') }}"></script>
+  <script src="{{ vncore_file('admin/plugin/chartjs/highcharts-3d.js') }}"></script>
 
 @endpush

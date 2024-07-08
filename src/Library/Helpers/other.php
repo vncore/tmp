@@ -7,8 +7,8 @@ use Illuminate\Support\Arr;
 /*
 String to Url
  */
-if (!function_exists('vc_word_format_url') && !in_array('vc_word_format_url', config('helper_except', []))) {
-    function vc_word_format_url($str = ""):string
+if (!function_exists('vncore_word_format_url') && !in_array('vncore_word_format_url', config('helper_except', []))) {
+    function vncore_word_format_url($str = ""):string
     {
         $unicode = array(
             'a' => 'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
@@ -39,11 +39,11 @@ if (!function_exists('vc_word_format_url') && !in_array('vc_word_format_url', co
 }
 
 
-if (!function_exists('vc_url_render') && !in_array('vc_url_render', config('helper_except', []))) {
+if (!function_exists('vncore_url_render') && !in_array('vncore_url_render', config('helper_except', []))) {
     /*
     url render
      */
-    function vc_url_render($string = ""):string
+    function vncore_url_render($string = ""):string
     {
         $arrCheckRoute = explode('route::', $string);
         $arrCheckUrl = explode('admin::', $string);
@@ -52,15 +52,15 @@ if (!function_exists('vc_url_render') && !in_array('vc_url_render', config('help
             $arrRoute = explode('::', $string);
             if (Str::startsWith($string, 'route::admin')) {
                 if (isset($arrRoute[2])) {
-                    return vc_route_admin($arrRoute[1], explode(',', $arrRoute[2]));
+                    return vncore_route_admin($arrRoute[1], explode(',', $arrRoute[2]));
                 } else {
-                    return vc_route_admin($arrRoute[1]);
+                    return vncore_route_admin($arrRoute[1]);
                 }
             } else {
                 if (isset($arrRoute[2])) {
-                    return vc_route($arrRoute[1], explode(',', $arrRoute[2]));
+                    return vncore_route($arrRoute[1], explode(',', $arrRoute[2]));
                 } else {
-                    return vc_route($arrRoute[1]);
+                    return vncore_route($arrRoute[1]);
                 }
             }
         }
@@ -75,11 +75,11 @@ if (!function_exists('vc_url_render') && !in_array('vc_url_render', config('help
 }
 
 
-if (!function_exists('vc_html_render') && !in_array('vc_html_render', config('helper_except', []))) {
+if (!function_exists('vncore_html_render') && !in_array('vncore_html_render', config('helper_except', []))) {
     /*
     Html render
      */
-    function vc_html_render($string)
+    function vncore_html_render($string)
     {
         if(!is_string($string)) {
             return $string;
@@ -89,11 +89,11 @@ if (!function_exists('vc_html_render') && !in_array('vc_html_render', config('he
     }
 }
 
-if (!function_exists('vc_word_format_class') && !in_array('vc_word_format_class', config('helper_except', []))) {
+if (!function_exists('vncore_word_format_class') && !in_array('vncore_word_format_class', config('helper_except', []))) {
     /*
     Format class name
      */
-    function vc_word_format_class($word = "")
+    function vncore_word_format_class($word = "")
     {
         if(!is_string($word)) {
             return $word;
@@ -104,35 +104,35 @@ if (!function_exists('vc_word_format_class') && !in_array('vc_word_format_class'
     }
 }
 
-if (!function_exists('vc_word_limit') && !in_array('vc_word_limit', config('helper_except', []))) {
+if (!function_exists('vncore_word_limit') && !in_array('vncore_word_limit', config('helper_except', []))) {
     /*
     Truncates words
      */
-    function vc_word_limit($word = "", int $limit = 20, string $arg = ''):string
+    function vncore_word_limit($word = "", int $limit = 20, string $arg = ''):string
     {
         $word = Str::limit($word, $limit, $arg);
         return $word;
     }
 }
 
-if (!function_exists('vc_token') && !in_array('vc_token', config('helper_except', []))) {
+if (!function_exists('vncore_token') && !in_array('vncore_token', config('helper_except', []))) {
     /*
     Create random token
      */
-    function vc_token(int $length = 32)
+    function vncore_token(int $length = 32)
     {
         $token = Str::random($length);
         return $token;
     }
 }
 
-if (!function_exists('vc_report') && !in_array('vc_report', config('helper_except', []))) {
+if (!function_exists('vncore_report') && !in_array('vncore_report', config('helper_except', []))) {
     /*
     Handle report
      */
-    function vc_report($msg = "", array $ext = [])
+    function vncore_report($msg = "", array $ext = [])
     {
-        $msg = vc_time_now(config('app.timezone')).' ('.config('app.timezone').'):'.PHP_EOL.$msg.PHP_EOL;
+        $msg = vncore_time_now(config('app.timezone')).' ('.config('app.timezone').'):'.PHP_EOL.$msg.PHP_EOL;
         if (!in_array('slack', $ext)) {
             if (config('logging.channels.slack.url')) {
                 try {
@@ -147,23 +147,23 @@ if (!function_exists('vc_report') && !in_array('vc_report', config('helper_excep
 }
 
 
-if (!function_exists('vc_handle_exception') && !in_array('vc_handle_exception', config('helper_except', []))) {
+if (!function_exists('vncore_handle_exception') && !in_array('vncore_handle_exception', config('helper_except', []))) {
     /*
     Process msg exception
      */
-    function vc_handle_exception(\Throwable $exception)
+    function vncore_handle_exception(\Throwable $exception)
     {
         $msg = "```". $exception->getMessage().'```'.PHP_EOL;
         $msg .= "```IP:```".request()->ip().PHP_EOL;
         $msg .= "*File* `".$exception->getFile()."`, *Line:* ".$exception->getLine().", *Code:* ".$exception->getCode().PHP_EOL.'URL= '.url()->current();
-        if (function_exists('vc_report') && $msg) {
-            vc_report(msg:$msg);
+        if (function_exists('vncore_report') && $msg) {
+            vncore_report(msg:$msg);
         }
     }
 }
 
 
-if (!function_exists('vc_push_include_view') && !in_array('vc_push_include_view', config('helper_except', []))) {
+if (!function_exists('vncore_push_include_view') && !in_array('vncore_push_include_view', config('helper_except', []))) {
     /**
      * Push view
      *
@@ -171,16 +171,16 @@ if (!function_exists('vc_push_include_view') && !in_array('vc_push_include_view'
      * @param   [string]  $pathView
      *
      */
-    function vc_push_include_view($position = "", string $pathView = "")
+    function vncore_push_include_view($position = "", string $pathView = "")
     {
-        $includePathView = config('vc_include_view.'.$position, []);
+        $includePathView = config('vncore_include_view.'.$position, []);
         $includePathView[] = $pathView;
-        config(['vc_include_view.'.$position => $includePathView]);
+        config(['vncore_include_view.'.$position => $includePathView]);
     }
 }
 
 
-if (!function_exists('vc_push_include_script') && !in_array('vc_push_include_script', config('helper_except', []))) {
+if (!function_exists('vncore_push_include_script') && !in_array('vncore_push_include_script', config('helper_except', []))) {
     /**
      * Push script
      *
@@ -188,11 +188,11 @@ if (!function_exists('vc_push_include_script') && !in_array('vc_push_include_scr
      * @param   [string]  $pathScript
      *
      */
-    function vc_push_include_script($position, $pathScript)
+    function vncore_push_include_script($position, $pathScript)
     {
-        $includePathScript = config('vc_include_script.'.$position, []);
+        $includePathScript = config('vncore_include_script.'.$position, []);
         $includePathScript[] = $pathScript;
-        config(['vc_include_script.'.$position => $includePathScript]);
+        config(['vncore_include_script.'.$position => $includePathScript]);
     }
 }
 
@@ -200,8 +200,8 @@ if (!function_exists('vc_push_include_script') && !in_array('vc_push_include_scr
 /**
  * convert datetime to date
  */
-if (!function_exists('vc_datetime_to_date') && !in_array('vc_datetime_to_date', config('helper_except', []))) {
-    function vc_datetime_to_date($datetime, $format = 'Y-m-d')
+if (!function_exists('vncore_datetime_to_date') && !in_array('vncore_datetime_to_date', config('helper_except', []))) {
+    function vncore_datetime_to_date($datetime, $format = 'Y-m-d')
     {
         if (empty($datetime)) {
             return null;
@@ -221,11 +221,11 @@ if (!function_exists('admin') && !in_array('admin', config('helper_except', []))
     }
 }
 
-if (!function_exists('vc_sync_cart') && !in_array('vc_sync_cart', config('helper_except', []))) {
+if (!function_exists('vncore_sync_cart') && !in_array('vncore_sync_cart', config('helper_except', []))) {
     /**
      * Sync data cart
      */
-    function vc_sync_cart($userId)
+    function vncore_sync_cart($userId)
     {
         //Process sync cart data and session
         $cartDB = \Vncore\Core\Library\ShoppingCart\CartModel::where('identifier', $userId)
@@ -254,22 +254,22 @@ if (!function_exists('vc_sync_cart') && !in_array('vc_sync_cart', config('helper
     }
 }
 
-if (!function_exists('vc_time_now') && !in_array('vc_time_now', config('helper_except', []))) {
+if (!function_exists('vncore_time_now') && !in_array('vncore_time_now', config('helper_except', []))) {
     /**
      * Return object carbon
      */
-    function vc_time_now($timezone = null)
+    function vncore_time_now($timezone = null)
 
     {
         return (new \Carbon\Carbon)->now($timezone);
     }
 }
 
-if (!function_exists('vc_request') && !in_array('vc_request', config('helper_except', []))) {
+if (!function_exists('vncore_request') && !in_array('vncore_request', config('helper_except', []))) {
     /**
      * Return object carbon
      */
-    function vc_request($key = "", $default = "", string $type = "")
+    function vncore_request($key = "", $default = "", string $type = "")
     {
 
         if ($type == 'string') {

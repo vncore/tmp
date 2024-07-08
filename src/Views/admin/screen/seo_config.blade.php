@@ -1,4 +1,4 @@
-@extends($vc_templatePathAdmin.'layout')
+@extends($vncore_templatePathAdmin.'layout')
 @section('main')
       <div class="row">
       <div class="col-md-12">
@@ -11,10 +11,10 @@
                <tbody>
                 <tr>
                   <td>
-                    {!! vc_language_render('admin.seo.url_seo_lang') !!}
+                    {!! vncore_language_render('admin.seo.url_seo_lang') !!}
                   </td>
                   <td>
-                    <input class="check-data-config-global"  type="checkbox" name="url_seo_lang" {{ vc_config_global('url_seo_lang')?"checked":"" }}>
+                    <input class="check-data-config-global"  type="checkbox" name="url_seo_lang" {{ vncore_config_global('url_seo_lang')?"checked":"" }}>
                   </td>
                 </tr>
                </tbody>
@@ -28,7 +28,7 @@
 
 @push('styles')
 <!-- Ediable -->
-<link rel="stylesheet" href="{{ vc_file('admin/plugin/bootstrap-editable.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('admin/plugin/bootstrap-editable.css')}}">
 <style type="text/css">
   #maintain_content img{
     max-width: 100%;
@@ -39,7 +39,7 @@
 @if (empty($dataNotFound))
 @push('scripts')
 <!-- Ediable -->
-<script src="{{ vc_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
+<script src="{{ vncore_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
 
 <script type="text/javascript">
 
@@ -68,7 +68,7 @@ $('input.check-data-config-global').iCheck({
         } else {
           $('#smtp-config').show();
         }
-        alertJs('success', '{{ vc_language_render('admin.msg_change_success') }}');
+        alertJs('success', '{{ vncore_language_render('admin.msg_change_success') }}');
       } else {
         alertJs('error', data.msg);
       }

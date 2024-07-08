@@ -20,9 +20,9 @@ class AdminReportController extends RootAdminController
         $this->languages = ShopLanguage::getListActive();
         $this->attributeGroup = ShopAttributeGroup::getListAll();
         $this->kinds = [
-            SC_PRODUCT_SINGLE => vc_language_render('product.kind_single'),
-            SC_PRODUCT_BUILD => vc_language_render('product.kind_bundle'),
-            SC_PRODUCT_GROUP => vc_language_render('product.kind_group'),
+            SC_PRODUCT_SINGLE => vncore_language_render('product.kind_single'),
+            SC_PRODUCT_BUILD => vncore_language_render('product.kind_bundle'),
+            SC_PRODUCT_GROUP => vncore_language_render('product.kind_group'),
         ];
         $this->properties = (new ShopProductProperty)->pluck('name', 'code')->toArray();
     }
@@ -30,7 +30,7 @@ class AdminReportController extends RootAdminController
     public function product()
     {
         $data = [
-            'title' => vc_language_render('product.admin.list'),
+            'title' => vncore_language_render('product.admin.list'),
             'subTitle' => '',
             'urlDeleteItem' => '',
             'removeList' => 0, // 1 - Enable function delete list item
@@ -39,34 +39,34 @@ class AdminReportController extends RootAdminController
             'js' => '',
         ];
         //Process add content
-        $data['menuRight'] = vc_config_group('menuRight', \Request::route()->getName());
-        $data['menuLeft'] = vc_config_group('menuLeft', \Request::route()->getName());
-        $data['topMenuRight'] = vc_config_group('topMenuRight', \Request::route()->getName());
-        $data['topMenuLeft'] = vc_config_group('topMenuLeft', \Request::route()->getName());
-        $data['blockBottom'] = vc_config_group('blockBottom', \Request::route()->getName());
+        $data['menuRight'] = vncore_config_group('menuRight', \Request::route()->getName());
+        $data['menuLeft'] = vncore_config_group('menuLeft', \Request::route()->getName());
+        $data['topMenuRight'] = vncore_config_group('topMenuRight', \Request::route()->getName());
+        $data['topMenuLeft'] = vncore_config_group('topMenuLeft', \Request::route()->getName());
+        $data['blockBottom'] = vncore_config_group('blockBottom', \Request::route()->getName());
 
         $listTh = [
-            'image' => vc_language_render('product.image'),
-            'sku' => vc_language_render('product.sku'),
-            'name' => vc_language_render('product.name'),
-            'price' => vc_language_render('product.price'),
-            'stock' => vc_language_render('product.stock'),
-            'sold' => vc_language_render('product.sold'),
-            'view' => vc_language_render('product.view'),
-            'kind' => vc_language_render('product.kind'),
-            'status' => vc_language_render('product.status'),
+            'image' => vncore_language_render('product.image'),
+            'sku' => vncore_language_render('product.sku'),
+            'name' => vncore_language_render('product.name'),
+            'price' => vncore_language_render('product.price'),
+            'stock' => vncore_language_render('product.stock'),
+            'sold' => vncore_language_render('product.sold'),
+            'view' => vncore_language_render('product.view'),
+            'kind' => vncore_language_render('product.kind'),
+            'status' => vncore_language_render('product.status'),
         ];
-        $sort_order = vc_clean(request('sort_order') ?? 'id_desc');
-        $keyword    = vc_clean(request('keyword') ?? '');
+        $sort_order = vncore_clean(request('sort_order') ?? 'id_desc');
+        $keyword    = vncore_clean(request('keyword') ?? '');
         $arrSort = [
-            'id__desc' => vc_language_render('filter_sort.id_desc'),
-            'id__asc' => vc_language_render('filter_sort.id_asc'),
-            'name__desc' => vc_language_render('filter_sort.name_desc'),
-            'name__asc' => vc_language_render('filter_sort.name_asc'),
-            'sold__desc' => vc_language_render('filter_sort.value_desc'),
-            'sold__asc' => vc_language_render('filter_sort.sold_asc'),
-            'view__desc' => vc_language_render('filter_sort.view_desc'),
-            'view__asc' => vc_language_render('filter_sort.view_asc'),
+            'id__desc' => vncore_language_render('filter_sort.id_desc'),
+            'id__asc' => vncore_language_render('filter_sort.id_asc'),
+            'name__desc' => vncore_language_render('filter_sort.name_desc'),
+            'name__asc' => vncore_language_render('filter_sort.name_asc'),
+            'sold__desc' => vncore_language_render('filter_sort.value_desc'),
+            'sold__asc' => vncore_language_render('filter_sort.sold_asc'),
+            'view__desc' => vncore_language_render('filter_sort.view_desc'),
+            'view__asc' => vncore_language_render('filter_sort.view_asc'),
         ];
         $dataSearch = [
             'keyword'    => $keyword,
@@ -86,7 +86,7 @@ class AdminReportController extends RootAdminController
             }
 
             $dataTr[$row['id']] = [
-                'image' => vc_image_render($row['image'], '50px', '', $row['name']),
+                'image' => vncore_image_render($row['image'], '50px', '', $row['name']),
                 'sku' => $row['sku'],
                 'name' => $row['name'],
                 'price' => $row['price'],
@@ -100,13 +100,13 @@ class AdminReportController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vc_language_render('product.admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['resultItems'] = vncore_language_render('product.admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         //menu_left
         $data['menu_left'] = '<div class="pull-left">
 
-                    <a class="btn   btn-flat btn-primary grid-refresh" title="Refresh"><i class="fas fa-sync-alt"></i><span class="hidden-xs"> ' . vc_language_render('action.refresh') . '</span></a> &nbsp;</div>
+                    <a class="btn   btn-flat btn-primary grid-refresh" title="Refresh"><i class="fas fa-sync-alt"></i><span class="hidden-xs"> ' . vncore_language_render('action.refresh') . '</span></a> &nbsp;</div>
                     ';
         //=menu_left
 
@@ -119,12 +119,12 @@ class AdminReportController extends RootAdminController
 
         //menuSearch
         $data['topMenuRight'][] = '
-                <form action="' . vc_route_admin('admin_report.product') . '" id="button_search">
+                <form action="' . vncore_route_admin('admin_report.product') . '" id="button_search">
                 <div class="input-group input-group" style="width: 350px;">
                     <select class="form-control rounded-0 select2" name="sort_order" id="sort_order">
                     '.$optionSort.'
                     </select> &nbsp;
-                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . vc_language_render('product.admin.search_place') . '" value="' . $keyword . '">
+                    <input type="text" name="keyword" class="form-control rounded-0 float-right" placeholder="' . vncore_language_render('product.admin.search_place') . '" value="' . $keyword . '">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                     </div>
@@ -132,7 +132,7 @@ class AdminReportController extends RootAdminController
                 </form>';
         //=menuSearch
 
-        return view($this->vc_templatePathAdmin.'screen.list')
+        return view($this->vncore_templatePathAdmin.'screen.list')
             ->with($data);
     }
 }

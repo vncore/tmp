@@ -1,23 +1,23 @@
-@extends($vc_templatePathAdmin.'layout_portable')
+@extends($vncore_templatePathAdmin.'layout_portable')
 
 @section('main')
-@include($vc_templatePathAdmin.'component.css_login')
+@include($vncore_templatePathAdmin.'component.css_login')
     <div class="container-login100">
       <div class="wrap-login100 main-login">
         <div class="card-header text-center">
-          <a href="{{ vc_route('home') }}" class="h1">
-            <img src="{{ vc_file(vc_store('logo')) }}" alt="logo" class="logo">
+          <a href="{{ vncore_route('home') }}" class="h1">
+            <img src="{{ vncore_file(vncore_store('logo')) }}" alt="logo" class="logo">
           </a>
         </div>
         <div class="login-title-des col-md-12 p-b-41">
-          <a><b>{{vc_language_render('admin.login')}}</b></a>
+          <a><b>{{vncore_language_render('admin.login')}}</b></a>
         </div>
-        <form action="{{ vc_route_admin('admin.login') }}" method="post">
+        <form action="{{ vncore_route_admin('admin.login') }}" method="post">
 
           <div class="input-form {!! !$errors->has('email') ?: 'text-red' !!}">
             <div class="col-md-12 form-group has-feedback {!! !$errors->has('username') ?: 'text-red' !!}">
               <div class="wrap-input100 validate-input form-group ">
-                <input class="input100 form-control" type="text" placeholder="{{ vc_language_render('admin.user.username') }}"
+                <input class="input100 form-control" type="text" placeholder="{{ vncore_language_render('admin.user.username') }}"
                   name="username" value="{{ old('username') }}">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
@@ -35,7 +35,7 @@
           <div class="input-form {!! !$errors->has('password') ?: 'text-red' !!}">
             <div class="col-md-12 form-group has-feedback">
               <div class="wrap-input100 validate-input form-group ">
-                <input class="input100 form-control" type="password" placeholder="{{ vc_language_render('admin.user.password') }}"
+                <input class="input100 form-control" type="password" placeholder="{{ vncore_language_render('admin.user.password') }}"
                   name="password">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
@@ -52,14 +52,14 @@
           <div class="col-md-12">
             <div class="container-login-btn">
               <button class="login-btn" type="submit">
-                {{ vc_language_render('admin.user.login') }}
+                {{ vncore_language_render('admin.user.login') }}
               </button>
             </div>
 
-            @if (vc_config_global('admin_forgot_password', 1))
+            @if (vncore_config_global('admin_forgot_password', 1))
             <div class="text-center">
-              <a href="{{ vc_route_admin('admin.forgot') }}" class="forgot">
-                <i class="fa fa-caret-right"></i> <b>{{ vc_language_render('admin.password_forgot') }}</b>
+              <a href="{{ vncore_route_admin('admin.forgot') }}" class="forgot">
+                <i class="fa fa-caret-right"></i> <b>{{ vncore_language_render('admin.password_forgot') }}</b>
               </a>
             </div>
             @endif
@@ -69,7 +69,7 @@
               <label>
                 <input class="checkbox" type="checkbox" name="remember" value="1"
                   {{ (old('remember')) ? 'checked' : '' }}>
-                <b>{{ vc_language_render('admin.user.remember_me') }}</b>
+                <b>{{ vncore_language_render('admin.user.remember_me') }}</b>
               </label>
             </div>
 
@@ -85,7 +85,7 @@
     @push('styles')
     <style type="text/css">
       .container-login100 {
-        background-image: url({!! vc_file('images/bg-system.jpg') !!});
+        background-image: url({!! vncore_file('images/bg-system.jpg') !!});
       }
     </style>
     @endpush

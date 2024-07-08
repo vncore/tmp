@@ -15,39 +15,39 @@ class AdminBrandController extends RootAdminController
     public function index()
     {
         $data = [
-            'title' => vc_language_render('admin.brand.list'),
-            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vc_language_render('admin.brand.add_new_title'),
+            'title' => vncore_language_render('admin.brand.list'),
+            'title_action' => '<i class="fa fa-plus" aria-hidden="true"></i> ' . vncore_language_render('admin.brand.add_new_title'),
             'subTitle' => '',
-            'urlDeleteItem' => vc_route_admin('admin_brand.delete'),
+            'urlDeleteItem' => vncore_route_admin('admin_brand.delete'),
             'removeList' => 0, // 1 - Enable function delete list item
             'buttonRefresh' => 0, // 1 - Enable button refresh
             'css' => '',
             'js' => '',
-            'url_action' => vc_route_admin('admin_brand.create'),
+            'url_action' => vncore_route_admin('admin_brand.create'),
             'customFields'      => (new ShopCustomField)->getCustomField($type = 'shop_brand'),
         ];
 
         $listTh = [
-            'name' => vc_language_render('admin.brand.name'),
-            'image' => vc_language_render('admin.brand.image'),
-            'status' => vc_language_render('admin.brand.status'),
+            'name' => vncore_language_render('admin.brand.name'),
+            'image' => vncore_language_render('admin.brand.image'),
+            'status' => vncore_language_render('admin.brand.status'),
         ];
 
-        if (vc_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+        if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
             // Only show store info if store is root
-            $listTh['shop_store'] = vc_language_render('front.store_list');
+            $listTh['shop_store'] = vncore_language_render('front.store_list');
         }
-        $listTh['action'] = vc_language_render('action.title');
+        $listTh['action'] = vncore_language_render('action.title');
 
         $obj = new ShopBrand;
         $obj = $obj->orderBy('id', 'desc');
         $dataTmp = $obj->paginate(20);
 
-        if (vc_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+        if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
             $arrId = $dataTmp->pluck('id')->toArray();
             // Only show store info if store is root
-            if (function_exists('vc_get_list_store_of_brand')) {
-                $dataStores = vc_get_list_store_of_brand($arrId);
+            if (function_exists('vncore_get_list_store_of_brand')) {
+                $dataStores = vncore_get_list_store_of_brand($arrId);
             } else {
                 $dataStores = [];
             }
@@ -57,23 +57,23 @@ class AdminBrandController extends RootAdminController
         foreach ($dataTmp as $key => $row) {
             $dataMap = [
                 'name' => $row['name'],
-                'image' => vc_image_render($row->getThumb(), '50px', '', $row['name']),
+                'image' => vncore_image_render($row->getThumb(), '50px', '', $row['name']),
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
             ];
-            if (vc_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+            if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
                 // Only show store info if store is root
                 if (!empty($dataStores[$row['id']])) {
                     $storeTmp = $dataStores[$row['id']]->pluck('code', 'id')->toArray();
                     $storeTmp = array_map(function ($code) {
-                        return '<a target=_new href="'.vc_get_domain_from_code($code).'">'.$code.'</a>';
+                        return '<a target=_new href="'.vncore_get_domain_from_code($code).'">'.$code.'</a>';
                     }, $storeTmp);
                     $dataMap['shop_store'] = '<i class="nav-icon fab fa-shopify"></i> '.implode('<br><i class="nav-icon fab fa-shopify"></i> ', $storeTmp);
                 } else {
                     $dataMap['shop_store'] = '';
                 }
             }
-            $dataMap['action'] = '<a href="' . vc_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-                                <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+            $dataMap['action'] = '<a href="' . vncore_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                                <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                                 ';
             $dataTr[$row['id']] = $dataMap;
         }
@@ -82,11 +82,11 @@ class AdminBrandController extends RootAdminController
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'index';
-        return view($this->vc_templatePathAdmin.'screen.brand')
+        return view($this->vncore_templatePathAdmin.'screen.brand')
             ->with($data);
     }
 
@@ -100,8 +100,8 @@ class AdminBrandController extends RootAdminController
         $data = request()->all();
 
         $data['alias'] = !empty($data['alias'])?$data['alias']:$data['name'];
-        $data['alias'] = vc_word_format_url($data['alias']);
-        $data['alias'] = vc_word_limit($data['alias'], 100);
+        $data['alias'] = vncore_word_format_url($data['alias']);
+        $data['alias'] = vncore_word_limit($data['alias'], 100);
         $arrValidation = [
             'name'  => 'required|string|max:100',
             'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:"'.ShopBrand::class.'",alias|string|max:100',
@@ -120,8 +120,8 @@ class AdminBrandController extends RootAdminController
         }
 
         $validator = Validator::make($data, $arrValidation, [
-            'name.required' => vc_language_render('validation.required', ['attribute' => vc_language_render('admin.brand.name')]),
-            'alias.regex' => vc_language_render('admin.brand.alias_validate'),
+            'name.required' => vncore_language_render('validation.required', ['attribute' => vncore_language_render('admin.brand.name')]),
+            'alias.regex' => vncore_language_render('admin.brand.alias_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -137,7 +137,7 @@ class AdminBrandController extends RootAdminController
             'sort' => (int) $data['sort'],
             'status' => (!empty($data['status']) ? 1 : 0),
         ];
-        $dataCreate = vc_clean($dataCreate, [], true);
+        $dataCreate = vncore_clean($dataCreate, [], true);
         $brand = ShopBrand::create($dataCreate);
 
         $shopStore        = $data['shop_store'] ?? [session('adminStoreId')];
@@ -148,9 +148,9 @@ class AdminBrandController extends RootAdminController
 
         //Insert custom fields
         $fields = $data['fields'] ?? [];
-        vc_update_custom_field($fields, $brand->id, 'shop_brand');
+        vncore_update_custom_field($fields, $brand->id, 'shop_brand');
 
-        return redirect()->route('admin_brand.index')->with('success', vc_language_render('action.create_success'));
+        return redirect()->route('admin_brand.index')->with('success', vncore_language_render('action.create_success'));
     }
 
     /**
@@ -163,27 +163,27 @@ class AdminBrandController extends RootAdminController
             return 'No data';
         }
         $data = [
-        'title' => vc_language_render('admin.brand.list'),
-        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vc_language_render('action.edit'),
+        'title' => vncore_language_render('admin.brand.list'),
+        'title_action' => '<i class="fa fa-edit" aria-hidden="true"></i> ' . vncore_language_render('action.edit'),
         'subTitle' => '',
         'icon' => 'fa fa-tasks',
-        'urlDeleteItem' => vc_route_admin('admin_brand.delete'),
+        'urlDeleteItem' => vncore_route_admin('admin_brand.delete'),
         'removeList' => 0, // 1 - Enable function delete list item
         'buttonRefresh' => 0, // 1 - Enable button refresh
         'css' => '',
         'js' => '',
-        'url_action' => vc_route_admin('admin_brand.edit', ['id' => $brand['id']]),
+        'url_action' => vncore_route_admin('admin_brand.edit', ['id' => $brand['id']]),
         'brand' => $brand,
         'id' => $id,
         'customFields'      => (new ShopCustomField)->getCustomField($type = 'shop_brand'),
     ];
 
         $listTh = [
-        'name' => vc_language_render('admin.brand.name'),
-        'image' => vc_language_render('admin.brand.image'),
-        'sort' => vc_language_render('admin.brand.sort'),
-        'status' => vc_language_render('admin.brand.status'),
-        'action' => vc_language_render('action.title'),
+        'name' => vncore_language_render('admin.brand.name'),
+        'image' => vncore_language_render('admin.brand.image'),
+        'sort' => vncore_language_render('admin.brand.sort'),
+        'status' => vncore_language_render('admin.brand.status'),
+        'action' => vncore_language_render('action.title'),
     ];
         $obj = new ShopBrand;
         $obj = $obj->orderBy('id', 'desc');
@@ -193,24 +193,24 @@ class AdminBrandController extends RootAdminController
         foreach ($dataTmp as $key => $row) {
             $dataTr[$row['id']] = [
             'name' => $row['name'],
-            'image' => vc_image_render($row->getThumb(), '50px', '', $row['name']),
+            'image' => vncore_image_render($row->getThumb(), '50px', '', $row['name']),
             'sort' => $row['sort'],
             'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
             'action' => '
-                <a href="' . vc_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vc_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
+                <a href="' . vncore_route_admin('admin_brand.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-              <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vc_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+              <span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
               ',
         ];
         }
 
         $data['listTh'] = $listTh;
         $data['dataTr'] = $dataTr;
-        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vc_templatePathAdmin.'component.pagination');
-        $data['resultItems'] = vc_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
+        $data['pagination'] = $dataTmp->appends(request()->except(['_token', '_pjax']))->links($this->vncore_templatePathAdmin.'component.pagination');
+        $data['resultItems'] = vncore_language_render('admin.result_item', ['item_from' => $dataTmp->firstItem(), 'item_to' => $dataTmp->lastItem(), 'total' =>  $dataTmp->total()]);
 
         $data['layout'] = 'edit';
-        return view($this->vc_templatePathAdmin.'screen.brand')
+        return view($this->vncore_templatePathAdmin.'screen.brand')
         ->with($data);
     }
 
@@ -223,8 +223,8 @@ class AdminBrandController extends RootAdminController
         $brand = ShopBrand::find($id);
         $data = request()->all();
         $data['alias'] = !empty($data['alias'])?$data['alias']:$data['name'];
-        $data['alias'] = vc_word_format_url($data['alias']);
-        $data['alias'] = vc_word_limit($data['alias'], 100);
+        $data['alias'] = vncore_word_format_url($data['alias']);
+        $data['alias'] = vncore_word_limit($data['alias'], 100);
         $arrValidation = [
             'name'  => 'required|string|max:100',
             'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:"'.ShopBrand::class.'",alias,' . $brand->id . ',id|string|max:100',
@@ -241,8 +241,8 @@ class AdminBrandController extends RootAdminController
             }
         }
         $validator = Validator::make($data, $arrValidation, [
-            'name.required' => vc_language_render('validation.required', ['attribute' => vc_language_render('admin.brand.name')]),
-            'alias.regex' => vc_language_render('admin.brand.alias_validate'),
+            'name.required' => vncore_language_render('validation.required', ['attribute' => vncore_language_render('admin.brand.name')]),
+            'alias.regex' => vncore_language_render('admin.brand.alias_validate'),
         ]);
 
         if ($validator->fails()) {
@@ -261,7 +261,7 @@ class AdminBrandController extends RootAdminController
             'status' => (!empty($data['status']) ? 1 : 0),
 
         ];
-        $dataUpdate = vc_clean($dataUpdate, [], true);
+        $dataUpdate = vncore_clean($dataUpdate, [], true);
         $brand->update($dataUpdate);
 
         $shopStore        = $data['shop_store'] ?? [session('adminStoreId')];
@@ -272,9 +272,9 @@ class AdminBrandController extends RootAdminController
 
         //Insert custom fields
         $fields = $data['fields'] ?? [];
-        vc_update_custom_field($fields, $brand->id, 'shop_brand');
+        vncore_update_custom_field($fields, $brand->id, 'shop_brand');
 
-        return redirect()->back()->with('success', vc_language_render('action.edit_success'));
+        return redirect()->back()->with('success', vncore_language_render('action.edit_success'));
     }
 
     /*
@@ -284,7 +284,7 @@ class AdminBrandController extends RootAdminController
     public function deleteList()
     {
         if (!request()->ajax()) {
-            return response()->json(['error' => 1, 'msg' => vc_language_render('admin.method_not_allow')]);
+            return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);

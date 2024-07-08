@@ -27,15 +27,15 @@ class AdminStoreMaintainController extends RootAdminController
             return 'no data';
         }
         $data = [
-            'title' => vc_language_render('admin.maintain.title'),
+            'title' => vncore_language_render('admin.maintain.title'),
             'subTitle' => '',
             'title_description' => '',
             'icon' => 'fa fa-edit',
             'languages' => $this->languages,
             'maintain' => $maintain,
-            'url_action' => vc_route_admin('admin_store_maintain.index'),
+            'url_action' => vncore_route_admin('admin_store_maintain.index'),
         ];
-        return view($this->vc_templatePathAdmin.'screen.store_maintain')
+        return view($this->vncore_templatePathAdmin.'screen.store_maintain')
             ->with($data);
     }
 
@@ -75,6 +75,6 @@ class AdminStoreMaintainController extends RootAdminController
             AdminStore::updateDescription($dataUpdate);
         }
 //
-        return redirect()->route('admin_store_maintain.index')->with('success', vc_language_render('action.edit_success'));
+        return redirect()->route('admin_store_maintain.index')->with('success', vncore_language_render('action.edit_success'));
     }
 }
