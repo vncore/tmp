@@ -338,6 +338,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'vncore:config-validation');
             $this->publishes([__DIR__.'/Config/cart.php' => config_path('cart.php')], 'vncore:config-cart');
             $this->publishes([__DIR__.'/Config/api.php' => config_path('api.php')], 'vncore:config-api');
+            $this->publishes([__DIR__.'/Config/const.php' => config_path('api.php')], 'vncore:config-const');
             $this->publishes([__DIR__.'/Config/middleware.php' => config_path('middleware.php')], 'vncore:config-middleware');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
         }
