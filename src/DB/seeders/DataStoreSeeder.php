@@ -1,10 +1,10 @@
 <?php
 
-namespace Vncore\Core\DB\Traits;
-use DB;
-use Illuminate\Support\Str;
+namespace Vncore\Core\DB\seeders;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-trait DataStoreSeederTrait
+class DataStoreSeeder extends Seeder
 {
     public function getTemplateDefault() {
         return  empty(session('lastStoreTemplate')) ? 'vncore-light' : session('lastStoreTemplate');
@@ -14,7 +14,7 @@ trait DataStoreSeederTrait
      *
      * @return void
      */
-    public function runProcess()
+    public function run()
     {
         $storeId = empty(session('lastStoreId')) ? SC_ID_ROOT : session('lastStoreId');
 

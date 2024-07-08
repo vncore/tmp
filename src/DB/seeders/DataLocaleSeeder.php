@@ -1,16 +1,17 @@
 <?php
 
-namespace Vncore\Core\DB\Traits;
-use DB;
+namespace Vncore\Core\DB\seeders;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-trait DataLocaleSeederTrait
+class DataLocaleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function runProcess()
+    public function run()
     {
         $db = DB::connection(SC_CONNECTION);
 

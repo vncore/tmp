@@ -1,12 +1,10 @@
 <?php
 
-namespace Vncore\Core\DB\Traits;
-use Illuminate\Support\Str;
-use DB;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace Vncore\Core\DB\seeders;
 
-trait DataDefaultSeederTrait
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+class DataDefaultSeeder extends Seeder
 {
     public $adminUser = 'admin';
     //admin
@@ -21,7 +19,7 @@ trait DataDefaultSeederTrait
      *
      * @return void
      */
-    public function runProcess()
+    public function run()
     {
         $this->updateDataVersion();
 

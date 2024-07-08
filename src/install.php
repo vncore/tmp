@@ -79,7 +79,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         //Drop table migrations if exist
         try {
             \Schema::dropIfExists('migrations');
-            Artisan::call('migrate --path=/database/migrations/00_00_00_step1_create_tables_admin.php');
+            Artisan::call('migrate --path=/vendor/vncore/core/src/DB/migrations/00_00_00_step1_create_tables_admin.php');
         } catch(\Throwable $e) {
             echo json_encode([
                 'error' => '1',
@@ -117,13 +117,13 @@ if (request()->method() == 'POST' && request()->ajax()) {
             try {
                 Artisan::call('db:seed', 
                     [
-                        '--class' => 'DataDefaultSeeder',
+                        '--class' => '\Vncore\Core\DB\seeders\DataDefaultSeeder',
                         '--force' => true
                     ]
                 );
                 Artisan::call('db:seed', 
                     [
-                        '--class' => 'DataStoreSeeder',
+                        '--class' => '\Vncore\Core\DB\seeders\DataStoreSeeder',
                         '--force' => true
                     ]
                 );
@@ -146,7 +146,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
                 try {
                     Artisan::call('db:seed', 
                         [
-                            '--class' => 'DataLocaleSeeder',
+                            '--class' => '\Vncore\Core\DB\seeders\DataLocaleSeeder',
                             '--force' => true
                         ]
                     );
