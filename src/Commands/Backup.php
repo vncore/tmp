@@ -13,14 +13,14 @@ class Backup extends Command
      *
      * @var string
      */
-    protected $signature = 'vc:backup {--path=} {--includeTables=} {--excludeTables=}';
+    protected $signature = 'vncore:backup {--path=} {--includeTables=} {--excludeTables=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Backup database "vc:backup --path=abc.sql --includeTables=table1,table2 --excludeTables=t1,t2"';
+    protected $description = 'Backup database "vncore:backup --path=abc.sql --includeTables=table1,table2 --excludeTables=t1,t2"';
     const LIMIT = 10;
 
     /**

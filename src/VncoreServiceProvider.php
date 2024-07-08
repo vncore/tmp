@@ -13,7 +13,6 @@ use Vncore\Core\Commands\Make;
 use Vncore\Core\Commands\Infomation;
 use Vncore\Core\Commands\ClearCart;
 use Vncore\Core\Commands\Update;
-use Vncore\Core\Admin\Models\AdminProduct;
 use Vncore\Core\Front\Middleware\Localization;
 use Vncore\Core\Front\Middleware\EmailIsVerified;
 use Vncore\Core\Api\Middleware\ApiConnection;
@@ -333,14 +332,14 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vc:view-admin');
-            $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vc:view-front');
-            $this->publishes([__DIR__.'/Config/admin.php' => config_path('admin.php')], 'vc:config-admin');
-            $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'vc:config-validation');
-            $this->publishes([__DIR__.'/Config/cart.php' => config_path('cart.php')], 'vc:config-cart');
-            $this->publishes([__DIR__.'/Config/api.php' => config_path('api.php')], 'vc:config-api');
-            $this->publishes([__DIR__.'/Config/middleware.php' => config_path('middleware.php')], 'vc:config-middleware');
-            $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vc:config-lfm');
+            $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
+            $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
+            $this->publishes([__DIR__.'/Config/admin.php' => config_path('admin.php')], 'vncore:config-admin');
+            $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'vncore:config-validation');
+            $this->publishes([__DIR__.'/Config/cart.php' => config_path('cart.php')], 'vncore:config-cart');
+            $this->publishes([__DIR__.'/Config/api.php' => config_path('api.php')], 'vncore:config-api');
+            $this->publishes([__DIR__.'/Config/middleware.php' => config_path('middleware.php')], 'vncore:config-middleware');
+            $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
         }
     }
 }

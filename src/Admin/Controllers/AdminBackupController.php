@@ -75,7 +75,7 @@ class AdminBackupController extends RootAdminController
             }
         } elseif ($action === 'restore') {
             try {
-                $return = Artisan::call("vc:restore --path=".$file);
+                $return = Artisan::call("vncore:restore --path=".$file);
             } catch (\Throwable $e) {
                 vncore_report($e->getMessage());
                 $return = json_encode(['error' => 1, 'msg' => $e->getMessage()]);
@@ -96,7 +96,7 @@ class AdminBackupController extends RootAdminController
         $fileName = $data['fileName'] ?? '';
         $includeTables = $data['includeTables'] ?? '';
         $excludeTables = $data['excludeTables'] ?? '';
-        $return = Artisan::call("vc:backup --path=$fileName --includeTables=$includeTables --excludeTables=$excludeTables");
+        $return = Artisan::call("vncore:backup --path=$fileName --includeTables=$includeTables --excludeTables=$excludeTables");
         return $return;
     }
 }

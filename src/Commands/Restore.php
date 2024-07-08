@@ -13,14 +13,14 @@ class Restore extends Command
      *
      * @var string
      */
-    protected $signature = 'vc:restore {--path=}';
+    protected $signature = 'vncore:restore {--path=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Restore database "vc:restore --path=abc.sql"';
+    protected $description = 'Restore database "vncore:restore --path=abc.sql"';
 
     /**
      * Execute the console command.
