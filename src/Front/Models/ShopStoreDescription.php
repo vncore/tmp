@@ -12,6 +12,6 @@ class ShopStoreDescription extends Model
     public $incrementing = false;
     protected $guarded = [];
     public $timestamps = false;
-    public $table = SC_DB_PREFIX.'admin_store_description';
+    public $table = VNCORE_DB_PREFIX.'admin_store_description';
     protected $connection = SC_CONNECTION;
 }

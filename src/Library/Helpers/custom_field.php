@@ -11,9 +11,9 @@ if (!function_exists('vncore_update_custom_field') && !in_array('vncore_update_c
         $arrFields = array_keys((new AdminCustomFieldController)->fieldTypes());
         if (in_array($type, $arrFields) && !empty($fields)) {
             (new ShopCustomFieldDetail)
-                ->join(SC_DB_PREFIX.'shop_custom_field', SC_DB_PREFIX.'shop_custom_field.id', SC_DB_PREFIX.'shop_custom_field_detail.custom_field_id')
-                ->where(SC_DB_PREFIX.'shop_custom_field_detail.rel_id', $itemId)
-                ->where(SC_DB_PREFIX.'shop_custom_field.type', $type)
+                ->join(VNCORE_DB_PREFIX.'shop_custom_field', VNCORE_DB_PREFIX.'shop_custom_field.id', VNCORE_DB_PREFIX.'shop_custom_field_detail.custom_field_id')
+                ->where(VNCORE_DB_PREFIX.'shop_custom_field_detail.rel_id', $itemId)
+                ->where(VNCORE_DB_PREFIX.'shop_custom_field.type', $type)
                 ->delete();
 
             $dataField = [];

@@ -18,7 +18,7 @@ class PrepareTablesAdmin extends Migration
         //Drop table if exist
         $this->down();
         $schema = Schema::connection(SC_CONNECTION);
-        $schema->create(SC_DB_PREFIX . 'admin_user', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_user', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('username', 100)->unique();
             $table->string('password', 60);
@@ -30,14 +30,14 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_role', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_role', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
             $table->string('slug', 50)->unique();
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_permission', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_permission', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100)->unique();
             $table->string('slug', 50)->unique();
@@ -45,7 +45,7 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_menu', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_menu', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')->default(0);
             $table->integer('sort')->default(0);
@@ -58,7 +58,7 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_role_user', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_role_user', function (Blueprint $table) {
             $table->integer('role_id');
             $table->uuid('user_id');
             $table->index(['role_id', 'user_id']);
@@ -66,7 +66,7 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_role_permission', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_role_permission', function (Blueprint $table) {
             $table->integer('role_id');
             $table->integer('permission_id');
             $table->index(['role_id', 'permission_id']);
@@ -74,7 +74,7 @@ class PrepareTablesAdmin extends Migration
             $table->primary(['role_id', 'permission_id']);
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_user_permission', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_user_permission', function (Blueprint $table) {
             $table->uuid('user_id');
             $table->integer('permission_id');
             $table->timestamps();
@@ -82,7 +82,7 @@ class PrepareTablesAdmin extends Migration
             $table->primary(['user_id', 'permission_id']);
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_template', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_template', function (Blueprint $table) {
             $table->increments('id');
             $table->string('key', 100)->unique();
             $table->string('name', 255);
@@ -90,7 +90,7 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_log', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_log', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('user_id');
             $table->string('path');
@@ -102,7 +102,7 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_config', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_config', function (Blueprint $table) {
             $table->increments('id');
             $table->string('group', 50)->nullable();
             $table->string('code', 50)->index();
@@ -116,7 +116,7 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_store', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_store', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('logo', 255)->nullable();
             $table->string('icon', 255)->nullable();
@@ -140,7 +140,7 @@ class PrepareTablesAdmin extends Migration
             $table->timestamps();
         });
 
-        $schema->create(SC_DB_PREFIX . 'admin_store_description', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_store_description', function (Blueprint $table) {
             $table->uuid('store_id');
             $table->string('lang', 10)->index();
             $table->string('title', 255)->nullable();
@@ -152,7 +152,7 @@ class PrepareTablesAdmin extends Migration
         });
 
         $schema->create(
-            SC_DB_PREFIX.'admin_password_resets',
+            VNCORE_DB_PREFIX.'admin_password_resets',
             function (Blueprint $table) {
                 $table->string('email', 150);
                 $table->string('token', 255);
@@ -162,7 +162,7 @@ class PrepareTablesAdmin extends Migration
         );
 
         //Notice
-        $schema->create(SC_DB_PREFIX . 'admin_notice', function (Blueprint $table) {
+        $schema->create(VNCORE_DB_PREFIX . 'admin_notice', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type')->index()->comment('order, customer, admin,...');
             $table->string('type_id', 36)->index()->nullable();
@@ -174,7 +174,7 @@ class PrepareTablesAdmin extends Migration
         //==End notice
 
         $schema->create(
-            SC_DB_PREFIX.'shop_language',
+            VNCORE_DB_PREFIX.'shop_language',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name', 255);
@@ -188,7 +188,7 @@ class PrepareTablesAdmin extends Migration
         );
 
         $schema->create(
-            SC_DB_PREFIX.'shop_country',
+            VNCORE_DB_PREFIX.'shop_country',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('code', 10)->unique();
@@ -198,7 +198,7 @@ class PrepareTablesAdmin extends Migration
 
         
         $schema->create(
-            SC_DB_PREFIX.'shop_custom_field',
+            VNCORE_DB_PREFIX.'shop_custom_field',
             function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->string('type', 50)->index()->comment('shop_product, shop_customer,...');
@@ -213,7 +213,7 @@ class PrepareTablesAdmin extends Migration
         );
 
         $schema->create(
-            SC_DB_PREFIX.'shop_custom_field_detail',
+            VNCORE_DB_PREFIX.'shop_custom_field_detail',
             function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->uuid('custom_field_id')->index();
@@ -224,7 +224,7 @@ class PrepareTablesAdmin extends Migration
         );
 
         $schema->create(
-            SC_DB_PREFIX.'languages',
+            VNCORE_DB_PREFIX.'languages',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('code', 100)->index();
@@ -246,27 +246,27 @@ class PrepareTablesAdmin extends Migration
     {
         $schema = Schema::connection(SC_CONNECTION);
 
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_user');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_role');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_permission');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_menu');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_user_permission');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_template');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_role_user');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_role_permission');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_log');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_config');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_store');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_store_description');
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_password_resets');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_user');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_role');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_permission');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_menu');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_user_permission');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_template');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_role_user');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_role_permission');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_log');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_config');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_store');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_store_description');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_password_resets');
         //Notice
-        $schema->dropIfExists(SC_DB_PREFIX . 'admin_notice');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_notice');
         //==End notice
-        $schema->dropIfExists(SC_DB_PREFIX . 'shop_language');
-        $schema->dropIfExists(SC_DB_PREFIX . 'shop_country');
-        $schema->dropIfExists(SC_DB_PREFIX . 'shop_custom_field');
-        $schema->dropIfExists(SC_DB_PREFIX . 'shop_custom_field_detail');
-        $schema->dropIfExists(SC_DB_PREFIX . 'languages');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_language');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_country');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_custom_field');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_custom_field_detail');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'languages');
         
     }
 }

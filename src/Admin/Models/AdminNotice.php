@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminNotice extends Model
 {
-    public $table = SC_DB_PREFIX.'admin_notice';
+    public $table = VNCORE_DB_PREFIX.'admin_notice';
     protected $guarded = [];
     protected $connection = SC_CONNECTION;
 

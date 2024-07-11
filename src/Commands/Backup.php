@@ -43,11 +43,10 @@ class Backup extends Command
             $fileBackup = storage_path('backups/backup-' . date('Y-m-d-H-i-s') . '.sql');
         }
         try {
-            $databaseName = config('database.connections.'.SC_CONNECTION.'.database');
-            $userName = config('database.connections.'.SC_CONNECTION.'.username');
-            $password = config('database.connections.'.SC_CONNECTION.'.password');
-            $host = config('database.connections.'.SC_CONNECTION.'.host');
-            $pathMysqlBin = config('database.connections.'.SC_CONNECTION.'.path_mysql_bin');// C:\xampp\mysql\bin
+            $databaseName = config('database.connections.'.VNCORE_CONNECTION.'.database');
+            $userName = config('database.connections.'.VNCORE_CONNECTION.'.username');
+            $password = config('database.connections.'.VNCORE_CONNECTION.'.password');
+            $host = config('database.connections.'.VNCORE_CONNECTION.'.host');
             $includeTables = explode(',', $includeTables);
             $excludeTables = explode(',', $excludeTables);
 
@@ -56,9 +55,6 @@ class Backup extends Command
                 ->setUserName($userName)
                 ->setPassword($password)
                 ->setHost($host);
-            if ($pathMysqlBin) {
-                $backupProcess->setDumpBinaryPath($pathMysqlBin);
-            }
             if ($includeTables) {
                 $backupProcess->includeTables($includeTables);
             } elseif ($excludeTables) {

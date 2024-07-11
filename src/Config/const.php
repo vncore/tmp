@@ -5,10 +5,9 @@
  * @return  [type]  [return description]
  */
 return [
-    'DB_PREFIX'             => env('DB_PREFIX', ''),
-    'ADMIN_PREFIX'          => env('ADMIN_PREFIX', 'vncore_admin'),
+    'VNCORE_DB_PREFIX'             => env('VNCORE_DB_PREFIX', ''),
+    'VNCORE_ADMIN_PREFIX'          => env('VNCORE_ADMIN_PREFIX', 'vncore_admin'),
     'PMO_PREFIX'            => env('PMO_PREFIX', 'vncore_pmo'),
-    'LOG_SLACK_WEBHOOK_URL' => env('LOG_SLACK_WEBHOOK_URL', ''),
     'MAIL_HOST'             => env('MAIL_HOST', ''),
     'MAIL_PORT'             => env('MAIL_PORT', ''),
     'MAIL_ENCRYPTION'       => env('MAIL_ENCRYPTION', ''),

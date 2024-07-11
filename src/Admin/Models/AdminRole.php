@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class AdminRole extends Model
 {
     protected $fillable = ['name', 'slug'];
-    public $table       = SC_DB_PREFIX.'admin_role';
+    public $table       = VNCORE_DB_PREFIX.'admin_role';
 
     public function administrators()
     {
-        return $this->belongsToMany(AdminUser::class, SC_DB_PREFIX.'admin_role_user', 'role_id', 'user_id');
+        return $this->belongsToMany(AdminUser::class, VNCORE_DB_PREFIX.'admin_role_user', 'role_id', 'user_id');
     }
 
     /**
@@ -22,7 +22,7 @@ class AdminRole extends Model
      */
     public function permissions()
     {
-        return $this->belongsToMany(AdminPermission::class, SC_DB_PREFIX.'admin_role_permission', 'role_id', 'permission_id');
+        return $this->belongsToMany(AdminPermission::class, VNCORE_DB_PREFIX.'admin_role_permission', 'role_id', 'permission_id');
     }
 
     /**

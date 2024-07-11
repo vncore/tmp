@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminConfig extends Model
 {
-    public $table = SC_DB_PREFIX.'admin_config';
+    public $table = VNCORE_DB_PREFIX.'admin_config';
     protected $guarded = [];
 
     protected static $getAll = null;

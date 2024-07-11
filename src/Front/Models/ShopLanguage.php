@@ -8,7 +8,7 @@ class ShopLanguage extends Model
 {
     use \Vncore\Core\Front\Models\ModelTrait;
     
-    public $table = SC_DB_PREFIX.'shop_language';
+    public $table = VNCORE_DB_PREFIX.'shop_language';
     protected $guarded                = [];
     private static $getListAll      = null;
     private static $getListActive      = null;

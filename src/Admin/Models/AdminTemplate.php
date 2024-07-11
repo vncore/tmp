@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminTemplate extends Model
 {
-    public $table = SC_DB_PREFIX.'admin_template';
+    public $table = VNCORE_DB_PREFIX.'admin_template';
     protected $guarded = [];
     protected $connection = SC_CONNECTION;
 

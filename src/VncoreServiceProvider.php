@@ -74,7 +74,7 @@ class VncoreServiceProvider extends ServiceProvider
 
             //Check connection
             try {
-                DB::connection(SC_CONNECTION)->getPdo();
+                DB::connection(VNCORE_CONNECTION)->getPdo();
             } catch (\Throwable $e) {
                 $msg = '#SC003::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
@@ -205,11 +205,12 @@ class VncoreServiceProvider extends ServiceProvider
     {
         // Set store id
         // Default is domain root
-        $storeId = SC_ID_ROOT;
+        $storeId = VNCORE_ID_ROOT;
 
         //End process multi store
         config(['app.storeId' => $storeId]);
         // end set store Id
+
 
         if (vncore_config_global('LOG_SLACK_WEBHOOK_URL')) {
             config(['logging.channels.slack.url' => vncore_config_global('LOG_SLACK_WEBHOOK_URL')]);
@@ -224,10 +225,10 @@ class VncoreServiceProvider extends ServiceProvider
         //Config for  email
         if (
             // Default use smtp mode for for supplier if use multi-store
-            ($storeId != SC_ID_ROOT && vncore_check_multi_shop_installed())
+            ($storeId != VNCORE_ID_ROOT && vncore_check_multi_shop_installed())
             ||
             // Use smtp config from admin if root domain have smtp_mode enable
-            ($storeId == SC_ID_ROOT && vncore_config_global('smtp_mode'))
+            ($storeId == VNCORE_ID_ROOT && vncore_config_global('smtp_mode'))
             ) {
             $smtpHost     = vncore_config('smtp_host');
             $smtpPort     = vncore_config('smtp_port');

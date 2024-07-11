@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShopApiConnection extends Model
 {
-    public $table = SC_DB_PREFIX.'api_connection';
+    public $table = VNCORE_DB_PREFIX.'api_connection';
     protected $guarded = [];
     protected $connection = SC_CONNECTION;
     protected static $getGroup = null;

@@ -42,7 +42,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             $getEnv = str_replace('vncore_database_port', $database_port, $getEnv);
             $getEnv = str_replace('vncore_database_name', $database_name, $getEnv);
             $getEnv = str_replace('vncore_database_user', $database_user, $getEnv);
-            $getEnv = str_replace('DB_PREFIX=vncore_', 'DB_PREFIX='.$database_prefix, $getEnv);
+            $getEnv = str_replace('VNCORE_DB_PREFIX=vncore_', 'VNCORE_DB_PREFIX='.$database_prefix, $getEnv);
             $getEnv = str_replace('vncore_database_password', $database_password, $getEnv);
             $getEnv = str_replace('vncore_api_key', $api_key, $getEnv);
             $getEnv = str_replace('vncore_admin', $admin_url, $getEnv);

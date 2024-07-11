@@ -62,10 +62,10 @@ if (!function_exists('vncore_notice_add')) {
             }
 
             return (new \Vncore\Core\Admin\Models\AdminUser)
-            ->selectRaw('distinct '. SC_DB_PREFIX.'admin_user.id')
-            ->join(SC_DB_PREFIX . 'admin_role_user', SC_DB_PREFIX . 'admin_role_user.user_id', SC_DB_PREFIX . 'admin_user.id')
-            ->join(SC_DB_PREFIX . 'admin_role', SC_DB_PREFIX . 'admin_role.id', SC_DB_PREFIX . 'admin_role_user.role_id')
-            ->whereIn(SC_DB_PREFIX . 'admin_role.slug', ['administrator','view.all', 'manager'])
+            ->selectRaw('distinct '. VNCORE_DB_PREFIX.'admin_user.id')
+            ->join(VNCORE_DB_PREFIX . 'admin_role_user', VNCORE_DB_PREFIX . 'admin_role_user.user_id', VNCORE_DB_PREFIX . 'admin_user.id')
+            ->join(VNCORE_DB_PREFIX . 'admin_role', VNCORE_DB_PREFIX . 'admin_role.id', VNCORE_DB_PREFIX . 'admin_role_user.role_id')
+            ->whereIn(VNCORE_DB_PREFIX . 'admin_role.slug', ['administrator','view.all', 'manager'])
             ->pluck('id')
             ->toArray();
         }

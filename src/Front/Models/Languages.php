@@ -8,7 +8,7 @@ class Languages extends Model
 {
     use \Vncore\Core\Front\Models\ModelTrait;
     
-    public $table = SC_DB_PREFIX.'languages';
+    public $table = VNCORE_DB_PREFIX.'languages';
     protected $guarded = [];
     private static $getList = null;
     protected $connection = SC_CONNECTION;

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminMenu extends Model
 {
-    public $table = SC_DB_PREFIX . 'admin_menu';
+    public $table = VNCORE_DB_PREFIX . 'admin_menu';
     protected $guarded = [];
     private static $getList = null;
     private static $getListDisplay = null;

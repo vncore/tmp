@@ -184,14 +184,14 @@ trait ModelTrait
      */
     public function getCustomFields()
     {
-        $typeTmp = explode(SC_DB_PREFIX, $this->getTable());
+        $typeTmp = explode(VNCORE_DB_PREFIX, $this->getTable());
         $type = $typeTmp[1] ?? null;
         $data =  (new \Vncore\Core\Front\Models\ShopCustomFieldDetail)
-            ->join(SC_DB_PREFIX.'shop_custom_field', SC_DB_PREFIX.'shop_custom_field.id', SC_DB_PREFIX.'shop_custom_field_detail.custom_field_id')
+            ->join(VNCORE_DB_PREFIX.'shop_custom_field', VNCORE_DB_PREFIX.'shop_custom_field.id', VNCORE_DB_PREFIX.'shop_custom_field_detail.custom_field_id')
             ->select('code', 'name', 'text')
-            ->where(SC_DB_PREFIX.'shop_custom_field_detail.rel_id', $this->id)
-            ->where(SC_DB_PREFIX.'shop_custom_field.type', $type)
-            ->where(SC_DB_PREFIX.'shop_custom_field.status', '1')
+            ->where(VNCORE_DB_PREFIX.'shop_custom_field_detail.rel_id', $this->id)
+            ->where(VNCORE_DB_PREFIX.'shop_custom_field.type', $type)
+            ->where(VNCORE_DB_PREFIX.'shop_custom_field.status', '1')
             ->get()
             ->keyBy('code');
         return $data;
@@ -204,16 +204,16 @@ trait ModelTrait
      */
     public function getCustomField($code = null)
     {
-        $typeTmp = explode(SC_DB_PREFIX, $this->getTable());
+        $typeTmp = explode(VNCORE_DB_PREFIX, $this->getTable());
         $type = $typeTmp[1] ?? null;
         $data =  (new \Vncore\Core\Front\Models\ShopCustomFieldDetail)
-            ->join(SC_DB_PREFIX.'shop_custom_field', SC_DB_PREFIX.'shop_custom_field.id', SC_DB_PREFIX.'shop_custom_field_detail.custom_field_id')
+            ->join(VNCORE_DB_PREFIX.'shop_custom_field', VNCORE_DB_PREFIX.'shop_custom_field.id', VNCORE_DB_PREFIX.'shop_custom_field_detail.custom_field_id')
             ->select('code', 'name', 'text')
-            ->where(SC_DB_PREFIX.'shop_custom_field_detail.rel_id', $this->id)
-            ->where(SC_DB_PREFIX.'shop_custom_field.type', $type)
-            ->where(SC_DB_PREFIX.'shop_custom_field.status', '1');
+            ->where(VNCORE_DB_PREFIX.'shop_custom_field_detail.rel_id', $this->id)
+            ->where(VNCORE_DB_PREFIX.'shop_custom_field.type', $type)
+            ->where(VNCORE_DB_PREFIX.'shop_custom_field.status', '1');
         if ($code) {
-            $data = $data->where(SC_DB_PREFIX.'shop_custom_field.code', $code);
+            $data = $data->where(VNCORE_DB_PREFIX.'shop_custom_field.code', $code);
         }
         $data = $data->first();
         return $data;

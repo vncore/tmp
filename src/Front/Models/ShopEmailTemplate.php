@@ -9,7 +9,7 @@ class ShopEmailTemplate extends Model
     use \Vncore\Core\Front\Models\ModelTrait;
     use \Vncore\Core\Front\Models\UuidTrait;
     
-    public $table = SC_DB_PREFIX.'shop_email_template';
+    public $table = VNCORE_DB_PREFIX.'shop_email_template';
     protected $guarded = [];
     protected $connection = SC_CONNECTION;
 

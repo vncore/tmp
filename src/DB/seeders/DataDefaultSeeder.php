@@ -44,34 +44,34 @@ class DataDefaultSeeder extends Seeder
         }
 
         $dataMenu = $this->dataMenu();
-        $db->table(SC_DB_PREFIX.'admin_menu')->insertOrIgnore($dataMenu);
+        $db->table(VNCORE_DB_PREFIX.'admin_menu')->insertOrIgnore($dataMenu);
         
         $dataAdminPermission = $this->dataAdminPermission(VNCORE_ADMIN_PREFIX);
-        $db->table(SC_DB_PREFIX.'admin_permission')->insertOrIgnore($dataAdminPermission);
+        $db->table(VNCORE_DB_PREFIX.'admin_permission')->insertOrIgnore($dataAdminPermission);
         
         $dataAdminRole = $this->dataAdminRole();
-        $db->table(SC_DB_PREFIX.'admin_role')->insertOrIgnore($dataAdminRole);
+        $db->table(VNCORE_DB_PREFIX.'admin_role')->insertOrIgnore($dataAdminRole);
         
         $dataAdminRolePermission = $this->dataAdminRolePermission();
-        $db->table(SC_DB_PREFIX.'admin_role_permission')->insertOrIgnore($dataAdminRolePermission);
+        $db->table(VNCORE_DB_PREFIX.'admin_role_permission')->insertOrIgnore($dataAdminRolePermission);
 
         $dataAdminRoleUser = $this->dataAdminRoleUser();
-        $db->table(SC_DB_PREFIX.'admin_role_user')->insertOrIgnore($dataAdminRoleUser);
+        $db->table(VNCORE_DB_PREFIX.'admin_role_user')->insertOrIgnore($dataAdminRoleUser);
 
         $dataAdminUser = $this->dataAdminUser($this->adminUser, $this->adminPassword, $this->adminEmail);
-        $db->table(SC_DB_PREFIX.'admin_user')->insertOrIgnore($dataAdminUser);
+        $db->table(VNCORE_DB_PREFIX.'admin_user')->insertOrIgnore($dataAdminUser);
 
         $dataAdminConfig = $this->dataAdminConfig();
-        $db->table(SC_DB_PREFIX.'admin_config')->insertOrIgnore($dataAdminConfig);
+        $db->table(VNCORE_DB_PREFIX.'admin_config')->insertOrIgnore($dataAdminConfig);
 
         $dataAdminStore = $this->dataAdminStore($this->adminEmail, $this->language_default, str_replace(['http://','https://', '/install.php'], '', url('/')));
-        $db->table(SC_DB_PREFIX.'admin_store')->insertOrIgnore($dataAdminStore);
+        $db->table(VNCORE_DB_PREFIX.'admin_store')->insertOrIgnore($dataAdminStore);
 
         $dataAdminStoreDescription = $this->dataAdminStoreDescription($this->title_en, $this->title_vi);
-        $db->table(SC_DB_PREFIX.'admin_store_description')->insertOrIgnore($dataAdminStoreDescription);
+        $db->table(VNCORE_DB_PREFIX.'admin_store_description')->insertOrIgnore($dataAdminStoreDescription);
 
         $dataShopLang = $this->dataShopLang();
-        $db->table(SC_DB_PREFIX.'shop_language')->insertOrIgnore($dataShopLang);
+        $db->table(VNCORE_DB_PREFIX.'shop_language')->insertOrIgnore($dataShopLang);
 
     }
 

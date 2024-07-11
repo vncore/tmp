@@ -10,7 +10,7 @@ class ShopStore extends Model
     use \Vncore\Core\Front\Models\ModelTrait;
     use \Vncore\Core\Front\Models\UuidTrait;
 
-    public $table = SC_DB_PREFIX.'admin_store';
+    public $table = VNCORE_DB_PREFIX.'admin_store';
     protected $guarded = [];
     protected static $getAll = null;
     protected static $getStoreActive = null;

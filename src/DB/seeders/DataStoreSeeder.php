@@ -21,7 +21,7 @@ class DataStoreSeeder extends Seeder
         $db = DB::connection(SC_CONNECTION);
 
         $dataConfig = $this->dataConfig($storeId);
-        $db->table(SC_DB_PREFIX.'admin_config')->insert($dataConfig);
+        $db->table(VNCORE_DB_PREFIX.'admin_config')->insert($dataConfig);
 
         if (file_exists($fileProcess = resource_path() . '/views/templates/'.$this->getTemplateDefault().'/Provider.php')) {
             include_once $fileProcess;

@@ -11,7 +11,7 @@ class AdminUser extends Authenticatable
 {
     use \Vncore\Core\Front\Models\UuidTrait;
     use  Notifiable, HasApiTokens;
-    public $table      = SC_DB_PREFIX.'admin_user';
+    public $table      = VNCORE_DB_PREFIX.'admin_user';
     protected $guarded = [];
     protected $hidden  = [
         'password', 'remember_token',
@@ -29,7 +29,7 @@ class AdminUser extends Authenticatable
      */
     public function roles()
     {
-        return $this->belongsToMany(AdminRole::class, SC_DB_PREFIX.'admin_role_user', 'user_id', 'role_id');
+        return $this->belongsToMany(AdminRole::class, VNCORE_DB_PREFIX.'admin_role_user', 'user_id', 'role_id');
     }
 
     /**
@@ -39,7 +39,7 @@ class AdminUser extends Authenticatable
      */
     public function permissions()
     {
-        return $this->belongsToMany(AdminPermission::class, SC_DB_PREFIX.'admin_user_permission', 'user_id', 'permission_id');
+        return $this->belongsToMany(AdminPermission::class, VNCORE_DB_PREFIX.'admin_user_permission', 'user_id', 'permission_id');
     }
 
     /**
