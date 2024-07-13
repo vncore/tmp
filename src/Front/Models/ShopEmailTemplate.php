@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShopEmailTemplate extends Model
 {
     use \Vncore\Core\Front\Models\ModelTrait;
-    use \Vncore\Core\Front\Models\UuidTrait;
+    use \Vncore\Core\Admin\Models\UuidTrait;
     
     public $table = VNCORE_DB_PREFIX.'shop_email_template';
     protected $guarded = [];

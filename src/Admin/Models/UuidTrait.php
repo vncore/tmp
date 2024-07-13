@@ -1,6 +1,6 @@
 <?php
 
-namespace Vncore\Core\Front\Models;
+namespace Vncore\Core\Admin\Models;
 /**
  * Trait Model.
  */

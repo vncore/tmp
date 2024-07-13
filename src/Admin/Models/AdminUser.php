@@ -9,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class AdminUser extends Authenticatable
 {
-    use \Vncore\Core\Front\Models\UuidTrait;
+    use \Vncore\Core\Admin\Models\UuidTrait;
     use  Notifiable, HasApiTokens;
     public $table      = VNCORE_DB_PREFIX.'admin_user';
     protected $guarded = [];

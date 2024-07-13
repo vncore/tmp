@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShopStore extends Model
 {
     use \Vncore\Core\Front\Models\ModelTrait;
-    use \Vncore\Core\Front\Models\UuidTrait;
+    use \Vncore\Core\Admin\Models\UuidTrait;
 
     public $table = VNCORE_DB_PREFIX.'admin_store';
     protected $guarded = [];
