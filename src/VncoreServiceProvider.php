@@ -186,19 +186,19 @@ class VncoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
-        if (file_exists(__DIR__.'/Library/Const.php')) {
-            require_once(__DIR__.'/Library/Const.php');
-        }       
+     
         $this->mergeConfigFrom(__DIR__.'/Config/admin.php', 'admin');
         $this->mergeConfigFrom(__DIR__.'/Config/validation.php', 'validation');
         $this->mergeConfigFrom(__DIR__.'/Config/lfm.php', 'lfm');
         $this->mergeConfigFrom(__DIR__.'/Config/vncore.php', 'vncore');
-        $this->mergeConfigFrom(__DIR__.'/Config/cart.php', 'cart');
         $this->mergeConfigFrom(__DIR__.'/Config/middleware.php', 'middleware');
         $this->mergeConfigFrom(__DIR__.'/Config/api.php', 'api');
         $this->loadViewsFrom(__DIR__.'/Views/admin', 'vncore-admin');
         $this->loadViewsFrom(__DIR__.'/Views/front', 'vncore-front');
+        
+        if (file_exists(__DIR__.'/Library/Const.php')) {
+            require_once(__DIR__.'/Library/Const.php');
+        } 
     }
 
     public function bootScart()
@@ -211,6 +211,27 @@ class VncoreServiceProvider extends ServiceProvider
         config(['app.storeId' => $storeId]);
         // end set store Id
 
+        config(['auth.guards.admin' => [
+            'driver'   => 'session',
+            'provider' => 'admin',
+        ]]);
+        config(['auth.guards.api' => [
+            'driver'   => 'sanctum',
+            'provider' => 'users',
+        ]]);
+        config(['auth.guards.admin-api' => [
+            'driver'   => 'sanctum',
+            'provider' => 'admins',
+        ]]);
+        config(['auth.providers.admin' => [
+            'driver' => 'eloquent',
+            'model'  => \Vncore\Core\Admin\Models\AdminUser::class,
+        ]]);
+        config(['auth.passwords.admins' => [
+            'provider' => 'admins',
+            'table'    => env('VNCORE_DB_PREFIX', '').'admin_password_resets',
+            'expire'   => 60,
+        ]]);
 
         if (vncore_config_global('LOG_SLACK_WEBHOOK_URL')) {
             config(['logging.channels.slack.url' => vncore_config_global('LOG_SLACK_WEBHOOK_URL')]);
@@ -333,13 +354,12 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
+            $this->publishes([__DIR__.'/public/admin'  => public_path('vncore-static')], 'vncore:static');
             $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
             $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/admin.php' => config_path('admin.php')], 'vncore:config-admin');
             $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'vncore:config-validation');
-            $this->publishes([__DIR__.'/Config/cart.php' => config_path('cart.php')], 'vncore:config-cart');
             $this->publishes([__DIR__.'/Config/api.php' => config_path('api.php')], 'vncore:config-api');
-            $this->publishes([__DIR__.'/Config/const.php' => config_path('api.php')], 'vncore:config-const');
             $this->publishes([__DIR__.'/Config/middleware.php' => config_path('middleware.php')], 'vncore:config-middleware');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
         }

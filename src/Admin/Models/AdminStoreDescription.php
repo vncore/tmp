@@ -1,5 +1,5 @@
 <?php
-#Vncore/Core/Front/Models/AdminStoreDescription.php
+#Vncore/Core/Admin/Models/AdminStoreDescription.php
 namespace Vncore\Core\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;

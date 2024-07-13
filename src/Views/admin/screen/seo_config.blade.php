@@ -28,7 +28,7 @@
 
 @push('styles')
 <!-- Ediable -->
-<link rel="stylesheet" href="{{ vncore_file('admin/plugin/bootstrap-editable.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('vncore-static/plugin/bootstrap-editable.css')}}">
 <style type="text/css">
   #maintain_content img{
     max-width: 100%;
@@ -39,7 +39,7 @@
 @if (empty($dataNotFound))
 @push('scripts')
 <!-- Ediable -->
-<script src="{{ vncore_file('admin/plugin/bootstrap-editable.min.js')}}"></script>
+<script src="{{ vncore_file('vncore-static/plugin/bootstrap-editable.min.js')}}"></script>
 
 <script type="text/javascript">
 

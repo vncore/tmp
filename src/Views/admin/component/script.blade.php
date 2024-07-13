@@ -1,11 +1,11 @@
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ vncore_file('admin/plugin/bootstrap-select.min.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('vncore-static/plugin/bootstrap-select.min.css')}}">
 <!-- Latest compiled and minified JavaScript -->
-<script src="{{ vncore_file('admin/plugin/bootstrap-select.min.js')}}"></script>
+<script src="{{ vncore_file('vncore-static/plugin/bootstrap-select.min.js')}}"></script>
 
 {{-- //Pjax --}}
-<script src="{{ vncore_file('admin/plugin/jquery.pjax.js')}}"></script>
+<script src="{{ vncore_file('vncore-static/plugin/jquery.pjax.js')}}"></script>
 
 
 <script type="text/javascript">

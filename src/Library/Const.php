@@ -15,9 +15,9 @@ define('VNCORE_API_MIDDLEWARE', ['api', 'api.extend']);
 define('VNCORE_CONNECTION', 'mysql');
 define('VNCORE_CONNECTION_LOG', 'mysql');
 //Prefix url admin
-define('VNCORE_ADMIN_PREFIX', config('vncore:config-const.VNCORE_ADMIN_PREFIX'));
+define('VNCORE_ADMIN_PREFIX', config('vncore.const.VNCORE_ADMIN_PREFIX'));
 //Prefix database
-define('VNCORE_DB_PREFIX', config('vncore:config-const.VNCORE_DB_PREFIX'));
+define('VNCORE_DB_PREFIX', config('vncore.const.VNCORE_DB_PREFIX'));
 // Root ID store
 define('VNCORE_ID_ROOT', 1);
 define('VNCORE_ID_GLOBAL', 0);
