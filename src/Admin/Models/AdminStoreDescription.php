@@ -1,12 +1,12 @@
 <?php
-#Vncore/Core/Front/Models/ShopStoreDescription.php
-namespace Vncore\Core\Front\Models;
+#Vncore/Core/Front/Models/AdminStoreDescription.php
+namespace Vncore\Core\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShopStoreDescription extends Model
+class AdminStoreDescription extends Model
 {
-    use \Vncore\Core\Front\Models\ModelTrait;
+    use \Vncore\Core\Admin\Models\ModelTrait;
     
     protected $primaryKey = ['lang', 'store_id'];
     public $incrementing = false;

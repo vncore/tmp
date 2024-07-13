@@ -4,7 +4,7 @@ namespace Vncore\Core\Api\Controllers;
 
 use Vncore\Core\Front\Controllers\RootFrontController;
 use Illuminate\Http\Request;
-use Vncore\Core\Front\Models\ShopOrder;
+use Vncore\Core\Admin\Models\ShopOrder;
 
 class MemberController extends RootFrontController
 {

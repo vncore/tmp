@@ -1,13 +1,13 @@
 <?php
 
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use Illuminate\Support\Str;
 
 if (!function_exists('vncore_language_all') && !in_array('vncore_language_all', config('helper_except', []))) {
     //Get all language
     function vncore_language_all()
     {
-        return ShopLanguage::getListActive();
+        return AdminLanguage::getListActive();
     }
 }
 
@@ -18,7 +18,7 @@ if (!function_exists('vncore_languages') && !in_array('vncore_languages', config
      */
     function vncore_languages($locale)
     {
-        $languages = \Vncore\Core\Front\Models\Languages::getListAll($locale);
+        $languages = \Vncore\Core\Admin\Models\Languages::getListAll($locale);
         return $languages;
     }
 }

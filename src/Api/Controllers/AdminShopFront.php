@@ -2,12 +2,12 @@
 namespace Vncore\Core\Api\Controllers;
 
 use Vncore\Core\Front\Controllers\RootFrontController;
-use Vncore\Core\Front\Models\ShopBrand;
-use Vncore\Core\Front\Models\ShopCategory;
-use Vncore\Core\Front\Models\ShopProduct;
-use Vncore\Core\Front\Models\ShopSupplier;
-use Vncore\Core\Front\Models\ShopCountry;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\ShopBrand;
+use Vncore\Core\Admin\Models\ShopCategory;
+use Vncore\Core\Admin\Models\ShopProduct;
+use Vncore\Core\Admin\Models\ShopSupplier;
+use Vncore\Core\Admin\Models\AdminCountry;
+use Vncore\Core\Admin\Models\AdminLanguage;
 
 class AdminShopFront extends RootFrontController
 {
@@ -110,13 +110,13 @@ class AdminShopFront extends RootFrontController
 
     public function allCountry()
     {
-        $itemsList = (new ShopCountry)->jsonPaginate();
+        $itemsList = (new AdminCountry)->jsonPaginate();
         return response()->json($itemsList, 200);
     }
 
     public function countryDetail($id)
     {
-        $country = (new ShopCountry)->find($id);
+        $country = (new AdminCountry)->find($id);
         if ($country) {
             return response()->json($country, 200);
         } else {
@@ -127,13 +127,13 @@ class AdminShopFront extends RootFrontController
 
     public function allLanguage()
     {
-        $itemsList = (new ShopLanguage)->jsonPaginate();
+        $itemsList = (new AdminLanguage)->jsonPaginate();
         return response()->json($itemsList, 200);
     }
 
     public function languageDetail($id)
     {
-        $language = (new ShopLanguage)->find($id);
+        $language = (new AdminLanguage)->find($id);
         if ($language) {
             return response()->json($language, 200);
         } else {

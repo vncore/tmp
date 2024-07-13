@@ -4,7 +4,7 @@ namespace Vncore\Core\Api\Controllers;
 
 use Vncore\Core\Front\Controllers\RootFrontController;
 use Illuminate\Http\Request;
-use Vncore\Core\Front\Models\ShopCustomer;
+use Vncore\Core\Admin\Models\ShopCustomer;
 use Vncore\Core\Front\Controllers\Auth\AuthTrait;
 use Illuminate\Support\Facades\Validator;
 

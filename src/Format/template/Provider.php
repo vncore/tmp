@@ -50,7 +50,7 @@ function vncore_process_css_default($storeId = null) {
         if (file_exists($path = resource_path() . '/views/templates/'.vncore_template_info()['configKey'].'/css_default.css')) {
             $cssContent = file_get_contents($path);
         }
-        \Vncore\Core\Front\Models\ShopStoreCss::insert(['css' => $cssContent, 'store_id' => $storeId, 'template' => vncore_template_info()['configKey']]);
+        \Vncore\Core\Admin\Models\AdminStoreCss::insert(['css' => $cssContent, 'store_id' => $storeId, 'template' => vncore_template_info()['configKey']]);
     }
 }
 
@@ -78,8 +78,8 @@ function vncore_template_install_store($storeId = null) {
     ];
     \Vncore\Core\Admin\Models\AdminStoreBlockContent::insert($dataInsert);
 
-    $modelBanner = new \Vncore\Core\Front\Models\ShopBanner;
-    $modelBannerStore = new \Vncore\Core\Front\Models\ShopBannerStore; 
+    $modelBanner = new \Vncore\Core\Admin\Models\ShopBanner;
+    $modelBannerStore = new \Vncore\Core\Admin\Models\ShopBannerStore; 
 
     $idBanner = $modelBanner->create(['title' => 'Banner store ('.vncore_template_info()['configKey'].')', 'image' => '/data/banner/banner-store.jpg', 'target' => '_self', 'html' => '', 'status' => 1, 'type' => 'banner-store']);
     $modelBannerStore->create(['banner_id' => $idBanner->id, 'store_id' => $storeId]);
@@ -114,36 +114,36 @@ function vncore_template_uninstall_store($storeId = null) {
         \Vncore\Core\Admin\Models\AdminStoreBlockContent::where('template', vncore_template_info()['configKey'])
             ->where('store_id', $storeId)
             ->delete();
-        $tableBanner = (new \Vncore\Core\Front\Models\ShopBanner)->getTable();
-        $tableBannerStore = (new \Vncore\Core\Front\Models\ShopBannerStore)->getTable();
-        $idBanners = (new \Vncore\Core\Front\Models\ShopBanner)
+        $tableBanner = (new \Vncore\Core\Admin\Models\ShopBanner)->getTable();
+        $tableBannerStore = (new \Vncore\Core\Admin\Models\ShopBannerStore)->getTable();
+        $idBanners = (new \Vncore\Core\Admin\Models\ShopBanner)
             ->join($tableBannerStore, $tableBannerStore.'.banner_id', $tableBanner.'.id')
             ->where($tableBanner.'.title', 'like', '%('.vncore_template_info()['configKey'].')%')
             ->where($tableBannerStore.'.store_id', $storeId)
             ->pluck('id');
 
         if ($idBanners) {
-            \Vncore\Core\Front\Models\ShopBannerStore::whereIn('banner_id', $idBanners)
+            \Vncore\Core\Admin\Models\ShopBannerStore::whereIn('banner_id', $idBanners)
             ->delete();
-            \Vncore\Core\Front\Models\ShopBanner::whereIn('id', $idBanners)
+            \Vncore\Core\Admin\Models\ShopBanner::whereIn('id', $idBanners)
             ->delete();
         }
-        \Vncore\Core\Front\Models\ShopStoreCss::where('template', vncore_template_info()['configKey'])
+        \Vncore\Core\Admin\Models\AdminStoreCss::where('template', vncore_template_info()['configKey'])
         ->where('store_id', $storeId)
         ->delete();
     } else {
         // Remove from all stories
         \Vncore\Core\Admin\Models\AdminStoreBlockContent::where('template', vncore_template_info()['configKey'])
             ->delete();
-        $idBanners = \Vncore\Core\Front\Models\ShopBanner::where('title', 'like', '%('.vncore_template_info()['configKey'].')%')
+        $idBanners = \Vncore\Core\Admin\Models\ShopBanner::where('title', 'like', '%('.vncore_template_info()['configKey'].')%')
             ->pluck('id');
         if ($idBanners) {
-            \Vncore\Core\Front\Models\ShopBannerStore::whereIn('banner_id', $idBanners)
+            \Vncore\Core\Admin\Models\ShopBannerStore::whereIn('banner_id', $idBanners)
             ->delete();
-            \Vncore\Core\Front\Models\ShopBanner::whereIn('id', $idBanners)
+            \Vncore\Core\Admin\Models\ShopBanner::whereIn('id', $idBanners)
             ->delete();
         }
-        \Vncore\Core\Front\Models\ShopStoreCss::where('template', vncore_template_info()['configKey'])
+        \Vncore\Core\Admin\Models\AdminStoreCss::where('template', vncore_template_info()['configKey'])
         ->delete();
     }
 }

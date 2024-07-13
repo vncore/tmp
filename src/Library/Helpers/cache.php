@@ -1,6 +1,6 @@
 <?php
 
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use \Illuminate\Support\Facades\Cache;
 
 if (!function_exists('vncore_cache_clear') && !in_array('vncore_cache_clear', config('helper_except', []))) {
@@ -19,7 +19,7 @@ if (!function_exists('vncore_cache_clear') && !in_array('vncore_cache_clear', co
                 Cache::flush();
             } else {
                 $arrCacheLocal = [];
-                $arrLang = ShopLanguage::getCodeAll();
+                $arrLang = AdminLanguage::getCodeAll();
                 foreach ($arrLang as $code => $name) {
                     $arrCacheLocal['cache_category'][] = 'cache_category_'.$code;
                     $arrCacheLocal['cache_product'][] = 'cache_product_'.$code;

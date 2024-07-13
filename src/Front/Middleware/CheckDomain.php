@@ -3,7 +3,7 @@
 namespace Vncore\Core\Front\Middleware;
 
 use Closure;
-use Vncore\Core\Front\Models\ShopStore;
+use Vncore\Core\Admin\Models\AdminStore;
 
 class CheckDomain
 {
@@ -21,8 +21,8 @@ class CheckDomain
             //Check domain exist
             $domain = vncore_process_domain_store(url('/')); //domain currently
             $domainRoot = vncore_process_domain_store(config('app.url')); //Domain root config in .env
-            $arrDomainPartner = ShopStore::getDomainPartner(); // List domain is partner active
-            $arrDomainActive = ShopStore::getDomainStore(); // List domain is unlock domain
+            $arrDomainPartner = AdminStore::getDomainPartner(); // List domain is partner active
+            $arrDomainActive = AdminStore::getDomainStore(); // List domain is unlock domain
 
             if (vncore_check_multi_vendor_installed()) {
                 if (!in_array($domain, $arrDomainPartner) && $domain != $domainRoot) {

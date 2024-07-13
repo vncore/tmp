@@ -4,7 +4,7 @@ namespace Vncore\Core\Admin\Controllers;
 use Vncore\Core\Admin\Controllers\RootAdminController;
 use Vncore\Core\Admin\Models\AdminStore;
 use Vncore\Core\Admin\Models\AdminTemplate;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 
 class AdminStoreInfoController extends RootAdminController
 {
@@ -15,7 +15,7 @@ class AdminStoreInfoController extends RootAdminController
     {
         parent::__construct();
         $this->templates = (new AdminTemplate)->getListTemplateActive();
-        $this->languages = ShopLanguage::getListActive();
+        $this->languages = AdminLanguage::getListActive();
     }
 
     /*
@@ -78,7 +78,7 @@ class AdminStoreInfoController extends RootAdminController
                         include_once $fileProcess;
                         if (function_exists('vncore_template_install_store')) {
                             //Insert only specify store
-                            $checkTemplateEnableStore = (new \Vncore\Core\Front\Models\ShopStoreCss)
+                            $checkTemplateEnableStore = (new \Vncore\Core\Admin\Models\AdminStoreCss)
                                 ->where('template', $value)
                                 ->where('store_id', $storeId)
                                 ->first();

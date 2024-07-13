@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use Validator;
 
 class AdminLanguageController extends RootAdminController
@@ -36,7 +36,7 @@ class AdminLanguageController extends RootAdminController
             'action' => vncore_language_render('action.title'),
         ];
 
-        $obj = new ShopLanguage;
+        $obj = new AdminLanguage;
         $obj = $obj->orderBy('id', 'desc');
         $dataTmp = $obj->paginate(20);
 
@@ -79,7 +79,7 @@ class AdminLanguageController extends RootAdminController
             'icon' => 'required',
             'sort' => 'numeric|min:0',
             'name' => 'required|string|max:100',
-            'code' => 'required|string|max:10|unique:"'.ShopLanguage::class.'",code',
+            'code' => 'required|string|max:10|unique:"'.AdminLanguage::class.'",code',
         ]);
 
         if ($validator->fails()) {
@@ -97,7 +97,7 @@ class AdminLanguageController extends RootAdminController
             'sort' => (int) $data['sort'],
         ];
         $dataCreate = vncore_clean($dataCreate, [], true);
-        $obj = ShopLanguage::create($dataCreate);
+        $obj = AdminLanguage::create($dataCreate);
 
         return redirect()->route('admin_language.edit', ['id' => $obj['id']])->with('success', vncore_language_render('action.create_success'));
     }
@@ -107,7 +107,7 @@ class AdminLanguageController extends RootAdminController
      */
     public function edit($id)
     {
-        $language = ShopLanguage::find($id);
+        $language = AdminLanguage::find($id);
         if (!$language) {
             return 'No data';
         }
@@ -134,7 +134,7 @@ class AdminLanguageController extends RootAdminController
         'status' => vncore_language_render('admin.language.status'),
         'action' => vncore_language_render('action.title'),
     ];
-        $obj = new ShopLanguage;
+        $obj = new AdminLanguage;
         $obj = $obj->orderBy('id', 'desc');
         $dataTmp = $obj->paginate(20);
 
@@ -170,14 +170,14 @@ class AdminLanguageController extends RootAdminController
      */
     public function postEdit($id)
     {
-        $language = ShopLanguage::find($id);
+        $language = AdminLanguage::find($id);
         $data = request()->all();
         $dataOrigin = request()->all();
         $validator = Validator::make($dataOrigin, [
             'icon' => 'required',
             'name' => 'required',
             'sort' => 'numeric|min:0',
-            'code' => 'required|string|max:10|unique:"'.ShopLanguage::class.'",code,' . $language->id . ',id',
+            'code' => 'required|string|max:10|unique:"'.AdminLanguage::class.'",code,' . $language->id . ',id',
         ]);
 
         if ($validator->fails()) {
@@ -195,14 +195,14 @@ class AdminLanguageController extends RootAdminController
             'sort' => (int)$data['sort'],
         ];
         //Check status before change
-        $check = ShopLanguage::where('status', 1)->where('code', '<>', $data['code'])->count();
+        $check = AdminLanguage::where('status', 1)->where('code', '<>', $data['code'])->count();
         if ($check) {
             $dataUpdate['status'] = empty($data['status']) ? 0 : 1;
         } else {
             $dataUpdate['status'] = 1;
         }
         //End check status
-        $obj = ShopLanguage::find($id);
+        $obj = AdminLanguage::find($id);
         $dataUpdate =  vncore_clean($dataUpdate, [], true);
         $obj->update($dataUpdate);
 
@@ -221,7 +221,7 @@ class AdminLanguageController extends RootAdminController
             $ids = request('ids');
             $arrID = explode(',', $ids);
             $arrID = array_diff($arrID, VNCORE_GUARD_LANGUAGE);
-            ShopLanguage::destroy($arrID);
+            AdminLanguage::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);
         }
     }

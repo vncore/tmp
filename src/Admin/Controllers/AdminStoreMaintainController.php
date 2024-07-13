@@ -3,7 +3,7 @@ namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
 use Vncore\Core\Admin\Models\AdminStore;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use Validator;
 
 class AdminStoreMaintainController extends RootAdminController
@@ -13,7 +13,7 @@ class AdminStoreMaintainController extends RootAdminController
     public function __construct()
     {
         parent::__construct();
-        $this->languages = ShopLanguage::getListActive();
+        $this->languages = AdminLanguage::getListActive();
     }
 
     /**

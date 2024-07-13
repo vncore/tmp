@@ -1,12 +1,12 @@
 <?php
-namespace Vncore\Core\Front\Models;
+namespace Vncore\Core\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 
 class Languages extends Model
 {
-    use \Vncore\Core\Front\Models\ModelTrait;
+    use \Vncore\Core\Admin\Models\ModelTrait;
     
     public $table = VNCORE_DB_PREFIX.'languages';
     protected $guarded = [];
@@ -42,7 +42,7 @@ class Languages extends Model
     public static function getLanguagesPosition($lang, $position, $keyword = null)
     {
         if (!empty($lang)) {
-            $languages = ShopLanguage::getCodeAll();
+            $languages = AdminLanguage::getCodeAll();
             if (!in_array($lang, array_keys($languages))) {
                 return  [];
             }

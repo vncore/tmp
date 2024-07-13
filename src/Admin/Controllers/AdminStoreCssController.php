@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopStoreCss;
+use Vncore\Core\Admin\Models\AdminStoreCss;
 use Vncore\Core\Admin\Models\AdminTemplate;
 use Vncore\Core\Admin\Models\AdminStore;
 class AdminStoreCssController extends RootAdminController
@@ -24,7 +24,7 @@ class AdminStoreCssController extends RootAdminController
         if (!key_exists($template, $templates)) {
             return redirect()->route('admin.data_not_found')->with(['url' => url()->full()]);
         }
-        $cssContent = ShopStoreCss::where('store_id', $storeId)
+        $cssContent = AdminStoreCss::where('store_id', $storeId)
             ->where('template', $template)
             ->first();
 
@@ -54,7 +54,7 @@ class AdminStoreCssController extends RootAdminController
         $data = request()->all();
         $storeId = $data['storeId'];
         $template = $data['template'];
-        $cssContent = ShopStoreCss::where('store_id', $storeId)->where('template', $template)->first();
+        $cssContent = AdminStoreCss::where('store_id', $storeId)->where('template', $template)->first();
         $cssContent->css = request('css');
         $cssContent->save();
         return redirect()->route('admin_store_css.index', ['store_id' => $storeId])->with('success', vncore_language_render('action.edit_success'));

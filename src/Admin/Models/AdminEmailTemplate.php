@@ -2,12 +2,39 @@
 
 namespace Vncore\Core\Admin\Models;
 
-use Vncore\Core\Front\Models\ShopEmailTemplate;
+use Illuminate\Database\Eloquent\Model;
 
-class AdminEmailTemplate extends ShopEmailTemplate
+class AdminEmailTemplate extends Model
 {
+    use \Vncore\Core\Admin\Models\ModelTrait;
+    use \Vncore\Core\Admin\Models\UuidTrait;
+    
+    public $table = VNCORE_DB_PREFIX.'shop_email_template';
+    protected $guarded = [];
+    protected $connection = VNCORE_CONNECTION;
     protected static $getListTitleAdmin = null;
     protected static $getListEmailTemplateGroupByParentAdmin = null;
+
+
+    //Function get text description
+    protected static function boot()
+    {
+        parent::boot();
+        // before delete() method call this
+        static::deleting(
+            function ($obj) {
+                //
+            }
+        );
+
+        //Uuid
+        static::creating(function ($model) {
+            if (empty($model->{$model->getKeyName()})) {
+                $model->{$model->getKeyName()} = vncore_generate_id($type = 'shop_email_template');
+            }
+        });
+    }
+
     /**
      * Get news detail in admin
      *
@@ -35,7 +62,7 @@ class AdminEmailTemplate extends ShopEmailTemplate
         $sort_order       = $dataSearch['sort_order'] ?? '';
         $arrSort          = $dataSearch['arrSort'] ?? '';
 
-        $newsList = (new ShopEmailTemplate)
+        $newsList = (new AdminEmailTemplate)
             ->where('store_id', session('adminStoreId'));
 
         if ($keyword) {

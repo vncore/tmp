@@ -1,12 +1,12 @@
 <?php
-namespace Vncore\Core\Front\Models;
+namespace Vncore\Core\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cache;
 
-class ShopCountry extends Model
+class AdminCountry extends Model
 {
-    use \Vncore\Core\Front\Models\ModelTrait;
+    use \Vncore\Core\Admin\Models\ModelTrait;
     
     public $table = VNCORE_DB_PREFIX.'admin_country';
     public $timestamps               = false;

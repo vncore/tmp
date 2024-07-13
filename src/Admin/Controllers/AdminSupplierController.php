@@ -2,8 +2,8 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopSupplier;
-use Vncore\Core\Front\Models\ShopCustomField;
+use Vncore\Core\Admin\Models\ShopSupplier;
+use Vncore\Core\Admin\Models\ShopCustomField;
 use Validator;
 
 class AdminSupplierController extends RootAdminController

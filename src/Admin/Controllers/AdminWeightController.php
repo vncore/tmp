@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopWeight;
+use Vncore\Core\Admin\Models\ShopWeight;
 use Validator;
 
 class AdminWeightController extends RootAdminController

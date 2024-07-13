@@ -2,8 +2,8 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopBrand;
-use Vncore\Core\Front\Models\ShopCustomField;
+use Vncore\Core\Admin\Models\ShopBrand;
+use Vncore\Core\Admin\Models\ShopCustomField;
 use Validator;
 
 class AdminBrandController extends RootAdminController
@@ -140,10 +140,10 @@ class AdminBrandController extends RootAdminController
         $dataCreate = vncore_clean($dataCreate, [], true);
         $brand = ShopBrand::create($dataCreate);
 
-        $shopStore        = $data['shop_store'] ?? [session('adminStoreId')];
+        $AdminStore        = $data['shop_store'] ?? [session('adminStoreId')];
         $brand->stores()->detach();
-        if ($shopStore) {
-            $brand->stores()->attach($shopStore);
+        if ($AdminStore) {
+            $brand->stores()->attach($AdminStore);
         }
 
         //Insert custom fields
@@ -264,10 +264,10 @@ class AdminBrandController extends RootAdminController
         $dataUpdate = vncore_clean($dataUpdate, [], true);
         $brand->update($dataUpdate);
 
-        $shopStore        = $data['shop_store'] ?? [session('adminStoreId')];
+        $AdminStore        = $data['shop_store'] ?? [session('adminStoreId')];
         $brand->stores()->detach();
-        if ($shopStore) {
-            $brand->stores()->attach($shopStore);
+        if ($AdminStore) {
+            $brand->stores()->attach($AdminStore);
         }
 
         //Insert custom fields

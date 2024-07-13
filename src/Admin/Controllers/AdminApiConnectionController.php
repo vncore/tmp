@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopApiConnection;
+use Vncore\Core\Admin\Models\AdminApiConnection;
 use Validator;
 
 class AdminApiConnectionController extends RootAdminController
@@ -37,7 +37,7 @@ class AdminApiConnectionController extends RootAdminController
             'action' => vncore_language_render('action.title'),
         ];
 
-        $obj = new ShopApiConnection;
+        $obj = new AdminApiConnection;
         $obj = $obj->orderBy('id', 'desc');
         $dataTmp = $obj->paginate(20);
 
@@ -78,7 +78,7 @@ class AdminApiConnectionController extends RootAdminController
         $dataOrigin = request()->all();
         $validator = Validator::make($dataOrigin, [
             'description' => 'string|required',
-            'apiconnection' => 'string|required|regex:/(^([0-9a-z\-_]+)$)/|unique:"'.ShopApiConnection::class.'",apiconnection',
+            'apiconnection' => 'string|required|regex:/(^([0-9a-z\-_]+)$)/|unique:"'.AdminApiConnection::class.'",apiconnection',
             'apikey' => 'string|regex:/(^([0-9a-z\-_]+)$)/',
         ], [
             'apiconnection.regex' => vncore_language_render('admin.api_connection.validate_regex'),
@@ -99,7 +99,7 @@ class AdminApiConnectionController extends RootAdminController
             'status' => empty($data['status']) ? 0 : 1,
         ];
         $dataCreate = vncore_clean($dataCreate, [], true);
-        ShopApiConnection::create($dataCreate);
+        AdminApiConnection::create($dataCreate);
 
         return redirect()->route('admin_api_connection.index')->with('success', vncore_language_render('action.create_success'));
     }
@@ -110,7 +110,7 @@ class AdminApiConnectionController extends RootAdminController
 
     public function edit($id)
     {
-        $api_connection = ShopApiConnection::find($id);
+        $api_connection = AdminApiConnection::find($id);
         if ($api_connection === null) {
             return 'no data';
         }
@@ -142,7 +142,7 @@ class AdminApiConnectionController extends RootAdminController
         'action' => vncore_language_render('action.title'),
     ];
 
-        $obj = new ShopApiConnection;
+        $obj = new AdminApiConnection;
         $obj = $obj->orderBy('id', 'desc');
         $dataTmp = $obj->paginate(20);
 
@@ -186,10 +186,10 @@ class AdminApiConnectionController extends RootAdminController
     {
         $data = request()->all();
         $dataOrigin = request()->all();
-        $obj = ShopApiConnection::find($id);
+        $obj = AdminApiConnection::find($id);
         $validator = Validator::make($dataOrigin, [
             'description' => 'string|required',
-            'apiconnection' => 'string|required|regex:/(^([0-9a-z\-_]+)$)/|unique:"'.ShopApiConnection::class.'",apiconnection,' . $obj->id . ',id',
+            'apiconnection' => 'string|required|regex:/(^([0-9a-z\-_]+)$)/|unique:"'.AdminApiConnection::class.'",apiconnection,' . $obj->id . ',id',
             'apikey' => 'string|regex:/(^([0-9a-z\-_]+)$)/',
         ], [
             'apiconnection.regex' => vncore_language_render('admin.api_connection.validate_regex'),
@@ -228,7 +228,7 @@ class AdminApiConnectionController extends RootAdminController
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
-            ShopApiConnection::destroy($arrID);
+            AdminApiConnection::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);
         }
     }

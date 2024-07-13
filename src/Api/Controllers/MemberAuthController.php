@@ -6,7 +6,7 @@ use Vncore\Core\Front\Controllers\RootFrontController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use Vncore\Core\Front\Models\ShopCustomer;
+use Vncore\Core\Admin\Models\ShopCustomer;
 use Illuminate\Support\Facades\Validator;
 use Vncore\Core\Front\Controllers\Auth\AuthTrait;
 

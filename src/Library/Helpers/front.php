@@ -1,5 +1,5 @@
 <?php
-use Vncore\Core\Front\Models\ShopEmailTemplate;
+use Vncore\Core\Admin\Models\AdminEmailTemplate;
 
 /**
  * Function process mapping validate contact form
@@ -38,7 +38,7 @@ if (!function_exists('vncore_contact_form_sendmail') && !in_array('vncore_contac
     function vncore_contact_form_sendmail(array $data)
     {
         if (vncore_config('contact_to_admin')) {
-            $checkContent = (new ShopEmailTemplate)
+            $checkContent = (new AdminEmailTemplate)
                 ->where('group', 'contact_to_admin')
                 ->where('status', 1)
                 ->first();

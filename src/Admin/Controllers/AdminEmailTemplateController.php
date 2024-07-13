@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopEmailTemplate;
+use Vncore\Core\Admin\Models\AdminEmailTemplate;
 use Vncore\Core\Admin\Models\AdminEmailTemplate;
 use Validator;
 
@@ -199,7 +199,7 @@ class AdminEmailTemplateController extends RootAdminController
             if (count($arrDontPermission)) {
                 return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': ' . json_encode($arrDontPermission)]);
             }
-            ShopEmailTemplate::destroy($arrID);
+            AdminEmailTemplate::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);
         }
     }

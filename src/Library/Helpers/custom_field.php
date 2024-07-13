@@ -1,6 +1,6 @@
 <?php
-use Vncore\Core\Front\Models\ShopCustomField;
-use Vncore\Core\Front\Models\ShopCustomFieldDetail;
+use Vncore\Core\Admin\Models\ShopCustomField;
+use Vncore\Core\Admin\Models\ShopCustomFieldDetail;
 use Vncore\Core\Admin\Controllers\AdminCustomFieldController;
 /**
  * Update custom field

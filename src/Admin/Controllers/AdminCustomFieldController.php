@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopCustomField;
+use Vncore\Core\Admin\Models\ShopCustomField;
 use Validator;
 
 class AdminCustomFieldController extends RootAdminController

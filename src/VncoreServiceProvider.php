@@ -5,7 +5,7 @@ namespace Vncore\Core;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use Vncore\Core\Front\Models\ShopStore;
+use Vncore\Core\Admin\Models\AdminStore;
 use Vncore\Core\Commands\Customize;
 use Vncore\Core\Commands\Backup;
 use Vncore\Core\Commands\Restore;
@@ -24,7 +24,7 @@ use Vncore\Core\Admin\Middleware\PermissionMiddleware;
 use Vncore\Core\Admin\Middleware\AdminStoreId;
 use Vncore\Core\Admin\Middleware\AdminTheme;
 use Laravel\Sanctum\Sanctum;
-use Vncore\Core\Front\Models\PersonalAccessToken;
+use Vncore\Core\Admin\Models\PersonalAccessToken;
 use Illuminate\Pagination\Paginator;
 
 class VncoreServiceProvider extends ServiceProvider

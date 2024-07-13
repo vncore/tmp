@@ -2,8 +2,8 @@
 use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\Admin\Models\AdminStore;
 
-use Vncore\Core\Front\Models\ShopStoreBlockContent;
-use Vncore\Core\Front\Models\ShopStoreCss;
+use Vncore\Core\Admin\Models\AdminStoreBlockContent;
+use Vncore\Core\Admin\Models\AdminStoreCss;
 use Illuminate\Support\Arr;
 
 if (!function_exists('vncore_admin_can_config')) {
@@ -180,7 +180,7 @@ Get all layouts
 if (!function_exists('vncore_store_block') && !in_array('vncore_store_block', config('helper_except', []))) {
     function vncore_store_block()
     {
-        return ShopStoreBlockContent::getLayout();
+        return AdminStoreBlockContent::getLayout();
     }
 }
 
@@ -191,11 +191,11 @@ if (!function_exists('vncore_store_css')) {
     function vncore_store_css()
     {
         $template = vncore_store('template', config('app.storeId'));
-        if (\Schema::connection(VNCORE_CONNECTION)->hasColumn((new ShopStoreCss)->getTable(), 'template')) {
-            $cssStore =  ShopStoreCss::where('store_id', config('app.storeId'))
+        if (\Schema::connection(VNCORE_CONNECTION)->hasColumn((new AdminStoreCss)->getTable(), 'template')) {
+            $cssStore =  AdminStoreCss::where('store_id', config('app.storeId'))
             ->where('template', $template)->first();
         } else {
-            $cssStore =  ShopStoreCss::where('store_id', config('app.storeId'))->first();
+            $cssStore =  AdminStoreCss::where('store_id', config('app.storeId'))->first();
         }
         if ($cssStore) {
             return $cssStore->css;

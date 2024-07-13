@@ -1,6 +1,6 @@
 <?php
 
-namespace Vncore\Core\Front\Models;
+namespace Vncore\Core\Admin\Models;
 
 /**
  * Trait Model.
@@ -186,7 +186,7 @@ trait ModelTrait
     {
         $typeTmp = explode(VNCORE_DB_PREFIX, $this->getTable());
         $type = $typeTmp[1] ?? null;
-        $data =  (new \Vncore\Core\Front\Models\ShopCustomFieldDetail)
+        $data =  (new \Vncore\Core\Admin\Models\ShopCustomFieldDetail)
             ->join(VNCORE_DB_PREFIX.'admin_custom_field', VNCORE_DB_PREFIX.'admin_custom_field.id', VNCORE_DB_PREFIX.'admin_custom_field_detail.custom_field_id')
             ->select('code', 'name', 'text')
             ->where(VNCORE_DB_PREFIX.'admin_custom_field_detail.rel_id', $this->id)
@@ -206,7 +206,7 @@ trait ModelTrait
     {
         $typeTmp = explode(VNCORE_DB_PREFIX, $this->getTable());
         $type = $typeTmp[1] ?? null;
-        $data =  (new \Vncore\Core\Front\Models\ShopCustomFieldDetail)
+        $data =  (new \Vncore\Core\Admin\Models\ShopCustomFieldDetail)
             ->join(VNCORE_DB_PREFIX.'admin_custom_field', VNCORE_DB_PREFIX.'admin_custom_field.id', VNCORE_DB_PREFIX.'admin_custom_field_detail.custom_field_id')
             ->select('code', 'name', 'text')
             ->where(VNCORE_DB_PREFIX.'admin_custom_field_detail.rel_id', $this->id)

@@ -3,7 +3,7 @@ namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
 use Vncore\Core\Admin\Models\AdminLink;
-use Vncore\Core\Front\Models\ShopLinkGroup;
+use Vncore\Core\Admin\Models\ShopLinkGroup;
 use Validator;
 
 class AdminStoreLinkController extends RootAdminController
@@ -199,10 +199,10 @@ class AdminStoreLinkController extends RootAdminController
         $dataCreate = vncore_clean($dataCreate, [], true);
         $link = AdminLink::createLinkAdmin($dataCreate);
 
-        $shopStore        = $data['shop_store'] ?? [session('adminStoreId')];
+        $AdminStore        = $data['shop_store'] ?? [session('adminStoreId')];
         $link->stores()->detach();
-        if ($shopStore) {
-            $link->stores()->attach($shopStore);
+        if ($AdminStore) {
+            $link->stores()->attach($AdminStore);
         }
 
         return redirect()->route('admin_store_link.index')->with('success', vncore_language_render('action.create_success'));
@@ -238,10 +238,10 @@ class AdminStoreLinkController extends RootAdminController
         $dataCreate = vncore_clean($dataCreate, [], true);
         $link = AdminLink::createLinkAdmin($dataCreate);
 
-        $shopStore        = $data['shop_store'] ?? [session('adminStoreId')];
+        $AdminStore        = $data['shop_store'] ?? [session('adminStoreId')];
         $link->stores()->detach();
-        if ($shopStore) {
-            $link->stores()->attach($shopStore);
+        if ($AdminStore) {
+            $link->stores()->attach($AdminStore);
         }
 
         return redirect()->route('admin_store_link.index')->with('success', vncore_language_render('action.create_success'));
@@ -321,10 +321,10 @@ class AdminStoreLinkController extends RootAdminController
         $dataUpdate = vncore_clean($dataUpdate, [], true);
         $link->update($dataUpdate);
 
-        $shopStore        = $data['shop_store'] ?? [session('adminStoreId')];
+        $AdminStore        = $data['shop_store'] ?? [session('adminStoreId')];
         $link->stores()->detach();
-        if ($shopStore) {
-            $link->stores()->attach($shopStore);
+        if ($AdminStore) {
+            $link->stores()->attach($AdminStore);
         }
 
         return redirect()->route('admin_store_link.index')->with('success', vncore_language_render('action.edit_success'));

@@ -2,8 +2,8 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\Languages;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\Languages;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use Validator;
 
 class AdminLanguageManagerController extends RootAdminController
@@ -17,11 +17,11 @@ class AdminLanguageManagerController extends RootAdminController
         $lang = request('lang');
         $position = request('position');
         $keyword = request('keyword');
-        $languages = ShopLanguage::getListAll();
+        $languages = AdminLanguage::getListAll();
         $positionLang = Languages::getPosition();
         $languagesPosition = Languages::getLanguagesPosition($lang, $position, $keyword);
         
-        $codeLanguages = ShopLanguage::getCodeAll();
+        $codeLanguages = AdminLanguage::getCodeAll();
         if (!in_array($lang, array_keys($codeLanguages))) {
             $languagesPositionEL =   [];
         } else {
@@ -70,7 +70,7 @@ class AdminLanguageManagerController extends RootAdminController
             $name = vncore_clean($data['name']);
             $value = vncore_clean($data['value']);
             $position = vncore_clean($data['pk']);
-            $languages = ShopLanguage::getCodeAll();
+            $languages = AdminLanguage::getCodeAll();
             if (!in_array($lang, array_keys($languages))) {
                 return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.method_not_allow')]);
             }
@@ -97,7 +97,7 @@ class AdminLanguageManagerController extends RootAdminController
      */
     public function add()
     {
-        $languages = ShopLanguage::getListAll();
+        $languages = AdminLanguage::getListAll();
         $positionLang = Languages::getPosition();
         $data = [
             'title' => vncore_language_render('admin.language_manager.add'),

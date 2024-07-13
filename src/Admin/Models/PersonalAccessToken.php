@@ -1,5 +1,5 @@
 <?php
-namespace Vncore\Core\Front\Models;
+namespace Vncore\Core\Admin\Models;
 
 use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
 

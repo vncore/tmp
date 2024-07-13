@@ -1,12 +1,12 @@
 <?php
-#Vncore/Core/Front/Models/ShopLanguage.php
-namespace Vncore\Core\Front\Models;
+#Vncore/Core/Admin/Models/AdminLanguage.php
+namespace Vncore\Core\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShopLanguage extends Model
+class AdminLanguage extends Model
 {
-    use \Vncore\Core\Front\Models\ModelTrait;
+    use \Vncore\Core\Admin\Models\ModelTrait;
     
     public $table = VNCORE_DB_PREFIX.'admin_language';
     protected $guarded                = [];

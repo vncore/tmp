@@ -70,7 +70,7 @@ if (!function_exists('vncore_store_is_root') && !in_array('vncore_store_is_root'
 if (!function_exists('vncore_get_list_store_of_product_detail') && !in_array('vncore_get_list_store_of_product_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_product_detail($pId):array
     {
-        return \Vncore\Core\Front\Models\ShopProductStore::where('product_id', $pId)
+        return \Vncore\Core\Admin\Models\ShopProductStore::where('product_id', $pId)
         ->pluck('store_id')
         ->toArray();
     }
@@ -97,8 +97,8 @@ if (!function_exists('vncore_get_list_store_of_brand') && !in_array('vncore_get_
     function vncore_get_list_store_of_brand(array $arrBrandId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
-        $tableBrandStore = (new \Vncore\Core\Front\Models\ShopBrandStore)->getTable();
-        return \Vncore\Core\Front\Models\ShopBrandStore::select($tableStore.'.code', $tableStore.'.id', 'brand_id')
+        $tableBrandStore = (new \Vncore\Core\Admin\Models\ShopBrandStore)->getTable();
+        return \Vncore\Core\Admin\Models\ShopBrandStore::select($tableStore.'.code', $tableStore.'.id', 'brand_id')
             ->leftJoin($tableStore, $tableStore.'.id', $tableBrandStore.'.store_id')
             ->whereIn('brand_id', $arrBrandId)
             ->get()
@@ -113,7 +113,7 @@ if (!function_exists('vncore_get_list_store_of_brand') && !in_array('vncore_get_
 if (!function_exists('vncore_get_list_store_of_brand_detail') && !in_array('vncore_get_list_store_of_brand_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_brand_detail($cId):array
     {
-        return \Vncore\Core\Front\Models\ShopBrandStore::where('brand_id', $cId)
+        return \Vncore\Core\Admin\Models\ShopBrandStore::where('brand_id', $cId)
             ->pluck('store_id')
             ->toArray();
     }
@@ -126,8 +126,8 @@ if (!function_exists('vncore_get_list_store_of_banner') && !in_array('vncore_get
     function vncore_get_list_store_of_banner(array $arrBannerId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
-        $tableBannerStore = (new \Vncore\Core\Front\Models\ShopBannerStore)->getTable();
-        return \Vncore\Core\Front\Models\ShopBannerStore::select($tableStore.'.code', $tableStore.'.id', 'banner_id')
+        $tableBannerStore = (new \Vncore\Core\Admin\Models\ShopBannerStore)->getTable();
+        return \Vncore\Core\Admin\Models\ShopBannerStore::select($tableStore.'.code', $tableStore.'.id', 'banner_id')
             ->leftJoin($tableStore, $tableStore.'.id', $tableBannerStore.'.store_id')
             ->whereIn('banner_id', $arrBannerId)
             ->get()
@@ -141,7 +141,7 @@ if (!function_exists('vncore_get_list_store_of_banner') && !in_array('vncore_get
 if (!function_exists('vncore_get_list_store_of_banner_detail') && !in_array('vncore_get_list_store_of_banner_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_banner_detail($bId):array
     {
-        return \Vncore\Core\Front\Models\ShopBannerStore::where('banner_id', $bId)
+        return \Vncore\Core\Admin\Models\ShopBannerStore::where('banner_id', $bId)
             ->pluck('store_id')
             ->toArray();
     }
@@ -154,8 +154,8 @@ if (!function_exists('vncore_get_list_store_of_news') && !in_array('vncore_get_l
     function vncore_get_list_store_of_news(array $arrNewsId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
-        $tableNewsStore = (new \Vncore\Core\Front\Models\ShopNewsStore)->getTable();
-        return \Vncore\Core\Front\Models\ShopNewsStore::select($tableStore.'.code', $tableStore.'.id', 'news_id')
+        $tableNewsStore = (new \Vncore\Core\Admin\Models\ShopNewsStore)->getTable();
+        return \Vncore\Core\Admin\Models\ShopNewsStore::select($tableStore.'.code', $tableStore.'.id', 'news_id')
             ->leftJoin($tableStore, $tableStore.'.id', $tableNewsStore.'.store_id')
             ->whereIn('news_id', $arrNewsId)
             ->get()
@@ -169,7 +169,7 @@ if (!function_exists('vncore_get_list_store_of_news') && !in_array('vncore_get_l
 if (!function_exists('vncore_get_list_store_of_news_detail') && !in_array('vncore_get_list_store_of_news_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_news_detail($nId):array
     {
-        return \Vncore\Core\Front\Models\ShopNewsStore::where('news_id', $nId)
+        return \Vncore\Core\Admin\Models\ShopNewsStore::where('news_id', $nId)
             ->pluck('store_id')
             ->toArray();
     }
@@ -182,8 +182,8 @@ if (!function_exists('vncore_get_list_store_of_page') && !in_array('vncore_get_l
     function vncore_get_list_store_of_page(array $arrPageId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
-        $tablePageStore = (new \Vncore\Core\Front\Models\ShopPageStore)->getTable();
-        return \Vncore\Core\Front\Models\ShopPageStore::select($tableStore.'.code', $tableStore.'.id', 'page_id')
+        $tablePageStore = (new \Vncore\Core\Admin\Models\ShopPageStore)->getTable();
+        return \Vncore\Core\Admin\Models\ShopPageStore::select($tableStore.'.code', $tableStore.'.id', 'page_id')
             ->leftJoin($tableStore, $tableStore.'.id', $tablePageStore.'.store_id')
             ->whereIn('page_id', $arrPageId)
             ->get()
@@ -197,7 +197,7 @@ if (!function_exists('vncore_get_list_store_of_page') && !in_array('vncore_get_l
 if (!function_exists('vncore_get_list_store_of_page_detail') && !in_array('vncore_get_list_store_of_page_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_page_detail($pId):array
     {
-        return \Vncore\Core\Front\Models\ShopPageStore::where('page_id', $pId)
+        return \Vncore\Core\Admin\Models\ShopPageStore::where('page_id', $pId)
             ->pluck('store_id')
             ->toArray();
     }
@@ -210,8 +210,8 @@ if (!function_exists('vncore_get_list_store_of_link') && !in_array('vncore_get_l
     function vncore_get_list_store_of_link($arrLinkId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
-        $tableLinkStore = (new \Vncore\Core\Front\Models\ShopLinkStore)->getTable();
-        return \Vncore\Core\Front\Models\ShopLinkStore::select($tableStore.'.code', $tableStore.'.id', 'link_id')
+        $tableLinkStore = (new \Vncore\Core\Admin\Models\ShopLinkStore)->getTable();
+        return \Vncore\Core\Admin\Models\ShopLinkStore::select($tableStore.'.code', $tableStore.'.id', 'link_id')
             ->leftJoin($tableStore, $tableStore.'.id', $tableLinkStore.'.store_id')
             ->whereIn('link_id', $arrLinkId)
             ->get()
@@ -225,7 +225,7 @@ if (!function_exists('vncore_get_list_store_of_link') && !in_array('vncore_get_l
 if (!function_exists('vncore_get_list_store_of_link_detail') && !in_array('vncore_get_list_store_of_link_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_link_detail($cId)
     {
-        return \Vncore\Core\Front\Models\ShopLinkStore::where('link_id', $cId)
+        return \Vncore\Core\Admin\Models\ShopLinkStore::where('link_id', $cId)
             ->pluck('store_id')
             ->toArray();
     }
@@ -238,8 +238,8 @@ if (!function_exists('vncore_get_list_store_of_order') && !in_array('vncore_get_
     function vncore_get_list_store_of_order(array $arrOrderId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
-        $tableOrder = (new \Vncore\Core\Front\Models\ShopOrder)->getTable();
-        return \Vncore\Core\Front\Models\ShopOrder::select($tableStore.'.code', $tableOrder.'.id')
+        $tableOrder = (new \Vncore\Core\Admin\Models\ShopOrder)->getTable();
+        return \Vncore\Core\Admin\Models\ShopOrder::select($tableStore.'.code', $tableOrder.'.id')
             ->leftJoin($tableStore, $tableStore.'.id', $tableOrder.'.store_id')
             ->whereIn($tableOrder.'.id', $arrOrderId)
             ->get()
@@ -254,8 +254,8 @@ if (!function_exists('vncore_get_list_store_of_category') && !in_array('vncore_g
     function vncore_get_list_store_of_category(array $arrCategoryId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
-        $tableCategoryStore = (new \Vncore\Core\Front\Models\ShopCategoryStore)->getTable();
-        return \Vncore\Core\Front\Models\ShopCategoryStore::select($tableStore.'.code', $tableStore.'.id', 'category_id')
+        $tableCategoryStore = (new \Vncore\Core\Admin\Models\ShopCategoryStore)->getTable();
+        return \Vncore\Core\Admin\Models\ShopCategoryStore::select($tableStore.'.code', $tableStore.'.id', 'category_id')
             ->leftJoin($tableStore, $tableStore.'.id', $tableCategoryStore.'.store_id')
             ->whereIn('category_id', $arrCategoryId)
             ->get()
@@ -270,7 +270,7 @@ if (!function_exists('vncore_get_list_store_of_category') && !in_array('vncore_g
 if (!function_exists('vncore_get_list_store_of_category_detail') && !in_array('vncore_get_list_store_of_category_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_category_detail($cId):array
     {
-        return \Vncore\Core\Front\Models\ShopCategoryStore::where('category_id', $cId)
+        return \Vncore\Core\Admin\Models\ShopCategoryStore::where('category_id', $cId)
             ->pluck('store_id')
             ->toArray();
     }

@@ -1,9 +1,9 @@
 <?php
-namespace Vncore\Core\Front\Models;
+namespace Vncore\Core\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShopApiConnection extends Model
+class AdminApiConnection extends Model
 {
     public $table = VNCORE_DB_PREFIX.'api_connection';
     protected $guarded = [];

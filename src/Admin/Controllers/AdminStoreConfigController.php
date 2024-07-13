@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\Admin\Models\AdminTemplate;
 use Vncore\Core\Admin\Models\AdminPage;
@@ -20,7 +20,7 @@ class AdminStoreConfigController extends RootAdminController
             $timezones[$value] = $value;
         }
         $this->templates = (new AdminTemplate)->getListTemplateActive();
-        $this->languages = ShopLanguage::getListActive();
+        $this->languages = AdminLanguage::getListActive();
         $this->timezones = $timezones;
     }
 

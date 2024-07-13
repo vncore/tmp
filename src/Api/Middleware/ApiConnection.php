@@ -24,7 +24,7 @@ class ApiConnection
         if (!$apiconnection || !$apikey) {
             return  response()->json(['error' => 1, 'msg' => 'apiconnection or apikey not found']);
         }
-        $check = \Vncore\Core\Front\Models\ShopApiConnection::check($apiconnection, $apikey);
+        $check = \Vncore\Core\Admin\Models\AdminApiConnection::check($apiconnection, $apikey);
         if ($check) {
             $check->update(['last_active' => vncore_time_now()]);
             return $next($request);

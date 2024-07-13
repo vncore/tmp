@@ -2,7 +2,7 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopAttributeGroup;
+use Vncore\Core\Admin\Models\ShopAttributeGroup;
 use Validator;
 
 class AdminAttributeGroupController extends RootAdminController

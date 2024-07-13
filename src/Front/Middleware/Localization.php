@@ -2,7 +2,7 @@
 
 namespace Vncore\Core\Front\Middleware;
 
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use Closure;
 use Session;
 
@@ -18,7 +18,7 @@ class Localization
     public function handle($request, Closure $next)
     {
         //Set language
-        $languages = ShopLanguage::getListActive();
+        $languages = AdminLanguage::getListActive();
         if (!Session::has('locale')) {
             $detectLocale = vncore_store('language') ?? config('app.locale');
         } else {

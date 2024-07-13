@@ -2,7 +2,7 @@
 
 namespace Vncore\Core\Admin\Models;
 
-use Vncore\Core\Front\Models\ShopSubscribe;
+use Vncore\Core\Admin\Models\ShopSubscribe;
 
 class AdminSubscribe extends ShopSubscribe
 {

@@ -2,9 +2,9 @@
 namespace Vncore\Core\Admin\Controllers;
 
 use Vncore\Core\Admin\Controllers\RootAdminController;
-use Vncore\Core\Front\Models\ShopAttributeGroup;
-use Vncore\Core\Front\Models\ShopProductProperty;
-use Vncore\Core\Front\Models\ShopLanguage;
+use Vncore\Core\Admin\Models\ShopAttributeGroup;
+use Vncore\Core\Admin\Models\ShopProductProperty;
+use Vncore\Core\Admin\Models\AdminLanguage;
 use Vncore\Core\Admin\Models\AdminProduct;
 
 class AdminReportController extends RootAdminController
@@ -17,7 +17,7 @@ class AdminReportController extends RootAdminController
     public function __construct()
     {
         parent::__construct();
-        $this->languages = ShopLanguage::getListActive();
+        $this->languages = AdminLanguage::getListActive();
         $this->attributeGroup = ShopAttributeGroup::getListAll();
         $this->kinds = [
             VNCORE_PRODUCT_SINGLE => vncore_language_render('product.kind_single'),
