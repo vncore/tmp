@@ -8,7 +8,7 @@ class PluginModel extends Model
 {
     public $timestamps    = false;
     public $table = '';
-    protected $connection = SC_CONNECTION;
+    protected $connection = VNCORE_CONNECTION;
     protected $guarded    = [];
 
     public function uninstallExtension()

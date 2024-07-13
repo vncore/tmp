@@ -23,7 +23,7 @@ class DataDefaultSeeder extends Seeder
     {
         $this->updateDataVersion();
 
-        $db = DB::connection(SC_CONNECTION);
+        $db = DB::connection(VNCORE_CONNECTION);
         
         if (!empty(session('infoInstall')['admin_user'])) {
             $this->adminUser = session('infoInstall')['admin_user'];

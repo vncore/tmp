@@ -12,7 +12,7 @@ class ShopCountry extends Model
     public $timestamps               = false;
     private static $getListCountries = null;
     private static $getCodeAll = null;
-    protected $connection = SC_CONNECTION;
+    protected $connection = VNCORE_CONNECTION;
 
     public static function getListAll()
     {

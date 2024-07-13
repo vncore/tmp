@@ -18,7 +18,7 @@ class DataStoreSeeder extends Seeder
     {
         $storeId = empty(session('lastStoreId')) ? SC_ID_ROOT : session('lastStoreId');
 
-        $db = DB::connection(SC_CONNECTION);
+        $db = DB::connection(VNCORE_CONNECTION);
 
         $dataConfig = $this->dataConfig($storeId);
         $db->table(VNCORE_DB_PREFIX.'admin_config')->insert($dataConfig);

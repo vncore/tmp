@@ -13,7 +13,7 @@ class DataLocaleSeeder extends Seeder
      */
     public function run()
     {
-        $db = DB::connection(SC_CONNECTION);
+        $db = DB::connection(VNCORE_CONNECTION);
 
         $dataCountry = $this->dataCountry();
         $db->table(VNCORE_DB_PREFIX.'shop_country')->insertOrIgnore($dataCountry);

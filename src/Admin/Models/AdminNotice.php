@@ -7,7 +7,7 @@ class AdminNotice extends Model
 {
     public $table = VNCORE_DB_PREFIX.'admin_notice';
     protected $guarded = [];
-    protected $connection = SC_CONNECTION;
+    protected $connection = VNCORE_CONNECTION;
 
     /**
      * Get count notice new

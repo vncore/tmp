@@ -7,7 +7,7 @@ class ShopApiConnection extends Model
 {
     public $table = VNCORE_DB_PREFIX.'api_connection';
     protected $guarded = [];
-    protected $connection = SC_CONNECTION;
+    protected $connection = VNCORE_CONNECTION;
     protected static $getGroup = null;
 
     public static function check($apiconnection, $apikey)

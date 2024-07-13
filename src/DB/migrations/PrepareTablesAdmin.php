@@ -17,7 +17,7 @@ class PrepareTablesAdmin extends Migration
     {
         //Drop table if exist
         $this->down();
-        $schema = Schema::connection(SC_CONNECTION);
+        $schema = Schema::connection(VNCORE_CONNECTION);
         $schema->create(VNCORE_DB_PREFIX . 'admin_user', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('username', 100)->unique();
@@ -244,7 +244,7 @@ class PrepareTablesAdmin extends Migration
      */
     public function down()
     {
-        $schema = Schema::connection(SC_CONNECTION);
+        $schema = Schema::connection(VNCORE_CONNECTION);
 
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_user');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_role');

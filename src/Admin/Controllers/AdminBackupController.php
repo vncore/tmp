@@ -14,10 +14,10 @@ class AdminBackupController extends RootAdminController
     
     public function index()
     {
-        $tableInfo = DB::connection(SC_CONNECTION)
+        $tableInfo = DB::connection(VNCORE_CONNECTION)
             ->table('INFORMATION_SCHEMA.TABLES')
             ->select(['TABLE_NAME', 'TABLE_ROWS', 'DATA_LENGTH'])
-            ->where('TABLE_SCHEMA', config('database.connections.'.SC_CONNECTION.'.database'))
+            ->where('TABLE_SCHEMA', config('database.connections.'.VNCORE_CONNECTION.'.database'))
             ->where('table_type', 'BASE TABLE')
             ->get()
             ->toArray();

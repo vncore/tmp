@@ -22,7 +22,7 @@ class ShopStore extends Model
     protected static $listStoreId = null;
     protected static $listStoreCode = null;
     protected static $getStoreDomainByCode = null;
-    protected $connection = SC_CONNECTION;
+    protected $connection = VNCORE_CONNECTION;
     
     public function descriptions()
     {
