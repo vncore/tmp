@@ -174,7 +174,7 @@ class PrepareTablesAdmin extends Migration
         //==End notice
 
         $schema->create(
-            VNCORE_DB_PREFIX.'shop_language',
+            VNCORE_DB_PREFIX.'admin_language',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name', 255);
@@ -188,7 +188,7 @@ class PrepareTablesAdmin extends Migration
         );
 
         $schema->create(
-            VNCORE_DB_PREFIX.'shop_country',
+            VNCORE_DB_PREFIX.'admin_country',
             function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('code', 10)->unique();
@@ -198,7 +198,7 @@ class PrepareTablesAdmin extends Migration
 
         
         $schema->create(
-            VNCORE_DB_PREFIX.'shop_custom_field',
+            VNCORE_DB_PREFIX.'admin_custom_field',
             function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->string('type', 50)->index()->comment('shop_product, shop_customer,...');
@@ -213,7 +213,7 @@ class PrepareTablesAdmin extends Migration
         );
 
         $schema->create(
-            VNCORE_DB_PREFIX.'shop_custom_field_detail',
+            VNCORE_DB_PREFIX.'admin_custom_field_detail',
             function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->uuid('custom_field_id')->index();
@@ -262,10 +262,10 @@ class PrepareTablesAdmin extends Migration
         //Notice
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_notice');
         //==End notice
-        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_language');
-        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_country');
-        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_custom_field');
-        $schema->dropIfExists(VNCORE_DB_PREFIX . 'shop_custom_field_detail');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_language');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_country');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_custom_field');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_custom_field_detail');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'languages');
         
     }

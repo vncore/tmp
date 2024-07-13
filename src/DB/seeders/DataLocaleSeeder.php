@@ -16,7 +16,7 @@ class DataLocaleSeeder extends Seeder
         $db = DB::connection(VNCORE_CONNECTION);
 
         $dataCountry = $this->dataCountry();
-        $db->table(VNCORE_DB_PREFIX.'shop_country')->insertOrIgnore($dataCountry);
+        $db->table(VNCORE_DB_PREFIX.'admin_country')->insertOrIgnore($dataCountry);
 
         $dataLang = $this->dataLang();
         $db->table(VNCORE_DB_PREFIX.'languages')->insertOrIgnore($dataLang);

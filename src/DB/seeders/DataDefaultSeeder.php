@@ -71,7 +71,7 @@ class DataDefaultSeeder extends Seeder
         $db->table(VNCORE_DB_PREFIX.'admin_store_description')->insertOrIgnore($dataAdminStoreDescription);
 
         $dataShopLang = $this->dataShopLang();
-        $db->table(VNCORE_DB_PREFIX.'shop_language')->insertOrIgnore($dataShopLang);
+        $db->table(VNCORE_DB_PREFIX.'admin_language')->insertOrIgnore($dataShopLang);
 
     }
 

@@ -8,7 +8,7 @@ class ShopCountry extends Model
 {
     use \Vncore\Core\Front\Models\ModelTrait;
     
-    public $table = VNCORE_DB_PREFIX.'shop_country';
+    public $table = VNCORE_DB_PREFIX.'admin_country';
     public $timestamps               = false;
     private static $getListCountries = null;
     private static $getCodeAll = null;
