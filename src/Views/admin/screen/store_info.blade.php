@@ -113,7 +113,7 @@
                       <td><a href="#" class="editable-required editable editable-click" data-name="email" data-type="text" data-pk="" data-source="" data-url="{{ vncore_route_admin('admin_store.update') }}" data-title="{{ vncore_language_render('store.email') }}" data-value="{{ $store->email }}" data-original-title="" title="">{{$store->email }}</a></td>
                     </tr>
 
-@if ($storeId == SC_ID_ROOT)
+@if ($storeId == VNCORE_ID_ROOT)
 {{-- Only the root domain can edit this information --}}
                     <tr>
                       <td><i class="fab fa-chrome"></i> {{ vncore_language_render('store.admin.domain') }}</td>

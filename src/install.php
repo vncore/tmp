@@ -49,7 +49,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             $getEnv = str_replace('Asia/ho_chi_minh', $timezone_default, $getEnv);
 
             if (request('only_cms')) {
-                $getEnv = str_replace('SC_ECOMMERCE_MODE=1', 'SC_ECOMMERCE_MODE=0', $getEnv);
+                $getEnv = str_replace('VNCORE_ECOMMERCE_MODE=1', 'VNCORE_ECOMMERCE_MODE=0', $getEnv);
             }
 
             $env = fopen(base_path() . "/.env", "w") or die(json_encode(['error' => 1, 'msg' => trans('vncore::install.env.error_open')]));

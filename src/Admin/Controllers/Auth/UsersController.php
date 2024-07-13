@@ -94,7 +94,7 @@ class UsersController extends RootAdminController
                 'created_at' => $row['created_at'],
                 'action' => '
                     <a href="' . vncore_route_admin('admin_user.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-                    ' . ((Admin::user()->id == $row['id'] || in_array($row['id'], SC_GUARD_ADMIN)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
+                    ' . ((Admin::user()->id == $row['id'] || in_array($row['id'], VNCORE_GUARD_ADMIN)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
                 ,
             ];
         }
@@ -279,7 +279,7 @@ class UsersController extends RootAdminController
         $dataUpdate = vncore_clean($dataUpdate, [], true);
         AdminUser::updateInfo($dataUpdate, $id);
 
-        if (!in_array($user->id, SC_GUARD_ADMIN)) {
+        if (!in_array($user->id, VNCORE_GUARD_ADMIN)) {
             $roles = $data['roles'] ?? [];
             $permission = $data['permission'] ?? [];
             $user->roles()->detach();
@@ -309,7 +309,7 @@ class UsersController extends RootAdminController
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
-            $arrID = array_diff($arrID, SC_GUARD_ADMIN);
+            $arrID = array_diff($arrID, VNCORE_GUARD_ADMIN);
             AdminUser::destroy($arrID);
             return response()->json(['error' => 1, 'msg' => '']);
         }

@@ -37,7 +37,7 @@ class AdminConfigGlobalController extends RootAdminController
         $value = $data['value'];
         try {
             AdminConfig::where('key', $name)
-                ->where('store_id', SC_ID_GLOBAL)
+                ->where('store_id', VNCORE_ID_GLOBAL)
                 ->update(['value' => $value]);
             $error = 0;
             $msg = vncore_language_render('action.update_success');

@@ -68,7 +68,7 @@ return [
     'database_user' => 'DB user',
     'database_password' => 'DB pasword',
     'database_prefix' => 'DB prefix',
-    'database_prefix_help' => 'Ex: sc_, abc_,...',
+    'database_prefix_help' => 'Ex: VNCORE_, abc_,...',
     'admin_url' => 'Admin url',
     'admin_user' => 'Admin user',
     'admin_password' => 'Admin password',

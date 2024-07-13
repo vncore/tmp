@@ -238,10 +238,10 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminStoreDescription($titleE, $titleV) {
         $dataAdminStoreDescription = [
-            ['store_id' => SC_ID_ROOT,'lang' => 'en','title' => $titleE,'description' => 'Free website shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/images/maintenance.png" />
+            ['store_id' => VNCORE_ID_ROOT,'lang' => 'en','title' => $titleE,'description' => 'Free website shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/images/maintenance.png" />
             <h3><span style="color:#e74c3c;"><strong>Sorry! We are currently doing site maintenance!</strong></span></h3>
             </center>','maintain_note' => 'Website is in maintenance mode!'],
-            ['store_id' => SC_ID_ROOT,'lang' => 'vi','title' => $titleV,'description' => 'Laravel shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/images/maintenance.png" />
+            ['store_id' => VNCORE_ID_ROOT,'lang' => 'vi','title' => $titleV,'description' => 'Laravel shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/images/maintenance.png" />
             <h3><span style="color:#e74c3c;"><strong>Xin lỗi! Hiện tại website đang bảo trì!</strong></span></h3>
             </center>','maintain_note' => 'Website đang trong chế độ bảo trì!'],
         ];

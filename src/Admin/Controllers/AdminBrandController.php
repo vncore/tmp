@@ -33,7 +33,7 @@ class AdminBrandController extends RootAdminController
             'status' => vncore_language_render('admin.brand.status'),
         ];
 
-        if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+        if (vncore_check_multi_shop_installed() && session('adminStoreId') == VNCORE_ID_ROOT) {
             // Only show store info if store is root
             $listTh['shop_store'] = vncore_language_render('front.store_list');
         }
@@ -43,7 +43,7 @@ class AdminBrandController extends RootAdminController
         $obj = $obj->orderBy('id', 'desc');
         $dataTmp = $obj->paginate(20);
 
-        if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+        if (vncore_check_multi_shop_installed() && session('adminStoreId') == VNCORE_ID_ROOT) {
             $arrId = $dataTmp->pluck('id')->toArray();
             // Only show store info if store is root
             if (function_exists('vncore_get_list_store_of_brand')) {
@@ -60,7 +60,7 @@ class AdminBrandController extends RootAdminController
                 'image' => vncore_image_render($row->getThumb(), '50px', '', $row['name']),
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
             ];
-            if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+            if (vncore_check_multi_shop_installed() && session('adminStoreId') == VNCORE_ID_ROOT) {
                 // Only show store info if store is root
                 if (!empty($dataStores[$row['id']])) {
                     $storeTmp = $dataStores[$row['id']]->pluck('code', 'id')->toArray();

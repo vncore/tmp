@@ -440,7 +440,7 @@ if (!function_exists('vncore_config_global_update') && !in_array('vncore_config_
         if (is_array($arrayData)) {
             if (count($arrayData) == 1) {
                 foreach ($arrayData as $k => $v) {
-                    return AdminConfig::where('store_id', SC_ID_GLOBAL)
+                    return AdminConfig::where('store_id', VNCORE_ID_GLOBAL)
                         ->where('key', $k)
                         ->update(['value' => $v]);
                 }

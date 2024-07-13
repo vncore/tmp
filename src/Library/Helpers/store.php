@@ -32,7 +32,7 @@ if (!function_exists('vncore_get_domain_from_code') && !in_array('vncore_get_dom
 if (!function_exists('vncore_get_domain_root') && !in_array('vncore_get_domain_root', config('helper_except', []))) {
     function vncore_get_domain_root():string
     {
-        $store = \Vncore\Core\Admin\Models\AdminStore::find(SC_ID_ROOT);
+        $store = \Vncore\Core\Admin\Models\AdminStore::find(VNCORE_ID_ROOT);
         return $store->domain;
     }
 }
@@ -47,7 +47,7 @@ if (!function_exists('vncore_store_is_partner') && !in_array('vncore_store_is_pa
         if (!$store) {
             return false;
         }
-        return $store->partner || $storeId == SC_ID_ROOT;
+        return $store->partner || $storeId == VNCORE_ID_ROOT;
     }
 }
 
@@ -57,7 +57,7 @@ if (!function_exists('vncore_store_is_partner') && !in_array('vncore_store_is_pa
 if (!function_exists('vncore_store_is_root') && !in_array('vncore_store_is_root', config('helper_except', []))) {
     function vncore_store_is_root(string $storeId):bool
     {
-        return  $storeId == SC_ID_ROOT;
+        return  $storeId == VNCORE_ID_ROOT;
     }
 }
 

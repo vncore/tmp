@@ -57,7 +57,7 @@ class ShopLanguage extends Model
     {
         parent::boot();
         static::deleting(function ($model) {
-            if (in_array($model->id, SC_GUARD_LANGUAGE)) {
+            if (in_array($model->id, VNCORE_GUARD_LANGUAGE)) {
                 return false;
             }
         });

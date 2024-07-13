@@ -74,10 +74,10 @@ class RoleController extends RootAdminController
                 'permission' => $showPermission,
                 'created_at' => $row['created_at'],
                 'updated_at' => $row['updated_at'],
-                'action' => ((in_array($row['id'], SC_GUARD_ROLES)) ? '' : '
+                'action' => ((in_array($row['id'], VNCORE_GUARD_ROLES)) ? '' : '
                     <a href="' . vncore_route_admin('admin_role.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
                     ')
-                    . ((in_array($row['id'], SC_GUARD_ROLES)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
+                    . ((in_array($row['id'], VNCORE_GUARD_ROLES)) ? '' : '<span onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>')
                 ,
             ];
         }
@@ -258,7 +258,7 @@ class RoleController extends RootAdminController
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
-            $arrID = array_diff($arrID, SC_GUARD_ROLES);
+            $arrID = array_diff($arrID, VNCORE_GUARD_ROLES);
             AdminRole::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);
         }

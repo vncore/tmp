@@ -20,9 +20,9 @@ class AdminReportController extends RootAdminController
         $this->languages = ShopLanguage::getListActive();
         $this->attributeGroup = ShopAttributeGroup::getListAll();
         $this->kinds = [
-            SC_PRODUCT_SINGLE => vncore_language_render('product.kind_single'),
-            SC_PRODUCT_BUILD => vncore_language_render('product.kind_bundle'),
-            SC_PRODUCT_GROUP => vncore_language_render('product.kind_group'),
+            VNCORE_PRODUCT_SINGLE => vncore_language_render('product.kind_single'),
+            VNCORE_PRODUCT_BUILD => vncore_language_render('product.kind_bundle'),
+            VNCORE_PRODUCT_GROUP => vncore_language_render('product.kind_group'),
         ];
         $this->properties = (new ShopProductProperty)->pluck('name', 'code')->toArray();
     }
@@ -79,9 +79,9 @@ class AdminReportController extends RootAdminController
         $dataTr = [];
         foreach ($dataTmp as $key => $row) {
             $kind = $this->kinds[$row['kind']] ?? $row['kind'];
-            if ($row['kind'] == SC_PRODUCT_BUILD) {
+            if ($row['kind'] == VNCORE_PRODUCT_BUILD) {
                 $kind = '<span class="badge badge-success">' . $kind . '</span>';
-            } elseif ($row['kind'] == SC_PRODUCT_GROUP) {
+            } elseif ($row['kind'] == VNCORE_PRODUCT_GROUP) {
                 $kind = '<span class="badge badge-danger">' . $kind . '</span>';
             }
 

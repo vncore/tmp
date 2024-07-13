@@ -70,7 +70,7 @@ class ShopStore extends Model
         // before delete() method call this
         static::deleting(function ($store) {
             //Store id 1 is default
-            if ($store->id == SC_ID_ROOT) {
+            if ($store->id == VNCORE_ID_ROOT) {
                 return false;
             }
             //Delete store descrition

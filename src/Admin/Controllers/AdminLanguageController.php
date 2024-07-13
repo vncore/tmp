@@ -52,7 +52,7 @@ class AdminLanguageController extends RootAdminController
                 'action' => '
                     <a href="' . vncore_route_admin('admin_language.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-                  <span ' . (in_array($row['id'], SC_GUARD_LANGUAGE) ? "style='display:none'" : "") . ' onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+                  <span ' . (in_array($row['id'], VNCORE_GUARD_LANGUAGE) ? "style='display:none'" : "") . ' onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
                   ',
             ];
         }
@@ -150,7 +150,7 @@ class AdminLanguageController extends RootAdminController
             'action' => '
                 <a href="' . vncore_route_admin('admin_language.edit', ['id' => $row['id'] ? $row['id'] : 'not-found-id']) . '"><span title="' . vncore_language_render('action.edit') . '" type="button" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
 
-              <span ' . (in_array($row['id'], SC_GUARD_LANGUAGE) ? "style='display:none'" : "") . ' onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
+              <span ' . (in_array($row['id'], VNCORE_GUARD_LANGUAGE) ? "style='display:none'" : "") . ' onclick="deleteItem(\'' . $row['id'] . '\');"  title="' . vncore_language_render('action.delete') . '" class="btn btn-flat btn-sm btn-danger"><i class="fas fa-trash-alt"></i></span>
               ',
         ];
         }
@@ -220,7 +220,7 @@ class AdminLanguageController extends RootAdminController
         } else {
             $ids = request('ids');
             $arrID = explode(',', $ids);
-            $arrID = array_diff($arrID, SC_GUARD_LANGUAGE);
+            $arrID = array_diff($arrID, VNCORE_GUARD_LANGUAGE);
             ShopLanguage::destroy($arrID);
             return response()->json(['error' => 0, 'msg' => '']);
         }

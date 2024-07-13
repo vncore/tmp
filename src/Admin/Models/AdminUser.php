@@ -64,7 +64,7 @@ class AdminUser extends Authenticatable
         parent::boot();
 
         static::deleting(function ($user) {
-            if (in_array($user->id, SC_GUARD_ADMIN)) {
+            if (in_array($user->id, VNCORE_GUARD_ADMIN)) {
                 return false;
             }
             $user->roles()->detach();

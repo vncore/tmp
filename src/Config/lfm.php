@@ -270,7 +270,7 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'disk'                     => env('SC_UPLOAD_DISK', 'uploads'),
+    'disk'                     => env('VNCORE_UPLOAD_DISK', 'uploads'),
 
     'rename_file'              => false,
 
@@ -285,7 +285,7 @@ return [
     // behavior on files with identical name
     // setting it to true cause old file replace with new one
     // setting it to false show `error-file-exist` error and stop upload
-    'over_write_on_duplicate'  => env('SC_UPLOAD_OVER_WRITE_DUPLICATE', false),
+    'over_write_on_duplicate'  => env('VNCORE_UPLOAD_OVER_WRITE_DUPLICATE', false),
 
     // mimetypes of executables to prevent from uploading
     'disallowed_mimetypes' => ['text/x-php', 'text/html', 'text/plain'],
@@ -303,9 +303,9 @@ return [
      */
 
     // If true, image thumbnails would be created during upload
-    'should_create_thumbnails' => env('SC_UPLOAD_THUMB_STATUS', false),
+    'should_create_thumbnails' => env('VNCORE_UPLOAD_THUMB_STATUS', false),
 
-    'thumb_folder_name'        => env('SC_UPLOAD_THUMB_FOLDER', 'thumbs'),
+    'thumb_folder_name'        => env('VNCORE_UPLOAD_THUMB_FOLDER', 'thumbs'),
 
     // Create thumbnails automatically only for listed types.
     'raster_mimetypes'         => [
@@ -314,9 +314,9 @@ return [
         'image/png',
     ],
 
-    'thumb_img_width'          => env('SC_UPLOAD_THUMB_WIDTH', '200'), // px
+    'thumb_img_width'          => env('VNCORE_UPLOAD_THUMB_WIDTH', '200'), // px
 
-    'thumb_img_height'         => env('SC_UPLOAD_THUMB_HEIGHT', '200'), // px
+    'thumb_img_height'         => env('VNCORE_UPLOAD_THUMB_HEIGHT', '200'), // px
 
     /*
     |--------------------------------------------------------------------------

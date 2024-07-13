@@ -198,7 +198,7 @@ class AdminStoreConfigController extends RootAdminController
         $detail = $data['detail'] ?? '';
         $storeId = $data['storeId'] ?? '';
 
-        if (session('adminStoreId') != SC_ID_ROOT && $storeId != session('adminStoreId')) {
+        if (session('adminStoreId') != VNCORE_ID_ROOT && $storeId != session('adminStoreId')) {
             return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': storeId#' . $storeId]);
         }
 
@@ -224,7 +224,7 @@ class AdminStoreConfigController extends RootAdminController
         $key = request('key');
         $storeId = request('storeId');
 
-        if (session('adminStoreId') != SC_ID_ROOT && $storeId != session('adminStoreId')) {
+        if (session('adminStoreId') != VNCORE_ID_ROOT && $storeId != session('adminStoreId')) {
             return response()->json(['error' => 1, 'msg' => vncore_language_render('admin.remove_dont_permisison') . ': storeId#' . $storeId]);
         }
         AdminConfig::where('key', $key)->where('store_id', $storeId)->delete();

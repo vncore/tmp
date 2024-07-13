@@ -46,7 +46,7 @@ class AdminStoreInfoController extends RootAdminController
                     $msg = vncore_language_render('store.admin.value_cannot_change');
                 } elseif ($name == 'domain') {
                     if (
-                        $storeId == SC_ID_ROOT 
+                        $storeId == VNCORE_ID_ROOT 
                         || ((vncore_check_multi_vendor_installed()) && vncore_store_is_partner($storeId)) 
                         || vncore_check_multi_store_installed()
                     ) {

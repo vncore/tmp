@@ -54,7 +54,7 @@ class AdminStoreLinkController extends RootAdminController
             'status' => vncore_language_render('admin.link.status'),
         ];
 
-        if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+        if (vncore_check_multi_shop_installed() && session('adminStoreId') == VNCORE_ID_ROOT) {
             // Only show store info if store is root
             $listTh['shop_store'] = vncore_language_render('front.store_list');
         }
@@ -62,7 +62,7 @@ class AdminStoreLinkController extends RootAdminController
 
         $dataTmp = AdminLink::getLinkListAdmin();
 
-        if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+        if (vncore_check_multi_shop_installed() && session('adminStoreId') == VNCORE_ID_ROOT) {
             $arrId = $dataTmp->pluck('id')->toArray();
             // Only show store info if store is root
 
@@ -84,7 +84,7 @@ class AdminStoreLinkController extends RootAdminController
                 'status' => $row['status'] ? '<span class="badge badge-success">ON</span>' : '<span class="badge badge-danger">OFF</span>',
             ];
 
-            if (vncore_check_multi_shop_installed() && session('adminStoreId') == SC_ID_ROOT) {
+            if (vncore_check_multi_shop_installed() && session('adminStoreId') == VNCORE_ID_ROOT) {
                 // Only show store info if store is root
                 if (!empty($dataStores[$row['id']])) {
                     $storeTmp = $dataStores[$row['id']]->pluck('code', 'id')->toArray();

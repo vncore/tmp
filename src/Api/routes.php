@@ -5,7 +5,7 @@ if (config('vncore.ecommerce_mode', 1)) {
 //Route api
 Route::group(
     [
-        'middleware' => SC_API_MIDDLEWARE,
+        'middleware' => VNCORE_API_MIDDLEWARE,
         'prefix' => 'api',
         'namespace' => '\Vncore\Core\Api\Controllers',
     ],

@@ -8,7 +8,7 @@ return [
     'facebook'         => 'https://www.facebook.com/SCart.Ecommerce',
     'auth'             => 'Lanh Le',
     'email'            => 'lanhktc@gmail.com',
-    'api_link'         => env('SC_API_LINK', 'https://api.vncore.org/v3'),
-    'ecommerce_mode'   => env('SC_ECOMMERCE_MODE', 1),
-    'search_mode'      => env('SC_SEARCH_MODE', 'PRODUCT'), //PRODUCT,NEWS,CMS
+    'api_link'         => env('VNCORE_API_LINK', 'https://api.vncore.org/v3'),
+    'ecommerce_mode'   => env('VNCORE_ECOMMERCE_MODE', 1),
+    'search_mode'      => env('VNCORE_SEARCH_MODE', 'PRODUCT'), //PRODUCT,NEWS,CMS
 ];

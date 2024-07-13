@@ -81,7 +81,7 @@ class AdminConfig extends Model
     public static function getListAll()
     {
         if (self::$getAll === null) {
-            self::$getAll = self::where('store_id', '<>', SC_ID_GLOBAL)
+            self::$getAll = self::where('store_id', '<>', VNCORE_ID_GLOBAL)
                 ->get()
                 ->keyBy('store_id');
         }
@@ -96,7 +96,7 @@ class AdminConfig extends Model
     public static function getAllGlobal():array
     {
         if (self::$getAllGlobal === null) {
-            self::$getAllGlobal = self::where('store_id', SC_ID_GLOBAL)
+            self::$getAllGlobal = self::where('store_id', VNCORE_ID_GLOBAL)
                 ->pluck('value', 'key')
                 ->all();
         }

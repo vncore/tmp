@@ -154,7 +154,7 @@
                                 <label for="roles" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.select_roles') }}</label>
                                 <div class="col-sm-8">
 
-                            @if (isset($user['id']) && in_array($user['id'], SC_GUARD_ADMIN))
+                            @if (isset($user['id']) && in_array($user['id'], VNCORE_GUARD_ADMIN))
                                 @if (count($listRoles))
                                 @foreach ($listRoles as $role)
                                     {!! '<span class="badge badge-primary">'.($roles[$role]??'').'</span>' !!}
@@ -190,7 +190,7 @@
                                 @endphp
                                 <label for="permission" class="col-sm-2  control-label">{{ vncore_language_render('admin.user.add_permission') }}</label>
                                 <div class="col-sm-8">
-                                    @if (isset($user['id']) && in_array($user['id'], SC_GUARD_ADMIN))
+                                    @if (isset($user['id']) && in_array($user['id'], VNCORE_GUARD_ADMIN))
                                         @if (count($listPermission))
                                             @foreach ($listPermission as $p)
                                                 {!! '<span class="badge badge-primary">'.($permissions[$p]??'').'</span>' !!}

@@ -17,7 +17,7 @@ class AdminPasswordPolicyController extends RootAdminController
 
     public function index()
     {
-        $id = SC_ID_GLOBAL;
+        $id = VNCORE_ID_GLOBAL;
         $data = [
             'title' => vncore_language_render('admin.menu_titles.password_policy'),
             'subTitle' => '',

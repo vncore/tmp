@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(
     [
         'prefix' => VNCORE_ADMIN_PREFIX,
-        'middleware' => SC_ADMIN_MIDDLEWARE,
+        'middleware' => VNCORE_ADMIN_MIDDLEWARE,
     ],
     function () {
         foreach (glob(__DIR__ . '/Routes/*.php') as $filename) {

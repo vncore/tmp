@@ -16,7 +16,7 @@ class DataStoreSeeder extends Seeder
      */
     public function run()
     {
-        $storeId = empty(session('lastStoreId')) ? SC_ID_ROOT : session('lastStoreId');
+        $storeId = empty(session('lastStoreId')) ? VNCORE_ID_ROOT : session('lastStoreId');
 
         $db = DB::connection(VNCORE_CONNECTION);
 

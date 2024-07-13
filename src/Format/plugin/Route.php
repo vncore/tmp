@@ -17,11 +17,11 @@ Route::group(
 /**
  * Route admin
  */
-if(vncore_config_exist('Plugin_Key', SC_ID_ROOT)) {
+if(vncore_config_exist('Plugin_Key', VNCORE_ID_ROOT)) {
 Route::group(
     [
         'prefix' => VNCORE_ADMIN_PREFIX.'/PluginUrlKey',
-        'middleware' => SC_ADMIN_MIDDLEWARE,
+        'middleware' => VNCORE_ADMIN_MIDDLEWARE,
         'namespace' => 'App\Plugins\Plugin_Code\Plugin_Key\Admin',
     ], 
     function () {
