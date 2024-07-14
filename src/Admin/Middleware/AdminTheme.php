@@ -21,7 +21,7 @@ class AdminTheme
         } else {
             $adminTheme = session('adminTheme');
         }
-        $currentTheme = in_array($adminTheme, config('admin.theme')) ? $adminTheme : config('admin.theme_default');
+        $currentTheme = in_array($adminTheme, config('vncore-config.admin.theme')) ? $adminTheme : config('vncore-config.admin.theme_default');
         session(['adminTheme' => $currentTheme]);
         config(['admin.theme_default' => $currentTheme]);
         return $next($request);

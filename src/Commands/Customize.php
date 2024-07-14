@@ -35,25 +35,20 @@ class Customize extends Command
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-admin']);
                 $this->call('vendor:publish', ['--tag' => 'vncore:view-admin']);
                 break;
-            
-            case 'validation':
-                $this->call('vendor:publish', ['--tag' => 'vncore:config-validation']);
-                break;
 
             case 'middleware':
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-middleware']);
                 break;
-                
+                 
             case 'lfm':
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-lfm']);
                 break;
 
-            case 'cart':
-                $this->call('vendor:publish', ['--tag' => 'vncore:config-cart']);
-                break;
-
             case 'api':
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-api']);
+                break;
+            case 'static':
+                $this->call('vendor:publish', ['--tag' => 'vncore:static']);
                 break;
 
             default:

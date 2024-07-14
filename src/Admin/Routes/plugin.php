@@ -23,7 +23,7 @@ Route::group(['prefix' => 'plugin'], function () use ($nameSpaceAdminPlugin) {
     Route::post('/disable', $nameSpaceAdminPlugin.'\AdminPluginsController@disable')
         ->name('admin_plugin.disable');
 
-    if (config('admin.settings.api_plugin')) {
+    if (config('vncore-config.admin.settings.api_plugin')) {
         Route::get('/online', $nameSpaceAdminPlugin.'\AdminPluginsOnlineController@index')
         ->name('admin_plugin_online');
         Route::post('/install/online', $nameSpaceAdminPlugin.'\AdminPluginsOnlineController@install')

@@ -41,13 +41,13 @@ class AdminAuthController extends RootFrontController
 
         $user = $this->guard()->user();
 
-        $scope = explode(',', config('api.auth.api_scope_admin'));
+        $scope = explode(',', config('vncore-config.api.auth.api_scope_admin'));
         
         $tokenResult = $user->createToken('Admin:'.$user->email.'- '.now(), $scope);
         $token = $tokenResult->plainTextToken;
         $accessToken = $tokenResult->accessToken;
         if ($request->remember_me) {
-            $accessToken->expires_at = Carbon::now()->addDays(config('api.auth.api_remmember_admin'));
+            $accessToken->expires_at = Carbon::now()->addDays(config('vncore-config.api.auth.api_remmember_admin'));
         }
         $accessToken->save();
 

@@ -43,18 +43,18 @@ class MemberAuthController extends RootFrontController
         $user = $this->guard()->user();
 
         if ($user->status == 0) {
-            $scope = explode(',', config('api.auth.api_scope_user_guest'));
+            $scope = explode(',', config('vncore-config.api.auth.api_scope_user_guest'));
         } else {
-            $scope = explode(',', config('api.auth.api_scope_user'));
+            $scope = explode(',', config('vncore-config.api.auth.api_scope_user'));
         }
         
         $tokenResult = $user->createToken('Client:'.$user->email.'- '.now(), $scope);
         $token = $tokenResult->plainTextToken;
         $accessToken = $tokenResult->accessToken;
         if ($request->remember_me) {
-            $accessToken->expires_at = Carbon::now()->addDays(config('api.auth.api_remmember'));
+            $accessToken->expires_at = Carbon::now()->addDays(config('vncore-config.api.auth.api_remmember'));
         } else {
-            $accessToken->expires_at = Carbon::now()->addDays(config('api.auth.api_token_expire_admin_default'));
+            $accessToken->expires_at = Carbon::now()->addDays(config('vncore-config.api.auth.api_token_expire_admin_default'));
         }
         $accessToken->save();
 

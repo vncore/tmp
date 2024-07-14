@@ -16,7 +16,7 @@ Route::group(
             Route::post('login', 'MemberAuthController@login');
             Route::post('create', 'MemberAuthController@create');
             Route::group([
-            'middleware' => ['auth:api', config('api.auth.api_scope_type').':'.config('api.auth.api_scope_user').','.config('api.auth.api_scope_user_guest')]
+            'middleware' => ['auth:api', config('vncore-config.api.auth.api_scope_type').':'.config('vncore-config.api.auth.api_scope_user').','.config('vncore-config.api.auth.api_scope_user_guest')]
             ], function () {
                 Route::get('logout', 'MemberAuthController@logout');
                 Route::get('info', 'MemberController@getInfo');
@@ -25,7 +25,7 @@ Route::group(
             });
 
             Route::group([
-            'middleware' => ['auth:api', config('api.auth.api_scope_type').':'.config('api.auth.api_scope_user')]
+            'middleware' => ['auth:api', config('vncore-config.api.auth.api_scope_type').':'.config('vncore-config.api.auth.api_scope_user')]
             ], function () {
                 Route::post('create_order', 'MemberOrderController@createOrder');
                 Route::post('cancel_order/{id}', 'MemberOrderController@cancelOrder');
@@ -36,7 +36,7 @@ Route::group(
         Route::group(['prefix' => 'admin'], function () {
             Route::post('login', 'AdminAuthController@login');
             Route::group([
-            'middleware' => ['auth:admin-api', config('api.auth.api_scope_type_admin').':'.config('api.auth.api_scope_admin')]
+            'middleware' => ['auth:admin-api', config('vncore-config.api.auth.api_scope_type_admin').':'.config('vncore-config.api.auth.api_scope_admin')]
             ], function () {
                 Route::get('logout', 'AdminAuthController@logout');
                 Route::get('info', 'AdminController@getInfo');

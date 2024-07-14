@@ -12,7 +12,7 @@ class Session
 
         config(['session.path' => $path]);
 
-        if ($domain = config('admin.route.domain')) {
+        if ($domain = config('vncore-config.admin.route.domain')) {
             config(['session.domain' => $domain]);
         }
 

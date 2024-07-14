@@ -9,7 +9,7 @@
             <li class="nav-item">
               <a class="nav-link active" href="#"  aria-controls="custom-tabs-four-home" aria-selected="true">{{ vncore_language_render('admin.plugin.local') }}</a>
             </li>
-            @if (config('admin.settings.api_plugin'))
+            @if (config('vncore-config.admin.settings.api_plugin'))
             <li class="nav-item">
               <a class="nav-link" href="{{ vncore_route_admin('admin_plugin_online') }}" >{{ vncore_language_render('admin.plugin.online') }}</a>
             </li>

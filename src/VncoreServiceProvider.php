@@ -187,12 +187,9 @@ class VncoreServiceProvider extends ServiceProvider
     public function register()
     {
      
-        $this->mergeConfigFrom(__DIR__.'/Config/admin.php', 'admin');
-        $this->mergeConfigFrom(__DIR__.'/Config/validation.php', 'validation');
+        $this->mergeConfigFrom(__DIR__.'/Config/vncore-config.php', 'vncore-config');
         $this->mergeConfigFrom(__DIR__.'/Config/lfm.php', 'lfm');
         $this->mergeConfigFrom(__DIR__.'/Config/vncore.php', 'vncore');
-        $this->mergeConfigFrom(__DIR__.'/Config/middleware.php', 'middleware');
-        $this->mergeConfigFrom(__DIR__.'/Config/api.php', 'api');
         $this->loadViewsFrom(__DIR__.'/Views/admin', 'vncore-admin');
         $this->loadViewsFrom(__DIR__.'/Views/front', 'vncore-front');
         
@@ -278,7 +275,7 @@ class VncoreServiceProvider extends ServiceProvider
         view()->share('vncore_templatePath', 'templates.' . vncore_store('template'));
         view()->share('vncore_templateFile', 'templates/' . vncore_store('template'));
         //
-        view()->share('vncore_templatePathAdmin', config('admin.path_view'));
+        view()->share('vncore_templatePathAdmin', config('vncore-config.admin.path_view'));
     }
 
     /**
@@ -311,9 +308,9 @@ class VncoreServiceProvider extends ServiceProvider
     protected function middlewareGroups()
     {
         return [
-            'admin'           => config('middleware.admin'),
-            'front'           => config('middleware.front'),
-            'api.extend'      => config('middleware.api_extend'),
+            'admin'           => config('vncore-config.middleware.admin'),
+            'front'           => config('vncore-config.middleware.front'),
+            'api.extend'      => config('vncore-config.middleware.api_extend'),
         ];
     }
 
@@ -357,10 +354,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->publishes([__DIR__.'/public/admin'  => public_path('vncore-static')], 'vncore:static');
             $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
             $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
-            $this->publishes([__DIR__.'/Config/admin.php' => config_path('admin.php')], 'vncore:config-admin');
-            $this->publishes([__DIR__.'/Config/validation.php' => config_path('validation.php')], 'vncore:config-validation');
-            $this->publishes([__DIR__.'/Config/api.php' => config_path('api.php')], 'vncore:config-api');
-            $this->publishes([__DIR__.'/Config/middleware.php' => config_path('middleware.php')], 'vncore:config-middleware');
+            $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
         }
     }

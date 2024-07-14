@@ -45,7 +45,7 @@ class LogOperation
      */
     protected function shouldLogOperation(Request $request)
     {
-        return config('admin.admin_log')
+        return config('vncore-config.admin.admin_log')
         && !$this->inExceptArray($request)
         && Admin::user();
     }
