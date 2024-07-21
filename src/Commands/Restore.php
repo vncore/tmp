@@ -40,8 +40,8 @@ class Restore extends Command
                 exit();
             } else {
                 try {
-                    DB::connection(VNCORE_CONNECTION)->transaction(function () use ($pathFull) {
-                        DB::connection(VNCORE_CONNECTION)->unprepared(file_get_contents($pathFull));
+                    DB::connection(VNCORE_DB_CONNECTION)->transaction(function () use ($pathFull) {
+                        DB::connection(VNCORE_DB_CONNECTION)->unprepared(file_get_contents($pathFull));
                         echo json_encode(['error' => 0, 'msg' => vncore_language_render('admin.backup.restore_success')]);
                         exit();
                     });

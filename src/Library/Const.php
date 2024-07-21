@@ -12,12 +12,13 @@ define('VNCORE_GUARD_ROLES', ['1', '2']); // admin, only view
 define('VNCORE_ADMIN_MIDDLEWARE', ['web', 'admin']);
 define('VNCORE_FRONT_MIDDLEWARE', ['web', 'front']);
 define('VNCORE_API_MIDDLEWARE', ['api', 'api.extend']);
-define('VNCORE_CONNECTION', 'mysql');
-define('VNCORE_CONNECTION_LOG', 'mysql');
+define('VNCORE_DB_CONNECTION', config('vncore.VNCORE_DB_CONNECTION'));
 //Prefix url admin
-define('VNCORE_ADMIN_PREFIX', config('vncore.const.VNCORE_ADMIN_PREFIX'));
+define('VNCORE_ADMIN_PREFIX', config('vncore.VNCORE_ADMIN_PREFIX'));
 //Prefix database
-define('VNCORE_DB_PREFIX', config('vncore.const.VNCORE_DB_PREFIX'));
+define('VNCORE_DB_PREFIX', config('vncore.VNCORE_DB_PREFIX'));
+//Vncore active
+define('VNCORE_ACTIVE', config('vncore.VNCORE_ACTIVE'));
 // Root ID store
 define('VNCORE_ID_ROOT', 1);
 define('VNCORE_ID_GLOBAL', 0);

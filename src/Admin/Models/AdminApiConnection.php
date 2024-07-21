@@ -7,7 +7,7 @@ class AdminApiConnection extends Model
 {
     public $table = VNCORE_DB_PREFIX.'api_connection';
     protected $guarded = [];
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
     protected static $getGroup = null;
 
     public static function check($apiconnection, $apikey)

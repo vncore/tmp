@@ -126,14 +126,14 @@ class AdminMenu extends Model
     public function reSort(array $data)
     {
         try {
-            DB::connection(VNCORE_CONNECTION)->beginTransaction();
+            DB::connection(VNCORE_DB_CONNECTION)->beginTransaction();
             foreach ($data as $key => $menu) {
                 $this->where('id', $key)->update($menu);
             }
-            DB::connection(VNCORE_CONNECTION)->commit();
+            DB::connection(VNCORE_DB_CONNECTION)->commit();
             $return = ['error' => 0, 'msg' => ""];
         } catch (\Throwable $e) {
-            DB::connection(VNCORE_CONNECTION)->rollBack();
+            DB::connection(VNCORE_DB_CONNECTION)->rollBack();
             $return = ['error' => 1, 'msg' => $e->getMessage()];
         }
         return $return;

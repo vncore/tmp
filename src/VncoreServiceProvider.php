@@ -11,6 +11,7 @@ use Vncore\Core\Commands\Backup;
 use Vncore\Core\Commands\Restore;
 use Vncore\Core\Commands\Make;
 use Vncore\Core\Commands\Infomation;
+use Vncore\Core\Commands\Initial;
 use Vncore\Core\Commands\ClearCart;
 use Vncore\Core\Commands\Update;
 use Vncore\Core\Front\Middleware\Localization;
@@ -30,15 +31,29 @@ use Illuminate\Pagination\Paginator;
 class VncoreServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        Customize::class,
         Backup::class,
         Restore::class,
         Make::class,
         Infomation::class,
         ClearCart::class,
         Update::class,
+        Customize::class,
     ];
 
+    protected $install = [
+        Initial::class,
+    ];
+
+    protected function initial() {
+        $this->loadTranslationsFrom(__DIR__.'/Lang', 'vncore');
+        try {
+            $this->commands($this->install);
+        } catch (\Throwable $e) {
+            $msg = '#VNCORE:01::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            echo $msg;
+            exit;
+        }
+    }
     /**
      * Bootstrap services.
      *
@@ -46,35 +61,36 @@ class VncoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrap();
-        //If env is production, then disable debug mode
-        if (config('app.env') === 'production') {
-            config(['app.debug' => false]);
-        }
-        
-        if(file_exists(base_path('bootstrap/cache/routes-v7.php'))) {
-            echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! SC cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
-        }
-        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
-        $this->loadTranslationsFrom(__DIR__.'/Lang', 'vncore');
+        $this->initial();
 
-        //Load helper from front
-        try {
-            foreach (glob(__DIR__.'/Library/Helpers/*.php') as $filename) {
-                require_once $filename;
+        if (VNCORE_ACTIVE == 1 && !file_exists(public_path('vncore-install.php'))) {
+            Paginator::useBootstrap();
+            //If env is production, then disable debug mode
+            if (config('app.env') === 'production') {
+                config(['app.debug' => false]);
             }
-        } catch (\Throwable $e) {
-            $msg = '#SC001::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            // vncore_report($msg);
-            echo $msg;
-            exit;
-        }
+            
+           Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+    
+            //Load helper from front
+            try {
+                foreach (glob(__DIR__.'/Library/Helpers/*.php') as $filename) {
+                    require_once $filename;
+                }
+            } catch (\Throwable $e) {
+                $msg = '#SC001::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                // vncore_report($msg);
+                echo $msg;
+                exit;
+            }
 
-        if (!file_exists(public_path('install.php')) && file_exists(base_path('.env'))) {
+            if(file_exists(base_path('bootstrap/cache/routes-v7.php'))) {
+                echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! SC cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
+            }
 
             //Check connection
             try {
-                DB::connection(VNCORE_CONNECTION)->getPdo();
+                DB::connection(VNCORE_DB_CONNECTION)->getPdo();
             } catch (\Throwable $e) {
                 $msg = '#SC003::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
@@ -83,7 +99,7 @@ class VncoreServiceProvider extends ServiceProvider
             }
             //Load Plugin Provider
             try {
-                foreach (glob(app_path() . '/Plugins/*/Provider.php') as $filename) {
+                foreach (glob(base_path() . '/vncore/Plugins/*/Provider.php') as $filename) {
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
@@ -140,43 +156,44 @@ class VncoreServiceProvider extends ServiceProvider
                 echo $msg;
                 exit;
             }
+            
+            try {
+                $this->registerPublishing();
+            } catch (\Throwable $e) {
+                $msg = '#SC009::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                vncore_report($msg);
+                echo $msg;
+                exit;
+            }
+            
+            try {
+                $this->registerRouteMiddleware();
+            } catch (\Throwable $e) {
+                $msg = '#SC010::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                vncore_report($msg);
+                echo $msg;
+                exit;
+            }
+            
+            try {
+                $this->commands($this->commands);
+            } catch (\Throwable $e) {
+                $msg = '#SC011::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                vncore_report($msg);
+                echo $msg;
+                exit;
+            }
+            
+            try {
+                $this->validationExtend();
+            } catch (\Throwable $e) {
+                $msg = '#SC012::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                vncore_report($msg);
+                echo $msg;
+                exit;
+            }
         }
 
-        try {
-            $this->registerPublishing();
-        } catch (\Throwable $e) {
-            $msg = '#SC009::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vncore_report($msg);
-            echo $msg;
-            exit;
-        }
-        
-        try {
-            $this->registerRouteMiddleware();
-        } catch (\Throwable $e) {
-            $msg = '#SC010::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vncore_report($msg);
-            echo $msg;
-            exit;
-        }
-        
-        try {
-            $this->commands($this->commands);
-        } catch (\Throwable $e) {
-            $msg = '#SC011::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vncore_report($msg);
-            echo $msg;
-            exit;
-        }
-        
-        try {
-            $this->validationExtend();
-        } catch (\Throwable $e) {
-            $msg = '#SC012::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            vncore_report($msg);
-            echo $msg;
-            exit;
-        }
     }
 
     /**
@@ -352,6 +369,7 @@ class VncoreServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([__DIR__.'/public/admin'  => public_path('vncore-static')], 'vncore:static');
+            $this->publishes([__DIR__.'/vncore-install.php'  => public_path('vncore-install.php')], 'vncore:file-install');
             $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
             $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');

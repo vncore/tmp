@@ -191,7 +191,7 @@ if (!function_exists('vncore_store_css')) {
     function vncore_store_css()
     {
         $template = vncore_store('template', config('app.storeId'));
-        if (\Schema::connection(VNCORE_CONNECTION)->hasColumn((new AdminStoreCss)->getTable(), 'template')) {
+        if (\Schema::connection(VNCORE_DB_CONNECTION)->hasColumn((new AdminStoreCss)->getTable(), 'template')) {
             $cssStore =  AdminStoreCss::where('store_id', config('app.storeId'))
             ->where('template', $template)->first();
         } else {

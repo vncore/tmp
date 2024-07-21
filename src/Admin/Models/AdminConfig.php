@@ -11,7 +11,7 @@ class AdminConfig extends Model
     protected static $getAll = null;
     protected static $getAllGlobal = null;
     protected static $getAllConfigOfStore = null;
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
 
     /**
      * get Plugin installed

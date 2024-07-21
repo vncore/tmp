@@ -11,7 +11,7 @@ class AdminEmailTemplate extends Model
     
     public $table = VNCORE_DB_PREFIX.'shop_email_template';
     protected $guarded = [];
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
     protected static $getListTitleAdmin = null;
     protected static $getListEmailTemplateGroupByParentAdmin = null;
 

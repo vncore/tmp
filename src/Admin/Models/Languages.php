@@ -11,7 +11,7 @@ class Languages extends Model
     public $table = VNCORE_DB_PREFIX.'languages';
     protected $guarded = [];
     private static $getList = null;
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
 
 
     public static function getListAll($location)

@@ -23,7 +23,7 @@ class AdminStore extends Model
     protected static $listStoreId = null;
     protected static $listStoreCode = null;
     protected static $getStoreDomainByCode = null;
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
     
     public function descriptions()
     {

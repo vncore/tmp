@@ -14,7 +14,7 @@ class AdminLanguage extends Model
     private static $getListActive      = null;
     private static $getArrayLanguages = null;
     private static $getCodeActive = null;
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
 
     public static function getListAll()
     {

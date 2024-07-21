@@ -12,7 +12,7 @@ class AdminCountry extends Model
     public $timestamps               = false;
     private static $getListCountries = null;
     private static $getCodeAll = null;
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
 
     public static function getListAll()
     {

@@ -8,17 +8,11 @@ return [
     'facebook'         => 'https://www.facebook.com/SCart.Ecommerce',
     'auth'             => 'Lanh Le',
     'email'            => 'lanhktc@gmail.com',
-    'api_link'         => env('VNCORE_API_LINK', 'https://api.vncore.org/v3'),
+    'api_link'         => env('VNCORE_API_LINK', 'https://api.vncore.org/v1'),
     'ecommerce_mode'   => env('VNCORE_ECOMMERCE_MODE', 1),
     'search_mode'      => env('VNCORE_SEARCH_MODE', 'PRODUCT'), //PRODUCT,NEWS,CMS
-    'const' => [
-        'VNCORE_DB_PREFIX'    => env('VNCORE_DB_PREFIX', ''),
-        'VNCORE_ADMIN_PREFIX' => env('VNCORE_ADMIN_PREFIX', 'vncore_admin'),
-        'PMO_PREFIX'          => env('PMO_PREFIX', 'vncore_pmo'),
-        'MAIL_HOST'           => env('MAIL_HOST', ''),
-        'MAIL_PORT'           => env('MAIL_PORT', ''),
-        'MAIL_ENCRYPTION'     => env('MAIL_ENCRYPTION', ''),
-        'MAIL_USERNAME'       => env('MAIL_USERNAME', ''),
-        'MAIL_PASSWORD'       => env('MAIL_PASSWORD', ''),
-    ],
+    'VNCORE_ACTIVE'    => env('VNCORE_ACTIVE', 1), // 1: active, 0: deactive - prevent load vencore package
+    'VNCORE_DB_PREFIX' => env('VNCORE_DB_PREFIX', 'vncore_'), //Cannot change after install vncore
+    'VNCORE_DB_CONNECTION' => env('VNCORE_DB_CONNECTION', env('DB_CONNECTION', 'mysql')), 
+    'VNCORE_ADMIN_PREFIX' => env('VNCORE_ADMIN_PREFIX', 'vncore_admin'), //Prefix url admin, ex: domain.com/vncore_admin
 ];

@@ -18,60 +18,14 @@ if (request()->method() == 'POST' && request()->ajax()) {
     $step = request('step');
     switch ($step) {
         case 'step1':
-            $domain            = str_replace('/install.php', '', url()->current());
-            $database_host     = request('database_host') ?? '127.0.0.1';
-            $database_port     = request('database_port') ?? '3306';
-            $database_name     = request('database_name') ?? '';
-            $database_user     = request('database_user') ?? '';
-            $database_password = request('database_password') ?? '';
-            $database_prefix   = request('database_prefix') ?? '';
-            $timezone_default   = request('timezone_default') ?? '';
-            $admin_url         = request('admin_url') ?? '';
-            $admin_url         = str_replace('/','',strip_tags(strtolower($admin_url)));
-            if (in_array($admin_url, ['','admin','css','data','images','js','packages','templates', 'plugin', 'plugins','vendor','component'])) {
-                $admin_url = 'vncore_admin';
-            }
-            
-        try {
-            $api_key = 'base64:' . base64_encode(
-                Encrypter::generateKey(config('app.cipher'))
-            );
-            $getEnv = file_get_contents(__DIR__ . '/.env.example_vncore');
-            $getEnv = str_replace('vncore_your_domain', $domain, $getEnv);
-            $getEnv = str_replace('vncore_database_host', $database_host, $getEnv);
-            $getEnv = str_replace('vncore_database_port', $database_port, $getEnv);
-            $getEnv = str_replace('vncore_database_name', $database_name, $getEnv);
-            $getEnv = str_replace('vncore_database_user', $database_user, $getEnv);
-            $getEnv = str_replace('VNCORE_DB_PREFIX=vncore_', 'VNCORE_DB_PREFIX='.$database_prefix, $getEnv);
-            $getEnv = str_replace('vncore_database_password', $database_password, $getEnv);
-            $getEnv = str_replace('vncore_api_key', $api_key, $getEnv);
-            $getEnv = str_replace('vncore_admin', $admin_url, $getEnv);
-            $getEnv = str_replace('Asia/ho_chi_minh', $timezone_default, $getEnv);
-
-            if (request('only_cms')) {
-                $getEnv = str_replace('VNCORE_ECOMMERCE_MODE=1', 'VNCORE_ECOMMERCE_MODE=0', $getEnv);
-            }
-
-            $env = fopen(base_path() . "/.env", "w") or die(json_encode(['error' => 1, 'msg' => trans('vncore::install.env.error_open')]));
-            fwrite($env, $getEnv);
-            fclose($env);
-
-        } catch (\Throwable $e) {
-            echo json_encode(['error' => 1, 'msg' => '#ISC001::'.$e->getMessage()]);
-            exit();
-        }
-
-        $infoInstall =  [
-            'language_default' => request('language_default'),
-            'admin_user' => request('admin_user'),
-            'admin_password' => bcrypt(request('admin_password')),
-            'admin_email' => request('admin_email'),
-            'admin_url' => $admin_url,
-            'exclude_sample' => request('exclude_sample'),
-            'only_cms' => request('only_cms'),
-            'website_title' => request('website_title'),
-        ];
-            echo json_encode(['error' => 0, 'msg' => trans('vncore::install.env.process_sucess'), 'infoInstall' => $infoInstall]);
+            $infoInstall =  [
+                'language_default' => request('language_default'),
+                'admin_user' => request('admin_user'),
+                'admin_password' => bcrypt(request('admin_password')),
+                'admin_email' => request('admin_email'),
+                'website_title' => request('website_title'),
+            ];
+            echo json_encode(['error' => 0, 'msg' => trans('vncore::install.init.process_sucess'), 'infoInstall' => $infoInstall]);
             break;
 
     case 'step2-1':
@@ -93,7 +47,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         } catch(\Throwable $e) {
             echo json_encode([
                 'error' => '1',
-                'msg' => '#ISC002::'.$e->getMessage(),
+                'msg' => '#ISVNC001::'.$e->getMessage(),
             ]);
             break;
         }
@@ -105,24 +59,6 @@ if (request()->method() == 'POST' && request()->ajax()) {
         break;
 
         case 'step2-2':
-            session(['infoInstall'=> request('infoInstall')]);
-            try {
-                //
-            } catch(\Throwable $e) {
-                echo json_encode([
-                    'error' => '1',
-                    'msg' => '#ISC003::'.$e->getMessage(),
-                ]);
-                break;
-            }
-            echo json_encode([
-                'error' => '0',
-                'msg' => trans('vncore::install.database.process_sucess_2'),
-                'infoInstall' => request('infoInstall')
-            ]);
-            break;
-
-        case 'step2-3':
             session(['infoInstall'=> request('infoInstall')]);
             try {
                 Artisan::call('db:seed', 
@@ -140,10 +76,34 @@ if (request()->method() == 'POST' && request()->ajax()) {
             } catch(\Throwable $e) {
                 echo json_encode([
                     'error' => '1',
-                    'msg' => '#ISC004::'.$e->getMessage(),
+                    'msg' => '#ISVNC002::'.$e->getMessage(),
                 ]);
                 break;
             }
+            echo json_encode([
+                'error' => '0',
+                'msg' => trans('vncore::install.database.process_sucess_2'),
+                'infoInstall' => request('infoInstall')
+            ]);
+            break;
+
+        case 'step2-3':
+            session(['infoInstall'=> request('infoInstall')]);
+            try {
+                Artisan::call('db:seed', 
+                    [
+                        '--class' => '\Vncore\Core\DB\seeders\DataLocaleSeeder',
+                        '--force' => true
+                    ]
+                );
+            } catch(\Throwable $e) {
+                echo json_encode([
+                    'error' => '1',
+                    'msg' => '#ISVNC003::'.$e->getMessage(),
+                ]);
+                break;
+            }
+            session()->forget('infoInstall');
             echo json_encode([
                 'error' => '0',
                 'msg' => trans('vncore::install.database.process_sucess_3'),
@@ -151,76 +111,20 @@ if (request()->method() == 'POST' && request()->ajax()) {
             ]);
             break;
 
-            case 'step2-4':
-                session(['infoInstall'=> request('infoInstall')]);
-                try {
-                    Artisan::call('db:seed', 
-                        [
-                            '--class' => '\Vncore\Core\DB\seeders\DataLocaleSeeder',
-                            '--force' => true
-                        ]
-                    );
-                } catch(\Throwable $e) {
-                    echo json_encode([
-                        'error' => '1',
-                        'msg' => '#ISC005::'.$e->getMessage(),
-                    ]);
-                    break;
-                }
-                session()->forget('infoInstall');
-                echo json_encode([
-                    'error' => '0',
-                    'msg' => trans('vncore::install.database.process_sucess_4'),
-                    'infoInstall' => request('infoInstall')
-                ]);
-                break;
-
-                case 'step2-5':
-                    if (!(request('infoInstall')['exclude_sample'] ?? 0)) {
-                        try {
-                            // Artisan::call('db:seed', 
-                            //     [
-                            //         '--class' => 'DataSampleCmsSeeder',
-                            //         '--force' => true
-                            //     ]
-                            // );
-                            // if (!(request('infoInstall')['only_cms'] ?? 0)) {
-
-                            //     Artisan::call('db:seed', 
-                            //     [
-                            //         '--class' => 'DataSampleShopSeeder',
-                            //         '--force' => true
-                            //         ]
-                            //     );
-                            // }
-                        } catch(\Throwable $e) {
-                            echo json_encode([
-                                'error' => '1',
-                                'msg' => '#ISC006::'.$e->getMessage(),
-                            ]);
-                            break;
-                        }
-                    }
-                    echo json_encode([
-                        'error' => '0',
-                        'msg' => trans('vncore::install.database.process_sucess_5'),
-                    ]);
-                    break;
-
-
     case 'step3':
         try {
-            rename(base_path() . '/public/install.php', base_path() . '/public/install.scart');
+            rename(base_path() . '/public/vncore-install.php', base_path() . '/public/vncore-install.vncore');
         } catch (\Throwable $e) {
             echo json_encode([
                 'error' => '1',
-                'msg' => '#ISC007::'.trans('vncore::install.rename_error'),
+                'msg' => '#ISVNC004::'.trans('vncore::install.rename_error'),
             ]);
             break;
         }
         echo json_encode([
             'error' => '0',
             'msg' => '',
+            'admin_url' => VNCORE_ADMIN_PREFIX,
         ]);
         break;
 
@@ -228,25 +132,6 @@ if (request()->method() == 'POST' && request()->ajax()) {
         break;
     }
 } else {
-    if (file_exists(base_path() . "/.env")) {
-        @rename(base_path() . "/.env", base_path() . "/.env_bk");
-    }
-
-    $dirsWritable = [
-        storage_path(),
-        public_path('data'),
-        base_path('vendor'),
-        base_path('bootstrap/cache'),
-        base_path('app/Plugins'),
-    ];
-    try {
-        @exec('chmod g+w -R ' . implode(' ', $dirsWritable));
-    } catch (\Throwable $e) {   
-        echo json_encode([
-            'error' => '1',
-            'msg' => '#ISC008::'.trans('vncore::install.writealble_error'),
-        ]);
-    }
     $requirements = [
         'ext' => [
             'PHP >= 8.2'                 => version_compare(PHP_VERSION, '8.2', '>='),
@@ -269,6 +154,34 @@ if (request()->method() == 'POST' && request()->ajax()) {
             base_path('bootstrap/cache') => is_writable(base_path('bootstrap/cache')),
         ]
     ];
+
+    //Check env file
+    $errorEnv = '';
+    if (!file_exists(base_path() . "/.env")) {
+        $errorEnv = '<div>'.trans('vncore::install.env_not_found').'</div>';
+    } else if (!config('app.key')) {
+        $errorEnv .='<div>'.trans('vncore::install.env_key_not_found').'</div>';
+    }
+    if ($errorEnv) {
+        echo view('vncore-front::install', array(
+            'install_error'   => $errorEnv,
+            'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),
+            'title'     => trans('vncore::install.title'), 'requirements' => $requirements)
+        );
+        exit();
+    }
+
+    //Check connection
+    try {
+        \DB::connection(VNCORE_DB_CONNECTION)->getPdo();
+    } catch (\Throwable $e) {
+        echo view('vncore-front::install', array(
+            'install_error'   => '<div>'.trans('vncore::install.database_error').':'.$e->getMessage().'</div>',
+            'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),
+            'title'     => trans('vncore::install.title'), 'requirements' => $requirements)
+        );
+        exit();
+    }
 
     echo view('vncore-front::install', array(
         'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),

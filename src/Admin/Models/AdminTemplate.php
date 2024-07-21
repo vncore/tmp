@@ -7,7 +7,7 @@ class AdminTemplate extends Model
 {
     public $table = VNCORE_DB_PREFIX.'admin_template';
     protected $guarded = [];
-    protected $connection = VNCORE_CONNECTION;
+    protected $connection = VNCORE_DB_CONNECTION;
 
     /**
      * Get list template installed

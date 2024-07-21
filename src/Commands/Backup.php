@@ -43,10 +43,10 @@ class Backup extends Command
             $fileBackup = storage_path('backups/backup-' . date('Y-m-d-H-i-s') . '.sql');
         }
         try {
-            $databaseName = config('database.connections.'.VNCORE_CONNECTION.'.database');
-            $userName = config('database.connections.'.VNCORE_CONNECTION.'.username');
-            $password = config('database.connections.'.VNCORE_CONNECTION.'.password');
-            $host = config('database.connections.'.VNCORE_CONNECTION.'.host');
+            $databaseName = config('database.connections.'.VNCORE_DB_CONNECTION.'.database');
+            $userName = config('database.connections.'.VNCORE_DB_CONNECTION.'.username');
+            $password = config('database.connections.'.VNCORE_DB_CONNECTION.'.password');
+            $host = config('database.connections.'.VNCORE_DB_CONNECTION.'.host');
             $includeTables = explode(',', $includeTables);
             $excludeTables = explode(',', $excludeTables);
 
