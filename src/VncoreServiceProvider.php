@@ -73,8 +73,8 @@ class VncoreServiceProvider extends ServiceProvider
             config([
                 'filesystems.disks.vncore' => [
                     'driver'     => 'local',
-                    'root' => public_path('/uploads'),
-                    'url'        => '/uploads',
+                    'root' => storage_path('/app/public'),
+                    'url'        => '/storage',
                     'visibility' => 'public',
                     'throw' => false,
                 ],
@@ -86,7 +86,7 @@ class VncoreServiceProvider extends ServiceProvider
                 'filesystems.disks.path_download' => [
                     'driver' => 'local',
                     'root' => storage_path('app/public/path_download'),
-                    'url' => env('APP_URL').'/storage/path_download',
+                    'url' => '/storage/path_download',
                 ],
             ]);
 

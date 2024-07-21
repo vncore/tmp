@@ -58,4 +58,6 @@ return [
     'env_not_found' => 'File .env not found',
     'website_title' => 'Website title',
     'website_title_place' => 'Your website name',
+    'link_storage_success' => 'Link storage success',
+    'link_storage_error' => 'Link storage error. Please try manually by running command: php artisan storage:link',
 ];

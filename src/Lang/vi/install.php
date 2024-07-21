@@ -56,4 +56,7 @@ return [
     'env_not_found' => 'Không tìm thấy tệp .env',
     'website_title' => 'Tên website',
     'website_title_place' => 'Tên website của bạn',
+    'website_title' => 'Tên website',
+    'link_storage_success' => 'Liên kết lưu trữ thành công',
+    'link_storage_error' => 'Không thể tạo liên kết lưu trữ. Vui lòng thử thủ công bằng cách chạy lệnh: php artisan storage:link',
 ];

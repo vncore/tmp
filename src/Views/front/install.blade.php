@@ -340,9 +340,9 @@ function installDatabaseStep3(infoInstall){
             var infoInstall = data.infoInstall;
             $('#msg').addClass('success');
             $('#msg').html(data.msg);
-            $('.progress-bar').css("width","60%");
+            $('.progress-bar').css("width","70%");
             $('.progress-bar').html("60%");
-            setTimeout(completeInstall, 1000);
+            setTimeout(installStorage(infoInstall), 1000);
         }else{
             $('#msg').removeClass('success');
             $('#msg').addClass('error');
@@ -359,12 +359,51 @@ function installDatabaseStep3(infoInstall){
     })
 }
 
-function completeInstall() {
+function installStorage(infoInstall){
     $.ajax({
         url: 'vncore-install.php{{ $path_lang }}',
         type: 'POST',
         dataType: 'json',
         data: {step: 'step3'},
+    })
+    .done(function(data) {
+
+         error= parseInt(data.error);
+        if(error != 1 && error !=0){
+            $('#msg').removeClass('success');
+            $('#msg').addClass('error');
+            $('#msg').html(data);
+            $('#submit-install').button('reset');
+        }
+        else if(error === 0)
+        {
+            $('#msg').addClass('success');
+            $('#msg').html(data.msg);
+            $('.progress-bar').css("width","80%");
+            $('.progress-bar').html("80%");
+            setTimeout(completeInstall, 1000);
+        }else{
+            $('#msg').removeClass('success');
+            $('#msg').addClass('error');
+            $('#msg').html(data.msg);
+            $('#submit-install').button('reset');
+        }
+
+    })
+    .fail(function() {
+        $('#msg').removeClass('success');
+        $('#msg').addClass('error');
+        $('#msg').html('{{ trans('vncore::install.link_storage_error') }}');
+        $('#submit-install').button('reset');
+    })
+}
+
+function completeInstall() {
+    $.ajax({
+        url: 'vncore-install.php{{ $path_lang }}',
+        type: 'POST',
+        dataType: 'json',
+        data: {step: 'step4'},
     })
     .done(function(data) {
          error= parseInt(data.error);

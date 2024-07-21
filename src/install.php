@@ -30,7 +30,6 @@ if (request()->method() == 'POST' && request()->ajax()) {
 
     case 'step2-1':
         session(['infoInstall'=> request('infoInstall')]);
-        //Drop table migrations if exist
         try {
             Artisan::call('migrate');
             \DB::connection(VNCORE_DB_CONNECTION)->table('migrations')->where('migration', '00_00_00_step1_create_tables_admin')->delete();
@@ -103,6 +102,23 @@ if (request()->method() == 'POST' && request()->ajax()) {
             break;
 
     case 'step3':
+        try {
+            Artisan::call('storage:link');
+        } catch(\Throwable $e) {
+            echo json_encode([
+                'error' => '1',
+                'msg' => '#ISVNC003::'.$e->getMessage(),
+            ]);
+            break;
+        }
+        echo json_encode([
+            'error' => '0',
+            'msg' => trans('vncore::install.link_storage_success'),
+            'infoInstall' => request('infoInstall')
+        ]);
+        break;
+
+    case 'step4':
         try {
             rename(base_path() . '/public/vncore-install.php', base_path() . '/public/vncore-install.vncore');
         } catch (\Throwable $e) {

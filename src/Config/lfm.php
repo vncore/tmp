@@ -91,21 +91,6 @@ return [
             ],
         ],
 
-        'brand' => [
-            'folder_name' => 'brand',
-            'startup_view' => 'grid',
-            'max_size' => 30000, // size in KB
-            'thumb' => true,
-            'thumb_width' => 80,
-            'thumb_height' => 80,
-            'valid_mime' => [
-                'image/jpeg',
-                'image/pjpeg',
-                'image/png',
-                'image/gif',
-            ],
-        ],
-
         'supplier' => [
             'folder_name' => 'supplier',
             'startup_view' => 'grid',
@@ -128,18 +113,6 @@ return [
             'thumb' => true,
             'thumb_width' => 80,
             'thumb_height' => 80,
-            'valid_mime' => [
-                'image/jpeg',
-                'image/pjpeg',
-                'image/png',
-                'image/gif',
-            ],
-        ],
-
-        'currency' => [
-            'folder_name' => 'currency',
-            'startup_view' => 'grid',
-            'max_size' => 30000, // size in KB
             'valid_mime' => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -171,6 +144,7 @@ return [
                 'image/gif',
             ],
         ],
+
         'page' => [
             'folder_name' => 'page',
             'startup_view' => 'grid',
