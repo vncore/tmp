@@ -258,9 +258,7 @@ return new class extends Migration
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_store');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_store_description');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_password_resets');
-        //Notice
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_notice');
-        //==End notice
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_language');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_country');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_custom_field');

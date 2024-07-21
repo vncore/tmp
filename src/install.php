@@ -32,17 +32,8 @@ if (request()->method() == 'POST' && request()->ajax()) {
         session(['infoInstall'=> request('infoInstall')]);
         //Drop table migrations if exist
         try {
-            \Schema::dropIfExists('users');
-            \Schema::dropIfExists('cache');
-            \Schema::dropIfExists('cache_locks');
-            \Schema::dropIfExists('users');
-            \Schema::dropIfExists('password_reset_tokens');
-            \Schema::dropIfExists('sessions');
-            \Schema::dropIfExists('jobs');
-            \Schema::dropIfExists('job_batches');
-            \Schema::dropIfExists('failed_jobs');
-            \Schema::dropIfExists('migrations');
             Artisan::call('migrate');
+            \DB::connection(VNCORE_DB_CONNECTION)->table('migrations')->where('migration', '00_00_00_step1_create_tables_admin')->delete();
             Artisan::call('migrate --path=/vendor/vncore/core/src/DB/migrations/00_00_00_step1_create_tables_admin.php');
         } catch(\Throwable $e) {
             echo json_encode([

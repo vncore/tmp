@@ -70,6 +70,26 @@ class VncoreServiceProvider extends ServiceProvider
                 config(['app.debug' => false]);
             }
             
+            config([
+                'filesystems.disks.vncore' => [
+                    'driver'     => 'local',
+                    'root' => public_path('/uploads'),
+                    'url'        => '/uploads',
+                    'visibility' => 'public',
+                    'throw' => false,
+                ],
+                'filesystems.disks.tmp' => [
+                    'driver'     => 'local',
+                    'root'       => storage_path('tmp'),
+                    'url'        => '',
+                ],
+                'filesystems.disks.path_download' => [
+                    'driver' => 'local',
+                    'root' => storage_path('app/public/path_download'),
+                    'url' => env('APP_URL').'/storage/path_download',
+                ],
+            ]);
+
            Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     
             //Load helper from front
@@ -368,7 +388,8 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/public/admin'  => public_path('vncore-static')], 'vncore:static');
+            $this->publishes([__DIR__.'/public/vncore-static'  => public_path('vncore-static')], 'vncore:static');
+            $this->publishes([__DIR__.'/public/uploads'  => public_path('uploads')], 'vncore:uploads');
             $this->publishes([__DIR__.'/public/vncore-install.php'  => public_path('vncore-install.php')], 'vncore:file-install');
             $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
             $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');

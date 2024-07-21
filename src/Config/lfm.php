@@ -270,7 +270,7 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'disk'                     => env('VNCORE_UPLOAD_DISK', 'uploads'),
+    'disk'                     => env('VNCORE_UPLOAD_DISK', 'vncore'),
 
     'rename_file'              => false,
 
