@@ -34,7 +34,7 @@
 
 "scripts": {
     "post-install-cmd": [
-          "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
+          "@php -r \"echo 2222222222;\""
     ]
 },
   "autoload": {
