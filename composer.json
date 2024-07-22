@@ -31,23 +31,22 @@
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.6"
 },
+"scripts": {
+    "post-install-cmd": [
+        "@php -r \"echo 111111111111111;\""
+    ],
+    "post-update-cmd": [
+        "@php -r \"echo 111111111111111;\""
+    ]
+},
+
   "autoload": {
       "psr-4": {
          "Vncore\\Core\\": "src/"
       }
 
   },
-  "scripts": {
-      "pre-package-install": [
-          "@php -r \"echo 111111111111111;\""
-      ],
-      "post-install-cmd": [
-          "@php -r \"echo 111111111111111;\""
-      ],
-      "pre-install-cmd": [
-          "@php -r \"echo 111111111111111;\""
-      ]
-  },
+  
   "extra": {
       "laravel": {
           "dont-discover": [
