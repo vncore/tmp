@@ -32,13 +32,7 @@
     "barryvdh/laravel-debugbar": "^3.6"
 },
 
-  "autoload": {
-      "psr-4": {
-         "Vncore\\Core\\": "src/"
-      }
-  },
-
-  "scripts": {
+"scripts": {
     "post-install-cmd": [
           "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
     ],
@@ -46,6 +40,11 @@
           "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
     ]
 },
+  "autoload": {
+      "psr-4": {
+         "Vncore\\Core\\": "src/"
+      }
+  },
 
   "extra": {
       "laravel": {
