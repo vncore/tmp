@@ -121,6 +121,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
     case 'step4':
         try {
             rename(base_path() . '/public/vncore-install.php', base_path() . '/public/vncore-install.vncore');
+            unlink(storage_path('vncore_not_run'));
         } catch (\Throwable $e) {
             echo json_encode([
                 'error' => '1',
