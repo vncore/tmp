@@ -63,7 +63,7 @@ class VncoreServiceProvider extends ServiceProvider
     {
         $this->initial();
 
-        if (VNCORE_ACTIVE == 1 && !file_exists(public_path('vncore-install.php'))) {
+        if (VNCORE_ACTIVE == 1 && !file_exists(public_path('vncore-install.php')) && !file_exists(storage_path('vncore_not_run'))) {
             Paginator::useBootstrap();
             //If env is production, then disable debug mode
             if (config('app.env') === 'production') {
