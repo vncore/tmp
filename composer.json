@@ -38,7 +38,7 @@
 
   },
   "scripts": {
-      "post-root-package-install": [
+      "pre-install-cmd": [
           "@php -r \"file_exists('storage/vncore_not_run') || touch('storage/vncore_not_run');\""
       ]
   },
