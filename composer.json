@@ -42,7 +42,7 @@
           "@php -r \"file_exists('storage/vncore_not_run') || touch('storage/vncore_not_run');\""
       ],
       "post-install-cmd": [
-          "@php -r \"file_exists('storage/vncore_not_run') || touch('storage/vncore_not_run');\""
+          "Vncore\\Core\\ComposerScripts::postInstall"
       ],
       "pre-install-cmd": [
           "@php -r \"file_exists('storage/vncore_not_run') || touch('storage/vncore_not_run');\""
