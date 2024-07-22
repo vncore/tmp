@@ -1,6 +1,6 @@
 {
   "name": "vncore/core",
-  "description": "VN core",
+  "description": "Laravel core admin package for all system project",
   "keywords": ["core admin","laravel core"],
   "homepage": "https://vncore.net",
   "license": "MIT",
@@ -31,22 +31,22 @@
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.6"
 },
-"scripts": {
-    "post-install-cmd": [
-        "@php -r \"echo 111111111111111;\""
-    ],
-    "post-update-cmd": [
-        "@php -r \"echo 111111111111111;\""
-    ]
-},
 
   "autoload": {
       "psr-4": {
          "Vncore\\Core\\": "src/"
       }
-
   },
-  
+
+  "scripts": {
+    "post-install-cmd": [
+          "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
+    ],
+    "pre-install-cmd": [
+          "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
+    ]
+},
+
   "extra": {
       "laravel": {
           "dont-discover": [
