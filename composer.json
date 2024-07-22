@@ -41,6 +41,9 @@
       "pre-package-install": [
           "@php -r \"file_exists('storage/vncore_not_run') || touch('storage/vncore_not_run');\""
       ],
+      "post-install-cmd": [
+          "@php -r \"file_exists('storage/vncore_not_run') || touch('storage/vncore_not_run');\""
+      ],
       "pre-install-cmd": [
           "@php -r \"file_exists('storage/vncore_not_run') || touch('storage/vncore_not_run');\""
       ]
