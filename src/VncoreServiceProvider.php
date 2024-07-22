@@ -69,27 +69,6 @@ class VncoreServiceProvider extends ServiceProvider
             if (config('app.env') === 'production') {
                 config(['app.debug' => false]);
             }
-            
-            config([
-                'filesystems.disks.vncore' => [
-                    'driver'     => 'local',
-                    'root' => storage_path('/app/public'),
-                    'url'        => '/storage',
-                    'visibility' => 'public',
-                    'throw' => false,
-                ],
-                'filesystems.disks.tmp' => [
-                    'driver'     => 'local',
-                    'root'       => storage_path('tmp'),
-                    'url'        => '',
-                ],
-                'filesystems.disks.path_download' => [
-                    'driver' => 'local',
-                    'root' => storage_path('app/public/path_download'),
-                    'url' => '/storage/path_download',
-                ],
-            ]);
-
            Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     
             //Load helper from front
@@ -223,10 +202,14 @@ class VncoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-     
+        $this->mergeConfigFrom(__DIR__.'/Config/disks_vncore.php', 'filesystems.disks');
+        $this->mergeConfigFrom(__DIR__.'/Config/auth_guards_vncore.php', 'auth.guards');
+        $this->mergeConfigFrom(__DIR__.'/Config/auth_passwords_vncore.php', 'auth.passwords');
+        $this->mergeConfigFrom(__DIR__.'/Config/auth_providers_vncore.php', 'auth.providers');
+        $this->mergeConfigFrom(__DIR__.'/Config/vncore.php', 'vncore');
+
         $this->mergeConfigFrom(__DIR__.'/Config/vncore-config.php', 'vncore-config');
         $this->mergeConfigFrom(__DIR__.'/Config/lfm.php', 'lfm');
-        $this->mergeConfigFrom(__DIR__.'/Config/vncore.php', 'vncore');
         $this->loadViewsFrom(__DIR__.'/Views/admin', 'vncore-admin');
         $this->loadViewsFrom(__DIR__.'/Views/front', 'vncore-front');
         
@@ -244,28 +227,6 @@ class VncoreServiceProvider extends ServiceProvider
         //End process multi store
         config(['app.storeId' => $storeId]);
         // end set store Id
-
-        config(['auth.guards.admin' => [
-            'driver'   => 'session',
-            'provider' => 'admin',
-        ]]);
-        config(['auth.guards.api' => [
-            'driver'   => 'sanctum',
-            'provider' => 'users',
-        ]]);
-        config(['auth.guards.admin-api' => [
-            'driver'   => 'sanctum',
-            'provider' => 'admins',
-        ]]);
-        config(['auth.providers.admin' => [
-            'driver' => 'eloquent',
-            'model'  => \Vncore\Core\Admin\Models\AdminUser::class,
-        ]]);
-        config(['auth.passwords.admins' => [
-            'provider' => 'admins',
-            'table'    => env('VNCORE_DB_PREFIX', '').'admin_password_resets',
-            'expire'   => 60,
-        ]]);
 
         if (vncore_config_global('LOG_SLACK_WEBHOOK_URL')) {
             config(['logging.channels.slack.url' => vncore_config_global('LOG_SLACK_WEBHOOK_URL')]);
