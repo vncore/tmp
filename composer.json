@@ -34,8 +34,11 @@
 
 "scripts": {
     "post-install-cmd": [
-          "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
-    ]
+      "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
+    ],
+    "post-update-cmd": [
+      "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
+  ],
 },
   "autoload": {
       "psr-4": {
