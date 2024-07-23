@@ -63,7 +63,7 @@ class VncoreServiceProvider extends ServiceProvider
     {
         $this->initial();
 
-        if (VNCORE_ACTIVE == 1 && !file_exists(public_path('vncore-install.php')) && !file_exists(storage_path('vncore_not_run'))) {
+        if (VNCORE_ACTIVE == 1 && !file_exists(public_path('vncore-install.php')) && file_exists(storage_path('vncore-flag.vncore'))) {
             Paginator::useBootstrap();
             //If env is production, then disable debug mode
             if (config('app.env') === 'production') {
@@ -352,6 +352,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->publishes([__DIR__.'/public/vncore-static'  => public_path('vncore-static')], 'vncore:static');
             $this->publishes([__DIR__.'/public/uploads'  => public_path('uploads')], 'vncore:uploads');
             $this->publishes([__DIR__.'/public/vncore-install.php'  => public_path('vncore-install.php')], 'vncore:file-install');
+            $this->publishes([__DIR__.'/storage/vncore-flag.vncore'  => public_path('vncore-flag.txt')], 'vncore:file-flag');
             $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
             $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');

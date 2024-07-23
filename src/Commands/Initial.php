@@ -30,6 +30,7 @@ class Initial extends Command
     public function handle()
     {
         $this->call('vendor:publish', ['--tag' => 'vncore:file-install']);
+        $this->call('vendor:publish', ['--tag' => 'vncore:file-flag']);
         $this->call('vendor:publish', ['--tag' => 'vncore:static']);
         $this->call('vendor:publish', ['--tag' => 'vncore:uploads']);
         $this->call('vendor:publish', ['--tag' => 'vncore:vendor']);
