@@ -26,20 +26,10 @@
       "laravel/socialite": "^5.12",
       "laravel/sanctum": "^4.0",
       "laravel/tinker": "^2.9",
+      "barryvdh/laravel-debugbar": "^3.6",
       "laravel/ui": "^4.5"
   },
-  "require-dev": {
-    "barryvdh/laravel-debugbar": "^3.6"
-},
 
-"scripts": {
-    "post-install-cmd": [
-      "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
-    ],
-    "post-update-cmd": [
-      "@php -r \"file_exists('storage/vncore_not_run.txt') || touch('storage/vncore_not_run.txt');\""
-  ],
-},
   "autoload": {
       "psr-4": {
          "Vncore\\Core\\": "src/"
