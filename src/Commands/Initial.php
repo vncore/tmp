@@ -29,8 +29,8 @@ class Initial extends Command
      */
     public function handle()
     {
-        $this->call('vendor:publish', ['--tag' => 'vncore:file-install']);
-        $this->call('vendor:publish', ['--tag' => 'vncore:static']);
-        $this->call('vendor:publish', ['--tag' => 'vncore:vendor']);
+        $this->call('vendor:publish', ['--tag' => 'vncore:public-install']);
+        $this->call('vendor:publish', ['--tag' => 'vncore:public-static']);
+        $this->call('vendor:publish', ['--tag' => 'vncore:public-vendor']);
     }
 }

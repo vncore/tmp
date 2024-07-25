@@ -378,8 +378,9 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/public/vncore-static'  => public_path('vncore-static')], 'vncore:static');
-            $this->publishes([__DIR__.'/public/vncore-install.php'  => public_path('vncore-install.php')], 'vncore:file-install');
+            $this->publishes([__DIR__.'/public/vncore-static'  => public_path('vncore-static')], 'vncore:public-static');
+            $this->publishes([__DIR__.'/public/vendor'  => public_path('vendor')], 'vncore:public-vendor');
+            $this->publishes([__DIR__.'/public/vncore-install.php'  => public_path('vncore-install.php')], 'vncore:public-install');
             $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
             $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
