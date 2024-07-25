@@ -14,7 +14,6 @@ class DashboardController extends RootAdminController
     
     public function index(Request $request)
     {
-        dump(config('auth'));
         //Check user allow view dasdboard
         if (!\Admin::user()->checkUrlAllowAccess(route('admin.home'))) {
             $data['title'] = vncore_language_render('admin.dashboard');
