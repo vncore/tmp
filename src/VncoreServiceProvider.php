@@ -71,7 +71,7 @@ class VncoreServiceProvider extends ServiceProvider
             }
            Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     
-            //Load helper from front
+            //Load helper
             try {
                 foreach (glob(__DIR__.'/Library/Helpers/*.php') as $filename) {
                     require_once $filename;
@@ -104,6 +104,19 @@ class VncoreServiceProvider extends ServiceProvider
             } catch (\Throwable $e) {
                 $msg = '#SC004::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
+                echo $msg;
+                exit;
+            }
+
+
+            //Load helper
+            try {
+                foreach (glob(base_path().'/vncore/Helpers/*.php') as $filename) {
+                    require_once $filename;
+                }
+            } catch (\Throwable $e) {
+                $msg = '#SC001::Message: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                // vncore_report($msg);
                 echo $msg;
                 exit;
             }
