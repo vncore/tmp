@@ -37,7 +37,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         } catch(\Throwable $e) {
             echo json_encode([
                 'error' => '1',
-                'msg' => '#ISVNC001::'.$e->getMessage(),
+                'msg' => '#VNC_IS001::'.$e->getMessage(),
             ]);
             break;
         }
@@ -66,7 +66,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             } catch(\Throwable $e) {
                 echo json_encode([
                     'error' => '1',
-                    'msg' => '#ISVNC002::'.$e->getMessage(),
+                    'msg' => '#VNC_IS002::'.$e->getMessage(),
                 ]);
                 break;
             }
@@ -89,7 +89,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
             } catch(\Throwable $e) {
                 echo json_encode([
                     'error' => '1',
-                    'msg' => '#ISVNC003::'.$e->getMessage(),
+                    'msg' => '#VNC_IS003::'.$e->getMessage(),
                 ]);
                 break;
             }
@@ -107,7 +107,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         } catch(\Throwable $e) {
             echo json_encode([
                 'error' => '1',
-                'msg' => '#ISVNC003::'.$e->getMessage(),
+                'msg' => '#VNC_IS003::'.$e->getMessage(),
             ]);
             break;
         }
@@ -121,11 +121,10 @@ if (request()->method() == 'POST' && request()->ajax()) {
     case 'step4':
         try {
             rename(base_path() . '/public/vncore-install.php', base_path() . '/public/vncore-install.vncore');
-            unlink(storage_path('vncore_not_run'));
         } catch (\Throwable $e) {
             echo json_encode([
                 'error' => '1',
-                'msg' => '#ISVNC004::'.trans('vncore::install.rename_error'),
+                'msg' => '#VNC_IS004::'.trans('vncore::install.rename_error'),
             ]);
             break;
         }
