@@ -68,8 +68,8 @@ class AdminPluginsController extends RootAdminController
         $namespace = vncore_get_class_plugin_config($key);
         $response = (new $namespace)->uninstall();
         if (!$onlyRemoveData) {
-            File::deleteDirectory(app_path('Plugins/'.$key));
-            File::deleteDirectory(public_path('Plugins/'.$key));
+            File::deleteDirectory(base_path('vncore/Plugins/'.$key));
+            File::deleteDirectory(public_path('vncore/Plugins/'.$key));
         }
         return response()->json($response);
     }
