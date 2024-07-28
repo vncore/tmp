@@ -6,8 +6,8 @@ return [
     'name'             => 'S-Cart',
     'github'           => 'https://github.com/vncore/vncore',
     'facebook'         => 'https://www.facebook.com/SCart.Ecommerce',
-    'auth'             => 'Lanh Le',
-    'email'            => 'lanhktc@gmail.com',
+    'auth'             => 'Vncore Team',
+    'email'            => 'vncore.net@gmail.com',
     'api_link'         => env('VNCORE_API_LINK', 'https://api.vncore.org/v1'),
     'ecommerce_mode'   => env('VNCORE_ECOMMERCE_MODE', 1),
     'search_mode'      => env('VNCORE_SEARCH_MODE', 'PRODUCT'), //PRODUCT,NEWS,CMS

@@ -1,11 +1,10 @@
 <?php
 /**
- * @author Lanh Le <lanhktc@gmail.com>
+ * @author Vncore Team <vncore.net@gmail.com>
  */
 require __DIR__ . '/../../../autoload.php';
 $app = include_once __DIR__ . '/../../../../bootstrap/app.php';
 
-use Illuminate\Encryption\Encrypter;
 use Illuminate\Support\Facades\Artisan;
 $kernel   = $app->make(Illuminate\Contracts\Http\Kernel::class);
 $response = $kernel->handle(
