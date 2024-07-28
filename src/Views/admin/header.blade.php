@@ -6,14 +6,22 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       
-        @include($vncore_templatePathAdmin.'component.language')
-        @include($vncore_templatePathAdmin.'component.admin_theme')
-        @if (is_array(config('vncore.module_header_left')))
-            @foreach (config('vncore.module_header_left') as $module)
-              @includeIf($module)
-            @endforeach
-        @endif
-
+      @include($vncore_templatePathAdmin.'component.language')
+      @include($vncore_templatePathAdmin.'component.admin_theme')
+      
+      @if (is_array(config('vncore.module_header_left')))
+        @foreach (config('vncore.module_header_left') as $module)
+          @includeIf($module)
+        @endforeach
+      @endif
+      
+      @include($vncore_templatePathAdmin.'component.admin_theme')
+      
+      @if (is_array(config('vncore.module_header_left')))
+        @foreach (config('vncore.module_header_left') as $module)
+          @includeIf($module)
+        @endforeach
+      @endif
     </ul>
 
     <!-- Right navbar links -->
@@ -26,13 +34,11 @@
 
       @include($vncore_templatePathAdmin.'component.admin_profile')
 
-
       {{-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li> --}}
-
     </ul>
   </nav>
   <!-- /.navbar -->

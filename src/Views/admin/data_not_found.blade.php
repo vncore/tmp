@@ -1,18 +1,18 @@
 @extends($vncore_templatePathAdmin.'layout')
 
 @section('main')
-   <div class="row">
-      <div class="col-md-12">
-          <div class="box-body">
-            <div class="error-page text-center">
-                
-                <h4><i class="fas fa-exclamation text-red"></i> {{ vncore_language_render('admin.data_not_found_msg') }}</h4>
-                <br>
-                <h5><span class="text-red">{{ $url }}</span></h5>
-              
-            </div>
+  <div class="row">
+    <div class="col-md-12">
+       <div class="box-body">
+        <div class="error-page text-center">
+           
+           <h4><i class="fas fa-exclamation text-red"></i> {{ vncore_language_render('admin.data_not_found_msg') }}</h4>
+           <br>
+           <h5><span class="text-red">{{ $url }}</span></h5>
+          
         </div>
       </div>
+    </div>
   </div>
 @endsection
 

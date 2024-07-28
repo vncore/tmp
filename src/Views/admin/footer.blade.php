@@ -7,7 +7,10 @@
       <strong>Version</strong> 
       {{ config('vncore.sub-version') }} ({{ config('vncore.core-sub-version') }})
     </div>
-    <strong>Copyright &copy; {{ date('Y') }} <a href="{{ config('vncore.homepage') }}">S-Cart: {{ config('vncore.title') }}</a>.</strong> All rights
-    reserved.
+    <strong>
+      Copyright &copy; {{ date('Y') }} 
+      <a href="{{ config('vncore.homepage') }}">S-Cart: {{ config('vncore.title') }}</a>.
+    </strong> 
+    All rights reserved.
   @endif
 </footer>
