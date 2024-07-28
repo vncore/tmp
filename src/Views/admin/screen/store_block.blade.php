@@ -50,7 +50,7 @@
                                             </span>
                                         @endif
                                 </div>
-                                <span style="cursor: pointer;" onclick="imagedemo('https://static.vncore.org/file/block-template.jpg');"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+                                <span style="cursor: pointer;" onclick="imagedemo('https://static.vncore.net/file/block-template.jpg');"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
                             </div>
 
                             <div class="form-group row {{ $errors->has('page') ? ' text-red' : '' }}">

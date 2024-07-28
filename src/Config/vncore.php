@@ -2,13 +2,13 @@
 return [
     'core'             => '9.0',
     'core-sub-version' => '9.0.3',
-    'homepage'         => 'https://vncore.org',
+    'homepage'         => 'https://vncore.net',
     'name'             => 'S-Cart',
     'github'           => 'https://github.com/vncore/vncore',
     'facebook'         => 'https://www.facebook.com/SCart.Ecommerce',
     'auth'             => 'Vncore Team',
     'email'            => 'vncore.net@gmail.com',
-    'api_link'         => env('VNCORE_API_LINK', 'https://api.vncore.org/v1'),
+    'api_link'         => env('VNCORE_API_LINK', 'https://api.vncore.net/v1'),
     'ecommerce_mode'   => env('VNCORE_ECOMMERCE_MODE', 1),
     'search_mode'      => env('VNCORE_SEARCH_MODE', 'PRODUCT'), //PRODUCT,NEWS,CMS
     'VNCORE_ACTIVE'    => env('VNCORE_ACTIVE', 0), // 1: active, 0: deactive - prevent load vencore package

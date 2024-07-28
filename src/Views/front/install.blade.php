@@ -45,17 +45,17 @@
         <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
             @if ($path_lang == '?lang=vi')
-            <img src="https://vncore.org/data/language/flag_vn.png" style="height: 25px;">
+            <img src="https://vncore.net/data/language/flag_vn.png" style="height: 25px;">
             @else
-            <img src="https://vncore.org/data/language/flag_uk.png" style="height: 25px;">
+            <img src="https://vncore.net/data/language/flag_uk.png" style="height: 25px;">
             @endif
 
 
         <span class="caret"></span>
       </button>
           <ul class="dropdown-menu" >
-              <li><a href="vncore-install.php"><img src="https://vncore.org/data/language/flag_uk.png" style="height: 25px;"></a></li>
-              <li><a href="vncore-install.php?lang=vi"><img src="https://vncore.org/data/language/flag_vn.png" style="height: 25px;"></a></li>
+              <li><a href="vncore-install.php"><img src="https://vncore.net/data/language/flag_uk.png" style="height: 25px;"></a></li>
+              <li><a href="vncore-install.php?lang=vi"><img src="https://vncore.net/data/language/flag_vn.png" style="height: 25px;"></a></li>
           </ul>
         </div>
         <div style="clear: both;display: block;">
