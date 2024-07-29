@@ -30,7 +30,6 @@ if (request()->method() == 'POST' && request()->ajax()) {
     case 'step2-1':
         session(['infoInstall'=> request('infoInstall')]);
         try {
-            Artisan::call('migrate');
             \DB::connection(VNCORE_DB_CONNECTION)->table('migrations')->where('migration', '00_00_00_step1_create_tables_admin')->delete();
             Artisan::call('migrate --path=/vendor/vncore/core/src/DB/migrations/00_00_00_step1_create_tables_admin.php');
         } catch(\Throwable $e) {
