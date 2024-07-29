@@ -1,3 +1,7 @@
+<?php
+
+namespace Vncore\Core;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Vncore\Core\Commands\Customize;
@@ -21,11 +25,6 @@ use Vncore\Core\Admin\Middleware\AdminTheme;
 use Laravel\Sanctum\Sanctum;
 use Vncore\Core\Admin\Models\PersonalAccessToken;
 use Illuminate\Pagination\Paginator;
-
-<?php
-
-namespace Vncore\Core;
-
 
 class VncoreServiceProvider extends ServiceProvider
 {
