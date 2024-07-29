@@ -1,10 +1,10 @@
 {
     "name": "your-template-name",
-    "image": "images/scart-min.png",
-    "auth": "S-Cart",
+    "image": "images/vncore-min.png",
+    "auth": "VnCore",
     "email": "support@vncore.net",
-    "website": "https://S-Cart.Org",
+    "website": "https://Vncore.net",
     "configKey": "your-template-name",
     "version": "1.0",
-    "scartVersion": "7.1|7.2"
+    "vncoreVersion": "7.1|7.2"
 }

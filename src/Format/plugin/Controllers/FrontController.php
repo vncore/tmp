@@ -1,8 +1,8 @@
 <?php
-#App\Plugins\Plugin_Code\Plugin_Key\Controllers\FrontController.php
-namespace App\Plugins\Plugin_Code\Plugin_Key\Controllers;
+#Vncore\Plugins\Plugin_Code\Plugin_Key\Controllers\FrontController.php
+namespace Vncore\Plugins\Plugin_Code\Plugin_Key\Controllers;
 
-use App\Plugins\Plugin_Code\Plugin_Key\AppConfig;
+use Vncore\Plugins\Plugin_Code\Plugin_Key\AppConfig;
 use Vncore\Core\Front\Controllers\RootFrontController;
 class FrontController extends RootFrontController
 {

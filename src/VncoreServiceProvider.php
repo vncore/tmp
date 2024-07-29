@@ -144,9 +144,9 @@ class VncoreServiceProvider extends ServiceProvider
                 exit;
             }
 
-            //Boot process S-Cart
+            //Boot process Vncore
             try {
-                $this->bootScart();
+                $this->bootVncore();
             } catch (\Throwable $e) {
                 $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
@@ -244,7 +244,7 @@ class VncoreServiceProvider extends ServiceProvider
         }
     }
 
-    public function bootScart()
+    public function bootVncore()
     {
         // Set store id
         // Default is domain root

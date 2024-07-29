@@ -20,7 +20,7 @@ class Infomation extends Command
      *
      * @var string
      */
-    protected $description = 'Get infomation S-Cart';
+    protected $description = 'Get infomation Vncore';
     const LIMIT = 10;
 
     /**

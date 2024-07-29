@@ -32,7 +32,7 @@ class AdminTemplate extends Model
             ->pluck('name', 'key')
             ->all();
         if (!count($arrTemplate)) {
-            $arrTemplate['vncore-light'] = 'S-Cart Light';
+            $arrTemplate['vncore-light'] = 'Vncore Light';
         }
         return $arrTemplate;
     }

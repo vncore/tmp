@@ -1,15 +1,14 @@
 <?php
 /**
- * Plugin format 3.0
- * Use for S-cart 7.x
+ * Plugin format 1.0
  */
-#App\Plugins\Plugin_Code\Plugin_Key\AppConfig.php
-namespace App\Plugins\Plugin_Code\Plugin_Key;
+#Vncore\Plugins\Plugin_Code\Plugin_Key\AppConfig.php
+namespace Vncore\Plugins\Plugin_Code\Plugin_Key;
 
-use App\Plugins\Plugin_Code\Plugin_Key\Models\PluginModel;
+use Vncore\Plugins\Plugin_Code\Plugin_Key\Models\PluginModel;
 use Vncore\Core\Admin\Models\AdminConfig;
-use App\Plugins\ConfigDefault;
-class AppConfig extends ConfigDefault
+use Vncore\PluginConfigDefault;
+class AppConfig extends PluginConfigDefault
 {
     public function __construct()
     {
@@ -18,7 +17,7 @@ class AppConfig extends ConfigDefault
         $config = json_decode($config, true);
     	$this->configGroup = $config['configGroup'];
         $this->configKey = $config['configKey'];
-        $this->scartVersion = $config['scartVersion'];
+        $this->vncoreVersion = $config['vncoreVersion'];
         //Path
         $this->pathPlugin = $this->configGroup . '/' . $this->configKey;
         //Language

@@ -15,7 +15,7 @@ if (!function_exists('vncore_get_all_plugin') && !in_array('vncore_get_all_plugi
         if ($dirs) {
             foreach ($dirs as $dir) {
                 $tmp = explode('/', $dir);
-                $nameSpace = '\App\Plugins\\' . end($tmp);
+                $nameSpace = '\Vncore\Plugins\\' . end($tmp);
                 if (file_exists($dir . '/AppConfig.php')) {
                     $arrClass[end($tmp)] = $nameSpace;
                 }
@@ -124,13 +124,13 @@ if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_a
         function vncore_get_plugin_namespace(string $key = "")
         {
             $key = vncore_word_format_class($key);
-            $nameSpace = '\App\Plugins\\' . $key;
+            $nameSpace = '\Vncore\Plugins\\' . $key;
             return $nameSpace;
         }
     }
 
     /**
-     * Check plugin and template compatibility with S-cart version
+     * Check plugin and template compatibility with Vncore version
      *
      * @param   string  $versionsConfig  [$versionsConfig description]
      *
@@ -138,7 +138,7 @@ if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_a
      */
     if (!function_exists('vncore_plugin_compatibility_check') && !in_array('vncore_plugin_compatibility_check', config('helper_except', []))) {
         function vncore_plugin_compatibility_check(string $versionsConfig) {
-            $arrVersionSCart = explode('|', $versionsConfig);
-            return in_array(config('vncore.core'), $arrVersionSCart);
+            $arrVersionVncore = explode('|', $versionsConfig);
+            return in_array(config('vncore.core'), $arrVersionVncore);
         }
     }

@@ -11,8 +11,8 @@ class DataDefaultSeeder extends Seeder
     public $adminPassword = '$2y$10$JcmAHe5eUZ2rS0jU1GWr/.xhwCnh2RU13qwjTPcqfmtZXjZxcryPO';
     public $adminEmail = 'your-email@your-domain.com';
     public $language_default = 'en';
-    public $title_en = 'Demo S-Cart : Free Laravel eCommerce';
-    public $title_vi = 'Demo S-Cart: Mã nguồn website thương mại điện tử miễn phí';
+    public $title_en = 'Demo Vncore : Free Laravel eCommerce';
+    public $title_vi = 'Demo Vncore: Mã nguồn website thương mại điện tử miễn phí';
 
     /**
      * Run the database seeds.
@@ -231,7 +231,7 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminStore($email, $language, $domain) {
         $dataAdminStore = [
-            ['id' => 1,'logo' => 'data/logo/scart-mid.png','template' => 'vncore-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 'vncore','domain' => $domain]
+            ['id' => 1,'logo' => 'data/logo/vncore-mid.png','template' => 'vncore-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 'vncore','domain' => $domain]
         ];
         return $dataAdminStore;
     }

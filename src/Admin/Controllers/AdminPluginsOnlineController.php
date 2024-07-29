@@ -62,7 +62,7 @@ class AdminPluginsOnlineController extends RootAdminController
                     'image' => $data['image'] ?? '',
                     'path' => $data['path'] ?? '',
                     'file' => $data['file'] ?? '',
-                    'scart_version' => $data['scart_version'] ?? '',
+                    'vncore_version' => $data['vncore_version'] ?? '',
                     'version' => $data['version'] ?? '',
                     'price' => $data['price'] ?? 0,
                     'price_final' => $data['price_final'] ?? 0,
@@ -148,10 +148,10 @@ class AdminPluginsOnlineController extends RootAdminController
 
                 //Check compatibility 
                 $config = json_decode(file_get_contents($checkConfig[0]), true);
-                $scartVersion = $config['scartVersion'] ?? '';
-                if (!vncore_plugin_compatibility_check($scartVersion)) {
+                $vncoreVersion = $config['vncoreVersion'] ?? '';
+                if (!vncore_plugin_compatibility_check($vncoreVersion)) {
                     File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                    $response = ['error' => 1, 'msg' => vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'vncore_version' => config('vncore.core')])];
+                    $response = ['error' => 1, 'msg' => vncore_language_render('admin.plugin.not_compatible', ['version' => $vncoreVersion, 'vncore_version' => config('vncore.core')])];
                 } else {
                     $folderName = explode('/config.json', $checkConfig[0]);
                     $folderName = explode('/', $folderName[0]);

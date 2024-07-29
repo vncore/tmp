@@ -7,5 +7,5 @@
     "configGroup": "Plugins",
     "configKey": "Plugin_Key",
     "version": "1.0",
-    "scartVersion": "7.1|7.2"
+    "vncoreVersion": "7.1|7.2"
 }

@@ -151,10 +151,10 @@ class AdminPluginsController extends RootAdminController
                     
                     //Check compatibility 
                     $config = json_decode(file_get_contents($checkConfig[0]), true);
-                    $scartVersion = $config['scartVersion'] ?? '';
-                    if (!vncore_plugin_compatibility_check($scartVersion)) {
+                    $vncoreVersion = $config['vncoreVersion'] ?? '';
+                    if (!vncore_plugin_compatibility_check($vncoreVersion)) {
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
-                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.not_compatible', ['version' => $scartVersion, 'vncore_version' => config('vncore.core')]));
+                        return redirect()->back()->with('error', vncore_language_render('admin.plugin.not_compatible', ['version' => $vncoreVersion, 'vncore_version' => config('vncore.core')]));
                     }
 
                     $configGroup = $config['configGroup'] ?? '';

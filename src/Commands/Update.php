@@ -21,7 +21,7 @@ class Update extends Command
      *
      * @var string
      */
-    protected $description = 'Update S-Cart core"';
+    protected $description = 'Update Vncore core"';
 
     /**
      * Execute the console command.

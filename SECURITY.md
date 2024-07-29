@@ -10,4 +10,4 @@ currently being supported with security updates.
 | 1.x   | :white_check_mark: |
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within S-Cart ecommerce, please send an e-mail to Vncore Team via vncore.net@gmail.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Vncore ecommerce, please send an e-mail to Vncore Team via vncore.net@gmail.com. All security vulnerabilities will be promptly addressed.

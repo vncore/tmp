@@ -39,7 +39,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-5 col-sm-8">
         <div style="text-align: center;display: inline;line-height: 80px;">
-            <img alt="Logo-Scart" title="Logo-Scart" src="images/scart-min.png" style="width: 150px; padding: 5px;">
+            <img alt="Logo-Vncore" title="Logo-Vncore" src="images/vncore-min.png" style="width: 150px; padding: 5px;">
         </div>
 
         <div class="btn-group">

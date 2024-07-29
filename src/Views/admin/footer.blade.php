@@ -9,7 +9,7 @@
     </div>
     <strong>
       Copyright &copy; {{ date('Y') }} 
-      <a href="{{ config('vncore.homepage') }}">S-Cart: {{ config('vncore.title') }}</a>.
+      <a href="{{ config('vncore.homepage') }}">Vncore: {{ config('vncore.title') }}</a>.
     </strong> 
     All rights reserved.
   @endif

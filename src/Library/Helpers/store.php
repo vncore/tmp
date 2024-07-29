@@ -83,7 +83,7 @@ if (!function_exists('vncore_get_list_store_of_product_detail') && !in_array('vn
 if (!function_exists('vncore_get_list_store_of_discount_detail') && !in_array('vncore_get_list_store_of_discount_detail', config('helper_except', []))) {
     function vncore_get_list_store_of_discount_detail($dId):array
     {
-        return \App\Plugins\Total\Discount\Models\ShopDiscountStore::where('discount_id', $dId)
+        return \Vncore\Plugins\Total\Discount\Models\ShopDiscountStore::where('discount_id', $dId)
             ->pluck('store_id')
             ->toArray();
     }
@@ -381,7 +381,7 @@ if (!function_exists('vncore_path_vendor') && !in_array('vncore_path_vendor', co
 
 /**
  * Get sum amount order
- * From S-Cart 6.9
+ * From Vncore 6.9
  */
 if (!function_exists('vncore_get_sum_amount_order') && !in_array('vncore_get_sum_amount_order', config('helper_except', []))) {
     function vncore_get_sum_amount_order($storeId = null)

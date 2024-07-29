@@ -13,8 +13,8 @@
 <a href="https://packagist.org/packages/vncore/core"><img src="https://poser.pugx.org/vncore/core/license.svg" alt="License"></a>
 </p>
 
-## About S-cart
-SCart e-commerce: Free open source for businesses, built on the Laravel framework.
+## About Vncore
+Vncore e-commerce: Free open source for businesses, built on the Laravel framework.
 Our highest goals are aimed at general users:
 - Customers do not need to know much about technology.
 - Powerful system, many useful functions.
