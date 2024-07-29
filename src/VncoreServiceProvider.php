@@ -1,7 +1,3 @@
-<?php
-
-namespace Vncore\Core;
-
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Vncore\Core\Commands\Customize;
@@ -26,6 +22,11 @@ use Laravel\Sanctum\Sanctum;
 use Vncore\Core\Admin\Models\PersonalAccessToken;
 use Illuminate\Pagination\Paginator;
 
+<?php
+
+namespace Vncore\Core;
+
+
 class VncoreServiceProvider extends ServiceProvider
 {
     protected $commands = [
@@ -42,32 +43,42 @@ class VncoreServiceProvider extends ServiceProvider
         Initial::class,
     ];
 
-    protected function initial() {
+    protected function initial()
+    {
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'vncore');
 
         try {
-            if (! is_dir($directory = base_path('vncore/Plugins'))) {
+            if (!is_dir($directory = base_path('vncore/Plugins'))) {
                 mkdir($directory, 0755, true);
             }
 
-            if (! is_dir($directory = base_path('vncore/Helpers'))) {
+            if (!is_dir($directory = base_path('vncore/Helpers'))) {
                 mkdir($directory, 0755, true);
             }
         } catch (\Throwable $e) {
-            $msg = '#VNCORE:01:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
             echo $msg;
             exit;
         }
-
 
         try {
             $this->commands($this->install);
         } catch (\Throwable $e) {
-            $msg = '#VNCORE:02:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            echo $msg;
+            exit;
+        }
+
+        try {
+            $this->registerPublishing();
+        } catch (\Throwable $e) {
+            $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            vncore_report($msg);
             echo $msg;
             exit;
         }
     }
+
     /**
      * Bootstrap services.
      *
@@ -83,21 +94,21 @@ class VncoreServiceProvider extends ServiceProvider
             if (config('app.env') === 'production') {
                 config(['app.debug' => false]);
             }
-           Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
-    
+            Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+
             //Load helper
             try {
                 foreach (glob(__DIR__.'/Library/Helpers/*.php') as $filename) {
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:03:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 // vncore_report($msg);
                 echo $msg;
                 exit;
             }
 
-            if(file_exists(base_path('bootstrap/cache/routes-v7.php'))) {
+            if (file_exists(base_path('bootstrap/cache/routes-v7.php'))) {
                 echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! SC cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
             }
 
@@ -105,23 +116,22 @@ class VncoreServiceProvider extends ServiceProvider
             try {
                 DB::connection(VNCORE_DB_CONNECTION)->getPdo();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:04:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
             }
             //Load Plugin Provider
             try {
-                foreach (glob(base_path() . '/vncore/Plugins/*/Provider.php') as $filename) {
+                foreach (glob(base_path().'/vncore/Plugins/*/Provider.php') as $filename) {
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:05:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
             }
-
 
             //Load helper
             try {
@@ -129,7 +139,7 @@ class VncoreServiceProvider extends ServiceProvider
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:06:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 // vncore_report($msg);
                 echo $msg;
                 exit;
@@ -139,7 +149,7 @@ class VncoreServiceProvider extends ServiceProvider
             try {
                 $this->bootScart();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:07:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -151,7 +161,7 @@ class VncoreServiceProvider extends ServiceProvider
                     $this->loadRoutesFrom($routes);
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:08:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -165,7 +175,7 @@ class VncoreServiceProvider extends ServiceProvider
                     }
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:09:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
@@ -177,49 +187,39 @@ class VncoreServiceProvider extends ServiceProvider
                     $this->loadRoutesFrom($routes);
                 }
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:10:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
             }
-            
-            try {
-                $this->registerPublishing();
-            } catch (\Throwable $e) {
-                $msg = '#VNCORE:11:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vncore_report($msg);
-                echo $msg;
-                exit;
-            }
-            
+
             try {
                 $this->registerRouteMiddleware();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:12:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
             }
-            
+
             try {
                 $this->commands($this->commands);
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:13:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
             }
-            
+
             try {
                 $this->validationExtend();
             } catch (\Throwable $e) {
-                $msg = '#VNCORE:14:: ' .$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
                 vncore_report($msg);
                 echo $msg;
                 exit;
             }
         }
-
     }
 
     /**
@@ -239,10 +239,10 @@ class VncoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/Config/lfm.php', 'lfm');
         $this->loadViewsFrom(__DIR__.'/Views/admin', 'vncore-admin');
         $this->loadViewsFrom(__DIR__.'/Views/front', 'vncore-front');
-        
+
         if (file_exists(__DIR__.'/Library/Const.php')) {
             require_once(__DIR__.'/Library/Const.php');
-        } 
+        }
     }
 
     public function bootScart()
@@ -272,7 +272,7 @@ class VncoreServiceProvider extends ServiceProvider
             ||
             // Use smtp config from admin if root domain have smtp_mode enable
             ($storeId == VNCORE_ID_ROOT && vncore_config_global('smtp_mode'))
-            ) {
+        ) {
             $smtpHost     = vncore_config('smtp_host');
             $smtpPort     = vncore_config('smtp_port');
             $smtpSecurity = vncore_config('smtp_security');
@@ -285,20 +285,20 @@ class VncoreServiceProvider extends ServiceProvider
             config(['mail.mailers.smtp.port'       => $smtpPort]);
             config(['mail.mailers.smtp.encryption' => $smtpSecurity]);
             config(['mail.mailers.smtp.username'   => $smtpUser]);
-            config(['mail.mailers.smtp.password' => $smtpPassword]);
-            config(['mail.from.address' => ($smtpFrom ?? vncore_store('email'))]);
-            config(['mail.from.name' => ($smtpName ?? vncore_store('title'))]);
+            config(['mail.mailers.smtp.password'   => $smtpPassword]);
+            config(['mail.from.address'            => ($smtpFrom ?? vncore_store('email'))]);
+            config(['mail.from.name'               => ($smtpName ?? vncore_store('title'))]);
         } else {
             //Set default
-            config(['mail.from.address' => (config('mail.from.address')) ? config('mail.from.address'): vncore_store('email')]);
-            config(['mail.from.name' => (config('mail.from.name')) ? config('mail.from.name'): vncore_store('title')]);
+            config(['mail.from.address' => (config('mail.from.address')) ? config('mail.from.address') : vncore_store('email')]);
+            config(['mail.from.name'    => (config('mail.from.name')) ? config('mail.from.name') : vncore_store('title')]);
         }
         //email
 
         //Share variable for view
         view()->share('vncore_languages', vncore_language_all());
-        view()->share('vncore_templatePath', 'templates.' . vncore_store('template'));
-        view()->share('vncore_templateFile', 'templates/' . vncore_store('template'));
+        view()->share('vncore_templatePath', 'templates.'.vncore_store('template'));
+        view()->share('vncore_templateFile', 'templates/'.vncore_store('template'));
         //
         view()->share('vncore_templatePathAdmin', config('vncore-config.admin.path_view'));
     }
@@ -321,8 +321,8 @@ class VncoreServiceProvider extends ServiceProvider
         'admin.storeId'    => AdminStoreId::class,
         'admin.theme'      => AdminTheme::class,
         //Sanctum
-        'abilities' => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class,
-        'ability' => \Laravel\Sanctum\Http\Middleware\CheckForAnyAbility::class,
+        'abilities'        => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class,
+        'ability'          => \Laravel\Sanctum\Http\Middleware\CheckForAnyAbility::class,
     ];
 
     /**
@@ -333,9 +333,9 @@ class VncoreServiceProvider extends ServiceProvider
     protected function middlewareGroups()
     {
         return [
-            'admin'           => config('vncore-config.middleware.admin'),
-            'front'           => config('vncore-config.middleware.front'),
-            'api.extend'      => config('vncore-config.middleware.api_extend'),
+            'admin'        => config('vncore-config.middleware.admin'),
+            'front'        => config('vncore-config.middleware.front'),
+            'api.extend'   => config('vncore-config.middleware.api_extend'),
         ];
     }
 
@@ -357,7 +357,6 @@ class VncoreServiceProvider extends ServiceProvider
         }
     }
 
-
     /**
      * Validattion extend
      *
@@ -376,11 +375,11 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/public/vncore-static'  => public_path('vncore-static')], 'vncore:public-static');
-            $this->publishes([__DIR__.'/public/vendor'  => public_path('vendor')], 'vncore:public-vendor');
-            $this->publishes([__DIR__.'/public/vncore-install.php'  => public_path('vncore-install.php')], 'vncore:public-install');
-            $this->publishes([__DIR__.'/Views/admin'  => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
-            $this->publishes([__DIR__.'/Views/front'  => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
+            $this->publishes([__DIR__.'/public/vncore-static' => public_path('vncore-static')], 'vncore:public-static');
+            $this->publishes([__DIR__.'/public/vendor' => public_path('vendor')], 'vncore:public-vendor');
+            $this->publishes([__DIR__.'/public/vncore-install.php' => public_path('vncore-install.php')], 'vncore:public-install');
+            $this->publishes([__DIR__.'/Views/admin' => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
+            $this->publishes([__DIR__.'/Views/front' => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
         }
