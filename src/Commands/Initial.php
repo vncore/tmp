@@ -29,6 +29,7 @@ class Initial extends Command
      */
     public function handle()
     {
+        $this->call('migrate');
         $this->call('vendor:publish', ['--tag' => 'vncore:public-install']);
         $this->call('vendor:publish', ['--tag' => 'vncore:public-static']);
         $this->call('vendor:publish', ['--tag' => 'vncore:public-vendor']);
