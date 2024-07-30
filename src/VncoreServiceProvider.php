@@ -46,6 +46,7 @@ class VncoreServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'vncore');
 
+        //Create directory
         try {
             if (!is_dir($directory = app_path('Vncore/Plugins'))) {
                 mkdir($directory, 0755, true);
@@ -60,14 +61,7 @@ class VncoreServiceProvider extends ServiceProvider
             exit;
         }
 
-        try {
-            $this->commands($this->install);
-        } catch (\Throwable $e) {
-            $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-            echo $msg;
-            exit;
-        }
-
+        //Load publish
         try {
             $this->registerPublishing();
         } catch (\Throwable $e) {
@@ -76,6 +70,16 @@ class VncoreServiceProvider extends ServiceProvider
             echo $msg;
             exit;
         }
+
+        //Load command initial
+        try {
+            $this->commands($this->install);
+        } catch (\Throwable $e) {
+            $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            echo $msg;
+            exit;
+        }
+
     }
 
     /**
@@ -88,11 +92,12 @@ class VncoreServiceProvider extends ServiceProvider
         $this->initial();
 
         if (VNCORE_ACTIVE == 1 && !file_exists(public_path('vncore-install.php'))) {
-            Paginator::useBootstrap();
             //If env is production, then disable debug mode
             if (config('app.env') === 'production') {
                 config(['app.debug' => false]);
             }
+
+            Paginator::useBootstrap();
             Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
 
             //Load helper
@@ -108,7 +113,7 @@ class VncoreServiceProvider extends ServiceProvider
             }
 
             if (file_exists(base_path('bootstrap/cache/routes-v7.php'))) {
-                echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! SC cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
+                echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! Vncore cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
             }
 
             //Check connection

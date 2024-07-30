@@ -124,7 +124,7 @@ if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_a
         function vncore_get_plugin_namespace(string $key = "")
         {
             $key = vncore_word_format_class($key);
-            $nameSpace = '\Vncore\Plugins\\' . $key;
+            $nameSpace = '\App\Vncore\Plugins\\' . $key;
             return $nameSpace;
         }
     }

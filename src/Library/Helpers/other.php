@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
-
+use Illuminate\Foundation\Configuration\Exceptions;
 /*
 String to Url
  */
@@ -151,7 +151,7 @@ if (!function_exists('vncore_handle_exception') && !in_array('vncore_handle_exce
     /*
     Process msg exception
      */
-    function vncore_handle_exception(\Throwable $exception)
+    function vncore_handle_exception(Exceptions $exception)
     {
         $msg = "```". $exception->getMessage().'```'.PHP_EOL;
         $msg .= "```IP:```".request()->ip().PHP_EOL;
