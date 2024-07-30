@@ -119,12 +119,12 @@ class AdminPluginsOnlineController extends RootAdminController
         $key = request('key');
         $pathPlugin = 'Plugins/'.$code.'/'.$key;
 
-        if (!is_writable(public_path('vncore/Plugins/'.$code))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path('vncore/Plugins/'.$code)]);
+        if (!is_writable(public_path('Vncore/Plugins/'.$code))) {
+            return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path('Vncore/Plugins/'.$code)]);
         }
 
-        if (!is_writable(base_path('vncore/Plugins/'.$code))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.base_path('vncore/Plugins/'.$code)]);
+        if (!is_writable(app_path('Vncore/Plugins/'.$code))) {
+            return response()->json(['error' => 1, 'msg' => 'No write permission '.app_path('Vncore/Plugins/'.$code)]);
         }
 
         if (!is_writable(storage_path('tmp'))) {

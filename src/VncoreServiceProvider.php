@@ -47,11 +47,11 @@ class VncoreServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/Lang', 'vncore');
 
         try {
-            if (!is_dir($directory = base_path('vncore/Plugins'))) {
+            if (!is_dir($directory = app_path('Vncore/Plugins'))) {
                 mkdir($directory, 0755, true);
             }
 
-            if (!is_dir($directory = base_path('vncore/Helpers'))) {
+            if (!is_dir($directory = app_path('Vncore/Helpers'))) {
                 mkdir($directory, 0755, true);
             }
         } catch (\Throwable $e) {
@@ -122,7 +122,7 @@ class VncoreServiceProvider extends ServiceProvider
             }
             //Load Plugin Provider
             try {
-                foreach (glob(base_path().'/vncore/Plugins/*/Provider.php') as $filename) {
+                foreach (glob(app_path().'/Vncore/Plugins/*/Provider.php') as $filename) {
                     require_once $filename;
                 }
             } catch (\Throwable $e) {
@@ -134,7 +134,7 @@ class VncoreServiceProvider extends ServiceProvider
 
             //Load helper
             try {
-                foreach (glob(base_path().'/vncore/Helpers/*.php') as $filename) {
+                foreach (glob(app_path().'/Vncore/Helpers/*.php') as $filename) {
                     require_once $filename;
                 }
             } catch (\Throwable $e) {

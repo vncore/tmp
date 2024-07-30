@@ -11,11 +11,11 @@ if (!function_exists('vncore_get_all_plugin') && !in_array('vncore_get_all_plugi
     function vncore_get_all_plugin()
     {
         $arrClass = [];
-        $dirs = array_filter(glob(app_path() . '/Plugins/*'), 'is_dir');
+        $dirs = array_filter(glob(app_path() . '/Vncore/Plugins/*'), 'is_dir');
         if ($dirs) {
             foreach ($dirs as $dir) {
                 $tmp = explode('/', $dir);
-                $nameSpace = '\Vncore\Plugins\\' . end($tmp);
+                $nameSpace = '\App\Vncore\Plugins\\' . end($tmp);
                 if (file_exists($dir . '/AppConfig.php')) {
                     $arrClass[end($tmp)] = $nameSpace;
                 }
