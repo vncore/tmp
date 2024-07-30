@@ -2,12 +2,12 @@
 /**
  * Plugin format 1.0
  */
-#Vncore\Plugins\Plugin_Code\Plugin_Key\AppConfig.php
+#App\Vncore\Plugins\Plugin_Code\Plugin_Key\AppConfig.php
 namespace Vncore\Plugins\Plugin_Code\Plugin_Key;
 
 use Vncore\Plugins\Plugin_Code\Plugin_Key\Models\PluginModel;
 use Vncore\Core\Admin\Models\AdminConfig;
-use Vncore\PluginConfigDefault;
+use Vncore\Core\PluginConfigDefault;
 class AppConfig extends PluginConfigDefault
 {
     public function __construct()

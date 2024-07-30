@@ -1,5 +1,5 @@
 <?php
-#Vncore\Plugins\Plugin_Code\Plugin_Key\Controllers\FrontController.php
+#App\Vncore\Plugins\Plugin_Code\Plugin_Key\Controllers\FrontController.php
 namespace Vncore\Plugins\Plugin_Code\Plugin_Key\Controllers;
 
 use Vncore\Plugins\Plugin_Code\Plugin_Key\AppConfig;

@@ -48,7 +48,8 @@ class Customize extends Command
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-api']);
                 break;
             case 'static':
-                $this->call('vendor:publish', ['--tag' => 'vncore:static']);
+                $this->call('vendor:publish', ['--tag' => 'vncore:public-static']);
+                $this->call('vendor:publish', ['--tag' => 'vncore:public-vendor']);
                 break;
 
             default:

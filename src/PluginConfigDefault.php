@@ -8,7 +8,7 @@ abstract class  PluginConfigDefault
     public $configKey;
     public $title;
     public $version;
-    public $scartVersion;
+    public $vncoreVersion;
     public $auth;
     public $link;
     public $image;

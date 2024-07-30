@@ -1,5 +1,5 @@
 <?php
-#Vncore\Plugins\Plugin_Code\Plugin_Key\Admin\AdminController.php
+#App\Vncore\Plugins\Plugin_Code\Plugin_Key\Admin\AdminController.php
 
 namespace Vncore\Plugins\Plugin_Code\Plugin_Key\Admin;
 
