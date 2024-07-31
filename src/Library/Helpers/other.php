@@ -151,7 +151,7 @@ if (!function_exists('vncore_handle_exception') && !in_array('vncore_handle_exce
     /*
     Process msg exception
      */
-    function vncore_handle_exception(Exceptions $exception)
+    function vncore_handle_exception(\Throwable $exception)
     {
         $msg = "```". $exception->getMessage().'```'.PHP_EOL;
         $msg .= "```IP:```".request()->ip().PHP_EOL;

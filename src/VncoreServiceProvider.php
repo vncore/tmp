@@ -96,6 +96,10 @@ class VncoreServiceProvider extends ServiceProvider
             if (config('app.env') === 'production') {
                 config(['app.debug' => false]);
             }
+            
+            if (config('logging.default') === 'stack') {
+                config(['logging.default' => 'daily']);
+            }
 
             Paginator::useBootstrap();
             Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);

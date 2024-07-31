@@ -26,7 +26,7 @@ class AdminPluginsController extends RootAdminController
 
     protected function pluginCode()
     {
-        $arrDefault = config('vncore-config.admin.plugin_protected');
+        $arrDefault = config('vncore-config.plugin.plugin_protected');
         $pluginsInstalled = vncore_get_plugin_installed($onlyActive = false);
         $plugins = vncore_get_all_plugin();
         $title = vncore_language_render('admin.plugin.index');

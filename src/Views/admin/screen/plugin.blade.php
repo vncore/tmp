@@ -107,8 +107,10 @@
                     @php
                     //End try cacth
                     } catch(\Throwable $e) {
-                      vncore_report(json_encode($pluginClassName)." : ".$e->getMessage());
-                      echo json_encode($pluginClassName)." : ".$e->getMessage();
+                      $msg = json_encode($pluginClassName)." : ".$e->getMessage();
+                      $msg .= "\n*File* `".$e->getFile()."`, *Line:* ".$e->getLine().", *Code:* ".$e->getCode().PHP_EOL.'URL= '.url()->current();
+                      vncore_report($msg);
+                      echo $msg;
                     }
                     @endphp
                     
