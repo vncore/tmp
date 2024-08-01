@@ -24,6 +24,7 @@ use Vncore\Core\Admin\Middleware\AdminStoreId;
 use Vncore\Core\Admin\Middleware\AdminTheme;
 use Laravel\Sanctum\Sanctum;
 use Vncore\Core\Admin\Models\PersonalAccessToken;
+use Vncore\Core\Admin\Models\AdminStore;
 use Illuminate\Pagination\Paginator;
 
 class VncoreServiceProvider extends ServiceProvider
@@ -260,7 +261,21 @@ class VncoreServiceProvider extends ServiceProvider
         // Default is domain root
         $storeId = VNCORE_ID_ROOT;
 
+        //Process for multi store
+        if (vncore_check_multi_shop_installed()) {
+            $domain = vncore_process_domain_store(url('/'));
+            if (vncore_check_multi_vendor_installed()) {
+                $arrDomain = AdminStore::getDomainPartner();
+            }
+            if (vncore_check_multi_store_installed()) {
+                $arrDomain = AdminStore::getDomainStore();
+            }
+            if (in_array($domain, $arrDomain)) {
+                $storeId =  array_search($domain, $arrDomain);
+            }
+        }
         //End process multi store
+        
         config(['app.storeId' => $storeId]);
         // end set store Id
 

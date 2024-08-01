@@ -194,7 +194,7 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminUser($username, $password, $email) {
         $dataAdminUser = [
-            ['id' => '1','username' => $username,'password' => $password,'email' => $email,'name' => 'Administrator','avatar' => '/admin/avatar/user.jpg']
+            ['id' => '1','username' => $username,'password' => $password,'email' => $email,'name' => 'Administrator','avatar' => '/vncore-static/avatar/admin.png']
         ];
         return $dataAdminUser;
     }
@@ -231,7 +231,7 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminStore($email, $language, $domain) {
         $dataAdminStore = [
-            ['id' => 1,'logo' => 'data/logo/vncore-mid.png','template' => 'vncore-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 'vncore','domain' => $domain]
+            ['id' => 1,'logo' => '/vncore-static/logo/vncore-mid.png','template' => 'vncore-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 'vncore','domain' => $domain]
         ];
         return $dataAdminStore;
     }
@@ -250,8 +250,8 @@ class DataDefaultSeeder extends Seeder
 
     public function dataShopLang() {
         $dataShopLang = [
-            ['id' => '1','name' => 'English','code' =>'en','icon' => '/data/language/flag_uk.png','status' => '1','rtl' => '0', 'sort' => '1'],
-            ['id' => '2','name' => 'Tiếng Việt','code' => 'vi','icon' => '/data/language/flag_vn.png','status' => '1','rtl' => '0', 'sort' => '2'],
+            ['id' => '1','name' => 'English','code' =>'en','icon' => '/vncore-static/language/flag_uk.png','status' => '1','rtl' => '0', 'sort' => '1'],
+            ['id' => '2','name' => 'Tiếng Việt','code' => 'vi','icon' => '/vncore-static/language/flag_vn.png','status' => '1','rtl' => '0', 'sort' => '2'],
         ];
         return $dataShopLang;
     }
