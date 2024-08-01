@@ -1,5 +1,6 @@
 @php
-    $styleDefine = 'admin.theme_define.'.config('vncore-config.admin.theme_default');
+    $themeDefault = config('vncore-config.admin.theme_default');
+    $styleDefine = 'vncore-config.admin.theme_define.'.$themeDefault;
 @endphp
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
