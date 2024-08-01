@@ -132,6 +132,9 @@ if (!function_exists('vncore_report') && !in_array('vncore_report', config('help
      */
     function vncore_report($msg = "", array $ext = [])
     {
+        if (is_array($msg)) {
+            $msg = json_encode($msg);
+        }
         $msg = vncore_time_now(config('app.timezone')).' ('.config('app.timezone').'):'.PHP_EOL.$msg.PHP_EOL;
         if (!in_array('slack', $ext)) {
             if (config('logging.channels.slack.url')) {
