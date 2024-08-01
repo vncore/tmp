@@ -58,6 +58,7 @@ class VncoreServiceProvider extends ServiceProvider
             }
         } catch (\Throwable $e) {
             $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            vncore_report($msg);
             echo $msg;
             exit;
         }
@@ -77,6 +78,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->commands($this->install);
         } catch (\Throwable $e) {
             $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
+            vncore_report($msg);
             echo $msg;
             exit;
         }
