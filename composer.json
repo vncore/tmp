@@ -26,7 +26,6 @@
       "laravel/socialite": "^5.12",
       "laravel/sanctum": "^4.0",
       "laravel/tinker": "^2.9",
-      "barryvdh/laravel-debugbar": "^3.6",
       "laravel/ui": "^4.5"
   },
 
