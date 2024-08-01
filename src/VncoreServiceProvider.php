@@ -97,6 +97,7 @@ class VncoreServiceProvider extends ServiceProvider
                 config(['app.debug' => false]);
             }
             
+            //If log is stack, then change to daily
             if (config('logging.default') === 'stack') {
                 config(['logging.default' => 'daily']);
             }
@@ -111,7 +112,7 @@ class VncoreServiceProvider extends ServiceProvider
                 }
             } catch (\Throwable $e) {
                 $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                // vncore_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
@@ -148,7 +149,7 @@ class VncoreServiceProvider extends ServiceProvider
                 }
             } catch (\Throwable $e) {
                 $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                // vncore_report($msg);
+                vncore_report($msg);
                 echo $msg;
                 exit;
             }
