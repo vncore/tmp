@@ -14,14 +14,6 @@
           @includeIf($module)
         @endforeach
       @endif
-      
-      @include($vncore_templatePathAdmin.'component.admin_theme')
-      
-      @if (is_array(config('vncore.module_header_left')))
-        @foreach (config('vncore.module_header_left') as $module)
-          @includeIf($module)
-        @endforeach
-      @endif
     </ul>
 
     <!-- Right navbar links -->
