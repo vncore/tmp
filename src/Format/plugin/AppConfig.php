@@ -44,6 +44,7 @@ class AppConfig extends PluginConfigDefault
                     'group'  => $this->configGroup,
                     'key'    => $this->configKey,
                     'sort'   => 0,
+                    'store_id' => VNCORE_ID_GLOBAL,
                     'value'  => self::ON, //Enable extension
                     'detail' => $this->pathPlugin.'::lang.title',
                 ],
