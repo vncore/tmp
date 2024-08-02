@@ -25,7 +25,12 @@ use Vncore\Core\Admin\Middleware\AdminTheme;
 use Laravel\Sanctum\Sanctum;
 use Vncore\Core\Admin\Models\PersonalAccessToken;
 use Vncore\Core\Admin\Models\AdminStore;
+use Vncore\Core\Listeners\AdminCreated;
+use Vncore\Core\Listeners\AdminDeleting;
+use Vncore\Core\Listeners\AdminLogin;
+use Vncore\Core\Listeners\ProcessLogin;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Event;
 
 class VncoreServiceProvider extends ServiceProvider
 {
@@ -231,6 +236,12 @@ class VncoreServiceProvider extends ServiceProvider
                 echo $msg;
                 exit;
             }
+
+
+            Event::subscribe(AdminCreated::class);
+            Event::subscribe(AdminDeleting::class);
+            Event::subscribe(AdminLogin::class);
+            Event::subscribe(ProcessLogin::class);
         }
     }
 
