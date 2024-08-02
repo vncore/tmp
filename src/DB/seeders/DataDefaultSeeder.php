@@ -44,34 +44,34 @@ class DataDefaultSeeder extends Seeder
         }
 
         $dataMenu = $this->dataMenu();
-        $db->table(VNCORE_DB_PREFIX.'admin_menu')->insertOrIgnore($dataMenu);
+        $db->table(VNCORE_DB_PREFIX.'admin_menu')->insert($dataMenu);
         
         $dataAdminPermission = $this->dataAdminPermission(VNCORE_ADMIN_PREFIX);
-        $db->table(VNCORE_DB_PREFIX.'admin_permission')->insertOrIgnore($dataAdminPermission);
+        $db->table(VNCORE_DB_PREFIX.'admin_permission')->insert($dataAdminPermission);
         
         $dataAdminRole = $this->dataAdminRole();
-        $db->table(VNCORE_DB_PREFIX.'admin_role')->insertOrIgnore($dataAdminRole);
+        $db->table(VNCORE_DB_PREFIX.'admin_role')->insert($dataAdminRole);
         
         $dataAdminRolePermission = $this->dataAdminRolePermission();
-        $db->table(VNCORE_DB_PREFIX.'admin_role_permission')->insertOrIgnore($dataAdminRolePermission);
+        $db->table(VNCORE_DB_PREFIX.'admin_role_permission')->insert($dataAdminRolePermission);
 
         $dataAdminRoleUser = $this->dataAdminRoleUser();
-        $db->table(VNCORE_DB_PREFIX.'admin_role_user')->insertOrIgnore($dataAdminRoleUser);
+        $db->table(VNCORE_DB_PREFIX.'admin_role_user')->insert($dataAdminRoleUser);
 
         $dataAdminUser = $this->dataAdminUser($this->adminUser, $this->adminPassword, $this->adminEmail);
-        $db->table(VNCORE_DB_PREFIX.'admin_user')->insertOrIgnore($dataAdminUser);
+        $db->table(VNCORE_DB_PREFIX.'admin_user')->insert($dataAdminUser);
 
         $dataAdminConfig = $this->dataAdminConfig();
-        $db->table(VNCORE_DB_PREFIX.'admin_config')->insertOrIgnore($dataAdminConfig);
+        $db->table(VNCORE_DB_PREFIX.'admin_config')->insert($dataAdminConfig);
 
-        $dataAdminStore = $this->dataAdminStore($this->adminEmail, $this->language_default, str_replace(['http://','https://', '/install.php'], '', url('/')));
-        $db->table(VNCORE_DB_PREFIX.'admin_store')->insertOrIgnore($dataAdminStore);
+        $dataAdminStore = $this->dataAdminStore($this->adminEmail, $this->language_default, str_replace(['http://','https://', '/vncore-install.php'], '', url('/')));
+        $db->table(VNCORE_DB_PREFIX.'admin_store')->insert($dataAdminStore);
 
         $dataAdminStoreDescription = $this->dataAdminStoreDescription($this->title_en, $this->title_vi);
-        $db->table(VNCORE_DB_PREFIX.'admin_store_description')->insertOrIgnore($dataAdminStoreDescription);
+        $db->table(VNCORE_DB_PREFIX.'admin_store_description')->insert($dataAdminStoreDescription);
 
         $dataShopLang = $this->dataShopLang();
-        $db->table(VNCORE_DB_PREFIX.'admin_language')->insertOrIgnore($dataShopLang);
+        $db->table(VNCORE_DB_PREFIX.'admin_language')->insert($dataShopLang);
 
     }
 

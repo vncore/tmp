@@ -23,7 +23,7 @@ class AdminTheme
         }
         $currentTheme = in_array($adminTheme, config('vncore-config.admin.theme')) ? $adminTheme : config('vncore-config.admin.theme_default');
         session(['adminTheme' => $currentTheme]);
-        config(['admin.theme_default' => $currentTheme]);
+        config(['vncore-config.admin.theme_default' => $currentTheme]);
         return $next($request);
     }
 }

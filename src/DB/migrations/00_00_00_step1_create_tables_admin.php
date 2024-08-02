@@ -132,7 +132,6 @@ return new class extends Migration
             $table->string('partner', 10)->default(0)->index()->comment('Use for multi-vendor');
             $table->string('code', 20)->nullable()->unique();
             $table->string('language', 10);
-            $table->string('timezone', 50); // will remove in v7
             $table->string('currency', 10);
             $table->integer('status')->default(1)->comment('0:Lock, 1: unlock\nUse for multi-store, multi-vendor');
             $table->integer('active')->default(1)->comment('0:Maintain, 1: Active');
