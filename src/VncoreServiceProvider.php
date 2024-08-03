@@ -237,11 +237,8 @@ class VncoreServiceProvider extends ServiceProvider
                 exit;
             }
 
+            $this->eventRegister();
 
-            Event::subscribe(AdminCreated::class);
-            Event::subscribe(AdminDeleting::class);
-            Event::subscribe(AdminLogin::class);
-            Event::subscribe(ProcessLogin::class);
         }
     }
 
@@ -420,5 +417,14 @@ class VncoreServiceProvider extends ServiceProvider
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
         }
+    }
+
+    //Event register
+    protected function eventRegister()
+    {
+        Event::listen(AdminCreated::class, AdminCreated::class);
+        Event::listen(AdminDeleting::class, AdminDeleting::class);
+        Event::listen(AdminLogin::class, AdminLogin::class);
+        Event::listen(ProcessLogin::class, ProcessLogin::class);
     }
 }

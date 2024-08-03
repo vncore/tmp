@@ -33,13 +33,13 @@ class Update extends Command
         try {
             Artisan::call('db:seed', 
                 [
-                    '--class' => 'DataDefaultSeeder',
+                    '--class' => '\Vncore\Core\DB\seeders\DataDefaultSeeder',
                     '--force' => true
                 ]
             );
             Artisan::call('db:seed', 
                 [
-                    '--class' => 'DataLocaleSeeder',
+                    '--class' => '\Vncore\Core\DB\seeders\DataLocaleSeeder',
                     '--force' => true
                 ]
             );
