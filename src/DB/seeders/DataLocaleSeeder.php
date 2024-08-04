@@ -1991,7 +1991,7 @@ class DataLocaleSeeder extends Seeder
             ['code' => 'admin.language_manager.title','text' => 'Language manager','position' => 'admin.language','location' => 'en'],
             ['code' => 'admin.language_manager.add','text' => 'Thêm giá trị mới','position' => 'admin.language','location' => 'vi'],
             ['code' => 'admin.language_manager.add','text' => 'Add new record language','position' => 'admin.language','location' => 'en'],
-            ['code' => 'admin.language_manager.position','text' => 'Vị trí mới ngôn ngữ','position' => 'admin.language','location' => 'vi'],
+            ['code' => 'admin.language_manager.position','text' => 'Vị trí ngôn ngữ','position' => 'admin.language','location' => 'vi'],
             ['code' => 'admin.language_manager.position','text' => 'Position language','position' => 'admin.language','location' => 'en'],
             ['code' => 'admin.language_manager.new_position','text' => 'Hoặc thêm vị trí mới','position' => 'admin.language','location' => 'vi'],
             ['code' => 'admin.language_manager.new_position','text' => 'Or add new position','position' => 'admin.language','location' => 'en'],
