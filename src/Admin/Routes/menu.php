@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Admin/Controllers/AdminMenuController.php'))) {
-    $nameSpaceAdminMenu = 'App\Admin\Controllers';
+if (file_exists(app_path('Vncore/Admin/Controllers/AdminMenuController.php'))) {
+    $nameSpaceAdminMenu = 'App\Vncore\Admin\Controllers';
 } else {
     $nameSpaceAdminMenu = 'Vncore\Core\Admin\Controllers';
 }

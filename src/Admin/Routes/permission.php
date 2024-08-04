@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Admin/Controllers/Auth/PermissionController.php'))) {
-    $nameSpaceAdminPermission = 'App\Admin\Controllers';
+if (file_exists(app_path('Vncore/Admin/Controllers/Auth/PermissionController.php'))) {
+    $nameSpaceAdminPermission = 'App\Vncore\Admin\Controllers';
 } else {
     $nameSpaceAdminPermission = 'Vncore\Core\Admin\Controllers';
 }

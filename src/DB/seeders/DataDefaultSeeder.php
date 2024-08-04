@@ -11,8 +11,8 @@ class DataDefaultSeeder extends Seeder
     public $adminPassword = '$2y$10$JcmAHe5eUZ2rS0jU1GWr/.xhwCnh2RU13qwjTPcqfmtZXjZxcryPO';
     public $adminEmail = 'your-email@your-domain.com';
     public $language_default = 'en';
-    public $title_en = 'Demo Vncore : Free Laravel eCommerce';
-    public $title_vi = 'Demo Vncore: Mã nguồn website thương mại điện tử miễn phí';
+    public $title_en = 'Demo VnCore CMS';
+    public $title_vi = 'Demo VnCore CMS';
 
     /**
      * Run the database seeds.
@@ -77,40 +77,45 @@ class DataDefaultSeeder extends Seeder
 
     public function dataMenu() {
         $dataMenu = [
-            ['id' => 9,'parent_id' => 0,'sort' => 400,'title' => 'admin.menu_titles.ADMIN_SYSTEM','icon' => 'fas fa-cogs','uri' => '','key' => 'ADMIN_SYSTEM','type' => 0],
-            ['id' => 65,'parent_id' => 0,'sort' => 250,'title' => 'admin.menu_titles.ADMIN_SHOP_SETTING','icon' => 'fas fa-store-alt','uri' => '','key' => 'ADMIN_SHOP_SETTING','type' => 0],
-            ['id' => 8,'parent_id' => 0,'sort' => 300,'title' => 'admin.menu_titles.ADMIN_EXTENSION','icon' => 'fas fa-th','uri' => '','key' => 'ADMIN_EXTENSION','type' => 0],
+            //Root
+            ['id' => 1,'parent_id' => 0,'sort' => 1,'title' => 'admin.menu_titles.ADMIN_WEBSITE','icon' => 'fas fa-store-alt','uri' => '','key' => 'ADMIN_WEBSITE','type' => 0],
+            ['id' => 2,'parent_id' => 0,'sort' => 2,'title' => 'admin.menu_titles.ADMIN_SYSTEM','icon' => 'fas fa-cogs','uri' => '','key' => 'ADMIN_SYSTEM','type' => 0],
+            ['id' => 3,'parent_id' => 0,'sort' => 3,'title' => 'admin.menu_titles.ADMIN_EXTENSION','icon' => 'fas fa-th','uri' => '','key' => 'ADMIN_EXTENSION','type' => 0],
 
-            //System
-            ['id' => 5,'parent_id' => 9,'sort' => 2,'title' => 'admin.menu_titles.admin_global','icon' => 'fab fa-whmcs','uri' => '','key' => 'CONFIG_SYSTEM','type' => 0],
-            ['id' => 28,'parent_id' => 9,'sort' => 4,'title' => 'admin.menu_titles.error_log','icon' => 'far fa-clone','uri' => '','key' => '','type' => 0],
-            ['id' => 30,'parent_id' => 9,'sort' => 5,'title' => 'admin.menu_titles.localisation','icon' => 'fa fa-map-signs','uri' => '','key' => null,'type' => 0],
-            ['id' => 38,'parent_id' => 9,'sort' => 1,'title' => 'admin.menu_titles.user_permission','icon' => 'fas fa-users-cog','uri' => '','key' => 'ADMIN','type' => 0],
-            ['id' => 70,'parent_id' => 9,'sort' => 6,'title' => 'admin.menu_titles.security','icon' => 'fab fa-shirtsinbulk','uri' => '','key' => 'ADMIN_SECURITY','type' => 0],
+            //Management system
+            ['id' => 6,'parent_id' => 1,'sort' => 1,'title' => 'admin.menu_titles.store_info','icon' => 'fas fa-h-square','uri' => 'admin::store_info','key' => null,'type' => 0],
+            ['id' => 7,'parent_id' => 1,'sort' => 2,'title' => 'admin.menu_titles.store_config','icon' => 'fas fa-cog','uri' => 'admin::store_config','key' => null,'type' => 0],
+            ['id' => 8,'parent_id' => 1,'sort' => 3,'title' => 'admin.menu_titles.store_maintain','icon' => 'fas fa-wrench','uri' => 'admin::store_maintain','key' => null,'type' => 0],
 
-            ['id' => 34,'parent_id' => 5,'sort' => 5,'title' => 'admin.menu_titles.backup_restore','icon' => 'fas fa-save','uri' => 'admin::backup','key' => null,'type' => 0],
-            ['id' => 49,'parent_id' => 5,'sort' => 0,'title' => 'admin.menu_titles.menu','icon' => 'fas fa-bars','uri' => 'admin::menu','key' => null,'type' => 0],
-            ['id' => 58,'parent_id' => 5,'sort' => 5,'title' => 'admin.menu_titles.cache_manager','icon' => 'fab fa-tripadvisor','uri' => 'admin::cache_config','key' => null,'type' => 0],
 
-            ['id' => 36,'parent_id' => 70,'sort' => 2,'title' => 'admin.menu_titles.webhook','icon' => 'fab fa-diaspora','uri' => 'admin::config/webhook','key' => null,'type' => 0],
-            ['id' => 50,'parent_id' => 70,'sort' => 0,'title' => 'admin.menu_titles.operation_log','icon' => 'fas fa-history','uri' => 'admin::log','key' => null,'type' => 0],
-            ['id' => 55,'parent_id' => 70,'sort' => 3,'title' => 'admin.menu_titles.password_policy','icon' => 'fa fa-unlock','uri' => 'admin::password_policy','key' => null,'type' => 0],
+            //Config system
+            ['id' => 9,'parent_id' => 2,'sort' => 2,'title' => 'admin.menu_titles.admin_global','icon' => 'fab fa-whmcs','uri' => '','key' => 'ADMIN_GLOBAL','type' => 0],
+            ['id' => 10,'parent_id' => 2,'sort' => 7,'title' => 'admin.menu_titles.api_manager','icon' => 'fas fa-plug','uri' => '','key' => 'ADMIN_API_MANAGER','type' => 0],
+            ['id' => 11,'parent_id' => 2,'sort' => 5,'title' => 'admin.menu_titles.localisation','icon' => 'fa fa-map-signs','uri' => '','key' => 'ADMIN_LOCAL','type' => 0],
+            ['id' => 12,'parent_id' => 2,'sort' => 1,'title' => 'admin.menu_titles.user_permission','icon' => 'fas fa-users-cog','uri' => '','key' => 'ADMIN_PERMISSION','type' => 0],
+            ['id' => 13,'parent_id' => 2,'sort' => 6,'title' => 'admin.menu_titles.security','icon' => 'fab fa-shirtsinbulk','uri' => '','key' => 'ADMIN_SECURITY','type' => 0],
 
-            ['id' => 46,'parent_id' => 38,'sort' => 0,'title' => 'admin.menu_titles.users','icon' => 'fas fa-users','uri' => 'admin::user','key' => null,'type' => 0],
-            ['id' => 47,'parent_id' => 38,'sort' => 0,'title' => 'admin.menu_titles.roles','icon' => 'fas fa-user-tag','uri' => 'admin::role','key' => null,'type' => 0],
-            ['id' => 48,'parent_id' => 38,'sort' => 0,'title' => 'admin.menu_titles.permission','icon' => 'fas fa-ban','uri' => 'admin::permission','key' => null,'type' => 0],
+            ['id' => 14,'parent_id' => 9,'sort' => 5,'title' => 'admin.menu_titles.backup_restore','icon' => 'fas fa-save','uri' => 'admin::backup','key' => null,'type' => 0],
+            ['id' => 15,'parent_id' => 9,'sort' => 0,'title' => 'admin.menu_titles.menu','icon' => 'fas fa-bars','uri' => 'admin::menu','key' => null,'type' => 0],
+            ['id' => 16,'parent_id' => 9,'sort' => 5,'title' => 'admin.menu_titles.cache_manager','icon' => 'fab fa-tripadvisor','uri' => 'admin::cache_config','key' => null,'type' => 0],
 
-            ['id' => 31,'parent_id' => 30,'sort' => 1,'title' => 'admin.menu_titles.language','icon' => 'fas fa-language','uri' => 'admin::language','key' => null,'type' => 0],
-            ['id' => 69,'parent_id' => 30,'sort' => 2,'title' => 'admin.menu_titles.language_manager','icon' => 'fa fa-universal-access','uri' => 'admin::language_manager','key' => null,'type' => 0],
+            ['id' => 17,'parent_id' => 13,'sort' => 2,'title' => 'admin.menu_titles.webhook','icon' => 'fab fa-diaspora','uri' => 'admin::config/webhook','key' => null,'type' => 0],
+            ['id' => 18,'parent_id' => 13,'sort' => 0,'title' => 'admin.menu_titles.operation_log','icon' => 'fas fa-history','uri' => 'admin::log','key' => null,'type' => 0],
+            ['id' => 19,'parent_id' => 13,'sort' => 3,'title' => 'admin.menu_titles.password_policy','icon' => 'fa fa-unlock','uri' => 'admin::password_policy','key' => null,'type' => 0],
 
-            //Setting store
-            ['id' => 26,'parent_id' => 65,'sort' => 1,'title' => 'admin.menu_titles.store_info','icon' => 'fas fa-h-square','uri' => 'admin::store_info','key' => null,'type' => 0],
-            ['id' => 57,'parent_id' => 65,'sort' => 2,'title' => 'admin.menu_titles.store_config','icon' => 'fas fa-cog','uri' => 'admin::store_config','key' => null,'type' => 0],
-            ['id' => 60,'parent_id' => 65,'sort' => 3,'title' => 'admin.menu_titles.store_maintain','icon' => 'fas fa-wrench','uri' => 'admin::store_maintain','key' => null,'type' => 0],
+            ['id' => 20,'parent_id' => 12,'sort' => 0,'title' => 'admin.menu_titles.users','icon' => 'fas fa-users','uri' => 'admin::user','key' => null,'type' => 0],
+            ['id' => 21,'parent_id' => 12,'sort' => 0,'title' => 'admin.menu_titles.roles','icon' => 'fas fa-user-tag','uri' => 'admin::role','key' => null,'type' => 0],
+            ['id' => 22,'parent_id' => 12,'sort' => 0,'title' => 'admin.menu_titles.permission','icon' => 'fas fa-ban','uri' => 'admin::permission','key' => null,'type' => 0],
+
+            ['id' => 23,'parent_id' => 11,'sort' => 1,'title' => 'admin.menu_titles.language','icon' => 'fas fa-language','uri' => 'admin::language','key' => null,'type' => 0],
+            ['id' => 24,'parent_id' => 11,'sort' => 2,'title' => 'admin.menu_titles.language_manager','icon' => 'fa fa-universal-access','uri' => 'admin::language_manager','key' => null,'type' => 0],
+
+            ['id' => 25,'parent_id' => 10,'sort' => 1,'title' => 'admin.menu_titles.api_config','icon' => 'fas fa fa-cog','uri' => 'admin::api_connection','key' => null,'type' => 0],
+
 
             //Extension
-            ['id' => 4,'parent_id' => 8,'sort' => 201,'title' => 'admin.menu_titles.template_layout','icon' => 'fab fa-windows','uri' => 'admin::template','key' => 'TEMPLATE','type' => 0],
-            ['id' => 35,'parent_id' => 8,'sort' => 202,'title' => 'admin.menu_titles.plugin','icon' => 'fas fa-puzzle-piece','uri' => 'admin::plugin','key' => 'PLUGIN','type' => 0],
+            ['id' => 4,'parent_id' => 3,'sort' => 1,'title' => 'admin.menu_titles.template_layout','icon' => 'fab fa-windows','uri' => 'admin::template','key' => 'TEMPLATE','type' => 0],
+            ['id' => 5,'parent_id' => 3,'sort' => 2,'title' => 'admin.menu_titles.plugin','icon' => 'fas fa-puzzle-piece','uri' => 'admin::plugin','key' => 'PLUGIN','type' => 0],
 
         ];
         return $dataMenu;
@@ -120,17 +125,7 @@ class DataDefaultSeeder extends Seeder
         $dataAdminPermission = [
             ['id' => '1','name' => 'Auth manager','slug' => 'auth.full','http_uri' => 'ANY::'.$prefix.'/auth/*'],
             ['id' => '2','name' => 'Dashboard','slug' => 'dashboard','http_uri' => 'GET::'.$prefix.''],
-            ['id' => '3','name' => 'Base setting','slug' => 'base.setting','http_uri' => 'ANY::'.$prefix.'/order_status/*,ANY::'.$prefix.'/shipping_status/*,ANY::'.$prefix.'/payment_status/*,ANY::'.$prefix.'/supplier/*,ANY::'.$prefix.'/brand/*,ANY::'.$prefix.'/custom_field/*,ANY::'.$prefix.'/weight_unit/*,ANY::'.$prefix.'/length_unit/*,ANY::'.$prefix.'/attribute_group/*,ANY::'.$prefix.'/tax/*'],
-            ['id' => '4','name' => 'Store manager','slug' => 'store.full','http_uri' => 'ANY::'.$prefix.'/store_info/*,ANY::'.$prefix.'/store_maintain/*,ANY::'.$prefix.'/store_config/*,ANY::'.$prefix.'/store_css/*,ANY::'.$prefix.'/store_block/*,ANY::'.$prefix.'/store_link/*'],
-            ['id' => '5','name' => 'Product manager','slug' => 'product.full','http_uri' => 'ANY::'.$prefix.'/product/*,ANY::'.$prefix.'/product_property/*,ANY::'.$prefix.'/product_tag/*'],
-            ['id' => '6','name' => 'Category manager','slug' => 'category.full','http_uri' => 'ANY::'.$prefix.'/category/*'],
-            ['id' => '7','name' => 'Order manager','slug' => 'order.full','http_uri' => 'ANY::'.$prefix.'/order/*'],
-            ['id' => '8','name' => 'Upload management','slug' => 'upload.full','http_uri' => 'ANY::'.$prefix.'/uploads/*'],
-            ['id' => '9','name' => 'Extension manager','slug' => 'extension.full','http_uri' => 'ANY::'.$prefix.'/template/*,ANY::'.$prefix.'/plugin/*'],
-            ['id' => '10','name' => 'Marketing manager','slug' => 'marketing.full','http_uri' => 'ANY::'.$prefix.'/shop_discount/*,ANY::'.$prefix.'/email_template/*,ANY::'.$prefix.'/customer/*,ANY::'.$prefix.'/subscribe/*,ANY::'.$prefix.'/seo/*'],
-            ['id' => '11','name' => 'Report manager','slug' => 'report.full','http_uri' => 'ANY::'.$prefix.'/report/*'],
-            ['id' => '12','name' => 'CMS full','slug' => 'cms.full','http_uri' => 'ANY::'.$prefix.'/page/*,ANY::'.$prefix.'/banner/*,ANY::'.$prefix.'/banner_type/*,ANY::'.$prefix.'/cms_category/*,ANY::'.$prefix.'/cms_content/*,ANY::'.$prefix.'/news/*'],
-            ['id' => '13','name' => 'Update config','slug' => 'change.config','http_uri' => 'POST::'.$prefix.'/store_config/update'],
+            ['id' => '3','name' => 'Store manager','slug' => 'store.full','http_uri' => 'ANY::'.$prefix.'/store_info/*,ANY::'.$prefix.'/store_maintain/*,ANY::'.$prefix.'/store_config/*,ANY::'.$prefix.'/store_css/*,ANY::'.$prefix.'/store_block/*,ANY::'.$prefix.'/store_link/*'],
         ];
         return $dataAdminPermission;
     }
@@ -139,11 +134,7 @@ class DataDefaultSeeder extends Seeder
         $dataAdminRole = [
             ['id' => '1','name' => 'Administrator','slug' => 'administrator'],
             ['id' => '2','name' => 'Group only View','slug' => 'view.all'],
-            ['id' => '3','name' => 'Manager','slug' => 'manager'],
-            ['id' => '4','name' => 'CMS','slug' => 'cms'],
-            ['id' => '5','name' => 'Accountant','slug' => 'accountant'],
-            ['id' => '6','name' => 'Marketing','slug' => 'maketing'],
-            ['id' => '7','name' => 'Admin CMS','slug' => 'admin_cms'],
+            ['id' => '3','name' => 'Content Manager','slug' => 'manager_content'],
         ];
         return $dataAdminRole;
     }
@@ -154,33 +145,6 @@ class DataDefaultSeeder extends Seeder
             ['role_id' => 3,'permission_id' => 1],
             ['role_id' => 3,'permission_id' => 2],
             ['role_id' => 3,'permission_id' => 3],
-            ['role_id' => 3,'permission_id' => 4],
-            ['role_id' => 3,'permission_id' => 5],
-            ['role_id' => 3,'permission_id' => 6],
-            ['role_id' => 3,'permission_id' => 13],
-            ['role_id' => 3,'permission_id' => 7],
-            ['role_id' => 3,'permission_id' => 8],
-            ['role_id' => 3,'permission_id' => 9],
-            ['role_id' => 3,'permission_id' => 10],
-            ['role_id' => 3,'permission_id' => 11],
-            ['role_id' => 3,'permission_id' => 12],
-            ['role_id' => 4,'permission_id' => 1],
-            ['role_id' => 4,'permission_id' => 12],
-            ['role_id' => 5,'permission_id' => 1],
-            ['role_id' => 5,'permission_id' => 2],
-            ['role_id' => 5,'permission_id' => 7],
-            ['role_id' => 5,'permission_id' => 11],
-            ['role_id' => 6,'permission_id' => 1],
-            ['role_id' => 6,'permission_id' => 2],
-            ['role_id' => 6,'permission_id' => 8],
-            ['role_id' => 6,'permission_id' => 10],
-            ['role_id' => 6,'permission_id' => 11],
-            ['role_id' => 6,'permission_id' => 12],
-            ['role_id' => 7,'permission_id' => 1],
-            ['role_id' => 7,'permission_id' => 4],
-            ['role_id' => 7,'permission_id' => 8],
-            ['role_id' => 7,'permission_id' => 12],
-            ['role_id' => 7,'permission_id' => 13],
         ];
         return $dataAdminRolePermission;
     }
@@ -201,8 +165,6 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminConfig() {
         $dataAdminConfig = [
-            ['group' => 'Plugins','code' => 'Payment','key' => 'Cash','value' => '1','sort' => '0','detail' => 'Plugins/Payment/Cash::lang.title','store_id' => 0],
-            ['group' => 'Plugins','code' => 'Shipping','key' => 'ShippingStandard','value' => '1','sort' => '0','detail' => 'Shipping Standard','store_id' => 0],
             ['group' => 'global','code' => 'seo_config','key' => 'url_seo_lang','value' => '0','sort' => '1','detail' => 'seo.url_seo_lang','store_id' => 0],
             ['group' => 'global','code' => 'webhook_config','key' => 'LOG_SLACK_WEBHOOK_URL','value' => '','sort' => '0','detail' => 'admin.config.LOG_SLACK_WEBHOOK_URL','store_id' => 0],
             ['group' => 'global','code' => 'webhook_config','key' => 'GOOGLE_CHAT_WEBHOOK_URL','value' => '','sort' => '0','detail' => 'admin.config.GOOGLE_CHAT_WEBHOOK_URL','store_id' => 0],

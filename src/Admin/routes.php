@@ -11,8 +11,8 @@ Route::group(
         foreach (glob(__DIR__ . '/Routes/*.php') as $filename) {
             require_once $filename;
         }
-        if (file_exists(app_path('Admin/Controllers/DashboardController.php'))) {
-            $nameSpaceAdminDashboard = 'App\Admin\Controllers';
+        if (file_exists(app_path('Vncore/Admin/Controllers/DashboardController.php'))) {
+            $nameSpaceAdminDashboard = 'App\Vncore\Admin\Controllers';
         } else {
             $nameSpaceAdminDashboard = 'Vncore\Core\Admin\Controllers';
         }

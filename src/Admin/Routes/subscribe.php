@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Admin/Controllers/AdminSubscribeController.php'))) {
-    $nameSpaceAdminSubscribe = 'App\Admin\Controllers';
+if (file_exists(app_path('Vncore/Admin/Controllers/AdminSubscribeController.php'))) {
+    $nameSpaceAdminSubscribe = 'App\Vncore\Admin\Controllers';
 } else {
     $nameSpaceAdminSubscribe = 'Vncore\Core\Admin\Controllers';
 }

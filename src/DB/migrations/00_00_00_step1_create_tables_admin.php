@@ -233,6 +233,21 @@ return new class extends Migration
                 $table->timestamps();
             }
         );
+
+        $schema->create(
+            VNCORE_DB_PREFIX.'api_connection',
+            function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('description', 500);
+                $table->string('apiconnection', 50)->unique();
+                $table->string('apikey', 128);
+                $table->date('expire')->nullable();
+                $table->timestamp('last_active', $precision = 0)->nullable();
+                $table->timestamps();
+                $table->tinyInteger('status')->default(0);
+            }
+        );
+
     }
 
     /**
@@ -263,6 +278,7 @@ return new class extends Migration
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_custom_field');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_custom_field_detail');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'languages');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'api_connection');
         
     }
 };

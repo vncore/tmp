@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Admin/Controllers/AdminEmailTemplateController.php'))) {
-    $nameSpaceAdminEmailTemplate = 'App\Admin\Controllers';
+if (file_exists(app_path('Vncore/Admin/Controllers/AdminEmailTemplateController.php'))) {
+    $nameSpaceAdminEmailTemplate = 'App\Vncore\Admin\Controllers';
 } else {
     $nameSpaceAdminEmailTemplate = 'Vncore\Core\Admin\Controllers';
 }

@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Admin/Controllers/AdminAttributeGroupController.php'))) {
-    $nameSpaceAdminAttribute = 'App\Admin\Controllers';
+if (file_exists(app_path('Vncore/Admin/Controllers/AdminAttributeGroupController.php'))) {
+    $nameSpaceAdminAttribute = 'App\Vncore\Admin\Controllers';
 } else {
     $nameSpaceAdminAttribute = 'Vncore\Core\Admin\Controllers';
 }

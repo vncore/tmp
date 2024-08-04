@@ -1,6 +1,6 @@
 <?php
-if (file_exists(app_path('Admin/Controllers/AdminCustomFieldController.php'))) {
-    $nameSpaceAdminCustomField = 'App\Admin\Controllers';
+if (file_exists(app_path('Vncore/Admin/Controllers/AdminCustomFieldController.php'))) {
+    $nameSpaceAdminCustomField = 'App\Vncore\Admin\Controllers';
 } else {
     $nameSpaceAdminCustomField = 'Vncore\Core\Admin\Controllers';
 }
