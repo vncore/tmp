@@ -1,6 +1,5 @@
 <?php
 $prefixCustomer = vncore_config('PREFIX_MEMBER') ?? 'customer';
-$langUrl = config('app.seoLang');
 
 //Process namespace
 if (file_exists(app_path('Http/Controllers/Auth/LoginController.php'))) {

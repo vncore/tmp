@@ -7,7 +7,7 @@ if (file_exists(app_path('Vncore/Front/Controllers/HomeController.php'))) {
 } else {
     $nameSpaceFrontContent = 'Vncore\Core\Front\Controllers';
 }
-
+$langUrl = config('app.seoLang');
 //Route customize
 Route::group(
     [
