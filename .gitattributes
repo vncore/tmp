@@ -7,8 +7,6 @@
 *.php diff=php
 
 src/public/vendor/** linguist-vendored
-src/public/vncore-static/LTE/** linguist-vendored
-src/public/vncore-static/plugin/** linguist-vendored
 
 /.github export-ignore
 CHANGELOG.md export-ignore
