@@ -2,15 +2,13 @@
 
 namespace Vncore\Core\Api\Controllers;
 
-use Vncore\Core\Front\Controllers\RootFrontController;
+use Vncore\Core\Admin\Controllers\RootAdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use Vncore\Core\Front\Controllers\Auth\AuthTrait;
 
-class AdminAuthController extends RootFrontController
+class AdminAuthController extends RootAdminController
 {
-    use AuthTrait;
 
     /**
      * Login user and create token
@@ -37,6 +35,10 @@ class AdminAuthController extends RootFrontController
                 'error' => 1,
                 'msg' => 'Unauthorized'
             ], 401);
+        }
+
+        if (function_exists('vncore_event_admin_login')) {
+            vncore_event_admin_login(\Admin::user());
         }
 
         $user = $this->guard()->user();

@@ -31,17 +31,20 @@ return [
                 'sidebar'     => 'sidebar-pink',
             ],
         ],
+
         //Enable, disable page libary online
         'settings'            => [
             'api_plugin'      => env('VNCORE_ADMIN_API_PLUGIN', 1),
             'api_template'    => env('VNCORE_ADMIN_API_TEMPLATE', 1),
         ],
+
         //Prefix path view admin
         'path_view'           => 'vncore-admin::',
     
         //Config global
         'admin_log'           => env('VNCORE_ADMIN_LOG', 1), //Log access admin
     ],
+
     'api' => [
         'auth' => [
             'api_remmember' => env('VNCORE_API_RECOMMEMBER', 30), //days - expires_at
@@ -55,6 +58,7 @@ return [
             'api_scope_admin' => env('VNCORE_API_SCOPE_ADMIN', 'admin-supper'),//string, separated by commas
         ],
     ],
+
     'middleware'     => [
         'admin'      => [
             1        => 'admin.auth',
@@ -64,25 +68,26 @@ return [
             5        => 'admin.theme',
             6        => 'localization',
         ],
-        'front'      => [
-            1        => 'localization',
-            2        => 'currency',
-            3        => 'checkdomain',
-        ],
         'api_extend' => [
             1        => 'json.response',
             2        => 'api.connection',
             3        => 'throttle: 1000',
         ],
     ],
+
     'plugin' => [
         'plugin_protected' => [
             //
         ],
     ],
+
+
     'route' => [
         //Prefix member, as domain.com/customer/login
         'VNCORE_PREFIX_MEMBER' => env('VNCORE_PREFIX_MEMBER', 'customer'), 
+
+        //Prefix lange on url, as domain.com/en/abc.html
+        //If value is empty, it will not be displayed, as dommain.com/abc.html
         'VNCORE_PREFIX_LANG' => env('VNCORE_PREFIX_LANG', '{lang?}/'),
     ],
 ];

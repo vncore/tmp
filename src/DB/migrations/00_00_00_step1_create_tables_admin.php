@@ -248,6 +248,19 @@ return new class extends Migration
             }
         );
 
+
+        //Sanctum
+        $schema->create('personal_access_tokens', function (Blueprint $table) {
+            $table->id();
+            $table->uuidMorphs('tokenable');
+            $table->string('name');
+            $table->string('token', 64)->unique();
+            $table->text('abilities')->nullable();
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -279,6 +292,7 @@ return new class extends Migration
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_custom_field_detail');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'languages');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'api_connection');
+        $schema->dropIfExists(VNCORE_DB_PREFIX . 'personal_access_tokens');
         
     }
 };

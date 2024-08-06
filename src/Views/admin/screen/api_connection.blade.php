@@ -6,7 +6,7 @@
 @endphp
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-5">
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">{!! $title_action !!}</h3>
@@ -136,25 +136,11 @@
         </div>
       </div>
 
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body p-0">   
-            <div class="row">
-                <div class="col-md-12 m-2">
-                  <input class="switch-data-config" data-on-text="ON API"  data-off-text="OFF API" name="api_mode" type="checkbox"  {{ (vncore_config_global('api_mode')?'checked':'') }}>
-                  <br>&nbsp; {!! vncore_language_render('admin.api_connection.api_connection_required_help') !!}
-                </div>
-            </div>
-        </div>
-        </div>
-      </div>
-</div>
-
-   <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-7">
         <div class="card">
           <div class="card-header with-border">
-            <h3 class="card-title">{!! $title ?? '' !!}  | <input class="switch-data-config" data-on-text="ON CONNECTION"  data-off-text="OFF CONNECTION" name="api_connection_required" type="checkbox"  {{ (vncore_config_global('api_connection_required')?'checked':'') }}></h3>
+            <input class="switch-data-config" data-on-text="ON CONNECTION"  data-off-text="OFF CONNECTION" name="api_connection_required" type="checkbox"  {{ (vncore_config_global('api_connection_required')?'checked':'') }}>
+            <br>&nbsp; {!! vncore_language_render('admin.api_connection.api_connection_required_help') !!}
           </div>
     
           <div class="box-body table-responsive">
@@ -197,10 +183,9 @@
                   </div>
                </section>
         </div>
+        </div>
       </div>
-      </div>
-    </div>
-
+</div>
 
 @endsection
 

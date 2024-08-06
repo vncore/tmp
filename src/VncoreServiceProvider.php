@@ -15,11 +15,9 @@ use Vncore\Core\Commands\Make;
 use Vncore\Core\Commands\Infomation;
 use Vncore\Core\Commands\Initial;
 use Vncore\Core\Commands\Update;
-use Vncore\Core\Front\Middleware\Localization;
-use Vncore\Core\Front\Middleware\EmailIsVerified;
+use Vncore\Core\Admin\Middleware\Localization;
 use Vncore\Core\Api\Middleware\ApiConnection;
 use Vncore\Core\Api\Middleware\ForceJsonResponse;
-use Vncore\Core\Front\Middleware\CheckDomain;
 use Vncore\Core\Admin\Middleware\Authenticate;
 use Vncore\Core\Admin\Middleware\LogOperation;
 use Vncore\Core\Admin\Middleware\PermissionMiddleware;
@@ -183,7 +181,7 @@ class VncoreServiceProvider extends ServiceProvider
 
             //Route Api
             try {
-                if (vncore_config_global('api_mode')) {
+                if (config('vncore.VNCORE_API_MODE')) {
                     if (file_exists($routes = __DIR__.'/Api/routes.php')) {
                         $this->loadRoutesFrom($routes);
                     }
@@ -326,9 +324,7 @@ class VncoreServiceProvider extends ServiceProvider
      */
     protected $routeMiddleware = [
         'localization'     => Localization::class,
-        'email.verify'     => EmailIsVerified::class,
         'api.connection'   => ApiConnection::class,
-        'checkdomain'      => CheckDomain::class,
         'json.response'    => ForceJsonResponse::class,
         //Admin
         'admin.auth'       => Authenticate::class,
@@ -350,7 +346,6 @@ class VncoreServiceProvider extends ServiceProvider
     {
         return [
             'admin'        => config('vncore-config.middleware.admin'),
-            'front'        => config('vncore-config.middleware.front'),
             'api.extend'   => config('vncore-config.middleware.api_extend'),
         ];
     }

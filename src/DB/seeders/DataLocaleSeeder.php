@@ -1692,10 +1692,6 @@ class DataLocaleSeeder extends Seeder
             ['code' => 'admin.notice_new_order','text' => 'You have :total new orders','position' => 'admin','location' => 'en'],
             ['code' => 'admin.gt_numeric_0','text' => 'Giá trị  phải lớn hơn 0!','position' => 'admin','location' => 'vi'],
             ['code' => 'admin.gt_numeric_0','text' => 'Value must greater zero!','position' => 'admin','location' => 'en'],
-            ['code' => 'admin.api_connection.api_mode_help','text' => 'ON/OFF API','position' => 'admin.api_connection','location' => 'en'],
-            ['code' => 'admin.api_connection.api_mode_help','text' => 'TẮT/MỞ API','position' => 'admin.api_connection','location' => 'vi'],
-            ['code' => 'admin.api_connection.api_mode','text' => 'ON/OFF API','position' => 'admin.api_connection','location' => 'en'],
-            ['code' => 'admin.api_connection.api_mode','text' => 'TẮT/MỞ API','position' => 'admin.api_connection','location' => 'vi'],
             ['code' => 'admin.api_connection.list','text' => 'API connection list','position' => 'admin.api_connection','location' => 'en'],
             ['code' => 'admin.api_connection.list','text' => 'Danh sách API connection','position' => 'admin.api_connection','location' => 'vi'],
             ['code' => 'admin.api_connection.description','text' => 'Mô tả','position' => 'admin.api_connection','location' => 'vi'],
@@ -1716,10 +1712,10 @@ class DataLocaleSeeder extends Seeder
             ['code' => 'admin.api_connection.create','text' => 'Creat new connection','position' => 'admin.api_connection','location' => 'en'],
             ['code' => 'admin.api_connection.edit','text' => 'Chỉnh sửa connection','position' => 'admin.api_connection','location' => 'vi'],
             ['code' => 'admin.api_connection.edit','text' => 'Edit connection','position' => 'admin.api_connection','location' => 'en'],
-            ['code' => 'admin.api_connection.api_connection_required_help','text' => '<ul><li>Nếu không sử dụng API, hãy hãy chuyển sang trạng thái "OFF API"</li><li>Nếu không sử dụng apikey và apiconnection, hãy chuyển sang trạng thái "OFF CONNECTION"</li></ul>
+            ['code' => 'admin.api_connection.api_connection_required_help','text' => '<ul><li>Nếu không sử dụng apikey và apiconnection, hãy chuyển sang trạng thái "OFF CONNECTION"</li></ul>
                 <a href="https://vncore.net/vi/docs/developer/about-api-vncore.html" target="_new"><i class="fa fa-info-circle" aria-hidden="true">Xem chi tiết ở đây</i></a>
                 ','position' => 'admin.api_connection','location' => 'vi'],
-            ['code' => 'admin.api_connection.api_connection_required_help','text' => '<ul><li>If not using API, please switch to "OFF API" state</li><li>If apikey and apiconnection are not used, switch to "OFF CONNECTION" state</li></ul>
+            ['code' => 'admin.api_connection.api_connection_required_help','text' => '<ul><li>If apikey and apiconnection are not used, switch to "OFF CONNECTION" state</li></ul>
                 <a href="https://vncore.net/docs/developer/about-api-vncore.html" target="_new"><i class="fa fa-info-circle" aria-hidden="true"></i>See full infomation</a>
                 ','position' => 'admin.api_connection','location' => 'en'],
             ['code' => 'admin.result_item','text' => 'Showing <b>:item_from</b>-<b>:item_to</b> of <b>:total</b> results</b>','position' => 'admin','location' => 'en'],
@@ -2908,10 +2904,6 @@ class DataLocaleSeeder extends Seeder
             ['code' => 'admin.menu_titles.api_manager','text' => 'API manager','position' => 'admin.menu_titles','location' => 'en'],
             ['code' => 'admin.menu_titles.api_config','text' => 'Cấu hình API','position' => 'admin.menu_titles','location' => 'vi'],
             ['code' => 'admin.menu_titles.api_config','text' => 'API config','position' => 'admin.menu_titles','location' => 'en'],
-            ['code' => 'admin.api_connection.api_mode_help','text' => 'ON/OFF API','position' => 'admin.api_connection','location' => 'en'],
-            ['code' => 'admin.api_connection.api_mode_help','text' => 'TẮT/MỞ API','position' => 'admin.api_connection','location' => 'vi'],
-            ['code' => 'admin.api_connection.api_mode','text' => 'ON/OFF API','position' => 'admin.api_connection','location' => 'en'],
-            ['code' => 'admin.api_connection.api_mode','text' => 'TẮT/MỞ API','position' => 'admin.api_connection','location' => 'vi'],
             ['code' => 'admin.api_connection.list','text' => 'API connection list','position' => 'admin.api_connection','location' => 'en'],
             ['code' => 'admin.api_connection.list','text' => 'Danh sách API connection','position' => 'admin.api_connection','location' => 'vi'],
             ['code' => 'admin.api_connection.description','text' => 'Mô tả','position' => 'admin.api_connection','location' => 'vi'],
