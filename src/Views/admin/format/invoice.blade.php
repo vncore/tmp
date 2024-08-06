@@ -1,6 +1,6 @@
 <!-- Font Awesome -->
-<link rel="stylesheet" href="{{ vncore_file('vncore-static/LTE/plugins/fontawesome-free/css/all.min.css')}}">
-<link rel="stylesheet" href="{{ vncore_file('vncore-static/LTE/dist/css/adminlte.min.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('vncore-admin/LTE/plugins/fontawesome-free/css/all.min.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('vncore-admin/LTE/dist/css/adminlte.min.css')}}">
 
 <div class="page-content container">
     <div class="page-header text-blue-d2">
@@ -165,8 +165,8 @@
 </div>
 
 <!-- jQuery -->
-<script src="{{ vncore_file('vncore-static/LTE/plugins/jquery/jquery.min.js')}}"></script>
-<script src="{{ vncore_file('vncore-static/LTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ vncore_file('vncore-admin/LTE/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ vncore_file('vncore-admin/LTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script>
   function order_print(){
     $('.dont-print').hide();
