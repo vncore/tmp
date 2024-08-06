@@ -2,15 +2,18 @@
 
 namespace Vncore\Core;
 
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Laravel\Sanctum\Sanctum;
+
 use Vncore\Core\Commands\Customize;
 use Vncore\Core\Commands\Backup;
 use Vncore\Core\Commands\Restore;
 use Vncore\Core\Commands\Make;
 use Vncore\Core\Commands\Infomation;
 use Vncore\Core\Commands\Initial;
-use Vncore\Core\Commands\ClearCart;
 use Vncore\Core\Commands\Update;
 use Vncore\Core\Front\Middleware\Localization;
 use Vncore\Core\Front\Middleware\EmailIsVerified;
@@ -22,16 +25,13 @@ use Vncore\Core\Admin\Middleware\LogOperation;
 use Vncore\Core\Admin\Middleware\PermissionMiddleware;
 use Vncore\Core\Admin\Middleware\AdminStoreId;
 use Vncore\Core\Admin\Middleware\AdminTheme;
-use Laravel\Sanctum\Sanctum;
 use Vncore\Core\Admin\Models\PersonalAccessToken;
 use Vncore\Core\Admin\Models\AdminStore;
 use Vncore\Core\Listeners\AdminCreated;
 use Vncore\Core\Listeners\AdminDeleting;
 use Vncore\Core\Listeners\AdminLogin;
 use Vncore\Core\Listeners\ProcessLogin;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Route;
+
 class VncoreServiceProvider extends ServiceProvider
 {
     protected $commands = [
@@ -39,7 +39,6 @@ class VncoreServiceProvider extends ServiceProvider
         Restore::class,
         Make::class,
         Infomation::class,
-        ClearCart::class,
         Update::class,
         Customize::class,
     ];
@@ -188,18 +187,6 @@ class VncoreServiceProvider extends ServiceProvider
                     if (file_exists($routes = __DIR__.'/Api/routes.php')) {
                         $this->loadRoutesFrom($routes);
                     }
-                }
-            } catch (\Throwable $e) {
-                $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
-                vncore_report($msg);
-                echo $msg;
-                exit;
-            }
-
-            //Route Front
-            try {
-                if (file_exists($routes = __DIR__.'/Front/routes.php')) {
-                    $this->loadRoutesFrom($routes);
                 }
             } catch (\Throwable $e) {
                 $msg = '#VNCORE:: '.$e->getMessage().' - Line: '.$e->getLine().' - File: '.$e->getFile();
