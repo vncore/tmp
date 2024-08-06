@@ -165,7 +165,6 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminConfig() {
         $dataAdminConfig = [
-            ['group' => 'global','code' => 'seo_config','key' => 'url_seo_lang','value' => '0','sort' => '1','detail' => 'seo.url_seo_lang','store_id' => 0],
             ['group' => 'global','code' => 'webhook_config','key' => 'LOG_SLACK_WEBHOOK_URL','value' => '','sort' => '0','detail' => 'admin.config.LOG_SLACK_WEBHOOK_URL','store_id' => 0],
             ['group' => 'global','code' => 'webhook_config','key' => 'GOOGLE_CHAT_WEBHOOK_URL','value' => '','sort' => '0','detail' => 'admin.config.GOOGLE_CHAT_WEBHOOK_URL','store_id' => 0],
             ['group' => 'global','code' => 'webhook_config','key' => 'CHATWORK_CHAT_WEBHOOK_URL','value' => '','sort' => '0','detail' => 'admin.config.CHATWORK_CHAT_WEBHOOK_URL','store_id' => 0],

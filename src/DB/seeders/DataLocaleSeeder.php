@@ -2730,8 +2730,6 @@ class DataLocaleSeeder extends Seeder
             ['code' => 'admin.maintain.description_note','text' => 'Ghi chú bảo trì','position' => 'admin.maintain','location' => 'vi'],
             ['code' => 'admin.seo.config','text' => 'Cấu hình SEO','position' => 'admin.seo','location' => 'vi'],
             ['code' => 'admin.seo.config','text' => 'SEO config','position' => 'admin.seo','location' => 'en'],
-            ['code' => 'admin.seo.url_seo_lang','text' => 'Thêm ngôn ngữ trên URL','position' => 'admin.seo','location' => 'vi'],
-            ['code' => 'admin.seo.url_seo_lang','text' => 'Add language on URL','position' => 'admin.seo','location' => 'en'],
             ['code' => 'admin.dashboard.total_order','text' => 'Tổng đơn hàng','position' => 'admin.dashboard','location' => 'vi'],
             ['code' => 'admin.dashboard.total_order','text' => 'Order total','position' => 'admin.dashboard','location' => 'en'],
             ['code' => 'admin.dashboard.total_product','text' => 'Tổng sản phẩm','position' => 'admin.dashboard','location' => 'vi'],

@@ -31,7 +31,7 @@ use Vncore\Core\Listeners\AdminLogin;
 use Vncore\Core\Listeners\ProcessLogin;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Event;
-
+use Illuminate\Support\Facades\Route;
 class VncoreServiceProvider extends ServiceProvider
 {
     protected $commands = [
@@ -90,6 +90,7 @@ class VncoreServiceProvider extends ServiceProvider
 
     }
 
+
     /**
      * Bootstrap services.
      *
@@ -97,6 +98,7 @@ class VncoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         $this->initial();
 
         if (VNCORE_ACTIVE == 1 && !file_exists(public_path('vncore-install.php'))) {
@@ -123,10 +125,6 @@ class VncoreServiceProvider extends ServiceProvider
                 vncore_report($msg);
                 echo $msg;
                 exit;
-            }
-
-            if (file_exists(base_path('bootstrap/cache/routes-v7.php'))) {
-                echo ('<div style="color:red;font-size:10px; background:black;z-index:99999;position:fixed; top:1px;">Sorry!! Vncore cannot use route cache. Please delete the file "bootstrap/cache/routes-v7.php" or use the command "php artisan route:clear""</div>');
             }
 
             //Check connection
@@ -292,9 +290,6 @@ class VncoreServiceProvider extends ServiceProvider
         if (vncore_config_global('LOG_SLACK_WEBHOOK_URL')) {
             config(['logging.channels.slack.url' => vncore_config_global('LOG_SLACK_WEBHOOK_URL')]);
         }
-
-        //Config language url
-        config(['app.seoLang' => (vncore_config_global('url_seo_lang') ? '{lang?}/' : '')]);
 
         //Title app
         config(['app.name' => vncore_store('title')]);

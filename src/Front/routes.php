@@ -7,16 +7,17 @@ if (file_exists(app_path('Vncore/Front/Controllers/HomeController.php'))) {
 } else {
     $nameSpaceFrontContent = 'Vncore\Core\Front\Controllers';
 }
-$langUrl = config('app.seoLang');
+$langUrl = config('vncore-config.route.VNCORE_PREFIX_LANG');
+
 //Route customize
 Route::group(
     [
         'middleware' => VNCORE_FRONT_MIDDLEWARE,
     ],
     function () use($langUrl){
-        //Include route custom
-        if (file_exists(base_path('routes/myroute.php'))) {
-            require_once base_path('routes/myroute.php');
+        //Include route customize
+        if (file_exists(app_path('Vncore/myroute.php'))) {
+            require_once app_path('Vncore/myroute.php');
         }
     }
 );

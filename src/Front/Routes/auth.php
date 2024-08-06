@@ -1,5 +1,5 @@
 <?php
-$prefixCustomer = vncore_config('PREFIX_MEMBER') ?? 'customer';
+$prefixCustomer = config('vncore-config.route.VNCORE_PREFIX_MEMBER');
 
 //Process namespace
 if (file_exists(app_path('Http/Controllers/Auth/LoginController.php'))) {

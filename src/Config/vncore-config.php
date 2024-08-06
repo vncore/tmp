@@ -79,5 +79,10 @@ return [
         'plugin_protected' => [
             //
         ],
-    ]
+    ],
+    'route' => [
+        //Prefix member, as domain.com/customer/login
+        'VNCORE_PREFIX_MEMBER' => env('VNCORE_PREFIX_MEMBER', 'customer'), 
+        'VNCORE_PREFIX_LANG' => env('VNCORE_PREFIX_LANG', '{lang?}/'),
+    ],
 ];
