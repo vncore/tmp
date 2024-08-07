@@ -292,7 +292,7 @@ return new class extends Migration
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'admin_custom_field_detail');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'languages');
         $schema->dropIfExists(VNCORE_DB_PREFIX . 'api_connection');
-        $schema->dropIfExists(VNCORE_DB_PREFIX . 'personal_access_tokens');
+        $schema->dropIfExists('personal_access_tokens');
         
     }
 };
