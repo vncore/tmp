@@ -12,32 +12,32 @@ if (!function_exists('vncore_notice_add')) {
     {
         $modelNotice = new Vncore\Core\Admin\Models\AdminNotice;
         $content = '';
-        $admins = [];
+        $listAdmin = [];
         switch ($type) {
             case 'vncore_customer_created':
-                $admins = vncore_admin_notice_get_admin($type);
+                $listAdmin = vncore_admin_notice_get_admin($type);
                 $content = "admin_notice.customer.new";
                 break;
             case 'vncore_order_created':
-                $admins = vncore_admin_notice_get_admin($type);
+                $listAdmin = vncore_admin_notice_get_admin($type);
                 $content = "admin_notice.order.new";
                 break;
             case 'vncore_order_success':
-                $admins = vncore_admin_notice_get_admin($type);
+                $listAdmin = vncore_admin_notice_get_admin($type);
                 $content = "admin_notice.order.success";
                 break;
             case 'vncore_order_update_status':
-                $admins = vncore_admin_notice_get_admin($type);
+                $listAdmin = vncore_admin_notice_get_admin($type);
                 $content = "admin_notice.order.update_status";
                 break;
             
             default:
-                $admins = vncore_admin_notice_get_admin($type);
+                $listAdmin = vncore_admin_notice_get_admin($type);
                 $content = $type;
                 break;
         }
-        if (count($admins)) {
-            foreach ($admins as $key => $admin) {
+        if (count($listAdmin)) {
+            foreach ($listAdmin as $key => $admin) {
                 $modelNotice->create(
                     [
                         'type' => $type,

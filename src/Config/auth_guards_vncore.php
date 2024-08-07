@@ -2,7 +2,7 @@
 return [
     'admin' => [
         'driver'   => 'session',
-        'provider' => 'admin',
+        'provider' => 'admin_provider',
     ],
     'api' => [
         'driver'   => 'sanctum',
@@ -10,6 +10,6 @@ return [
     ],
     'admin-api' => [
         'driver'   => 'sanctum',
-        'provider' => 'admins',
+        'provider' => 'admin_provider',
     ],
 ];

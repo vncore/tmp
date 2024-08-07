@@ -87,7 +87,7 @@ class ForgotPasswordController extends RootAdminController
 
     protected function broker()
     {
-        return Password::broker('admins');
+        return Password::broker('admin_password');
     }
 
     protected function guard()
