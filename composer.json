@@ -1,6 +1,6 @@
 {
   "name": "vncore/core",
-  "description": "Laravel admin / core backend system for all systems (ecommerce, cms, pmo...)",
+  "description": "Laravel admin / core backend for all systems (ecommerce, cms, pmo...)",
   "keywords": ["core admin","laravel core","backend system"],
   "homepage": "https://vncore.net",
   "license": "MIT",
