@@ -1,13 +1,13 @@
 {
   "name": "vncore/core",
-  "description": "Laravel core admin package for all system project",
-  "keywords": ["core admin","laravel core"],
+  "description": "Laravel admin / core backend system for all systems (ecommerce, cms, pmo...)",
+  "keywords": ["core admin","laravel core","backend system"],
   "homepage": "https://vncore.net",
   "license": "MIT",
   "authors": [
       {
-          "name": "VN core",
-          "email": "vncore.net@gmail.net"
+          "name": "VnCore",
+          "email": "vncore.net@gmail.com"
       }
   ],
   "require": {
