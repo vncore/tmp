@@ -25,8 +25,7 @@ What can Vncore do?
 - Supports multiple languages, easy management.
 - Vncore is FREE
 
-And more:
-
+#And more:
 - Vncore builds a large, open ecosystem (plugin, template), helping users quickly build CMS, PMO, eCommerce, etc., according to their needs.
 
 ## Support the project
