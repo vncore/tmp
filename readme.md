@@ -14,14 +14,26 @@
 </p>
 
 ## About Vncore
-Vncore e-commerce: Free open source for businesses, built on the Laravel framework.
-Our highest goals are aimed at general users:
-- Customers do not need to know much about technology.
-- Powerful system, many useful functions.
-- Easy to access, easy to use.
+Vncore is a compact source code built with Laravel, helping users quickly build a powerful admin website. Whether your system is simple or complex, Vncore will help you operate and scale it easily.
+
+What can Vncore do?
+
+- Provides a powerful and flexible role management and user group solution.
+- Offers a synchronous authentication API, enhancing API security with additional layers.
+- Comprehensive access log monitoring system.
+- Continuously updates security vulnerabilities.
+- Supports multiple languages, easy management.
+- Vncore is FREE
+
+And more:
+
+- Vncore builds a large, open ecosystem (plugin, template), helping users quickly build CMS, PMO, eCommerce, etc., according to their needs.
 
 ## Support the project
 Support this project :stuck_out_tongue_winking_eye: :pray:
 <p align="center">
     <a href="https://www.paypal.me/LeLanh" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" data-origin="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="PayPal Me"></a>
 </p>
+
+## Quick Installation Guide
+
