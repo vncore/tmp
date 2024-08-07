@@ -37,11 +37,11 @@ class AdminAuthController extends RootAdminController
             ], 401);
         }
 
-        if (function_exists('vncore_event_admin_login')) {
-            vncore_event_admin_login(\Admin::user());
-        }
-
         $user = $this->guard()->user();
+
+        if (function_exists('vncore_event_admin_login')) {
+            vncore_event_admin_login($user);
+        }
 
         $scope = explode(',', config('vncore-config.api.auth.api_scope_admin'));
         
