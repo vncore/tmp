@@ -30,7 +30,6 @@ class ForgotPasswordController extends RootAdminController
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('guest:admin');
 
     }
 
