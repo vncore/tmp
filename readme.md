@@ -1,10 +1,10 @@
 <p align="center">
     <img src="https://vncore.net/logo.png?v=4" width="150">
 </p>
-<p align="center">Free Laravel e-commerce for business<br>
-    <code><b>composer create-project vncore/vncore</b></code></p>
+<p align="center">Laravel admin / core backend for all systems (ecommerce, cms, pmo...)<br>
+    <code><b>composer require vncore/core</b></code></p>
 <p align="center">
- <a href="https://vncore.net">Home page</a> | <a href="https://demo.vncore.net">Demo</a> | <a href="https://vncore.net/en/docs/master/installation.html">Installation</a>  | <a href="https://vncore.net/en/docs/master/video-guide.html">Video Guide</a> | <a href="https://vncore.net/en/download.html">Download full source</a>
+ <a href="https://vncore.net">Installation and usage documentation</a>
 </p>
 
 <p align="center">
