@@ -68,7 +68,7 @@ if (!function_exists('vncore_contact_form_sendmail') && !in_array('vncore_contac
                     'replyTo' => $data['email'],
                     'subject' => $data['title'],
                 ];
-                vncore_send_mail('templates.' . vncore_store('template') . '.mail.contact_to_admin', $dataView, $config, []);
+                vncore_send_mail('Vncore.Templates.' . vncore_store('template') . '.mail.contact_to_admin', $dataView, $config, []);
             }
         }
     }

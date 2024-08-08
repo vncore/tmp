@@ -162,7 +162,7 @@ class Make extends Command
         $sID = md5(time());
         $tmp = $this->tmpFolder."/".$sID.'/'.$name;
         $tmpPublic = $this->tmpFolder."/".$sID.'/'.$name.'/public';
-        $destination = 'templates/'.$name;
+        $destination = 'Vncore/Templates/'.$name;
         try {
             File::copyDirectory(base_path('vendor/vncore/core/src/'.$source), storage_path($tmp));
             File::copyDirectory(base_path('vendor/vncore/core/src/'.$sourcePublic), storage_path($tmpPublic));

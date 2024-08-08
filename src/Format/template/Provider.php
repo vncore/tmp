@@ -47,7 +47,7 @@ function vncore_template_uninstall($data = []) {
 function vncore_process_css_default($storeId = null) {
         if ($storeId) {
         $cssContent = '';
-        if (file_exists($path = resource_path() . '/views/templates/'.vncore_template_info()['configKey'].'/css_default.css')) {
+        if (file_exists($path = resource_path() . '/views/Vncore/Templates/'.vncore_template_info()['configKey'].'/css_default.css')) {
             $cssContent = file_get_contents($path);
         }
         \Vncore\Core\Admin\Models\AdminStoreCss::insert(['css' => $cssContent, 'store_id' => $storeId, 'template' => vncore_template_info()['configKey']]);

@@ -45,10 +45,10 @@
                     @php
                         $pathImage = $template['config']['image'] ?? '';
                     @endphp
-                   <td>{!!vncore_image_render(vncore_file('templates/'.$key.'/'.$pathImage)??'','50px','', $template['config']['name']??'')!!}</td>
+                   <td>{!!vncore_image_render(vncore_file('Vncore/Templates/'.$key.'/'.$pathImage)??'','50px','', $template['config']['name']??'')!!}</td>
                    <td>{{ $template['config']['name']??'' }}</td>
                    <td>{{ $key??'' }}</td>
-                   <td class="pointer" onclick="imagedemo('{{ vncore_file('templates/'.$key.'/images/demo.jpg') }}')"><a>{{ vncore_language_render('admin.template.click_here') }}</a></td>
+                   <td class="pointer" onclick="imagedemo('{{ vncore_file('Vncore/Templates/'.$key.'/images/demo.jpg') }}')"><a>{{ vncore_language_render('admin.template.click_here') }}</a></td>
                    <td>{{ $template['config']['auth']??'' }}</td>
                    <td><a href="{{ $template['config']['website']??'' }}" target=_new><i class="fa fa-link" aria-hidden="true"></i>Link</a></td>
                    <td>{{ $template['config']['version']??'' }}</td>

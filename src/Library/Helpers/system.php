@@ -213,9 +213,9 @@ if (!function_exists('vncore_get_all_template') && !in_array('vncore_get_all_tem
     function vncore_get_all_template():array
     {
         $arrTemplates = [];
-        foreach (glob(resource_path() . "/views/templates/*") as $template) {
+        foreach (glob(resource_path() . "/views/Vncore/Templates/*") as $template) {
             if (is_dir($template)) {
-                $infoTemlate['code'] = explode('templates/', $template)[1];
+                $infoTemlate['code'] = explode('Templates/', $template)[1];
                 $config = ['name' => '', 'auth' => '', 'email' => '', 'website' => ''];
                 if (file_exists($template . '/config.json')) {
                     $config = json_decode(file_get_contents($template . '/config.json'), true);

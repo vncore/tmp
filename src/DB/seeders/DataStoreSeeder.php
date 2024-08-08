@@ -23,7 +23,7 @@ class DataStoreSeeder extends Seeder
         $dataConfig = $this->dataConfig($storeId);
         $db->table(VNCORE_DB_PREFIX.'admin_config')->insert($dataConfig);
 
-        if (file_exists($fileProcess = resource_path() . '/views/templates/'.$this->getTemplateDefault().'/Provider.php')) {
+        if (file_exists($fileProcess = resource_path() . '/views/Vncore/Templates/'.$this->getTemplateDefault().'/Provider.php')) {
             include_once $fileProcess;
             if (function_exists('vncore_template_install_store')) {
                 //Insert only specify store

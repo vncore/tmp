@@ -50,7 +50,7 @@ class AdminTemplateController extends RootAdminController
         $key = request('key');
 
         //Run function process before remove template
-        if (file_exists($fileProcess = resource_path() . '/views/templates/'.$key.'/Provider.php')) {
+        if (file_exists($fileProcess = resource_path() . '/views/Vncore/Templates/'.$key.'/Provider.php')) {
             include_once $fileProcess;
             if (function_exists('vncore_template_uninstall')) {
                 // Remove template from all stories
@@ -60,8 +60,8 @@ class AdminTemplateController extends RootAdminController
         }
 
         try {
-            File::deleteDirectory(public_path('templates/'.$key));
-            File::deleteDirectory(resource_path('views/templates/'.$key));
+            File::deleteDirectory(public_path('Vncore/Templates/'.$key));
+            File::deleteDirectory(resource_path('views/Vncore/Templates/'.$key));
             $response = ['error' => 0, 'msg' => 'Remove template success'];
         } catch (\Throwable $e) {
             $response = ['error' => 0, 'msg' => $e->getMessage()];
@@ -80,14 +80,14 @@ class AdminTemplateController extends RootAdminController
         $checkTemplate = (new AdminTemplate)->where('key', $key)->first();
 
         if (!$checkTemplate) {
-            if (file_exists($fileConfig = resource_path() . '/views/templates/'.$key.'/config.json')) {
+            if (file_exists($fileConfig = resource_path() . '/views/Vncore/Templates/'.$key.'/config.json')) {
                 $config = json_decode(file_get_contents($fileConfig), true);
             }
             (new AdminTemplate)->create(['key' => $key, 'name' => $config['name'], 'status' => 1]);
         }
 
         //Run function process before remove template
-        if (file_exists($fileProcess = resource_path() . '/views/templates/'.$key.'/Provider.php')) {
+        if (file_exists($fileProcess = resource_path() . '/views/Vncore/Templates/'.$key.'/Provider.php')) {
             include_once $fileProcess;
             $data = ['store_id' => session('adminStoreId')];
             if (function_exists('vncore_template_uninstall') && function_exists('vncore_template_install')) {
@@ -189,12 +189,12 @@ class AdminTemplateController extends RootAdminController
 
                     $configKey = $config['configKey'] ?? '';
 
-                    if (!is_writable(public_path('templates'))) {
-                        return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path('templates')]);
+                    if (!is_writable(public_path('Vncore/Templates'))) {
+                        return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path('Vncore/Templates')]);
                     }
             
-                    if (!is_writable(resource_path('views/templates'))) {
-                        return response()->json(['error' => 1, 'msg' => 'No write permission '.resource_path('views/templates')]);
+                    if (!is_writable(resource_path('views/Vncore/Templates'))) {
+                        return response()->json(['error' => 1, 'msg' => 'No write permission '.resource_path('views/Vncore/Templates')]);
                     }
 
 
@@ -210,12 +210,12 @@ class AdminTemplateController extends RootAdminController
                         return redirect()->back()->with('error', vncore_language_render('admin.template.error_exist'));
                     }
                     try {
-                        File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path('templates/'.$configKey));
-                        File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), resource_path('views/templates/'.$configKey));
+                        File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path('Vncore/Templates/'.$configKey));
+                        File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), resource_path('views/Vncore/Templates/'.$configKey));
                         File::deleteDirectory(storage_path('tmp/'.$pathTmp));
 
                         //Run function process after install template
-                        if (file_exists($fileProcess = resource_path() . '/views/templates/'.$configKey.'/Provider.php')) {
+                        if (file_exists($fileProcess = resource_path() . '/views/Vncore/Templates/'.$configKey.'/Provider.php')) {
                             $data = ['store_id' => session('adminStoreId')];
                             include_once $fileProcess;
                             /**

@@ -74,7 +74,7 @@ class AdminStoreInfoController extends RootAdminController
                 } elseif ($name == 'template') {
                     AdminStore::where('id', $storeId)->update([$name => $value]);
                     //Install template for store
-                    if (file_exists($fileProcess = resource_path() . '/views/templates/'.$value.'/Provider.php')) {
+                    if (file_exists($fileProcess = resource_path() . '/views/Vncore/Templates/'.$value.'/Provider.php')) {
                         include_once $fileProcess;
                         if (function_exists('vncore_template_install_store')) {
                             //Insert only specify store

@@ -117,12 +117,12 @@ class AdminTemplateOnlineController extends RootAdminController
             $response = ['error' => 1, 'msg' => $e->getMessage()];
         }
 
-        if (!is_writable(public_path('templates'))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path('templates')]);
+        if (!is_writable(public_path('Vncore/Templates'))) {
+            return response()->json(['error' => 1, 'msg' => 'No write permission '.public_path('Vncore/Templates')]);
         }
 
-        if (!is_writable(resource_path('views/templates'))) {
-            return response()->json(['error' => 1, 'msg' => 'No write permission '.resource_path('views/templates')]);
+        if (!is_writable(resource_path('views/Vncore/Templates'))) {
+            return response()->json(['error' => 1, 'msg' => 'No write permission '.resource_path('views/Vncore/Templates')]);
         }
 
         $unzip = vncore_unzip(storage_path('tmp/'.$pathTmp.'/'.$fileTmp), storage_path('tmp/'.$pathTmp));
@@ -144,8 +144,8 @@ class AdminTemplateOnlineController extends RootAdminController
                 $folderName = explode('/', $folderName[0]);
                 $folderName = end($folderName);
                 
-                File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path('templates/'.$key));
-                File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), resource_path('views/templates/'.$key));
+                File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName.'/public'), public_path('Vncore/Templates/'.$key));
+                File::copyDirectory(storage_path('tmp/'.$pathTmp.'/'.$folderName), resource_path('views/Vncore/Templates/'.$key));
                 File::deleteDirectory(storage_path('tmp/'.$pathTmp));
             }
 
