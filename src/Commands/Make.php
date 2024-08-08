@@ -66,17 +66,12 @@ class Make extends Command
     }
 
     //Create format plugin
-    public function plugin($code = 'Other', $key = '', $download = 0)
+    protected function plugin($key = '', $download = 0)
     {
         $error = 0;
         $msg = '';
 
-        $arrcodePlugin = ['Cms', 'Other', 'Payment', 'Shipping', 'Total'];
         $pluginKey = vncore_word_format_class($key);
-        $pluginCode = vncore_word_format_class($code);
-        if (!in_array($pluginCode, $arrcodePlugin)) {
-            $pluginCode = 'Other';
-        }
         $pluginUrlKey = vncore_word_format_url($key);
         $pluginUrlKey = str_replace('-', '_', $pluginUrlKey);
 
@@ -85,59 +80,50 @@ class Make extends Command
         $sID = md5(time());
         $tmp = $this->tmpFolder."/".$sID.'/'.$pluginKey;
         $tmpPublic = $this->tmpFolder."/".$sID.'/'.$pluginKey.'/public';
-        $destination = 'Plugins/'.$pluginCode.'/'.$pluginKey;
+        $destination = 'Plugins/'.$pluginKey;
         try {
             File::copyDirectory(base_path('vendor/vncore/core/src/'.$source), storage_path($tmp));
             File::copyDirectory(base_path('vendor/vncore/core/src/'.$sourcePublic), storage_path($tmpPublic));
 
             $adminController = file_get_contents(storage_path($tmp.'/Admin/AdminController.php'));
-            $adminController      = str_replace('Plugin_Code', $pluginCode, $adminController);
             $adminController      = str_replace('Plugin_Key', $pluginKey, $adminController);
             $adminController      = str_replace('PluginUrlKey', $pluginUrlKey, $adminController);
             file_put_contents(storage_path($tmp.'/Admin/AdminController.php'), $adminController);
 
             $frontController = file_get_contents(storage_path($tmp.'/Controllers/FrontController.php'));
-            $frontController      = str_replace('Plugin_Code', $pluginCode, $frontController);
             $frontController      = str_replace('Plugin_Key', $pluginKey, $frontController);
             $frontController      = str_replace('PluginUrlKey', $pluginUrlKey, $frontController);
             file_put_contents(storage_path($tmp.'/Controllers/FrontController.php'), $frontController);
 
             $model = file_get_contents(storage_path($tmp.'/Models/PluginModel.php'));
-            $model      = str_replace('Plugin_Code', $pluginCode, $model);
             $model      = str_replace('Plugin_Key', $pluginKey, $model);
             $model      = str_replace('PluginUrlKey', $pluginUrlKey, $model);
             file_put_contents(storage_path($tmp.'/Models/PluginModel.php'), $model);
 
             $appConfigJson = file_get_contents(storage_path($tmp.'/config.json'));
-            $appConfigJson      = str_replace('Plugin_Code', $pluginCode, $appConfigJson);
             $appConfigJson      = str_replace('Plugin_Key', $pluginKey, $appConfigJson);
             $appConfigJson          = str_replace('PluginUrlKey', $pluginUrlKey, $appConfigJson);
             file_put_contents(storage_path($tmp.'/config.json'), $appConfigJson);
 
 
             $appConfig = file_get_contents(storage_path($tmp.'/AppConfig.php'));
-            $appConfig      = str_replace('Plugin_Code', $pluginCode, $appConfig);
             $appConfig      = str_replace('Plugin_Key', $pluginKey, $appConfig);
             file_put_contents(storage_path($tmp.'/AppConfig.php'), $appConfig);
 
             $langen = file_get_contents(storage_path($tmp.'/Lang/en/lang.php'));
-            $langen      = str_replace('Plugin_Code', $pluginCode, $langen);
             $langen      = str_replace('Plugin_Key', $pluginKey, $langen);
             file_put_contents(storage_path($tmp.'/Lang/en/lang.php'), $langen);
 
             $langvi = file_get_contents(storage_path($tmp.'/Lang/vi/lang.php'));
-            $langvi      = str_replace('Plugin_Code', $pluginCode, $langvi);
             $langvi      = str_replace('Plugin_Key', $pluginKey, $langvi);
             file_put_contents(storage_path($tmp.'/Lang/vi/lang.php'), $langvi);
 
             $provider = file_get_contents(storage_path($tmp.'/Provider.php'));
-            $provider      = str_replace('Plugin_Code', $pluginCode, $provider);
             $provider      = str_replace('Plugin_Key', $pluginKey, $provider);
             $provider          = str_replace('PluginUrlKey', $pluginUrlKey, $provider);
             file_put_contents(storage_path($tmp.'/Provider.php'), $provider);
 
             $route = file_get_contents(storage_path($tmp.'/Route.php'));
-            $route      = str_replace('Plugin_Code', $pluginCode, $route);
             $route      = str_replace('Plugin_Key', $pluginKey, $route);
             $route          = str_replace('PluginUrlKey', $pluginUrlKey, $route);
             file_put_contents(storage_path($tmp.'/Route.php'), $route);
@@ -169,7 +155,7 @@ class Make extends Command
 
 
     //Create format template
-    public function template(string $name, $download = 0)
+    protected function template(string $name, $download = 0)
     {
         $error = 0;
         $msg = '';

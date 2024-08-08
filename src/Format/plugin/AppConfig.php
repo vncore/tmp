@@ -2,10 +2,10 @@
 /**
  * Plugin format 1.0
  */
-#App\Vncore\Plugins\Plugin_Code\Plugin_Key\AppConfig.php
-namespace Vncore\Plugins\Plugin_Code\Plugin_Key;
+#App\Vncore\Plugins\Plugin_Key\AppConfig.php
+namespace Vncore\Plugins\Plugin_Key;
 
-use Vncore\Plugins\Plugin_Code\Plugin_Key\Models\PluginModel;
+use Vncore\Plugins\Plugin_Key\Models\PluginModel;
 use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\PluginConfigDefault;
 class AppConfig extends PluginConfigDefault
@@ -130,7 +130,12 @@ class AppConfig extends PluginConfigDefault
         return;
     }
 
-    public function getData()
+    /**
+     * Get info plugin
+     *
+     * @return  [type]  [return description]
+     */
+    public function getInfo()
     {
         $arrData = [
             'title' => $this->title,
@@ -145,15 +150,5 @@ class AppConfig extends PluginConfigDefault
         ];
 
         return $arrData;
-    }
-
-    /**
-     * Process after order success
-     *
-     * @param   [array]  $data  
-     *
-     */
-    public function endApp($data = []) {
-        //action after end app
     }
 }

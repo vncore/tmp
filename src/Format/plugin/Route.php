@@ -6,7 +6,7 @@ if(vncore_config_exist('Plugin_Key')) {
 Route::group(
     [
         'prefix'    => 'plugin/PluginUrlKey',
-        'namespace' => 'Vncore\Plugins\Plugin_Code\Plugin_Key\Controllers',
+        'namespace' => 'Vncore\Plugins\Plugin_Key\Controllers',
     ],
     function () {
         Route::get('index', 'FrontController@index')
@@ -22,7 +22,7 @@ Route::group(
     [
         'prefix' => VNCORE_ADMIN_PREFIX.'/PluginUrlKey',
         'middleware' => VNCORE_ADMIN_MIDDLEWARE,
-        'namespace' => 'Vncore\Plugins\Plugin_Code\Plugin_Key\Admin',
+        'namespace' => 'Vncore\Plugins\Plugin_Key\Admin',
     ], 
     function () {
         Route::get('/', 'AdminController@index')
