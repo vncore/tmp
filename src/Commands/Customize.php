@@ -36,7 +36,7 @@ class Customize extends Command
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-lfm']);
                 break;
 
-            case 'admin':
+            case 'view':
                 $this->call('vendor:publish', ['--tag' => 'vncore:view-admin']);
                 break;
 

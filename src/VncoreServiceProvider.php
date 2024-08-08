@@ -104,11 +104,6 @@ class VncoreServiceProvider extends ServiceProvider
                 config(['app.debug' => false]);
             }
             
-            //If log is stack, then change to daily
-            if (config('logging.default') === 'stack') {
-                config(['logging.default' => 'daily']);
-            }
-
             Paginator::useBootstrap();
             Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
 
@@ -240,8 +235,8 @@ class VncoreServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__.'/Config/vncore-config.php', 'vncore-config');
         $this->mergeConfigFrom(__DIR__.'/Config/lfm.php', 'lfm');
-        $this->loadViewsFrom(__DIR__.'/Views/admin', 'vncore-admin');
-        $this->loadViewsFrom(__DIR__.'/Views/front', 'vncore-front');
+        $this->loadViewsFrom(__DIR__.'/Views/admin', config('vncore-config.admin.path_view'));
+        $this->loadViewsFrom(__DIR__.'/Views/front', config('vncore-config.front.path_view'));
 
         if (file_exists(__DIR__.'/Library/Const.php')) {
             require_once(__DIR__.'/Library/Const.php');
@@ -314,7 +309,7 @@ class VncoreServiceProvider extends ServiceProvider
         view()->share('vncore_templatePath', 'templates.'.vncore_store('template'));
         view()->share('vncore_templateFile', 'templates/'.vncore_store('template'));
         //
-        view()->share('vncore_templatePathAdmin', config('vncore-config.admin.path_view'));
+        view()->share('vncore_templatePathAdmin', config('vncore-config.admin.path_view').'::');
     }
 
     /**
@@ -386,11 +381,11 @@ class VncoreServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/public/vncore-admin' => public_path('vncore-admin')], 'vncore:public-static');
+            $this->publishes([__DIR__.'/public/Vncore' => public_path('Vncore')], 'vncore:public-static');
             $this->publishes([__DIR__.'/public/vendor' => public_path('vendor')], 'vncore:public-vendor');
             $this->publishes([__DIR__.'/public/vncore-install.php' => public_path('vncore-install.php')], 'vncore:public-install');
-            $this->publishes([__DIR__.'/Views/admin' => resource_path('views/vendor/vncore-admin')], 'vncore:view-admin');
-            $this->publishes([__DIR__.'/Views/front' => resource_path('views/vendor/vncore-front')], 'vncore:view-front');
+            $this->publishes([__DIR__.'/Views/admin' => resource_path('views/vendor/'.config('vncore-config.admin.path_view'))], 'vncore:view-admin');
+            $this->publishes([__DIR__.'/Views/front' => resource_path('views/vendor/'.config('vncore-config.front.path_view'))], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
         }

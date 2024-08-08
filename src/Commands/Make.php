@@ -46,13 +46,11 @@ class Make extends Command
             case 'plugin':
                 $arrOpt = explode('/', $name);
                 if (empty($arrOpt[1])) {
-                    $code = '';
                     $key = $arrOpt[0];
                 } else {
-                    $code = $arrOpt[0];
                     $key = $arrOpt[1];
                 }
-                $this->plugin($code, $key, $download);
+                $this->plugin($key, $download);
                 break;
 
             case 'template':
@@ -80,7 +78,7 @@ class Make extends Command
         $sID = md5(time());
         $tmp = $this->tmpFolder."/".$sID.'/'.$pluginKey;
         $tmpPublic = $this->tmpFolder."/".$sID.'/'.$pluginKey.'/public';
-        $destination = 'Plugins/'.$pluginKey;
+        $destination = 'Vncore/Plugins/'.$pluginKey;
         try {
             File::copyDirectory(base_path('vendor/vncore/core/src/'.$source), storage_path($tmp));
             File::copyDirectory(base_path('vendor/vncore/core/src/'.$sourcePublic), storage_path($tmpPublic));

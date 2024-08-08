@@ -8,6 +8,6 @@
 @endpush
 
 @push('scripts')
-  <script src="{{ vncore_file('vncore-admin/plugin/chartjs/highcharts.js') }}"></script>
-  <script src="{{ vncore_file('vncore-admin/plugin/chartjs/highcharts-3d.js') }}"></script>
+  <script src="{{ vncore_file('Vncore/admin/plugin/chartjs/highcharts.js') }}"></script>
+  <script src="{{ vncore_file('Vncore/admin/plugin/chartjs/highcharts-3d.js') }}"></script>
 @endpush

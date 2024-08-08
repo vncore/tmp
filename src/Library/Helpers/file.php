@@ -177,7 +177,7 @@ Return path image
 if (!function_exists('vncore_image_get_path') && !in_array('vncore_image_get_path', config('helper_except', []))) {
     function vncore_image_get_path($path, $urlDefault = null)
     {
-        $image = $urlDefault ?? 'vncore-admin/images/no-image.jpg';
+        $image = $urlDefault ?? 'Vncore/admin/images/no-image.jpg';
         if ($path) {
             if (file_exists(public_path($path)) || filter_var(str_replace(' ', '%20', $path), FILTER_VALIDATE_URL)) {
                 $image = $path;

@@ -39,10 +39,14 @@ return [
         ],
 
         //Prefix path view admin
-        'path_view'           => 'vncore-admin::',
+        'path_view'           => 'vncore-admin',
     
         //Config global
         'admin_log'           => env('VNCORE_ADMIN_LOG', 1), //Log access admin
+    ],
+
+    'front' => [
+        'path_view'           => 'vncore-front',
     ],
 
     'api' => [

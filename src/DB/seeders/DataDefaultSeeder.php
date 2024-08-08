@@ -158,7 +158,7 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminUser($username, $password, $email) {
         $dataAdminUser = [
-            ['id' => '1','username' => $username,'password' => $password,'email' => $email,'name' => 'Administrator','avatar' => '/vncore-admin/avatar/admin.png']
+            ['id' => '1','username' => $username,'password' => $password,'email' => $email,'name' => 'Administrator','avatar' => '/Vncore/admin/avatar/admin.png']
         ];
         return $dataAdminUser;
     }
@@ -191,17 +191,17 @@ class DataDefaultSeeder extends Seeder
 
     public function dataAdminStore($email, $language, $domain) {
         $dataAdminStore = [
-            ['id' => 1,'logo' => '/vncore-admin/logo/vncore-mid.png','template' => 'vncore-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 'vncore','domain' => $domain]
+            ['id' => 1,'logo' => '/Vncore/admin/logo/vncore-mid.png','template' => 'vncore-light','phone' => '0123456789','long_phone' => 'Support: 0987654321','email' => $email,'time_active' =>'','address' => '123st - abc - xyz','language' => $language,'currency' => 'USD','code' => 'vncore','domain' => $domain]
         ];
         return $dataAdminStore;
     }
 
     public function dataAdminStoreDescription($titleE, $titleV) {
         $dataAdminStoreDescription = [
-            ['store_id' => VNCORE_ID_ROOT,'lang' => 'en','title' => $titleE,'description' => 'Free website shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/vncore-admin/images/maintenance.jpg" />
+            ['store_id' => VNCORE_ID_ROOT,'lang' => 'en','title' => $titleE,'description' => 'Free website shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/Vncore/admin/images/maintenance.jpg" />
             <h3><span style="color:#e74c3c;"><strong>Sorry! We are currently doing site maintenance!</strong></span></h3>
             </center>','maintain_note' => 'Website is in maintenance mode!'],
-            ['store_id' => VNCORE_ID_ROOT,'lang' => 'vi','title' => $titleV,'description' => 'Laravel shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/vncore-admin/images/maintenance.jpg" />
+            ['store_id' => VNCORE_ID_ROOT,'lang' => 'vi','title' => $titleV,'description' => 'Laravel shopping cart for business','keyword' => '','maintain_content' => '<center><img src="/Vncore/admin/images/maintenance.jpg" />
             <h3><span style="color:#e74c3c;"><strong>Xin lỗi! Hiện tại website đang bảo trì!</strong></span></h3>
             </center>','maintain_note' => 'Website đang trong chế độ bảo trì!'],
         ];
@@ -210,8 +210,8 @@ class DataDefaultSeeder extends Seeder
 
     public function dataShopLang() {
         $dataShopLang = [
-            ['id' => '1','name' => 'English','code' =>'en','icon' => '/vncore-admin/language/flag_uk.png','status' => '1','rtl' => '0', 'sort' => '1'],
-            ['id' => '2','name' => 'Tiếng Việt','code' => 'vi','icon' => '/vncore-admin/language/flag_vn.png','status' => '1','rtl' => '0', 'sort' => '2'],
+            ['id' => '1','name' => 'English','code' =>'en','icon' => '/Vncore/admin/language/flag_uk.png','status' => '1','rtl' => '0', 'sort' => '1'],
+            ['id' => '2','name' => 'Tiếng Việt','code' => 'vi','icon' => '/Vncore/admin/language/flag_vn.png','status' => '1','rtl' => '0', 'sort' => '2'],
         ];
         return $dataShopLang;
     }

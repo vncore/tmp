@@ -8,7 +8,7 @@ class RootAdminController extends Controller
     public $vncore_templatePathAdmin;
     public function __construct()
     {
-        $this->vncore_templatePathAdmin = config('vncore-config.admin.path_view');
+        $this->vncore_templatePathAdmin = config('vncore-config.admin.path_view').'::';
     }
 
 }

@@ -3,9 +3,9 @@
  * Plugin format 1.0
  */
 #App\Vncore\Plugins\Plugin_Key\AppConfig.php
-namespace Vncore\Plugins\Plugin_Key;
+namespace App\Vncore\Plugins\Plugin_Key;
 
-use Vncore\Plugins\Plugin_Key\Models\PluginModel;
+use App\Vncore\Plugins\Plugin_Key\Models\PluginModel;
 use Vncore\Core\Admin\Models\AdminConfig;
 use Vncore\Core\PluginConfigDefault;
 class AppConfig extends PluginConfigDefault

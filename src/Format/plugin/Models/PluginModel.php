@@ -1,6 +1,6 @@
 <?php
 #App\Vncore\Plugins\Plugin_Key\Models\PluginModel.php
-namespace Vncore\Plugins\Plugin_Key\Models;
+namespace App\Vncore\Plugins\Plugin_Key\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

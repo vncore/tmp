@@ -77,13 +77,13 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{ vncore_file('vncore-admin/plugin/mirror/doc/docs.css')}}">
-<link rel="stylesheet" href="{{ vncore_file('vncore-admin/plugin/mirror/lib/codemirror.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/mirror/doc/docs.css')}}">
+<link rel="stylesheet" href="{{ vncore_file('Vncore/admin/plugin/mirror/lib/codemirror.css')}}">
 @endpush
 
 @push('scripts')
-<script src="{{ vncore_file('vncore-admin/plugin/mirror/lib/codemirror.js')}}"></script>
-<script src="{{ vncore_file('vncore-admin/plugin/mirror/mode/css/css.js')}}"></script>
+<script src="{{ vncore_file('Vncore/admin/plugin/mirror/lib/codemirror.js')}}"></script>
+<script src="{{ vncore_file('Vncore/admin/plugin/mirror/mode/css/css.js')}}"></script>
 <script>
     window.onload = function() {
       editor = CodeMirror(document.getElementById("css"), {

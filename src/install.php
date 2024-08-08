@@ -168,7 +168,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         $errorEnv .='<div>'.trans('vncore::install.env_key_not_found').'</div>';
     }
     if ($errorEnv) {
-        echo view('vncore-front::install', array(
+        echo view(config('vncore-config.front.path_view').'::install', array(
             'install_error'   => $errorEnv,
             'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),
             'title'     => trans('vncore::install.title'), 'requirements' => $requirements)
@@ -180,7 +180,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
     try {
         \DB::connection(VNCORE_DB_CONNECTION)->getPdo();
     } catch (\Throwable $e) {
-        echo view('vncore-front::install', array(
+        echo view(config('vncore-config.front.path_view').'::install', array(
             'install_error'   => '<div>'.trans('vncore::install.database_error').':'.$e->getMessage().'</div>',
             'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),
             'title'     => trans('vncore::install.title'), 'requirements' => $requirements)
@@ -188,7 +188,7 @@ if (request()->method() == 'POST' && request()->ajax()) {
         exit();
     }
 
-    echo view('vncore-front::install', array(
+    echo view(config('vncore-config.front.path_view').'::install', array(
         'path_lang' => (($lang != 'en') ? "?lang=" . $lang : ""),
         'title'     => trans('vncore::install.title'), 'requirements' => $requirements)
     );

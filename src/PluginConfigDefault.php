@@ -4,7 +4,6 @@ namespace Vncore\Core;
 abstract class  PluginConfigDefault
 {       
     public $configGroup;
-    public $configCode;
     public $configKey;
     public $title;
     public $version;
@@ -44,9 +43,9 @@ abstract class  PluginConfigDefault
     abstract public function getData();
         
     /**
-     * Config app
+     * Process when click button plugin in admin
      */
-    public function config()
+    public function clickApp()
     {
         return null;
     }

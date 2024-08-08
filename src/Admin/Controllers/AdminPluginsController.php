@@ -17,7 +17,7 @@ class AdminPluginsController extends RootAdminController
         $pluginKey = request('pluginKey');
         if ($action == 'config' && $pluginKey != '') {
             $namespace = vncore_get_class_plugin_config($pluginKey);
-            $body = (new $namespace)->config();
+            $body = (new $namespace)->clickApp();
         } else {
             $body = $this->pluginCode();
         }
