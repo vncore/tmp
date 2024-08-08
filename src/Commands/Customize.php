@@ -20,7 +20,7 @@ class Customize extends Command
      *
      * @var string
      */
-    protected $description = 'Customize obj';
+    protected $description = 'Customize obj in Vncore';
 
     /**
      * Execute the console command.
@@ -31,22 +31,15 @@ class Customize extends Command
     {
         $obj = $this->argument('obj');
         switch ($obj) {
-            case 'admin':
-                $this->call('vendor:publish', ['--tag' => 'vncore:config-admin']);
-                $this->call('vendor:publish', ['--tag' => 'vncore:view-admin']);
-                break;
-
-            case 'middleware':
-                $this->call('vendor:publish', ['--tag' => 'vncore:config-middleware']);
-                break;
-                 
-            case 'lfm':
+            case 'config':
+                $this->call('vendor:publish', ['--tag' => 'vncore:config']);
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-lfm']);
                 break;
 
-            case 'api':
-                $this->call('vendor:publish', ['--tag' => 'vncore:config-api']);
+            case 'admin':
+                $this->call('vendor:publish', ['--tag' => 'vncore:view-admin']);
                 break;
+
             case 'static':
                 $this->call('vendor:publish', ['--tag' => 'vncore:public-static']);
                 $this->call('vendor:publish', ['--tag' => 'vncore:public-vendor']);

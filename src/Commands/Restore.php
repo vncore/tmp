@@ -20,7 +20,7 @@ class Restore extends Command
      *
      * @var string
      */
-    protected $description = 'Restore database "vncore:restore --path=abc.sql"';
+    protected $description = "Restore database 'vncore:restore --path=abc.sql' .Path is file name in 'storage/backups'";
 
     /**
      * Execute the console command.

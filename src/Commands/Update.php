@@ -21,7 +21,7 @@ class Update extends Command
      *
      * @var string
      */
-    protected $description = 'Update Vncore core"';
+    protected $description = 'Update Vncore';
 
     /**
      * Execute the console command.
@@ -44,6 +44,14 @@ class Update extends Command
                 ]
             );
             $this->info('- Update database done!');
+        } catch (Throwable $e) {
+            vncore_report($e->getMessage());
+            echo  json_encode(['error' => 1, 'msg' => $e->getMessage()]);
+            exit();
+        }
+        try {
+            Artisan::call('vncore:customize static');
+            $this->info('- Update static file done!');
         } catch (Throwable $e) {
             vncore_report($e->getMessage());
             echo  json_encode(['error' => 1, 'msg' => $e->getMessage()]);
