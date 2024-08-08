@@ -277,7 +277,7 @@ return [
      */
 
     // If true, image thumbnails would be created during upload
-    'should_create_thumbnails' => env('VNCORE_UPLOAD_THUMB_STATUS', false),
+    'should_create_thumbnails' => env('VNCORE_UPLOAD_THUMB_STATUS', true),
 
     'thumb_folder_name'        => env('VNCORE_UPLOAD_THUMB_FOLDER', 'thumbs'),
 
