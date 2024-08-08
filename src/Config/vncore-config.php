@@ -1,4 +1,6 @@
 <?php
+define('VNCORE_ADMIN_PATH_VIEW', 'vncore-admin');
+define('VNCORE_FRONT_PATH_VIEW', 'vncore-front');
 
 return [
     'admin'                   => [
@@ -39,16 +41,30 @@ return [
         ],
 
         //Prefix path view admin
-        'path_view'           => 'vncore-admin',
+        'path_view'           => VNCORE_ADMIN_PATH_VIEW,
     
         //Config global
         'admin_log'           => env('VNCORE_ADMIN_LOG', 1), //Log access admin
-    ],
 
+        //Config for header
+        //Path view for header
+        'module_header_left' => [
+            VNCORE_ADMIN_PATH_VIEW.'::component.language',
+            VNCORE_ADMIN_PATH_VIEW.'::component.admin_theme',
+            ]
+        ],
+        
+        'module_header_right' => [
+            VNCORE_ADMIN_PATH_VIEW.'::component.notice',
+            VNCORE_ADMIN_PATH_VIEW.'::component.admin_profile',
+        ],
+        
+    // Config for front
     'front' => [
-        'path_view'           => 'vncore-front',
+        'path_view'           => VNCORE_FRONT_PATH_VIEW,
     ],
 
+    //Config for api
     'api' => [
         'auth' => [
             'api_remmember' => env('VNCORE_API_RECOMMEMBER', 30), //days - expires_at
@@ -63,22 +79,24 @@ return [
         ],
     ],
 
+    //Config for middleware
     'middleware'     => [
-        'admin'      => [
-            1        => 'admin.auth',
-            2        => 'admin.permission',
-            3        => 'admin.log',
-            4        => 'admin.storeId',
-            5        => 'admin.theme',
-            6        => 'localization',
-        ],
-        'api_extend' => [
-            1        => 'json.response',
-            2        => 'api.connection',
-            3        => 'throttle: 1000',
-        ],
+            'admin'      => [
+                1        => 'admin.auth',
+                2        => 'admin.permission',
+                3        => 'admin.log',
+                4        => 'admin.storeId',
+                5        => 'admin.theme',
+                6        => 'localization',
+            ],
+            'api_extend' => [
+                1        => 'json.response',
+                2        => 'api.connection',
+                3        => 'throttle: 1000',
+            ],
     ],
 
+    //Config for plugin
     'plugin' => [
         'plugin_protected' => [
             //
@@ -86,6 +104,7 @@ return [
     ],
 
 
+    //Config for route
     'route' => [
         //Prefix member, as domain.com/customer/login
         'VNCORE_PREFIX_MEMBER' => env('VNCORE_PREFIX_MEMBER', 'customer'), 

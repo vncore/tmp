@@ -38,9 +38,9 @@ abstract class  PluginConfigDefault
     abstract public function disable();
 
     /**
-     * Get data app
+     * Get info app
      */
-    abstract public function getData();
+    abstract public function getInfo();
         
     /**
      * Process when click button plugin in admin
