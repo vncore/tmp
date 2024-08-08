@@ -15,7 +15,7 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'use_package_routes'       => false,
+    'use_package_routes'       => false, // Vncore re-define routes
     // The url to this package. Change it if necessary.
     'url_prefix' => 'uploads',
     /*
