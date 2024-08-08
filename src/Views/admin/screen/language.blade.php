@@ -89,7 +89,7 @@
               </span>
               @endif
               <div id="preview_icon" class="img_holder"><img
-                src="{{ vncore_file(old('icon',$language['icon']??'Vncore/admin/images/no-image.jpg')) }}">
+                src="{{ vncore_file(old('icon',$language['icon']??'Vncore/Admin/images/no-image.jpg')) }}">
               </div>
             </div>
           </div>
