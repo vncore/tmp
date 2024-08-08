@@ -14,7 +14,7 @@ if (!function_exists('vncore_admin_can_config')) {
      */
     function vncore_admin_can_config()
     {
-        return \Vncore\Core\Admin\Admin::user()->checkPermissionConfig();
+        return \Admin::user()->checkPermissionConfig();
     }
 }
 

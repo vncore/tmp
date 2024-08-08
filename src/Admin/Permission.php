@@ -2,8 +2,6 @@
 
 namespace Vncore\Core\Admin;
 
-use Vncore\Core\Admin\Admin;
-
 class Permission
 {
     /**
@@ -27,7 +25,7 @@ class Permission
             return;
         }
 
-        if (Admin::user()->cannot($permission)) {
+        if (\Admin::user()->cannot($permission)) {
             return static::error();
         }
     }
@@ -45,7 +43,7 @@ class Permission
             return true;
         }
 
-        if (!Admin::user()->inRoles($roles)) {
+        if (!\Admin::user()->inRoles($roles)) {
             return static::error();
         }
     }
@@ -63,7 +61,7 @@ class Permission
             return true;
         }
 
-        if (Admin::user()->inRoles($roles)) {
+        if (\Admin::user()->inRoles($roles)) {
             return static::error();
         }
     }
@@ -75,7 +73,7 @@ class Permission
      */
     public static function isAdministrator()
     {
-        return Admin::user()->isRole('administrator');
+        return \Admin::user()->isRole('administrator');
     }
 
     public static function error()

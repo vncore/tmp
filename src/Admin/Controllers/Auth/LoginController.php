@@ -2,7 +2,6 @@
 
 namespace Vncore\Core\Admin\Controllers\Auth;
 
-use Vncore\Core\Admin\Admin;
 use Vncore\Core\Admin\Models\AdminPermission;
 use Vncore\Core\Admin\Models\AdminRole;
 use Vncore\Core\Admin\Controllers\RootAdminController;
@@ -88,7 +87,7 @@ class LoginController extends RootAdminController
 
     public function getSetting()
     {
-        $user = Admin::user();
+        $user = \Admin::user();
         if ($user === null) {
             return 'no data';
         }
@@ -108,7 +107,7 @@ class LoginController extends RootAdminController
 
     public function putSetting()
     {
-        $user = Admin::user();
+        $user = \Admin::user();
         $data = request()->all();
         $dataOrigin = request()->all();
         $validator = Validator::make($dataOrigin, [

@@ -2,7 +2,6 @@
 
 namespace Vncore\Core\Admin\Models;
 
-use Vncore\Core\Admin\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;

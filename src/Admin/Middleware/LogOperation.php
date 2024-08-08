@@ -2,7 +2,6 @@
 
 namespace Vncore\Core\Admin\Middleware;
 
-use Vncore\Core\Admin\Admin;
 use Vncore\Core\Admin\Models\AdminLog;
 use Illuminate\Http\Request;
 
@@ -20,7 +19,7 @@ class LogOperation
     {
         if ($this->shouldLogOperation($request)) {
             $log = [
-                'user_id' => Admin::user()->id,
+                'user_id' => \Admin::user()->id,
                 'path' => substr($request->path(), 0, 255),
                 'method' => $request->method(),
                 'ip' => $request->getClientIp(),
@@ -47,7 +46,7 @@ class LogOperation
     {
         return config('vncore-config.admin.admin_log')
         && !$this->inExceptArray($request)
-        && Admin::user();
+        && \Admin::user();
     }
 
     /**
