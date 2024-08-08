@@ -16,7 +16,7 @@
 ## About Vncore
 Vncore is a compact source code built with Laravel, helping users quickly build a powerful admin website. Whether your system is simple or complex, Vncore will help you operate and scale it easily.
 
-What can Vncore do?
+**What can Vncore do?**
 
 - Provides a powerful and flexible role management and user group solution.
 - Offers a synchronous authentication API, enhancing API security with additional layers.
@@ -26,29 +26,31 @@ What can Vncore do?
 - Supports multiple languages, easy management.
 - Vncore is FREE
 
-And more:
+**And more:**
 
 - Vncore builds a large, open ecosystem (plugin, template), helping users quickly build CMS, PMO, eCommerce, etc., according to their needs.
 
 ## Website structure using Vncore
-Website-folder/
-├── app
-│     └── Vncore
-│           ├── Helpers(+)
-│           └── Plugins(+)
-├── public
-│     └── Vncore
-│           ├── admin(+)
-│           ├── templates(+)
-│           └── Plugins(+)
-├── resources
-│     └── views
-│           └── Vncore
-│                 ├── templates(+)
-│                 └── Plugins(+)
-├── vendor
-│     └── vncore/core
-└──...
+
+    Website-folder/
+    ├── app
+    │     └── Vncore
+    │           ├── Helpers(+)
+    │           └── Plugins(+)
+    ├── public
+    │     └── Vncore
+    │           ├── Admin(+)
+    │           ├── Templates(+)
+    │           └── Plugins(+)
+    ├── resources
+    │     └── views
+    │           └── Vncore
+    │                 ├── Templates(+)
+    │                 └── Plugins(+)
+    ├── vendor
+    │     └── vncore/core
+    ├── .env
+    └──...
 
 ## Support the project
 Support this project :stuck_out_tongue_winking_eye: :pray:
