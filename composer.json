@@ -43,7 +43,7 @@
             "Vncore\\Core\\VncoreServiceProvider"
           ],
           "aliases": {
-            "Admin" : "Vncore\\Core\\Admin\\Admin"
+            "Admin" : "Vncore\\Core\\Admin\\Models\\AdminUser"
           }
       }
   }

@@ -155,4 +155,11 @@ class AdminMenu extends Model
     {
         return self::create($dataCreate);
     }
+    
+    /**
+     * Get menu group by parent_id
+     */
+    public static function getMenuGroupByParentId() {
+        return self::getListAll()->groupBy('parent_id');
+    }
 }

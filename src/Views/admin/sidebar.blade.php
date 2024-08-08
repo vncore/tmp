@@ -12,7 +12,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu">
           @php
-          $menus = Admin::getMenuVisible();
+          $menus = \Vncore\Core\Admin\Models\AdminMenu::getListVisible();
           @endphp
 
           @if (count($menus))
@@ -26,7 +26,7 @@
           </li>
           @foreach ($menus[$level0->id] as $level1)
           @if($level1->uri)
-          <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), vncore_url_render($level1->uri)) ? 'active' : '' }}">
+          <li class="nav-item {{ \Vncore\Core\Admin\Models\AdminMenu::checkUrlIsChild(url()->current(), vncore_url_render($level1->uri)) ? 'active' : '' }}">
             <a href="{{ $level1->uri?vncore_url_render($level1->uri):'#' }}" class="nav-link">
               <i class="nav-icon {{ $level1->icon }}"></i>
               <p>
@@ -50,7 +50,7 @@
             <ul class="nav nav-treeview">
               @foreach ($menus[$level1->id] as $level2)
               @if($level2->uri)
-              <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), vncore_url_render($level2->uri)) ? 'active' : '' }}">
+              <li class="nav-item {{ \Vncore\Core\Admin\Models\AdminMenu::checkUrlIsChild(url()->current(), vncore_url_render($level2->uri)) ? 'active' : '' }}">
                 <a href="{{ $level2->uri?vncore_url_render($level2->uri):'#' }}" class="nav-link">
                   <i class="{{ $level2->icon }} nav-icon"></i>
                   <p>{!! vncore_language_render($level2->title) !!}</p>
@@ -72,7 +72,7 @@
                 <ul class="nav nav-treeview">
                   @foreach ($menus[$level2->id] as $level3)
                   @if($level3->uri)
-                  <li class="nav-item {{ \Admin::checkUrlIsChild(url()->current(), vncore_url_render($level3->uri)) ? 'active' : '' }}">
+                  <li class="nav-item {{ \Vncore\Core\Admin\Models\AdminMenu::checkUrlIsChild(url()->current(), vncore_url_render($level3->uri)) ? 'active' : '' }}">
                     <a href="{{ $level3->uri?vncore_url_render($level3->uri):'#' }}" class="nav-link">
                       <i class="{{ $level3->icon }} nav-icon"></i>
                       <p>{!! vncore_language_render($level3->title) !!}</p>

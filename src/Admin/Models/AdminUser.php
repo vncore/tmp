@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
 class AdminUser extends Authenticatable
 {
@@ -107,7 +108,7 @@ class AdminUser extends Authenticatable
     public static function allPermissions()
     {
         if (self::$allPermissions === null) {
-            $user                 = \Admin::user();
+            $user                 = self::user();
             self::$allPermissions = $user->roles()->with('permissions')
                 ->get()->pluck('permissions')->flatten()
                 ->merge($user->permissions);
@@ -245,7 +246,7 @@ class AdminUser extends Authenticatable
     public static function checkPermissionConfig()
     {
         if (self::$canChangeConfig === null) {
-            if (\Admin::user()->isAdministrator()) {
+            if (self::user()->isAdministrator()) {
                 return self::$canChangeConfig = true;
             }
 
@@ -287,5 +288,11 @@ class AdminUser extends Authenticatable
     {
         $emailReset = $this->getEmailForPasswordReset();
         return vncore_admin_sendmail_reset_notification($token, $emailReset);
+    }
+
+    // Get user admin login
+    public static function user()
+    {
+        return Auth::guard('admin')->user();
     }
 }
