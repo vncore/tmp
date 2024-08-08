@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://vncore.net/logo.png?v=4" width="150">
 </p>
-<p align="center">Laravel admin / core backend for all systems (ecommerce, cms, pmo...)<br>
+<p align="center">Laravel admin | core backend for all systems (ecommerce, cms, pmo...)<br>
     <code><b>composer require vncore/core</b></code></p>
 <p align="center">
  <a href="https://vncore.net">Installation and usage documentation</a>
