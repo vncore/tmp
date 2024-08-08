@@ -20,6 +20,7 @@ What can Vncore do?
 
 - Provides a powerful and flexible role management and user group solution.
 - Offers a synchronous authentication API, enhancing API security with additional layers.
+- Build and manage Plugins/Templates that work in the system
 - Comprehensive access log monitoring system.
 - Continuously updates security vulnerabilities.
 - Supports multiple languages, easy management.
@@ -28,6 +29,26 @@ What can Vncore do?
 And more:
 
 - Vncore builds a large, open ecosystem (plugin, template), helping users quickly build CMS, PMO, eCommerce, etc., according to their needs.
+
+## Website structure using Vncore
+Website-folder/
+├── app
+│     └── Vncore
+│           ├── Helpers(+)
+│           └── Plugins(+)
+├── public
+│     └── Vncore
+│           ├── admin(+)
+│           ├── templates(+)
+│           └── Plugins(+)
+├── resources
+│     └── views
+│           └── Vncore
+│                 ├── templates(+)
+│                 └── Plugins(+)
+├── vendor
+│     └── vncore/core
+└──...
 
 ## Support the project
 Support this project :stuck_out_tongue_winking_eye: :pray:
