@@ -28,7 +28,7 @@ Vncore is a compact source code built with Laravel, helping users quickly build 
 
 **And more:**
 
-- Vncore builds a large, open ecosystem (plugin, template), helping users quickly build CMS, PMO, eCommerce, etc., according to their needs.
+- Vncore builds a large, open ecosystem (plugin, template), helping users quickly build CMS, PMO, eCommerce, etc., according to your needs.
 
 ## Website structure using Vncore
 
@@ -60,3 +60,6 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 
 ## Quick Installation Guide
 
+
+## Quickly disable Vncore and plugins
+Just add the variable `VNCORE_ACTIVE=0` to the `.env` file
