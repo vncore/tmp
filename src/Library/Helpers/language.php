@@ -3,7 +3,7 @@
 use Vncore\Core\Admin\Models\AdminLanguage;
 use Illuminate\Support\Str;
 
-if (!function_exists('vncore_language_all') && !in_array('vncore_language_all', config('helper_except', []))) {
+if (!function_exists('vncore_language_all') && !in_array('vncore_language_all', config('vncore_functions_except', []))) {
     //Get all language
     function vncore_language_all()
     {
@@ -11,7 +11,7 @@ if (!function_exists('vncore_language_all') && !in_array('vncore_language_all', 
     }
 }
 
-if (!function_exists('vncore_languages') && !in_array('vncore_languages', config('helper_except', []))) {
+if (!function_exists('vncore_languages') && !in_array('vncore_languages', config('vncore_functions_except', []))) {
     /*
     Render language
     WARNING: Dont call this function (or functions that call it) in __construct or midleware, it may cause the display language to be incorrect
@@ -23,7 +23,7 @@ if (!function_exists('vncore_languages') && !in_array('vncore_languages', config
     }
 }
 
-if (!function_exists('vncore_language_replace') && !in_array('vncore_language_replace', config('helper_except', []))) {
+if (!function_exists('vncore_language_replace') && !in_array('vncore_language_replace', config('vncore_functions_except', []))) {
     /*
     Replace language
      */
@@ -41,7 +41,7 @@ if (!function_exists('vncore_language_replace') && !in_array('vncore_language_re
 }
 
 
-if (!function_exists('vncore_language_render') && !in_array('vncore_language_render', config('helper_except', []))) {
+if (!function_exists('vncore_language_render') && !in_array('vncore_language_render', config('vncore_functions_except', []))) {
     /*
     Render language
     WARNING: Dont call this function (or functions that call it) in __construct or midleware, it may cause the display language to be incorrect
@@ -58,7 +58,7 @@ if (!function_exists('vncore_language_render') && !in_array('vncore_language_ren
 }
 
 
-if (!function_exists('vncore_language_quickly') && !in_array('vncore_language_quickly', config('helper_except', []))) {
+if (!function_exists('vncore_language_quickly') && !in_array('vncore_language_quickly', config('vncore_functions_except', []))) {
     /*
     Language quickly
      */
@@ -70,7 +70,7 @@ if (!function_exists('vncore_language_quickly') && !in_array('vncore_language_qu
     }
 }
 
-if (!function_exists('vncore_get_locale') && !in_array('vncore_get_locale', config('helper_except', []))) {
+if (!function_exists('vncore_get_locale') && !in_array('vncore_get_locale', config('vncore_functions_except', []))) {
     /*
     Get locale
     */
@@ -81,7 +81,7 @@ if (!function_exists('vncore_get_locale') && !in_array('vncore_get_locale', conf
 }
 
 
-if (!function_exists('vncore_lang_switch') && !in_array('vncore_lang_switch', config('helper_except', []))) {
+if (!function_exists('vncore_lang_switch') && !in_array('vncore_lang_switch', config('vncore_functions_except', []))) {
     /**
      * Switch language
      *

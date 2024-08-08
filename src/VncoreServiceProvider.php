@@ -388,6 +388,7 @@ class VncoreServiceProvider extends ServiceProvider
             $this->publishes([__DIR__.'/Views/front' => resource_path('views/vendor/'.config('vncore-config.front.path_view'))], 'vncore:view-front');
             $this->publishes([__DIR__.'/Config/vncore-config.php' => config_path('vncore-config.php')], 'vncore:config');
             $this->publishes([__DIR__.'/Config/lfm.php' => config_path('lfm.php')], 'vncore:config-lfm');
+            $this->publishes([__DIR__.'/Config/vncore_functions_except.stub' => config_path('vncore_functions_except.php')], 'vncore:functions-except');
         }
     }
 

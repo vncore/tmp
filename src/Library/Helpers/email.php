@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
  *
  * @return  mixed
  */
-if (!function_exists('vncore_send_mail') && !in_array('vncore_send_mail', config('helper_except', []))) {
+if (!function_exists('vncore_send_mail') && !in_array('vncore_send_mail', config('vncore_functions_except', []))) {
     function vncore_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
     {
         if (!empty(vncore_config('email_action_mode'))) {
@@ -38,7 +38,7 @@ if (!function_exists('vncore_send_mail') && !in_array('vncore_send_mail', config
  *
  * @return  [][][]                [return description]
  */
-if (!function_exists('vncore_process_send_mail') && !in_array('vncore_process_send_mail', config('helper_except', []))) {
+if (!function_exists('vncore_process_send_mail') && !in_array('vncore_process_send_mail', config('vncore_functions_except', []))) {
     function vncore_process_send_mail($view, array $dataView = [], array $emailConfig = [], array $attach = [])
     {
         try {

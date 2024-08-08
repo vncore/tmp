@@ -1,67 +1,65 @@
 <?php
-define('VNCORE_ADMIN_PATH_VIEW', 'vncore-admin');
-define('VNCORE_FRONT_PATH_VIEW', 'vncore-front');
-
 return [
-    'admin'                   => [
-        'theme'               => ['lightblue', 'dark', 'blue', 'white', 'pink'],
-        'theme_default'       => 'lightblue',
-        'theme_define'        => [
-            'lightblue'       => [
-                'body'        => 'accent-lightblue',
-                'main-header' => 'navbar-dark navbar-lightblue',
-                'sidebar'     => 'sidebar-lightblue',
+    'admin' => [
+            'theme'               => ['lightblue', 'dark', 'blue', 'white', 'pink'],
+            'theme_default'       => 'lightblue',
+            'theme_define'        => [
+                'lightblue'       => [
+                    'body'        => 'accent-lightblue',
+                    'main-header' => 'navbar-dark navbar-lightblue',
+                    'sidebar'     => 'sidebar-lightblue',
+                ],
+                'dark'            => [
+                    'body'        => 'accent-navy',
+                    'main-header' => 'navbar-dark navbar-gray-dark',
+                    'sidebar'     => 'sidebar-gray-dark',
+                ],
+                'blue'            => [
+                    'body'        => 'accent-success',
+                    'main-header' => 'navbar-dark navbar-success',
+                    'sidebar'     => 'sidebar-success',
+                ],
+                'white'           => [
+                    'body'        => 'accent-lightblue',
+                    'main-header' => 'navbar-light navbar-white',
+                    'sidebar'     => 'sidebar-white',
+                ],
+                'pink'            => [
+                    'body'        => 'accent-fuchsia',
+                    'main-header' => 'navbar-dark navbar-pink',
+                    'sidebar'     => 'sidebar-pink',
+                ],
             ],
-            'dark'            => [
-                'body'        => 'accent-navy',
-                'main-header' => 'navbar-dark navbar-gray-dark',
-                'sidebar'     => 'sidebar-gray-dark',
-            ],
-            'blue'            => [
-                'body'        => 'accent-success',
-                'main-header' => 'navbar-dark navbar-success',
-                'sidebar'     => 'sidebar-success',
-            ],
-            'white'           => [
-                'body'        => 'accent-lightblue',
-                'main-header' => 'navbar-light navbar-white',
-                'sidebar'     => 'sidebar-white',
-            ],
-            'pink'            => [
-                'body'        => 'accent-fuchsia',
-                'main-header' => 'navbar-dark navbar-pink',
-                'sidebar'     => 'sidebar-pink',
-            ],
-        ],
 
-        //Enable, disable page libary online
-        'settings'            => [
-            'api_plugin'      => env('VNCORE_ADMIN_API_PLUGIN', 1),
-            'api_template'    => env('VNCORE_ADMIN_API_TEMPLATE', 1),
-        ],
+            //Enable, disable page libary online
+            'settings'            => [
+                'api_plugin'      => env('VNCORE_ADMIN_API_PLUGIN', 1),
+                'api_template'    => env('VNCORE_ADMIN_API_TEMPLATE', 1),
+            ],
 
-        //Prefix path view admin
-        'path_view'           => VNCORE_ADMIN_PATH_VIEW,
-    
-        //Config global
-        'admin_log'           => env('VNCORE_ADMIN_LOG', 1), //Log access admin
+            //Prefix path view admin
+            'path_view'           => 'vncore-admin',
 
-        //Config for header
-        //Path view for header
-        'module_header_left' => [
-            VNCORE_ADMIN_PATH_VIEW.'::component.language',
-            VNCORE_ADMIN_PATH_VIEW.'::component.admin_theme',
-            ]
-        ],
-        
-        'module_header_right' => [
-            VNCORE_ADMIN_PATH_VIEW.'::component.notice',
-            VNCORE_ADMIN_PATH_VIEW.'::component.admin_profile',
-        ],
+            //Config for header
+            //Path view for header
+            'module_header_left' => [
+                'vncore-admin::component.language',
+                'vncore-admin::component.admin_theme',
+            ],
+            'module_header_right' => [
+                'vncore-admin::component.notice',
+                'vncore-admin::component.admin_profile',
+            ],
+
+            //Config log access admin
+            'admin_log'           => env('VNCORE_ADMIN_LOG', 1), //Log access admin
+
+
+    ],
         
     // Config for front
     'front' => [
-        'path_view'           => VNCORE_FRONT_PATH_VIEW,
+        'path_view' => 'vncore-front',
     ],
 
     //Config for api
@@ -113,4 +111,5 @@ return [
         //If value is empty, it will not be displayed, as dommain.com/abc.html
         'VNCORE_PREFIX_LANG' => env('VNCORE_PREFIX_LANG', '{lang?}/'),
     ],
+
 ];

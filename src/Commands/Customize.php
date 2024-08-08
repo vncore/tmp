@@ -33,6 +33,10 @@ class Customize extends Command
         switch ($obj) {
             case 'config':
                 $this->call('vendor:publish', ['--tag' => 'vncore:config']);
+                $this->call('vendor:publish', ['--tag' => 'vncore:functions-except']);
+                break;
+
+            case 'lfm':
                 $this->call('vendor:publish', ['--tag' => 'vncore:config-lfm']);
                 break;
 

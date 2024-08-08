@@ -33,5 +33,6 @@ class Initial extends Command
         $this->call('vendor:publish', ['--tag' => 'vncore:public-install']);
         $this->call('vendor:publish', ['--tag' => 'vncore:public-static']);
         $this->call('vendor:publish', ['--tag' => 'vncore:public-vendor']);
+        $this->call('vendor:publish', ['--tag' => 'vncore:functions-except']);
     }
 }

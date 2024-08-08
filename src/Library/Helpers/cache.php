@@ -3,7 +3,7 @@
 use Vncore\Core\Admin\Models\AdminLanguage;
 use \Illuminate\Support\Facades\Cache;
 
-if (!function_exists('vncore_cache_clear') && !in_array('vncore_cache_clear', config('helper_except', []))) {
+if (!function_exists('vncore_cache_clear') && !in_array('vncore_cache_clear', config('vncore_functions_except', []))) {
     /**
      * Clear cache
      *
@@ -44,7 +44,7 @@ if (!function_exists('vncore_cache_clear') && !in_array('vncore_cache_clear', co
     }
 }
 
-if (!function_exists('vncore_cache_set') && !in_array('vncore_cache_set', config('helper_except', []))) {
+if (!function_exists('vncore_cache_set') && !in_array('vncore_cache_set', config('vncore_functions_except', []))) {
     /**
      * [vncore_cache_set description]
      *

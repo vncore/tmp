@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('vncore_captcha_method') && !in_array('vncore_captcha_method', config('helper_except', []))) {
+if (!function_exists('vncore_captcha_method') && !in_array('vncore_captcha_method', config('vncore_functions_except', []))) {
     function vncore_captcha_method()
     {
         //If function captcha disable or dont setup
@@ -26,7 +26,7 @@ if (!function_exists('vncore_captcha_method') && !in_array('vncore_captcha_metho
     }
 }
 
-if (!function_exists('vncore_captcha_page') && !in_array('vncore_captcha_page', config('helper_except', []))) {
+if (!function_exists('vncore_captcha_page') && !in_array('vncore_captcha_page', config('vncore_functions_except', []))) {
     function vncore_captcha_page():array
     {
         if (empty(vncore_config('captcha_page'))) {
@@ -39,7 +39,7 @@ if (!function_exists('vncore_captcha_page') && !in_array('vncore_captcha_page', 
     }
 }
 
-if (!function_exists('vncore_get_plugin_captcha_installed') && !in_array('vncore_get_plugin_captcha_installed', config('helper_except', []))) {
+if (!function_exists('vncore_get_plugin_captcha_installed') && !in_array('vncore_get_plugin_captcha_installed', config('vncore_functions_except', []))) {
     /**
      * Get all class plugin captcha installed
      *

@@ -2,7 +2,7 @@
 use \Vncore\Core\Events\AdminLogin;
 use \Vncore\Core\Events\AdminCreated;
 use \Vncore\Core\Events\AdminDeleting;
-if (!function_exists('vncore_event_admin_login') && !in_array('vncore_event_admin_login', config('helper_except', []))) {
+if (!function_exists('vncore_event_admin_login') && !in_array('vncore_event_admin_login', config('vncore_functions_except', []))) {
     /**
      * [vncore_event_admin_login description]
      *
@@ -15,7 +15,7 @@ if (!function_exists('vncore_event_admin_login') && !in_array('vncore_event_admi
         AdminLogin::dispatch($user);
     }
 }
-if (!function_exists('vncore_event_admin_created') && !in_array('vncore_event_admin_created', config('helper_except', []))) {
+if (!function_exists('vncore_event_admin_created') && !in_array('vncore_event_admin_created', config('vncore_functions_except', []))) {
     /**
      * [vncore_event_admin_created description]
      *
@@ -28,7 +28,7 @@ if (!function_exists('vncore_event_admin_created') && !in_array('vncore_event_ad
         AdminCreated::dispatch($user);
     }
 }
-if (!function_exists('vncore_event_admin_deleting') && !in_array('vncore_event_admin_deleting', config('helper_except', []))) {
+if (!function_exists('vncore_event_admin_deleting') && !in_array('vncore_event_admin_deleting', config('vncore_functions_except', []))) {
     /**
      * [vncore_event_admin_deleting description]
      *

@@ -3,7 +3,7 @@ use Illuminate\Support\Str;
 /**
  * Get list store
  */
-if (!function_exists('vncore_get_list_code_store') && !in_array('vncore_get_list_code_store', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_code_store') && !in_array('vncore_get_list_code_store', config('vncore_functions_except', []))) {
     function vncore_get_list_code_store()
     {
         return \Vncore\Core\Admin\Models\AdminStore::getListStoreCode();
@@ -14,7 +14,7 @@ if (!function_exists('vncore_get_list_code_store') && !in_array('vncore_get_list
 /**
  * Get domain from code
  */
-if (!function_exists('vncore_get_domain_from_code') && !in_array('vncore_get_domain_from_code', config('helper_except', []))) {
+if (!function_exists('vncore_get_domain_from_code') && !in_array('vncore_get_domain_from_code', config('vncore_functions_except', []))) {
     function vncore_get_domain_from_code(string $code = ""):string
     {
         $domainList = \Vncore\Core\Admin\Models\AdminStore::getStoreDomainByCode();
@@ -29,7 +29,7 @@ if (!function_exists('vncore_get_domain_from_code') && !in_array('vncore_get_dom
 /**
  * Get domain root
  */
-if (!function_exists('vncore_get_domain_root') && !in_array('vncore_get_domain_root', config('helper_except', []))) {
+if (!function_exists('vncore_get_domain_root') && !in_array('vncore_get_domain_root', config('vncore_functions_except', []))) {
     function vncore_get_domain_root():string
     {
         $store = \Vncore\Core\Admin\Models\AdminStore::find(VNCORE_ID_ROOT);
@@ -40,7 +40,7 @@ if (!function_exists('vncore_get_domain_root') && !in_array('vncore_get_domain_r
 /**
  * Check store is partner
  */
-if (!function_exists('vncore_store_is_partner') && !in_array('vncore_store_is_partner', config('helper_except', []))) {
+if (!function_exists('vncore_store_is_partner') && !in_array('vncore_store_is_partner', config('vncore_functions_except', []))) {
     function vncore_store_is_partner(string $storeId):bool
     {
         $store = \Vncore\Core\Admin\Models\AdminStore::find($storeId);
@@ -54,7 +54,7 @@ if (!function_exists('vncore_store_is_partner') && !in_array('vncore_store_is_pa
 /**
  * Check store is root
  */
-if (!function_exists('vncore_store_is_root') && !in_array('vncore_store_is_root', config('helper_except', []))) {
+if (!function_exists('vncore_store_is_root') && !in_array('vncore_store_is_root', config('vncore_functions_except', []))) {
     function vncore_store_is_root(string $storeId):bool
     {
         return  $storeId == VNCORE_ID_ROOT;
@@ -67,7 +67,7 @@ if (!function_exists('vncore_store_is_root') && !in_array('vncore_store_is_root'
 /**
  * Get list store of product detail
  */
-if (!function_exists('vncore_get_list_store_of_product_detail') && !in_array('vncore_get_list_store_of_product_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_product_detail') && !in_array('vncore_get_list_store_of_product_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_product_detail($pId):array
     {
         return \Vncore\Core\Admin\Models\ShopProductStore::where('product_id', $pId)
@@ -80,7 +80,7 @@ if (!function_exists('vncore_get_list_store_of_product_detail') && !in_array('vn
 /**
  * Get list store of discount detail
  */
-if (!function_exists('vncore_get_list_store_of_discount_detail') && !in_array('vncore_get_list_store_of_discount_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_discount_detail') && !in_array('vncore_get_list_store_of_discount_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_discount_detail($dId):array
     {
         return \Vncore\Plugins\Total\Discount\Models\ShopDiscountStore::where('discount_id', $dId)
@@ -93,7 +93,7 @@ if (!function_exists('vncore_get_list_store_of_discount_detail') && !in_array('v
 /**
  * Get store list of brands
  */
-if (!function_exists('vncore_get_list_store_of_brand') && !in_array('vncore_get_list_store_of_brand', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_brand') && !in_array('vncore_get_list_store_of_brand', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_brand(array $arrBrandId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
@@ -110,7 +110,7 @@ if (!function_exists('vncore_get_list_store_of_brand') && !in_array('vncore_get_
 /**
  * Get list store of brand detail
  */
-if (!function_exists('vncore_get_list_store_of_brand_detail') && !in_array('vncore_get_list_store_of_brand_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_brand_detail') && !in_array('vncore_get_list_store_of_brand_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_brand_detail($cId):array
     {
         return \Vncore\Core\Admin\Models\ShopBrandStore::where('brand_id', $cId)
@@ -122,7 +122,7 @@ if (!function_exists('vncore_get_list_store_of_brand_detail') && !in_array('vnco
 /**
  * Get store list of banners
  */
-if (!function_exists('vncore_get_list_store_of_banner') && !in_array('vncore_get_list_store_of_banner', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_banner') && !in_array('vncore_get_list_store_of_banner', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_banner(array $arrBannerId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
@@ -138,7 +138,7 @@ if (!function_exists('vncore_get_list_store_of_banner') && !in_array('vncore_get
 /**
  * Get list store of banner detail
  */
-if (!function_exists('vncore_get_list_store_of_banner_detail') && !in_array('vncore_get_list_store_of_banner_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_banner_detail') && !in_array('vncore_get_list_store_of_banner_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_banner_detail($bId):array
     {
         return \Vncore\Core\Admin\Models\ShopBannerStore::where('banner_id', $bId)
@@ -150,7 +150,7 @@ if (!function_exists('vncore_get_list_store_of_banner_detail') && !in_array('vnc
 /**
  * Get store list of news
  */
-if (!function_exists('vncore_get_list_store_of_news') && !in_array('vncore_get_list_store_of_news', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_news') && !in_array('vncore_get_list_store_of_news', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_news(array $arrNewsId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
@@ -166,7 +166,7 @@ if (!function_exists('vncore_get_list_store_of_news') && !in_array('vncore_get_l
 /**
  * Get list store of news detail
  */
-if (!function_exists('vncore_get_list_store_of_news_detail') && !in_array('vncore_get_list_store_of_news_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_news_detail') && !in_array('vncore_get_list_store_of_news_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_news_detail($nId):array
     {
         return \Vncore\Core\Admin\Models\ShopNewsStore::where('news_id', $nId)
@@ -178,7 +178,7 @@ if (!function_exists('vncore_get_list_store_of_news_detail') && !in_array('vncor
 /**
  * Get store list of pages
  */
-if (!function_exists('vncore_get_list_store_of_page') && !in_array('vncore_get_list_store_of_page', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_page') && !in_array('vncore_get_list_store_of_page', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_page(array $arrPageId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
@@ -194,7 +194,7 @@ if (!function_exists('vncore_get_list_store_of_page') && !in_array('vncore_get_l
 /**
  * Get list store of page detail
  */
-if (!function_exists('vncore_get_list_store_of_page_detail') && !in_array('vncore_get_list_store_of_page_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_page_detail') && !in_array('vncore_get_list_store_of_page_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_page_detail($pId):array
     {
         return \Vncore\Core\Admin\Models\ShopPageStore::where('page_id', $pId)
@@ -206,7 +206,7 @@ if (!function_exists('vncore_get_list_store_of_page_detail') && !in_array('vncor
 /**
  * Get store list of links
  */
-if (!function_exists('vncore_get_list_store_of_link') && !in_array('vncore_get_list_store_of_link', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_link') && !in_array('vncore_get_list_store_of_link', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_link($arrLinkId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
@@ -222,7 +222,7 @@ if (!function_exists('vncore_get_list_store_of_link') && !in_array('vncore_get_l
 /**
  * Get list store of link detail
  */
-if (!function_exists('vncore_get_list_store_of_link_detail') && !in_array('vncore_get_list_store_of_link_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_link_detail') && !in_array('vncore_get_list_store_of_link_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_link_detail($cId)
     {
         return \Vncore\Core\Admin\Models\ShopLinkStore::where('link_id', $cId)
@@ -234,7 +234,7 @@ if (!function_exists('vncore_get_list_store_of_link_detail') && !in_array('vncor
 /**
  * Get store list of orders
  */
-if (!function_exists('vncore_get_list_store_of_order') && !in_array('vncore_get_list_store_of_order', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_order') && !in_array('vncore_get_list_store_of_order', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_order(array $arrOrderId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
@@ -250,7 +250,7 @@ if (!function_exists('vncore_get_list_store_of_order') && !in_array('vncore_get_
 /**
  * Get store list of categories
  */
-if (!function_exists('vncore_get_list_store_of_category') && !in_array('vncore_get_list_store_of_category', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_category') && !in_array('vncore_get_list_store_of_category', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_category(array $arrCategoryId)
     {
         $tableStore = (new \Vncore\Core\Admin\Models\AdminStore)->getTable();
@@ -267,7 +267,7 @@ if (!function_exists('vncore_get_list_store_of_category') && !in_array('vncore_g
 /**
  * Get list store of category detail
  */
-if (!function_exists('vncore_get_list_store_of_category_detail') && !in_array('vncore_get_list_store_of_category_detail', config('helper_except', []))) {
+if (!function_exists('vncore_get_list_store_of_category_detail') && !in_array('vncore_get_list_store_of_category_detail', config('vncore_functions_except', []))) {
     function vncore_get_list_store_of_category_detail($cId):array
     {
         return \Vncore\Core\Admin\Models\ShopCategoryStore::where('category_id', $cId)
@@ -276,7 +276,7 @@ if (!function_exists('vncore_get_list_store_of_category_detail') && !in_array('v
     }
 }
 
-if (!function_exists('vncore_process_domain_store') && !in_array('vncore_process_domain_store', config('helper_except', []))) {
+if (!function_exists('vncore_process_domain_store') && !in_array('vncore_process_domain_store', config('vncore_functions_except', []))) {
     /**
      * Process domain store
      *
@@ -293,7 +293,7 @@ if (!function_exists('vncore_process_domain_store') && !in_array('vncore_process
     }
 }
 
-if (!function_exists('vncore_check_multi_shop_installed') && !in_array('vncore_check_multi_shop_installed', config('helper_except', []))) {
+if (!function_exists('vncore_check_multi_shop_installed') && !in_array('vncore_check_multi_shop_installed', config('vncore_functions_except', []))) {
 /**
  * Check plugin multi shop installed
  *
@@ -310,7 +310,7 @@ if (!function_exists('vncore_check_multi_shop_installed') && !in_array('vncore_c
     }
 }
 
-if (!function_exists('vncore_check_multi_vendor_installed') && !in_array('vncore_check_multi_vendor_installed', config('helper_except', []))) {
+if (!function_exists('vncore_check_multi_vendor_installed') && !in_array('vncore_check_multi_vendor_installed', config('vncore_functions_except', []))) {
     /**
      * Check plugin multi vendor installed
      *
@@ -322,7 +322,7 @@ if (!function_exists('vncore_check_multi_vendor_installed') && !in_array('vncore
         }
 }
 
-if (!function_exists('vncore_check_multi_store_installed') && !in_array('vncore_check_multi_store_installed', config('helper_except', []))) {
+if (!function_exists('vncore_check_multi_store_installed') && !in_array('vncore_check_multi_store_installed', config('vncore_functions_except', []))) {
     /**
      * Check plugin multi store installed
      *
@@ -334,7 +334,7 @@ if (!function_exists('vncore_check_multi_store_installed') && !in_array('vncore_
         }
 }
 
-if (!function_exists('vncore_link_vendor') && !in_array('vncore_link_vendor', config('helper_except', []))) {
+if (!function_exists('vncore_link_vendor') && !in_array('vncore_link_vendor', config('vncore_functions_except', []))) {
     /**
      * Link vendor
      *
@@ -357,7 +357,7 @@ if (!function_exists('vncore_link_vendor') && !in_array('vncore_link_vendor', co
 }
 
 
-if (!function_exists('vncore_path_vendor') && !in_array('vncore_path_vendor', config('helper_except', []))) {
+if (!function_exists('vncore_path_vendor') && !in_array('vncore_path_vendor', config('vncore_functions_except', []))) {
     /**
      * Path vendor
      *
@@ -383,7 +383,7 @@ if (!function_exists('vncore_path_vendor') && !in_array('vncore_path_vendor', co
  * Get sum amount order
  * From Vncore 6.9
  */
-if (!function_exists('vncore_get_sum_amount_order') && !in_array('vncore_get_sum_amount_order', config('helper_except', []))) {
+if (!function_exists('vncore_get_sum_amount_order') && !in_array('vncore_get_sum_amount_order', config('vncore_functions_except', []))) {
     function vncore_get_sum_amount_order($storeId = null)
     {
         return  (new \Vncore\Core\Admin\Models\AdminOrder)->getSumAmountOrder($storeId);

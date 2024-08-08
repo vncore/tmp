@@ -7,7 +7,7 @@ use Illuminate\Foundation\Configuration\Exceptions;
 /*
 String to Url
  */
-if (!function_exists('vncore_word_format_url') && !in_array('vncore_word_format_url', config('helper_except', []))) {
+if (!function_exists('vncore_word_format_url') && !in_array('vncore_word_format_url', config('vncore_functions_except', []))) {
     function vncore_word_format_url($str = ""):string
     {
         $unicode = array(
@@ -39,7 +39,7 @@ if (!function_exists('vncore_word_format_url') && !in_array('vncore_word_format_
 }
 
 
-if (!function_exists('vncore_url_render') && !in_array('vncore_url_render', config('helper_except', []))) {
+if (!function_exists('vncore_url_render') && !in_array('vncore_url_render', config('vncore_functions_except', []))) {
     /*
     url render
      */
@@ -75,7 +75,7 @@ if (!function_exists('vncore_url_render') && !in_array('vncore_url_render', conf
 }
 
 
-if (!function_exists('vncore_html_render') && !in_array('vncore_html_render', config('helper_except', []))) {
+if (!function_exists('vncore_html_render') && !in_array('vncore_html_render', config('vncore_functions_except', []))) {
     /*
     Html render
      */
@@ -89,7 +89,7 @@ if (!function_exists('vncore_html_render') && !in_array('vncore_html_render', co
     }
 }
 
-if (!function_exists('vncore_word_format_class') && !in_array('vncore_word_format_class', config('helper_except', []))) {
+if (!function_exists('vncore_word_format_class') && !in_array('vncore_word_format_class', config('vncore_functions_except', []))) {
     /*
     Format class name
      */
@@ -104,7 +104,7 @@ if (!function_exists('vncore_word_format_class') && !in_array('vncore_word_forma
     }
 }
 
-if (!function_exists('vncore_word_limit') && !in_array('vncore_word_limit', config('helper_except', []))) {
+if (!function_exists('vncore_word_limit') && !in_array('vncore_word_limit', config('vncore_functions_except', []))) {
     /*
     Truncates words
      */
@@ -115,7 +115,7 @@ if (!function_exists('vncore_word_limit') && !in_array('vncore_word_limit', conf
     }
 }
 
-if (!function_exists('vncore_token') && !in_array('vncore_token', config('helper_except', []))) {
+if (!function_exists('vncore_token') && !in_array('vncore_token', config('vncore_functions_except', []))) {
     /*
     Create random token
      */
@@ -126,7 +126,7 @@ if (!function_exists('vncore_token') && !in_array('vncore_token', config('helper
     }
 }
 
-if (!function_exists('vncore_report') && !in_array('vncore_report', config('helper_except', []))) {
+if (!function_exists('vncore_report') && !in_array('vncore_report', config('vncore_functions_except', []))) {
     /*
     Handle report
      */
@@ -150,7 +150,7 @@ if (!function_exists('vncore_report') && !in_array('vncore_report', config('help
 }
 
 
-if (!function_exists('vncore_handle_exception') && !in_array('vncore_handle_exception', config('helper_except', []))) {
+if (!function_exists('vncore_handle_exception') && !in_array('vncore_handle_exception', config('vncore_functions_except', []))) {
     /*
     Process msg exception
      */
@@ -166,7 +166,7 @@ if (!function_exists('vncore_handle_exception') && !in_array('vncore_handle_exce
 }
 
 
-if (!function_exists('vncore_push_include_view') && !in_array('vncore_push_include_view', config('helper_except', []))) {
+if (!function_exists('vncore_push_include_view') && !in_array('vncore_push_include_view', config('vncore_functions_except', []))) {
     /**
      * Push view
      *
@@ -183,7 +183,7 @@ if (!function_exists('vncore_push_include_view') && !in_array('vncore_push_inclu
 }
 
 
-if (!function_exists('vncore_push_include_script') && !in_array('vncore_push_include_script', config('helper_except', []))) {
+if (!function_exists('vncore_push_include_script') && !in_array('vncore_push_include_script', config('vncore_functions_except', []))) {
     /**
      * Push script
      *
@@ -203,7 +203,7 @@ if (!function_exists('vncore_push_include_script') && !in_array('vncore_push_inc
 /**
  * convert datetime to date
  */
-if (!function_exists('vncore_datetime_to_date') && !in_array('vncore_datetime_to_date', config('helper_except', []))) {
+if (!function_exists('vncore_datetime_to_date') && !in_array('vncore_datetime_to_date', config('vncore_functions_except', []))) {
     function vncore_datetime_to_date($datetime, $format = 'Y-m-d')
     {
         if (empty($datetime)) {
@@ -214,7 +214,7 @@ if (!function_exists('vncore_datetime_to_date') && !in_array('vncore_datetime_to
 }
 
 
-if (!function_exists('admin') && !in_array('admin', config('helper_except', []))) {
+if (!function_exists('admin') && !in_array('admin', config('vncore_functions_except', []))) {
     /**
      * Admin login information
      */
@@ -224,7 +224,7 @@ if (!function_exists('admin') && !in_array('admin', config('helper_except', []))
     }
 }
 
-if (!function_exists('vncore_sync_cart') && !in_array('vncore_sync_cart', config('helper_except', []))) {
+if (!function_exists('vncore_sync_cart') && !in_array('vncore_sync_cart', config('vncore_functions_except', []))) {
     /**
      * Sync data cart
      */
@@ -257,7 +257,7 @@ if (!function_exists('vncore_sync_cart') && !in_array('vncore_sync_cart', config
     }
 }
 
-if (!function_exists('vncore_time_now') && !in_array('vncore_time_now', config('helper_except', []))) {
+if (!function_exists('vncore_time_now') && !in_array('vncore_time_now', config('vncore_functions_except', []))) {
     /**
      * Return object carbon
      */
@@ -268,7 +268,7 @@ if (!function_exists('vncore_time_now') && !in_array('vncore_time_now', config('
     }
 }
 
-if (!function_exists('vncore_request') && !in_array('vncore_request', config('helper_except', []))) {
+if (!function_exists('vncore_request') && !in_array('vncore_request', config('vncore_functions_except', []))) {
     /**
      * Return object carbon
      */

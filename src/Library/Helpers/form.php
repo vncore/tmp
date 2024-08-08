@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('vncore_form_render_field') && !in_array('vncore_form_render_field', config('helper_except', []))) {
+if (!function_exists('vncore_form_render_field') && !in_array('vncore_form_render_field', config('vncore_functions_except', []))) {
     function vncore_form_render_field(array $data = [])
     {
         $type = $data['type'] ?? 'text';
@@ -26,7 +26,7 @@ if (!function_exists('vncore_form_render_field') && !in_array('vncore_form_rende
 }
 
 
-if (!function_exists('vncore_form_render_text') && !in_array('vncore_form_render_text', config('helper_except', []))) {
+if (!function_exists('vncore_form_render_text') && !in_array('vncore_form_render_text', config('vncore_functions_except', []))) {
     function vncore_form_render_text(array $data = [])
     {
         //number, text, date, week, month, time, email, password, url, color
@@ -46,7 +46,7 @@ if (!function_exists('vncore_form_render_text') && !in_array('vncore_form_render
     }
 }
 
-if (!function_exists('vncore_form_render_textarea') && !in_array('vncore_form_render_textarea', config('helper_except', []))) {
+if (!function_exists('vncore_form_render_textarea') && !in_array('vncore_form_render_textarea', config('vncore_functions_except', []))) {
     function vncore_form_render_textarea(array $data = [])
     {
         $name        = $data['name'] ?? '';
@@ -66,7 +66,7 @@ if (!function_exists('vncore_form_render_textarea') && !in_array('vncore_form_re
 }
 
 
-if (!function_exists('vncore_form_render_select') && !in_array('vncore_form_render_select', config('helper_except', []))) {
+if (!function_exists('vncore_form_render_select') && !in_array('vncore_form_render_select', config('vncore_functions_except', []))) {
     function vncore_form_render_select(array $data = [])
     {
         //select
@@ -94,7 +94,7 @@ if (!function_exists('vncore_form_render_select') && !in_array('vncore_form_rend
 }
 
 
-if (!function_exists('vncore_form_render_checkbox') && !in_array('vncore_form_render_checkbox', config('helper_except', []))) {
+if (!function_exists('vncore_form_render_checkbox') && !in_array('vncore_form_render_checkbox', config('vncore_functions_except', []))) {
     function vncore_form_render_checkbox(array $data = [])
     {
         //check
@@ -137,7 +137,7 @@ if (!function_exists('vncore_form_render_checkbox') && !in_array('vncore_form_re
 }
 
 
-if (!function_exists('vncore_form_render_radio') && !in_array('vncore_form_render_radio', config('helper_except', []))) {
+if (!function_exists('vncore_form_render_radio') && !in_array('vncore_form_render_radio', config('vncore_functions_except', []))) {
     function vncore_form_render_radio(array $data = [])
     {
         //radio

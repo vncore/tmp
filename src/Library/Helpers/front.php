@@ -4,7 +4,7 @@ use Vncore\Core\Admin\Models\AdminEmailTemplate;
 /**
  * Function process mapping validate contact form
  */
-if (!function_exists('vncore_contact_mapping_validate') && !in_array('vncore_contact_mapping_validate', config('helper_except', []))) {
+if (!function_exists('vncore_contact_mapping_validate') && !in_array('vncore_contact_mapping_validate', config('vncore_functions_except', []))) {
     function vncore_contact_mapping_validate():array
     {
         $validate = [
@@ -34,7 +34,7 @@ if (!function_exists('vncore_contact_mapping_validate') && !in_array('vncore_con
 /**
  * Send email contact form
  */
-if (!function_exists('vncore_contact_form_sendmail') && !in_array('vncore_contact_form_sendmail', config('helper_except', []))) {
+if (!function_exists('vncore_contact_form_sendmail') && !in_array('vncore_contact_form_sendmail', config('vncore_functions_except', []))) {
     function vncore_contact_form_sendmail(array $data)
     {
         if (vncore_config('contact_to_admin')) {

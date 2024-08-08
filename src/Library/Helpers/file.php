@@ -8,7 +8,7 @@ use Intervention\Image\Facades\Image;
 /**
  * Function upload image
  */
-if (!function_exists('vncore_image_upload') && !in_array('vncore_image_upload', config('helper_except', []))) {
+if (!function_exists('vncore_image_upload') && !in_array('vncore_image_upload', config('vncore_functions_except', []))) {
     function vncore_image_upload($fileContent, $disk = 'public', $path = null, $name = null, $options = ['unique_name' => true, 'thumb' => false, 'watermark' => false])
     {
         $pathFile = null;
@@ -60,7 +60,7 @@ if (!function_exists('vncore_image_upload') && !in_array('vncore_image_upload', 
 /**
  * Function upload file
  */
-if (!function_exists('vncore_file_upload') && !in_array('vncore_file_upload', config('helper_except', []))) {
+if (!function_exists('vncore_file_upload') && !in_array('vncore_file_upload', config('vncore_functions_except', []))) {
     function vncore_file_upload($fileContent, $disk = 'public', $path = null, $name = null)
     {
         $pathFile = null;
@@ -103,7 +103,7 @@ if (!function_exists('vncore_file_upload') && !in_array('vncore_file_upload', co
  * @param   [string]  $prefix  will remove
  *
  */
-if (!function_exists('vncore_remove_file') && !in_array('vncore_remove_file', config('helper_except', []))) {
+if (!function_exists('vncore_remove_file') && !in_array('vncore_remove_file', config('vncore_functions_except', []))) {
     function vncore_remove_file($pathFile, $disk = null)
     {
         if ($disk) {
@@ -117,7 +117,7 @@ if (!function_exists('vncore_remove_file') && !in_array('vncore_remove_file', co
 /**
  * Function insert watermark
  */
-if (!function_exists('vncore_image_insert_watermark') && !in_array('vncore_image_insert_watermark', config('helper_except', []))) {
+if (!function_exists('vncore_image_insert_watermark') && !in_array('vncore_image_insert_watermark', config('vncore_functions_except', []))) {
     function vncore_image_insert_watermark($pathFile, $pathWatermark = null)
     {
         if (!$pathWatermark) {
@@ -136,7 +136,7 @@ if (!function_exists('vncore_image_insert_watermark') && !in_array('vncore_image
 /**
  * Function generate thumb
  */
-if (!function_exists('vncore_image_generate_thumb') && !in_array('vncore_image_generate_thumb', config('helper_except', []))) {
+if (!function_exists('vncore_image_generate_thumb') && !in_array('vncore_image_generate_thumb', config('vncore_functions_except', []))) {
     function vncore_image_generate_thumb($pathFile, $widthThumb = null, $heightThumb = null, $disk = 'public')
     {
         $widthThumb = $widthThumb ?? vncore_config('upload_image_thumb_width');
@@ -161,7 +161,7 @@ if (!function_exists('vncore_image_generate_thumb') && !in_array('vncore_image_g
 /**
  * Function rener image
  */
-if (!function_exists('vncore_image_render') && !in_array('vncore_image_render', config('helper_except', []))) {
+if (!function_exists('vncore_image_render') && !in_array('vncore_image_render', config('vncore_functions_except', []))) {
     function vncore_image_render($path, $width = null, $height = null, $alt = null, $title = null, $urlDefault = null, $options = '')
     {
         $image = vncore_image_get_path($path, $urlDefault);
@@ -174,7 +174,7 @@ if (!function_exists('vncore_image_render') && !in_array('vncore_image_render', 
 /*
 Return path image
  */
-if (!function_exists('vncore_image_get_path') && !in_array('vncore_image_get_path', config('helper_except', []))) {
+if (!function_exists('vncore_image_get_path') && !in_array('vncore_image_get_path', config('vncore_functions_except', []))) {
     function vncore_image_get_path($path, $urlDefault = null)
     {
         $image = $urlDefault ?? 'Vncore/admin/images/no-image.jpg';
@@ -191,7 +191,7 @@ if (!function_exists('vncore_image_get_path') && !in_array('vncore_image_get_pat
 /*
 Function get path thumb of image if saved in storage
  */
-if (!function_exists('vncore_image_get_path_thumb') && !in_array('vncore_image_get_path_thumb', config('helper_except', []))) {
+if (!function_exists('vncore_image_get_path_thumb') && !in_array('vncore_image_get_path_thumb', config('vncore_functions_except', []))) {
     function vncore_image_get_path_thumb($pathFile)
     {
         if (strpos($pathFile, "/storage/") === 0) {
@@ -211,7 +211,7 @@ if (!function_exists('vncore_image_get_path_thumb') && !in_array('vncore_image_g
 
 
 
-if (!function_exists('vncore_zip') && !in_array('vncore_zip', config('helper_except', []))) {
+if (!function_exists('vncore_zip') && !in_array('vncore_zip', config('vncore_functions_except', []))) {
     /*
     Zip file or folder
      */
@@ -250,7 +250,7 @@ if (!function_exists('vncore_zip') && !in_array('vncore_zip', config('helper_exc
 }
 
 
-if (!function_exists('vncore_unzip') && !in_array('vncore_unzip', config('helper_except', []))) {
+if (!function_exists('vncore_unzip') && !in_array('vncore_unzip', config('vncore_functions_except', []))) {
     /**
      * Unzip file to folder
      *
@@ -274,7 +274,7 @@ if (!function_exists('vncore_unzip') && !in_array('vncore_unzip', config('helper
 /**
  * Process path file
  */
-if (!function_exists('vncore_file') && !in_array('vncore_file', config('helper_except', []))) {
+if (!function_exists('vncore_file') && !in_array('vncore_file', config('vncore_functions_except', []))) {
     function vncore_file($pathFile = "", bool $security = null):string
     {
         if (!is_string($pathFile)) {
@@ -284,7 +284,7 @@ if (!function_exists('vncore_file') && !in_array('vncore_file', config('helper_e
     }
 }
 
-if (!function_exists('vncore_path_download_render') && !in_array('vncore_path_download_render', config('helper_except', []))) {
+if (!function_exists('vncore_path_download_render') && !in_array('vncore_path_download_render', config('vncore_functions_except', []))) {
     /*
     Render path download
      */
@@ -298,7 +298,7 @@ if (!function_exists('vncore_path_download_render') && !in_array('vncore_path_do
     }
 }
 
-if (!function_exists('vncore_convertPHPSizeToBytes') && !in_array('vncore_convertPHPSizeToBytes', config('helper_except', []))) {
+if (!function_exists('vncore_convertPHPSizeToBytes') && !in_array('vncore_convertPHPSizeToBytes', config('vncore_functions_except', []))) {
     /**
     * This function transforms the php.ini notation for numbers (like '2M') to an integer (2*1024*1024 in this case)
     * 
@@ -333,7 +333,7 @@ if (!function_exists('vncore_convertPHPSizeToBytes') && !in_array('vncore_conver
     }
 }
 
-if (!function_exists('vncore_getMaximumFileUploadSize') && !in_array('vncore_getMaximumFileUploadSize', config('helper_except', []))) {
+if (!function_exists('vncore_getMaximumFileUploadSize') && !in_array('vncore_getMaximumFileUploadSize', config('vncore_functions_except', []))) {
     /**
     * This function returns the maximum files size that can be uploaded 
     * in PHP

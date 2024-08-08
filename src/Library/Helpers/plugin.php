@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('vncore_get_all_plugin') && !in_array('vncore_get_all_plugin', config('helper_except', []))) {
+if (!function_exists('vncore_get_all_plugin') && !in_array('vncore_get_all_plugin', config('vncore_functions_except', []))) {
     /**
      * Get all class plugin
      *
@@ -25,7 +25,7 @@ if (!function_exists('vncore_get_all_plugin') && !in_array('vncore_get_all_plugi
     }
 }
 
-if (!function_exists('vncore_get_plugin_installed') && !in_array('vncore_get_plugin_installed', config('helper_except', []))) {
+if (!function_exists('vncore_get_plugin_installed') && !in_array('vncore_get_plugin_installed', config('vncore_functions_except', []))) {
     /**
      * Get all class plugin
      *
@@ -41,7 +41,7 @@ if (!function_exists('vncore_get_plugin_installed') && !in_array('vncore_get_plu
 
 
 
-if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_all_plugin_actived', config('helper_except', []))) {
+if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_all_plugin_actived', config('vncore_functions_except', []))) {
     /**
      * Get all class plugin actived
      *
@@ -76,7 +76,7 @@ if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_a
      * @return  [array]
      */
 
-    if (!function_exists('vncore_get_class_plugin_controller') && !in_array('vncore_get_class_plugin_controller', config('helper_except', []))) {
+    if (!function_exists('vncore_get_class_plugin_controller') && !in_array('vncore_get_class_plugin_controller', config('vncore_functions_except', []))) {
         function vncore_get_class_plugin_controller(string $key = "")
         {
             if (!$key) {
@@ -100,7 +100,7 @@ if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_a
      *
      * @return  [array]
      */
-    if (!function_exists('vncore_get_class_plugin_config') && !in_array('vncore_get_class_plugin_config', config('helper_except', []))) {
+    if (!function_exists('vncore_get_class_plugin_config') && !in_array('vncore_get_class_plugin_config', config('vncore_functions_except', []))) {
         function vncore_get_class_plugin_config(string $key = "")
         {
             $key = vncore_word_format_class($key);
@@ -120,7 +120,7 @@ if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_a
      *
      * @return  [array]
      */
-    if (!function_exists('vncore_get_plugin_namespace') && !in_array('vncore_get_plugin_namespace', config('helper_except', []))) {
+    if (!function_exists('vncore_get_plugin_namespace') && !in_array('vncore_get_plugin_namespace', config('vncore_functions_except', []))) {
         function vncore_get_plugin_namespace(string $key = "")
         {
             $key = vncore_word_format_class($key);
@@ -136,7 +136,7 @@ if (!function_exists('vncore_get_all_plugin_actived') && !in_array('vncore_get_a
      *
      * @return  [type]                   [return description]
      */
-    if (!function_exists('vncore_plugin_compatibility_check') && !in_array('vncore_plugin_compatibility_check', config('helper_except', []))) {
+    if (!function_exists('vncore_plugin_compatibility_check') && !in_array('vncore_plugin_compatibility_check', config('vncore_functions_except', []))) {
         function vncore_plugin_compatibility_check(string $versionsConfig) {
             $arrVersionVncore = explode('|', $versionsConfig);
             return in_array(config('vncore.core'), $arrVersionVncore);

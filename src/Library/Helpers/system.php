@@ -18,7 +18,7 @@ if (!function_exists('vncore_admin_can_config')) {
     }
 }
 
-if (!function_exists('vncore_config') && !in_array('vncore_config', config('helper_except', []))) {
+if (!function_exists('vncore_config') && !in_array('vncore_config', config('vncore_functions_except', []))) {
     /**
      * Get value config from table vncore_config
      * Default value is only used if the config key does not exist (including null values)
@@ -47,7 +47,7 @@ if (!function_exists('vncore_config') && !in_array('vncore_config', config('help
 }
 
 
-if (!function_exists('vncore_config_admin') && !in_array('vncore_config_admin', config('helper_except', []))) {
+if (!function_exists('vncore_config_admin') && !in_array('vncore_config_admin', config('vncore_functions_except', []))) {
     /**
      * Get config value in adin with session store id
      * Default value is only used if the config key does not exist (including null values)
@@ -64,7 +64,7 @@ if (!function_exists('vncore_config_admin') && !in_array('vncore_config_admin', 
 }
 
 
-if (!function_exists('vncore_config_global') && !in_array('vncore_config_global', config('helper_except', []))) {
+if (!function_exists('vncore_config_global') && !in_array('vncore_config_global', config('vncore_functions_except', []))) {
     /**
      * Get value config from table vncore_config for store_id 0
      * Default value is only used if the config key does not exist (including null values)
@@ -96,7 +96,7 @@ if (!function_exists('vncore_config_global') && !in_array('vncore_config_global'
     }
 }
 
-if (!function_exists('vncore_config_group') && !in_array('vncore_config_group', config('helper_except', []))) {
+if (!function_exists('vncore_config_group') && !in_array('vncore_config_group', config('vncore_functions_except', []))) {
     /*
     Group Config info
      */
@@ -108,7 +108,7 @@ if (!function_exists('vncore_config_group') && !in_array('vncore_config_group', 
 }
 
 
-if (!function_exists('vncore_store') && !in_array('vncore_store', config('helper_except', []))) {
+if (!function_exists('vncore_store') && !in_array('vncore_store', config('vncore_functions_except', []))) {
     /**
      * Get info store_id, table admin_store
      *
@@ -154,7 +154,7 @@ if (!function_exists('vncore_store') && !in_array('vncore_store', config('helper
     }
 }
 
-if (!function_exists('vncore_store_active') && !in_array('vncore_store_active', config('helper_except', []))) {
+if (!function_exists('vncore_store_active') && !in_array('vncore_store_active', config('vncore_functions_except', []))) {
     function vncore_store_active($field = null)
     {
         switch ($field) {
@@ -177,7 +177,7 @@ if (!function_exists('vncore_store_active') && !in_array('vncore_store_active', 
 /*
 Get all layouts
  */
-if (!function_exists('vncore_store_block') && !in_array('vncore_store_block', config('helper_except', []))) {
+if (!function_exists('vncore_store_block') && !in_array('vncore_store_block', config('vncore_functions_except', []))) {
     function vncore_store_block()
     {
         return AdminStoreBlockContent::getLayout();
@@ -206,7 +206,7 @@ if (!function_exists('vncore_store_css')) {
 
 
 
-if (!function_exists('vncore_get_all_template') && !in_array('vncore_get_all_template', config('helper_except', []))) {
+if (!function_exists('vncore_get_all_template') && !in_array('vncore_get_all_template', config('vncore_functions_except', []))) {
     /*
     Get all template
     */
@@ -229,7 +229,7 @@ if (!function_exists('vncore_get_all_template') && !in_array('vncore_get_all_tem
 }
 
 
-if (!function_exists('vncore_route') && !in_array('vncore_route', config('helper_except', []))) {
+if (!function_exists('vncore_route') && !in_array('vncore_route', config('vncore_functions_except', []))) {
     /**
      * Render route
      *
@@ -263,7 +263,7 @@ if (!function_exists('vncore_route') && !in_array('vncore_route', config('helper
 }
 
 
-if (!function_exists('vncore_route_admin') && !in_array('vncore_route_admin', config('helper_except', []))) {
+if (!function_exists('vncore_route_admin') && !in_array('vncore_route_admin', config('vncore_functions_except', []))) {
     /**
      * Render route admin
      *
@@ -287,7 +287,7 @@ if (!function_exists('vncore_route_admin') && !in_array('vncore_route_admin', co
     }
 }
 
-if (!function_exists('vncore_uuid') && !in_array('vncore_uuid', config('helper_except', []))) {
+if (!function_exists('vncore_uuid') && !in_array('vncore_uuid', config('vncore_functions_except', []))) {
     /**
      * Generate UUID
      *
@@ -302,7 +302,7 @@ if (!function_exists('vncore_uuid') && !in_array('vncore_uuid', config('helper_e
     }
 }
 
-if (!function_exists('vncore_generate_id') && !in_array('vncore_generate_id', config('helper_except', []))) {
+if (!function_exists('vncore_generate_id') && !in_array('vncore_generate_id', config('vncore_functions_except', []))) {
     /**
      * Generate ID
      *
@@ -372,7 +372,7 @@ if (!function_exists('vncore_generate_id') && !in_array('vncore_generate_id', co
 }
 
 
-if (!function_exists('vncore_config_update') && !in_array('vncore_config_update', config('helper_except', []))) {
+if (!function_exists('vncore_config_update') && !in_array('vncore_config_update', config('vncore_functions_except', []))) {
 
     /**
      * Update key config
@@ -401,7 +401,7 @@ if (!function_exists('vncore_config_update') && !in_array('vncore_config_update'
     }
 }
 
-if (!function_exists('vncore_config_exist') && !in_array('vncore_config_exist', config('helper_except', []))) {
+if (!function_exists('vncore_config_exist') && !in_array('vncore_config_exist', config('vncore_functions_except', []))) {
 
     /**
      * Check key config exist
@@ -426,7 +426,7 @@ if (!function_exists('vncore_config_exist') && !in_array('vncore_config_exist', 
     }
 }
 
-if (!function_exists('vncore_config_global_update') && !in_array('vncore_config_global_update', config('helper_except', []))) {
+if (!function_exists('vncore_config_global_update') && !in_array('vncore_config_global_update', config('vncore_functions_except', []))) {
     /**
      * [vncore_config_global_update description]
      *

@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('vncore_check_view') && !in_array('vncore_check_view', config('helper_except', []))) {
+if (!function_exists('vncore_check_view') && !in_array('vncore_check_view', config('vncore_functions_except', []))) {
     /**
      * Check view exist
      *
@@ -19,7 +19,7 @@ if (!function_exists('vncore_check_view') && !in_array('vncore_check_view', conf
 }
 
 
-if (!function_exists('vncore_clean') && !in_array('vncore_clean', config('helper_except', []))) {
+if (!function_exists('vncore_clean') && !in_array('vncore_clean', config('vncore_functions_except', []))) {
     /**
      * Clear data
      */
