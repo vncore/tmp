@@ -40,6 +40,7 @@ Vncore 1.x
 ## Website structure using Vncore
 
     Website-folder/
+    |
     ├── app
     │     └── Vncore
     │           ├── Helpers(+)
@@ -96,9 +97,10 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 
   Access the URL `your-domain/vncore-install.php` to proceed with the installation.
 
-  Note: Once the installation is complete, the file `website-folder/public/vncore-install.php` will be renamed to `website-folder/public/vncore-install.vncore`.
+  **Note:** After the installation is complete, the file `/public/vncore-install.php` will be renamed to `/public/vncore-install.vncore`
 
-  If the renaming process fails, you can manually rename (or delete) this file.
+  - If the renaming process fails, you can manually rename (or delete) this file.
+  - Vncore will not work if vncore-install.php file exists, or VNCORE_ACTIVE=0 in .env file
 
 ## Useful information:
 
@@ -107,16 +109,19 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 >`php artisan vncore:info`
 
 **Update vncore**
+
 Update the package using the command: 
 >`composer update vncore/core`
+
 Then, run the command: 
+
 >`php artisan vncore:update`
 
 **To create a plugin:**
 
 >`php artisan vncore:make plugin  --name=PluginName`
 
-To create a zip file plugin:**
+To create a zip file plugin:
 
 >`php artisan vncore:make plugin  --name=PluginName --download=1`
 
