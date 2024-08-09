@@ -96,9 +96,34 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 
   If the renaming process fails, you can manually rename (or delete) this file.
 
-## Update Vncore
-- Update the package using the command: `composer update vncore/core`
-- Then, run the command: `php artisan vncore:update` to apply internal updates
+## Useful information:
+
+**To view Vncore version**
+
+>`php artisan vncore:info`
+
+**Update vncore**
+- Update the package using the command: 
+>`composer update vncore/core`
+- Then, run the command: 
+>`php artisan vncore:update`
+
+**To create a plugin:**
+
+>`php artisan sc:make plugin  --name=PluginName`
+
+To create a zip file plugin:**
+
+>`php artisan sc:make plugin  --name=PluginName --download=1`
+
+**To create a template:**
+
+>`php artisan sc:make template  --name=TemplateName`
+
+To create a zip file template:**
+
+>`php artisan sc:make template  --name=TemplateName --download=1`
+
 
 ## Quickly disable Vncore and plugins
 Just add the variable `VNCORE_ACTIVE=0` to the `.env` file
