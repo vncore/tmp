@@ -59,6 +59,21 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 </p>
 
 ## Quick Installation Guide
+- Step 1: Chuẩn bị source  laravel
+Tham khảo `composer create-project laravel/laravel website-folder`
+- Step 2: Cài đặt gói vncore/core
+Di chuyển vào thư mục Laraval mới cài đặt, trong ví dụ là "website-folder"
+Chạy lệnh `composer require vncore/core`
+- Step 3: Kiểm tra cấu hình file .env
+Chắc chắn các thông tin cấu hình databse và APP_KEY trong file .env đã đầy đủ.
+Lệnh sau sẽ tạo giá trị APP_KEY neeuss chưa được thiết lập: `php artisan key:generate`
+- Step 4: Khởi tạo vncore
+Chạy lệnh `php artisan vncore:init`
+Trường hợp lệnh khởi tạo bị lỗi, bạn có thể thực hiện copy thủ công các folder `vendor/vncore/core/src/public` tới `website-folder/public`
+- Step 5: Cài đặt vncore
+Truy cập url `your-domain/vncore-install.php` để tiến hành cài đặt.
+Lưu ys: Khi cài đặt hoàn tất, file `website-folder/public/vncore-install.php` sẽ bị đổi tên thành `website-folder/public/vncore-install.vncore`.
+Nếu quá trình đổi tên thất bại, bạn có thể đổi tên (hoặc xóa) file này thủ công.
 
 
 ## Quickly disable Vncore and plugins
