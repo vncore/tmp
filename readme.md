@@ -89,6 +89,9 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 
   If the renaming process fails, you can manually rename (or delete) this file.
 
+## Update Vncore
+- Update the package using the command: `composer update vncore/core`
+- Then, run the command: `php artisan vncore:update` to apply internal updates
 
 ## Quickly disable Vncore and plugins
 Just add the variable `VNCORE_ACTIVE=0` to the `.env` file
