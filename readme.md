@@ -60,6 +60,7 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 
 ## Quick Installation Guide
 - Step 1: Prepare the Laravel source
+
   Refer to the command: `composer create-project laravel/laravel website-folder`
 
 - Step 2: Install the vncore/core package
