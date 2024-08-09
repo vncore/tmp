@@ -59,29 +59,29 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 </p>
 
 ## Quick Installation Guide
-- Step 1: Prepare the Laravel source
+- **Step 1**: Prepare the Laravel source
 
   Refer to the command: `composer create-project laravel/laravel website-folder`
 
-- Step 2: Install the vncore/core package
+- **Step 2**: Install the vncore/core package
 
   Navigate to the newly installed Laravel directory, in this example, `website-folder`
 
   Run the command: `composer require vncore/core`
 
-- Step 3: Check the configuration in the .env file
+- **Step 3**: Check the configuration in the .env file
 
   Ensure that the database configuration and APP_KEY information in the .env file are complete.
 
   If the APP_KEY is not set, use the following command to generate it: `php artisan key:generate`
 
-- Step 4: Initialize vncore
+- **Step 4**: Initialize vncore
 
   Run the command: `php artisan vncore:init`
 
   If an error occurs during the initialization, you can manually copy the folders from `vendor/vncore/core/src/public` to `website-folder/public`.
 
-- Step 5: Install vncore
+- **Step 5**: Install vncore
 
   Access the URL `your-domain/vncore-install.php` to proceed with the installation.
 
