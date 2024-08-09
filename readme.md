@@ -74,9 +74,8 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 
 - **Step 2**: Install the vncore/core package
 
-  Navigate to the newly installed Laravel directory, in this example, `website-folder`
+  Move to Laravel directory (in this example is `website-folder`), and run the command:
 
-  Run the command: 
   >`composer require vncore/core`
 
 - **Step 3**: Check the configuration in the .env file
