@@ -103,27 +103,36 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 >`php artisan vncore:info`
 
 **Update vncore**
-- Update the package using the command: 
+Update the package using the command: 
 >`composer update vncore/core`
-- Then, run the command: 
+Then, run the command: 
 >`php artisan vncore:update`
 
 **To create a plugin:**
 
->`php artisan sc:make plugin  --name=PluginName`
+>`php artisan vncore:make plugin  --name=PluginName`
 
 To create a zip file plugin:**
 
->`php artisan sc:make plugin  --name=PluginName --download=1`
+>`php artisan vncore:make plugin  --name=PluginName --download=1`
 
 **To create a template:**
 
->`php artisan sc:make template  --name=TemplateName`
+>`php artisan vncore:make template  --name=TemplateName`
 
-To create a zip file template:**
+To create a zip file template:
 
->`php artisan sc:make template  --name=TemplateName --download=1`
+>`php artisan vncore:make template  --name=TemplateName --download=1`
 
+**Customize**
+
+Customize vncore-config and functions
+
+>`php artisan vncore:customize config`
+
+Customize view admin
+
+>`php artisan vncore:customize view`
 
 ## Quickly disable Vncore and plugins
 Just add the variable `VNCORE_ACTIVE=0` to the `.env` file
