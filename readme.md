@@ -59,21 +59,25 @@ Support this project :stuck_out_tongue_winking_eye: :pray:
 </p>
 
 ## Quick Installation Guide
-- Step 1: Chuẩn bị source  laravel
-Tham khảo `composer create-project laravel/laravel website-folder`
-- Step 2: Cài đặt gói vncore/core
-Di chuyển vào thư mục Laraval mới cài đặt, trong ví dụ là "website-folder"
-Chạy lệnh `composer require vncore/core`
-- Step 3: Kiểm tra cấu hình file .env
-Chắc chắn các thông tin cấu hình databse và APP_KEY trong file .env đã đầy đủ.
-Lệnh sau sẽ tạo giá trị APP_KEY neeuss chưa được thiết lập: `php artisan key:generate`
-- Step 4: Khởi tạo vncore
-Chạy lệnh `php artisan vncore:init`
-Trường hợp lệnh khởi tạo bị lỗi, bạn có thể thực hiện copy thủ công các folder `vendor/vncore/core/src/public` tới `website-folder/public`
-- Step 5: Cài đặt vncore
-Truy cập url `your-domain/vncore-install.php` để tiến hành cài đặt.
-Lưu ys: Khi cài đặt hoàn tất, file `website-folder/public/vncore-install.php` sẽ bị đổi tên thành `website-folder/public/vncore-install.vncore`.
-Nếu quá trình đổi tên thất bại, bạn có thể đổi tên (hoặc xóa) file này thủ công.
+- Step 1: Prepare the Laravel source
+  Refer to the command: `composer create-project laravel/laravel website-folder`
+
+- Step 2: Install the vncore/core package
+  Navigate to the newly installed Laravel directory, in this example, `website-folder`
+  Run the command: `composer require vncore/core`
+
+- Step 3: Check the configuration in the .env file
+  Ensure that the database configuration and APP_KEY information in the .env file are complete.
+  If the APP_KEY is not set, use the following command to generate it: `php artisan key:generate`
+
+- Step 4: Initialize vncore
+  Run the command: `php artisan vncore:init`
+  If an error occurs during the initialization, you can manually copy the folders from `vendor/vncore/core/src/public` to `website-folder/public`.
+
+- Step 5: Install vncore
+  Access the URL `your-domain/vncore-install.php` to proceed with the installation.
+  Note: Once the installation is complete, the file `website-folder/public/vncore-install.php` will be renamed to `website-folder/public/vncore-install.vncore`.
+  If the renaming process fails, you can manually rename (or delete) this file.
 
 
 ## Quickly disable Vncore and plugins
